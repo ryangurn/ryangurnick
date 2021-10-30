@@ -52,11 +52,19 @@
         </header>
 
         <main class="container mx-auto max-w-5xl flex">
-            <div class="w-72 mr-5">assd assd assd assd assd assd assd assd assd assd assd assd assd assd assd assd assd </div>
-            <div class="w-96">
-                <ul class="flex font-semibold space-x-10">
-                    <li><a href="#" class=""></a></li>
-                </ul>
+            <div class="w-full">
+                <nav class="flex items-center justify-between text-xs">
+                    <ul class="flex font-semibold border-b-4 pb-3 space-x-10">
+                        <li><a href="#" class="border-b-4 pb-3 border-solid border-blue">Home</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Photos</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">resume</a></li>
+                    </ul>
+                </nav>
+
+                <div class="mt-8">
+                    {{ $slot }}
+                </div>
+            </div>
         </main>
     </body>
 </html>
