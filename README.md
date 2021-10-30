@@ -7,3 +7,10 @@ this application is intended to help with personal website management. it will p
 2. gallery for photos
 3. resume builder
 4. storage management.
+
+## frameworks
+* tailwindcss
+* tailwindui
+* laravel
+* breeze
+* telescope
