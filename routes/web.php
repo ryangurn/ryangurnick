@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
+    $pageTitle = 'home';
+    return view('index', compact('pageTitle'));
+})->name('home');
+
+Route::get('/photos', function () {
+    $pageTitle = 'photos';
+    return view('photos', compact('pageTitle'));
+})->name('photos');
 
 require __DIR__.'/auth.php';
