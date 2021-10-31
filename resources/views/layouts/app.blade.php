@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>ryangurnick</title>
+        <title>{{ (isset($pageTitle) && $pageTitle != null) ? $pageTitle . ' | ' : '' }}ryangurnick</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
 
         <!-- Styles -->
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
@@ -55,8 +56,8 @@
             <div class="w-full">
                 <nav class="flex items-center justify-between text-xs">
                     <ul class="flex font-semibold border-b-4 pb-3 space-x-10">
-                        <li><a href="#" class="border-b-4 pb-3 border-solid border-blue">Home</a></li>
-                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Photos</a></li>
+                        <li><a href="{{ route('home') }}" class="border-b-4 pb-3 border-solid border-blue">Home</a></li>
+                        <li><a href="{{ route('photos') }}" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue hover:border-solid">Photos</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">resume</a></li>
                     </ul>
                 </nav>
