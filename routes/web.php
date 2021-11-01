@@ -23,4 +23,9 @@ Route::get('/photos', function () {
     return view('photos', compact('pageTitle'));
 })->name('photos');
 
+Route::Get('/resume', function () {
+    $pageTitle = 'resume';
+    return view('resume', compact('pageTitle'));
+})->name('resume');
+
 require __DIR__.'/auth.php';
