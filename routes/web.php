@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $pageTitle = 'home';
-    return view('index', compact('pageTitle'));
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/photos', function () {
-    $pageTitle = 'photos';
-    return view('photos', compact('pageTitle'));
-})->name('photos');
+Route::get('/photos', [PhotoController::class, 'index'])->name('photos');
 
-Route::Get('/resume', function () {
-    $pageTitle = 'resume';
-    return view('resume', compact('pageTitle'));
-})->name('resume');
+Route::Get('/resume', [ResumeController::class, 'index'])->name('resume');
 
 require __DIR__.'/auth.php';
