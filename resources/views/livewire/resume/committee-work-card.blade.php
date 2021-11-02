@@ -38,6 +38,8 @@
                 </div>
               </li>
             </ul>
+
+            <livewire:core.card-footer />
         </div>
     </div>
 </div>
