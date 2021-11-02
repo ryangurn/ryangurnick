@@ -27,6 +27,9 @@
             </a>
 
             <div class="flex items-center">
+                <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    Telescope
+                </a>
                 @if (Route::has('login'))
                     <div class="top-0 right-0 px-6 py-4">
                         @auth
