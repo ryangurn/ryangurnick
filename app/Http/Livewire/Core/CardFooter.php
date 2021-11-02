@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class CardFooter extends Component
 {
+    public $duration;
+
     public $show = false;
 
     public function hidePopup()

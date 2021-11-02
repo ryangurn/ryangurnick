@@ -1,5 +1,5 @@
 <div class="flex items-center justify-between mt-6">
-    <livewire:core.footer-metadata />
+    <livewire:core.footer-metadata :duration="$duration" />
 
     <div class="flex items-center space-x-2" x-init="$wire.show">
         <div class="bg-gray-100 hover:bg-gray-200 text-xxs font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4">
