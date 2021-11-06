@@ -17,6 +17,8 @@ class CreatePageModulesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('module_id');
             $table->unsignedBigInteger('page_id');
+            $table->integer('order');
+            $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
     }

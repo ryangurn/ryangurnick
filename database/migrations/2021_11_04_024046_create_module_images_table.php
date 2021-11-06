@@ -16,9 +16,7 @@ class CreateModuleImagesTable extends Migration
         Schema::create('module_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('module_id');
-            $table->string('disk');
-            $table->string('file');
-            $table->string('hash');
+            $table->unsignedBigInteger('image_id');
             $table->timestamps();
         });
     }

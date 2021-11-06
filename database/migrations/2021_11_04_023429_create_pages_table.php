@@ -15,10 +15,12 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('type_id');
             $table->string('title');
             $table->string('slug');
             $table->string('controller')->nullable();
             $table->string('method')->nullable();
+            $table->datetimeTz('publish_date');
             $table->timestamps();
         });
     }

@@ -12,13 +12,16 @@ class ModuleImage extends Model
 
     protected $fillable = [
         'module_id',
-        'disk',
-        'file',
-        'hash'
+        'image_id',
     ];
 
     public function module()
     {
         return $this->hasOne(Module::class);
+    }
+
+    public function image()
+    {
+        return $this->hasOne(Image::class);
     }
 }

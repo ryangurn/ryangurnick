@@ -13,7 +13,9 @@ class PageModule extends Model
 
     protected $fillable = [
         'module_id',
-        'page_id'
+        'page_id',
+        'order',
+        'enabled',
     ];
 
     public function module() 
