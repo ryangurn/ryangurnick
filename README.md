@@ -30,13 +30,21 @@ this application is intended to help with personal website management. it will p
             * password timeout
             * lockout durations
 
-## data structure
+## data structures
+all of the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
+
 ### pages (App\Models\Page)
 * id (unsigned big integer)
+* type_id (unsigned big integer)
 * title (string)
 * slug (string)
 * controller (string) [nullable]
 * method (string) [nullable]
+* publish_date (datetime)
+
+### page types (App\Model\PageType)
+* id (unsigned big integer)
+* name (string)
 
 ### page modules (App\Models\PageModules)
 * id (unsigned big integer) 
@@ -68,6 +76,40 @@ this application is intended to help with personal website management. it will p
 * disk (string)
 * file (string)
 * hash (string)
+
+### reactions (App\Models\Reaction)
+* id (unsigned big integer)
+* reaction (string)
+* icon (string)
+* color (string)
+
+### galleries (App\Models\Gallery)
+* id (unsigned big integer)
+* name (string)
+* description (string)
+* enabled (boolean) [default: false]
+
+### gallery images (App\Models\GalleryImage)
+* id (unsigned big integer)
+* image_id (unsigned big integer)
+* caption (string)
+* location (text)
+* people (text)
+* visible (boolean) [default: false]
+
+### gallery comments (App\Models\GalleryComment)
+* id (unsigned big integer)
+* gallery_image_id (unsigned big integer)
+* user_id (unsigned big integer)
+* session_id (unsigned big integer)
+* message (text)
+
+### gallery reactions (App\Models\GalleryReactions)
+* id (unsigned big integer)
+* gallery_image_id (unsigned big integer)
+* reaction_id (unsigned big integer)
+* user_id (unsigned big integer)
+* session_id (unsigned big integer)
 
 ## packages
 * tailwindcss/tailwindui
