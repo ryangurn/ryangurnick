@@ -91,6 +91,7 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 
 ### gallery images (App\Models\GalleryImage)
 * id (unsigned big integer)
+* gallery_id (unsigned big integer)
 * image_id (unsigned big integer)
 * caption (string)
 * location (text)
