@@ -33,7 +33,9 @@ this application is intended to help with personal website management. it will p
 ## data structures
 all of the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
 
-### pages (App\Models\Page)
+### first party tables
+
+#### pages (App\Models\Page)
 * id (unsigned big integer)
 * type_id (unsigned big integer)
 * title (string)
@@ -42,54 +44,54 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * method (string) [nullable]
 * publish_date (datetime)
 
-### page types (App\Model\PageType)
+#### page types (App\Model\PageType)
 * id (unsigned big integer)
 * name (string)
 
-### page modules (App\Models\PageModules)
+#### page modules (App\Models\PageModules)
 * id (unsigned big integer) 
 * module_id (unsigned big integer)
 * page_id (unsigned big integer)
 * order (integer)
 * enabled (boolean) [default: false]
 
-### modules (App\Models\Module)
+#### modules (App\Models\Module)
 * id (unsigned big integer)
 * name (string)
 * parameters (text)
 * examples (text) [nullable]
 * component (string)
 
-### module parameters (App\Models\ModuleParameter)
+#### module parameters (App\Models\ModuleParameter)
 * id (unsigned big integer)
 * module_id (unsigned big integer)
 * parameter (string)
 * value (text)
 
-### module images (App\Modules\ModuleImage)
+#### module images (App\Modules\ModuleImage)
 * id (unsigned big integer)
 * module_id (unsigned big integer)
 * image_id (unsigned big integer)
 
-### images (App\Models\Image)
+#### images (App\Models\Image)
 * id (unsigned big integer)
 * disk (string)
 * file (string)
 * hash (string)
 
-### reactions (App\Models\Reaction)
+#### reactions (App\Models\Reaction)
 * id (unsigned big integer)
 * reaction (string)
 * icon (string)
 * color (string)
 
-### galleries (App\Models\Gallery)
+#### galleries (App\Models\Gallery)
 * id (unsigned big integer)
 * name (string)
 * description (string)
 * enabled (boolean) [default: false]
 
-### gallery images (App\Models\GalleryImage)
+#### gallery images (App\Models\GalleryImage)
 * id (unsigned big integer)
 * gallery_id (unsigned big integer)
 * image_id (unsigned big integer)
@@ -98,19 +100,43 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * people (text)
 * visible (boolean) [default: false]
 
-### gallery comments (App\Models\GalleryComment)
+#### gallery comments (App\Models\GalleryComment)
 * id (unsigned big integer)
 * gallery_image_id (unsigned big integer)
 * user_id (unsigned big integer)
 * session_id (unsigned big integer)
 * message (text)
 
-### gallery reactions (App\Models\GalleryReactions)
+#### gallery reactions (App\Models\GalleryReactions)
 * id (unsigned big integer)
 * gallery_image_id (unsigned big integer)
 * reaction_id (unsigned big integer)
 * user_id (unsigned big integer)
 * session_id (unsigned big integer)
+
+### third party tables
+
+#### laravel/laravel
+
+##### sessions (no model)
+* id (string)
+* user_id (unsigned big integer) [nullable]
+* ip_address (string) [nullable]
+* user_agent (text) [nullable]
+* payload (text)
+* last_activity (integer)
+
+#### spatie/laravel-activitylog
+
+##### activity_log (Spatie\Activitylog\Models\Activity)
+* id (unsigned big integer)
+* log_name (string) [nullable]
+* description (text)
+* subject (nullableMorphs)
+* causer (nullableMorphs)
+* properties (json)
+* batch_uuid (uuid) [nullable]
+* event (string) [nullable]
 
 ## packages
 * tailwindcss/tailwindui
@@ -119,10 +145,10 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * telescope
 
 ### look into
-* spatie/laravel-demo-mode
-* spatie/laravel-backup
-* spatie/laravel-activitylog
-* spatie/laravel-markdown
-* spatie/laravel-medialibrary
-* pragmarx/tracker
+* [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
+* [spatie/laravel-backup](https://github.com/spatie/laravel-backup)
+* [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
+* [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown)
+* [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
+* [pragmarx/tracker](https://github.com/mikha-dev/pragmarx-tracker)
 
