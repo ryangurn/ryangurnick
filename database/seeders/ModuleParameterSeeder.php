@@ -19,6 +19,8 @@ class ModuleParameterSeeder extends Seeder
         $about = Module::where('component', '=', 'home.about-card')->first();
         $project = Module::where('component', '=', 'home.project-card')->first();
         $quote = Module::where('component', '=', 'home.quote-card')->first();
+        $gallery = Module::where('component', '=', 'photo.gallery-card')->first();
+        $grid = Module::where('component', '=', 'photo.photo-grid')->first();
 
         // about card
         foreach($about->parameters as $key => $value) 
@@ -52,5 +54,24 @@ class ModuleParameterSeeder extends Seeder
             $param->value = json_encode($quote->examples[$key]);
             $param->save();
         }
+
+        // gallery card
+        foreach($gallery->parameters as $key => $value) 
+        {
+            $param = ModuleParameter::firstOrNew([
+                'module_id' => $gallery->id,
+                'parameter' => $key,
+            ]);
+            $param->value = json_encode($gallery->examples[$key]);
+            $param->save();
+        }
+
+        // photo grid
+        $param = ModuleParameter::firstOrNew([
+            'module_id' => $grid->id,
+            'parameter' => 'photos',
+        ]);
+        $param->value = json_encode($grid->examples['photos']);
+        $param->save();
     }
 }

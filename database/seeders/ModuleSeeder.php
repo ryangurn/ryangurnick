@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Module;
+use Carbon\Carbon;
 
 class ModuleSeeder extends Seeder
 {
@@ -69,6 +70,47 @@ class ModuleSeeder extends Seeder
         $quotes->save();
 
         // photos page
+        // gallery card
+        $gallery = Module::firstOrNew([
+            'name' => 'Gallery Card',
+            'component' => 'photo.gallery-card'
+        ]);
+        $gallery->parameters = [
+            'body' => 'required|string'
+        ];
+        $gallery->examples = [
+            'body' => '<p class="pb-2">This has been a long time coming. Sharing photos is quite important to me, and in a world in which social networks treat their users as the product not the customer it is time to take that control back.</p>
+
+                <p class="pb-2">This photos page is meant to provide some freedom from advertisements, data theft and monitoring from social networks. I hope you will value both the pictures posted here. In addition to the ability to look at my photos without being tracked by anyone. This page is in chronological order with the newest pictures at the top and oldest at the bottom, with no special algorithms.</p>
+
+                <p class="pb-2">This page is a continual work in progress. Please bare with me as I shake out the method to this madness. Once this page is complete, so is my time with instagram.</p>
+
+                <p class="pb-2">I hope you enjoy!</p>'
+        ];
+        $gallery->save();
         
+        // photo grid
+        $grid = Module::firstOrNew([
+            'name' => 'Photo Grid',
+            'component' => 'photo.photo-grid',
+        ]);
+        $grid->parameters = [
+            'photos' => 'required|array',
+            'photos.image' => 'required|mimes:jpg,bmp,png',
+            'photos.description' => 'nullable|string',
+            'photos.location' => 'nullable|string',
+            'photos.date' => 'nullable|string',
+        ];
+        $grid->examples = [
+            'photos' => [ 
+                [
+                    'image' => 'img/1.jpg',
+                    'description' => 'this is a testing description for a testing image',
+                    'location' => 'a location, california',
+                    'date' => Carbon::now()->addDays(-800)
+                ]
+            ],
+        ];
+        $grid->save();
     }
 }
