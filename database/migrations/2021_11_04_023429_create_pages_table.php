@@ -18,6 +18,7 @@ class CreatePagesTable extends Migration
             $table->unsignedBigInteger('type_id');
             $table->string('title');
             $table->string('slug');
+            $table->string('name');
             $table->string('controller')->nullable();
             $table->string('method')->nullable();
             $table->datetimeTz('publish_date');
