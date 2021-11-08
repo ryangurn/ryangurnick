@@ -9,12 +9,15 @@
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
                 <ul class="text-lg ml-4">
-                    <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">Stay hungry, stay foolish <span class="text-sm">-Steve Jobs</span><span></li>
-                    <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">Just watch <span class="text-sm">-Ryan Gurnick</span></span></li>
+                    @if (!$quotes->isEmpty())
+                        @foreach ($quotes as $quote)
+                    <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">{{ $quote['quote'] }} <span class="text-sm">-{{ $quote['author'] }}</span><span></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>
