@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Page;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ResumeController;
@@ -16,10 +17,11 @@ use App\Http\Controllers\ResumeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// grab all the pages and add routes
+$pages = Page::all();
 
-Route::get('/photos', [PhotoController::class, 'index'])->name('photos');
-
-Route::Get('/resume', [ResumeController::class, 'index'])->name('resume');
+foreach ($pages as $page) {
+	Route::get($page->slug, [$page->controller, $page->method])->name($page->name);
+}
 
 require __DIR__.'/auth.php';
