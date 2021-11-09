@@ -16,11 +16,20 @@ class ModuleParameterSeeder extends Seeder
     public function run()
     {
         // get modules
+        // home page
         $about = Module::where('component', '=', 'home.about-card')->first();
         $project = Module::where('component', '=', 'home.project-card')->first();
         $quote = Module::where('component', '=', 'home.quote-card')->first();
+
+        // photos page
         $gallery = Module::where('component', '=', 'photo.gallery-card')->first();
         $grid = Module::where('component', '=', 'photo.photo-grid')->first();
+
+        // resume page
+        $goals = Module::where('component', '=', 'resume.goals-card')->first();
+        $skills = Module::where('component', '=', 'resume.skills-card')->first();
+        $computer_skills = Module::where('component', '=', 'resume.computer-skills-card')->first();
+        $software = Module::where('component', '=', 'resume.software-card')->first();
 
         // about card
         foreach($about->parameters as $key => $value) 
@@ -73,5 +82,44 @@ class ModuleParameterSeeder extends Seeder
         ]);
         $param->value = json_encode($grid->examples['photos']);
         $param->save();
+
+        // goals card
+        foreach($goals->parameters as $key => $value) 
+        {
+            $param = ModuleParameter::firstOrNew([
+                'module_id' => $goals->id,
+                'parameter' => $key,
+            ]);
+            $param->value = json_encode($goals->examples[$key]);
+            $param->save();
+        }
+
+        // skills card
+        $skill = ModuleParameter::firstOrNew([
+            'module_id' => $skills->id,
+            'parameter' => 'skills',
+        ]);
+        $skill->value = json_encode($skills->examples['skills']);
+        $skill->save();
+
+        // computer skills card
+        $computer_skill = ModuleParameter::firstOrNew([
+            'module_id' => $computer_skills->id,
+            'parameter' => 'skills',
+        ]);
+        $computer_skill->value = json_encode($computer_skills->examples['skills']);
+        $computer_skill->save();
+
+        // software card
+        foreach($goals->parameters as $key => $value) 
+        {
+            $param = ModuleParameter::firstOrNew([
+                'module_id' => $software->id,
+                'parameter' => $key,
+            ]);
+            $param->value = json_encode($software->examples[$key]);
+            $param->save();
+        }
+
     }
 }

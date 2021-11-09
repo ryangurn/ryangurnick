@@ -112,5 +112,121 @@ class ModuleSeeder extends Seeder
             ],
         ];
         $grid->save();
+
+        // resume page
+        // goals card
+        $goals = Module::firstOrNew([
+            'name' => 'Goals Card',
+            'component' => 'resume.goals-card'
+        ]);
+        $goals->parameters = [
+            'body' => 'required|string'
+        ];
+        $goals->examples = [
+            'body' => 'i am working to further my knowledge in computer science and other computer-related areas in preparation for a career in software development, computer information systems, cybersecurity. over the past couple of years, i have strived to learn the more formal side to computer science, and i wish to continue developing new technologies that find truth in the fundamentals.'
+        ];
+        $goals->save();
+
+        // skills card
+        $skills = Module::firstOrNew([
+            'name' => 'Skills Card',
+            'component' => 'resume.skills-card'
+        ]);
+        $skills->parameters = [
+            'skills' => 'required|array',
+            'skills.skill' => 'required|string',
+            'skills.level' => 'required|string',
+        ];
+        $skills->examples = [
+            'skills' => [
+                [
+                    'skill' => 'html, css, javascript',
+                    'level' => 'advanced'
+                ],
+                [
+                    'skill' => 'php',
+                    'level' => 'advanced'
+                ],
+                [
+                    'skill' => 'sql based languages',
+                    'level' => 'proficient'
+                ],
+                [
+                    'skill' => 'golang',
+                    'level' => 'advanced'
+                ],
+                [
+                    'skill' => 'python',
+                    'level' => 'advanced'
+                ],
+                [
+                    'skill' => 'c',
+                    'level' => 'moderate'
+                ],
+                [
+                    'skill' => 'c#',
+                    'level' => 'moderate'
+                ],
+                [
+                    'skill' => 'c++',
+                    'level' => 'proficient'
+                ],
+                [
+                    'skill' => 'java',
+                    'level' => 'basic'
+                ],
+                [
+                    'skill' => 'ruby',
+                    'level' => 'basic'
+                ],
+                [
+                    'skill' => 'powershell & shell scripting',
+                    'level' => 'moderate'
+                ],
+                [
+                    'skill' => 'cyber security consulting',
+                    'level' => 'advanced'
+                ],
+                [
+                    'skill' => 'wordpress',
+                    'level' => 'moderate'
+                ],
+            ]
+        ];
+        $skills->save();
+
+        // computer skills card
+        $computer_skills = Module::firstOrNew([
+            'name' => 'Computer Skills Card',
+            'component' => 'resume.computer-skills-card'
+        ]);
+        $computer_skills->parameters = [
+            'skills' => 'required|array',
+            'skills.*' => 'required|string'
+        ];
+        $computer_skills->examples = [
+            'skills' => [
+                'web design',
+                'database development & management',
+                'cyber security',
+                'penetration testing',
+                'continuous integration & implementation automation',
+                'setting up and operating sound systems',
+            ]
+        ];
+        $computer_skills->save();
+    
+        // software card
+        $software = Module::firstOrNew([
+            'name' => 'Software Card',
+            'component' => 'resume.software-card'
+        ]);
+        $software->parameters = [
+            'body' => 'required|string'
+        ];
+        $software->examples = [
+            'body' => 'most development tools for programming, and devops tools.'
+        ];
+        $software->save();
     }
 }
