@@ -13,7 +13,7 @@
                 {{ $body }}
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="home.edit-about" :modal_parameters="['name' => $name, 'body' => $body]" />
         </div>
     </div>
 </div>
