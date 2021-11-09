@@ -151,4 +151,4 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown)
 * [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
 * [pragmarx/tracker](https://github.com/mikha-dev/pragmarx-tracker)
-
+* [wire-elements/modal](https://github.com/wire-elements/modal)
