@@ -10,6 +10,10 @@ class CardFooter extends Component
 
     public $show = false;
 
+    public $modal;
+
+    public $modal_parameters;
+
     public function hidePopup()
     {
         $this->show = false;
