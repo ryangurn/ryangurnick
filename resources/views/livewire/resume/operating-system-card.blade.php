@@ -9,35 +9,19 @@
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
                 <ul class="text-lg ml-4">
+                    @if (!$systems->isEmpty())
+                        @foreach($systems as $system)
                     <li class="pb-4">
                         <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
-                            CentOS
+                            {{ $system }}
                         </a>
                     </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
-                            Ubuntu
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
-                            Windows
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
-                            Windows Server
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
-                            macOS
-                        </a>
-                    </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>

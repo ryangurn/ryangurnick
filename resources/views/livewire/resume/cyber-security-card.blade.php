@@ -11,7 +11,7 @@
                 Advanced penetration testing for computer systems, API’s, infrastructure and operating system level security expert.
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>

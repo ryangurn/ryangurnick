@@ -8,37 +8,21 @@
     <div class="flex py-6 w-full">
         <div class="mx-4 w-full">
             <ul class="divide-y divide-gray-200">
+              @if (!$institutions->isEmpty())
+                @foreach($institutions as $institution)
               <li class="py-4 flex">
                 <div class="ml-3 w-full">
                   <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2 float-right">
-                    2016-2021
+                    {{ $institution['duration'] }}
                   </span>
-                  <p class="text-sm font-medium text-gray-900">University of Oregon</p>
-                  <p class="text-sm text-gray-500">Computer Information Science & Computer Information Technologies</p>
+                  <p class="text-sm font-medium text-gray-900">{{ $institution['organization'] }}</p>
+                  <p class="text-sm text-gray-500">{{ $institution['body'] }}</p>
                 </div>
               </li>
-
-              <li class="py-4 flex">
-                <div class="ml-3 w-full">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2 float-right">
-                    2016-2021
-                  </span>
-                  <p class="text-sm font-medium text-gray-900">Pierce College</p>
-                  <p class="text-sm text-gray-500">General Studies</p>
-                </div>
-              </li>
-
-              <li class="py-4 flex">
-                <div class="ml-3 w-full">
-                  <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2 float-right">
-                    2016-2021
-                  </span>
-                  <p class="text-sm font-medium text-gray-900">Cal Poly Pomona</p>
-                  <p class="text-sm text-gray-500">Cyber Security</p>
-                </div>
-              </li>
+                @endforeach
+              @endif
             </ul>
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>
