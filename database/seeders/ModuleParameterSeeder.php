@@ -30,6 +30,12 @@ class ModuleParameterSeeder extends Seeder
         $skills = Module::where('component', '=', 'resume.skills-card')->first();
         $computer_skills = Module::where('component', '=', 'resume.computer-skills-card')->first();
         $software = Module::where('component', '=', 'resume.software-card')->first();
+        $operating = Module::where('component', '=', 'resume.operating-system-card')->first();
+        $cyber = Module::where('component', '=', 'resume.cyber-security-card')->first();
+        $cs_experience = Module::where('component', '=', 'resume.computer-science-experience-card')->first();
+        $es_experience = Module::where('component', '=', 'resume.event-services-experience-card')->first();
+        $edu = Module::where('component', '=', 'resume.education-card')->first();
+        $com = Module::where('component', '=', 'resume.committee-work-card')->first();
 
         // about card
         foreach($about->parameters as $key => $value) 
@@ -121,5 +127,55 @@ class ModuleParameterSeeder extends Seeder
             $param->save();
         }
 
+        // operating system card
+        $system = ModuleParameter::firstOrNew([
+            'module_id' => $operating->id,
+            'parameter' => 'systems',
+        ]);
+        $system->value = json_encode($operating->examples['systems']);
+        $system->save();
+
+        // cyber security card
+        foreach($cyber->parameters as $key => $value) 
+        {
+            $param = ModuleParameter::firstOrNew([
+                'module_id' => $cyber->id,
+                'parameter' => $key,
+            ]);
+            $param->value = json_encode($cyber->examples[$key]);
+            $param->save();
+        }
+
+        // computer science experience card
+        $cs_exp = ModuleParameter::firstOrNew([
+            'module_id' => $cs_experience->id,
+            'parameter' => 'roles',
+        ]);
+        $cs_exp->value = json_encode($cs_experience->examples['roles']);
+        $cs_exp->save();
+
+        // event services experience card
+        $es_exp = ModuleParameter::firstOrNew([
+            'module_id' => $es_experience->id,
+            'parameter' => 'roles',
+        ]);
+        $es_exp->value = json_encode($es_experience->examples['roles']);
+        $es_exp->save();
+    
+        // event services experience card
+        $education = ModuleParameter::firstOrNew([
+            'module_id' => $edu->id,
+            'parameter' => 'institutions',
+        ]);
+        $education->value = json_encode($edu->examples['institutions']);
+        $education->save();
+
+        // event services experience card
+        $committee = ModuleParameter::firstOrNew([
+            'module_id' => $com->id,
+            'parameter' => 'institutions',
+        ]);
+        $committee->value = json_encode($com->examples['institutions']);
+        $committee->save();
     }
 }

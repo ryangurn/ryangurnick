@@ -228,5 +228,253 @@ class ModuleSeeder extends Seeder
             'body' => 'most development tools for programming, and devops tools.'
         ];
         $software->save();
+
+        // operating system card
+        $operating = Module::firstOrNew([
+            'name' => 'Operating System Proficiency Card',
+            'component' => 'resume.operating-system-card',
+        ]);
+        $operating->parameters = [
+            'systems' => 'required|array',
+            'systems.*' => 'required|string'
+        ];
+        $operating->examples = [
+            'systems' => [
+                'centos',
+                'ubuntu',
+                'windows',
+                'windows server',
+                'macos'
+            ],
+        ];
+        $operating->save();
+
+        // cyber security card
+        $cyber = Module::firstOrNew([
+            'name' => 'Cyber Security Card',
+            'component' => 'resume.cyber-security-card'
+        ]);
+        $cyber->parameters = [
+            'body' => 'required|string'
+        ];
+        $cyber->examples = [
+            'body' => 'advanced penetration testing for computer systems, api’s, infrastructure and operating system level security expert.'
+        ];
+        $cyber->save();
+
+        // computer science experience card
+        $cs_experience = Module::firstOrNew([
+            'name' => 'Computer Science Experience Card',
+            'component' => 'resume.computer-science-experience-card'
+        ]);
+        $cs_experience->parameters = [
+            'roles' => 'required|array',
+            'roles.duration' => 'required|string',
+            'roles.location' => 'required|string',
+            'roles.role' => 'required|string',
+            'roles.company' => 'required|string',
+            'roles.body' => 'nullable|string'
+        ];
+        $cs_experience->examples = [
+            'roles' => [
+                [
+                    'duration' => '2021-present',
+                    'location' => 'indianapolis, indiana',
+                    'role' => 'tech team',
+                    'company' => 'fast enterprises',
+                    'body' => '',
+                ],
+                [
+                    'duration' => '2020-2021',
+                    'location' => 'eugene, oregon',
+                    'role' => 'student manager & technician',
+                    'company' => 'university of oregon',
+                    'body' => 'Worked dual roles, first as a manager of other student workers, second as a student technician to aid in maintaining classroom audio visual equipment and university information services assets.',
+                ],
+                [
+                    'duration' => '2017-2020',
+                    'location' => 'remote',
+                    'role' => 'employee',
+                    'company' => 'apple',
+                    'body' => '',
+                ],
+                [
+                    'duration' => '2017',
+                    'location' => 'eugene, oregon',
+                    'role' => 'grader & learning assistant',
+                    'company' => 'university of oregon',
+                    'body' => 'Worked alongside computer science department professors to grade for classes such as CIT110, CIT270, CIS399. The course load ranged from simple html, css, & js websites to java based android app development.',
+                ],
+                [
+                    'duration' => '2016-2017',
+                    'location' => 'northridge, california',
+                    'role' => 'instructor',
+                    'company' => 'LAUSD',
+                    'body' => 'We developed a library of training resources for high school students to use in training toward a career in cybersecurity.',
+                ],
+                [
+                    'duration' => '2016',
+                    'location' => 'westwood, california',
+                    'role' => 'programmer',
+                    'company' => 'UCLA',
+                    'body' => 'During my time at the UCLA Library, we prototyped, developed and attempted to implement a behaviour driven testing model into their development workflow. This included building an extensive test library to test existing functionality as well as a platform to create and implement future tests. Utilised free and open source technology such as Behat, selenium, chromium, gherkin, PHP, Laravel, Jenkins, Github, and Ansible. The project was left unfinished in the hands of the library. <a href="https://github.com/UCLALibrary/Testing-Automation">Source Code</a>',
+                ],
+                [
+                    'duration' => '2015',
+                    'location' => 'remote',
+                    'role' => 'freelance programmer',
+                    'company' => 'elance',
+                    'body' => 'Freelance programmer for design and functionality projects',
+                ],
+                [
+                    'duration' => '2013-2016',
+                    'location' => 'pomona, california',
+                    'role' => 'competition support',
+                    'company' => 'wrccdc',
+                    'body' => 'Worked as a member of the scoring team to judge the work of the competitors from the perspective of the customer. My job consisted of acting as a service level user via a phone system and inquire about business services.',
+                ],
+                [
+                    'duration' => '2012-2020',
+                    'location' => 'remote',
+                    'role' => 'associate',
+                    'company' => 'net-force',
+                    'body' => 'Developed large scale applications for the purposes of cyber security training. This included strategy work to build an entire system from scratch while implementing industry best standards such as developing with the mentality of micro-services',
+                ],
+                [
+                    'duration' => '2011-2013',
+                    'location' => 'calabasas, california',
+                    'role' => 'technician',
+                    'company' => 'malibu tech support',
+                    'body' => 'Responsible for setting up machines, building computers, networks, and maintaining a business server; customer service in store and on the phone',
+                ],
+            ]
+        ];
+        $cs_experience->save();
+
+        // event services experience
+        $es_experience = Module::firstOrNew([
+            'name' => 'Event Services Experience Card',
+            'component' => 'resume.event-services-experience-card'
+        ]);
+        $es_experience->parameters = [
+            'roles' => 'required|array',
+            'roles.duration' => 'required|string',
+            'roles.location' => 'required|string',
+            'roles.role' => 'required|string',
+            'roles.company' => 'required|string',
+            'roles.body' => 'nullable|string'
+        ];
+        $es_experience->examples = [
+            'roles' => [
+                [
+                    'duration' => '2016-2018',
+                    'location' => 'eugene, oregon',
+                    'role' => 'technician',
+                    'company' => 'university of oregon event services',
+                    'body' => 'Serviced the University venues working with large sound systems, lighting systems, and classroom technology. This includes training in large light/sound systems, and industrial automation systems',
+                ],
+                [
+                    'duration' => '2017-2019',
+                    'location' => 'eugene, oregon',
+                    'role' => 'hand',
+                    'company' => 'IATSE 675 (The International Alliance of Theatrical Stage Employees)',
+                    'body' => 'Serviced the University venues working with large sound systems, lighting systems, and classroom technology. This includes training in large light/sound systems, and industrial automation systems. This includes extensive work in Matthew Knight Area, Autzen Stadium, Machovsky Center, etc.<br /><br />
+                        Calls:<ul class="list-disc pl-2"><li>Jimmy Buffet (Eugene Oregon MKA) Load In/Out</li><li>Trans-Siberian Orchestra (Eugene Oregon MKA) Load In/Out</li><li>Greatful Dead (Eugene Oregon Autzen Stadium) Load Out</li><li>Tim McGraw (Eugene Oregon MKA) Stadium Conversion</li><li>Garth Brooks (Eugene Oregon Autzen Stadium) Load In/Load Out</li></ul>',
+                ],
+                [
+                    'duration' => '2016',
+                    'location' => 'van nuys, california',
+                    'role' => 'hand',
+                    'company' => 'rainbow sound',
+                    'body' => 'Responsible for helping to setup and operate 4 clusters of wideline speaker arrays, along with Allen & Heath sound-boards',
+                ],
+            ]
+        ];
+        $es_experience->save();
+
+        // education card
+        $education = Module::firstOrNew([
+            'name' => 'Education Card',
+            'component' => 'resume.education-card'
+        ]);
+        $education->parameters = [
+            'institutions' => 'required|array',
+            'institutions.organization' => 'required|string',
+            'institutions.duration' => 'required|string',
+            'institutions.body' => 'nullable|string' 
+        ];
+        $education->examples = [
+            'institutions' => [
+                [
+                    'organization' => 'university of oregon',
+                    'duration' => '2016-2021',
+                    'body' => 'Computer Information Science & Computer Information Technologies',
+                ],
+                [
+                    'organization' => 'pierce college',
+                    'duration' => '2014-2016',
+                    'body' => 'general studies',
+                ],
+                [
+                    'organization' => 'cal poly pomona',
+                    'duration' => '2012-2016',
+                    'body' => 'Worked with college level students and security experts to curate training for high school students based on the standards set by NIST, DISA, and US-CERT. Worked alongside industry experts in white hat and black hat security fields at Facebook, Raytheon, and Cisco.',
+                ],
+                [
+                    'organization' => 'taft charter high school',
+                    'duration' => '2012-2016',
+                    'body' => 'general education',
+                ],
+                [
+                    'organization' => 'cyber patriots',
+                    'duration' => '2012-2016',
+                    'body' => 'Participant in a program for high school students to learn how to secure networks and computers to prevent hacking and malicious attacks based on national and international standards. The program teaches students cyber security through the use of virtualized systems such as VMWare and other testing software. The goal is to provide a realistic environment where cyber security standards are ignored and learn to secure a vulnerable environment. Semi-finalist in 2013 competition',
+                ],
+            ]
+        ];
+        $education->save();
+    
+
+        // committee work card
+        $committee = Module::firstOrNew([
+            'name' => 'committee work Card',
+            'component' => 'resume.committee-work-card'
+        ]);
+        $committee->parameters = [
+            'institutions' => 'required|array',
+            'institutions.organization' => 'required|string',
+            'institutions.position' => 'required|string',
+            'institutions.duration' => 'required|string',
+            'institutions.location' => 'nullable|string' 
+        ];
+        $committee->examples = [
+            'institutions' => [
+                [
+                    'organization' => 'erb memorial union',
+                    'position' => 'executive representative',
+                    'duration' => '2019-2020',
+                    'location' => 'eugene, oregon',
+                ],
+                [
+                    'organization' => 'erb memorial union',
+                    'position' => 'executive representative',
+                    'duration' => '2017-2018',
+                    'location' => 'eugene, oregon',
+                ],
+                [
+                    'organization' => 'taft charter high school hiring committee',
+                    'position' => 'student representative',
+                    'duration' => '2015-2016',
+                    'location' => 'woodland hills, california',
+                ],
+                [
+                    'organization' => 'taft charter high school finance commitee',
+                    'position' => 'chair',
+                    'duration' => '2013-2016',
+                    'location' => 'woodland hills, california',
+                ],
+            ]
+        ];
+        $committee->save();
     }
 }
