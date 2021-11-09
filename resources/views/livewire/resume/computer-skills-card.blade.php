@@ -9,40 +9,19 @@
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
                 <ul class="text-lg ml-4">
+                    @if (!$skills->isEmpty())
+                        @foreach($skills as $skill)
                     <li class="pb-4">
                         <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Web Design
+                            {{ $skill }}
                         </a>
                     </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Database Development & Management
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Cyber Security
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Penetration Testing
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Continuous Integration & Implementation Automation
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
-                            Setting up and Operating Sound Systems
-                        </a>
-                    </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>

@@ -8,10 +8,10 @@
     <div class="flex px-2 py-6 w-full">
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
-                Most development tools for programming, and DevOps tools.
+                {{ $body }}
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>

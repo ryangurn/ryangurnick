@@ -8,10 +8,10 @@
     <div class="flex px-2 py-6 w-full">
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
-                I am working to further my knowledge in computer science and other computer-related areas in preparation for a career in software development, computer information systems, cybersecurity. Over the past couple of years, I have strived to learn the more formal side to computer science, and I wish to continue developing new technologies that find truth in the fundamentals.
+                {{ $body }}
             </div>
 
-            <livewire:core.card-footer />
+            <livewire:core.card-footer :duration="$updated_at" />
         </div>
     </div>
 </div>
