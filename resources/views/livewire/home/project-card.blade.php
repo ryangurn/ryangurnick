@@ -27,7 +27,7 @@
                 </ul>
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="home.edit-project" :modal_parameters="['projects' => $projects]" />
         </div>
     </div>
 </div>

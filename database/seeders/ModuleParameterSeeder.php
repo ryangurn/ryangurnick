@@ -49,15 +49,12 @@ class ModuleParameterSeeder extends Seeder
         }
 
         // project card
-        foreach($project->parameters as $key => $value)
-        {
-            $param = ModuleParameter::firstOrNew([
-                'module_id' => $project->id,
-                'parameter' => $key,
-            ]);
-            $param->value = json_encode($project->examples[$key]);
-            $param->save();
-        }
+        $projects = ModuleParameter::firstOrNew([
+            'module_id' => $project->id,
+            'parameter' => 'projects',
+        ]);
+        $projects->value = json_encode($project->examples['projects']);
+        $projects->save();
 
         // quote card
         $quute = ModuleParameter::firstOrNew([

@@ -39,16 +39,18 @@ class ModuleSeeder extends Seeder
             'component' => 'home.project-card'
         ]);
         $project->parameters = [
-            'projects' => 'required|array:*.project,*.status'
+            'projects' => 'required|array',
+            'projects.*.project' => 'required|string',
+            'projects.*.status' => 'required|string|in:archived,current',
         ];
         $project->examples = [
             'projects' => [
                 ['project' => 'cste', 'status' => 'current'],
                 ['project' => 'trackerjacker', 'status' => 'current'],
                 ['project' => 'fakebank', 'status' => 'current'],
-                ['project' => 'regtools', 'status' => 'archive'],
-                ['project' => 'minicasty', 'status' => 'archive'],
-                ['project' => 'emu visitor estimate', 'status' => 'archive'],
+                ['project' => 'regtools', 'status' => 'archived'],
+                ['project' => 'minicasty', 'status' => 'archived'],
+                ['project' => 'emu visitor estimate', 'status' => 'archived'],
             ]
         ];
         $project->save();
