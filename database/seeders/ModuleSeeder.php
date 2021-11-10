@@ -138,8 +138,8 @@ class ModuleSeeder extends Seeder
         ]);
         $skills->parameters = [
             'skills' => 'required|array',
-            'skills.skill' => 'required|string',
-            'skills.level' => 'required|string',
+            'skills.*.skill' => 'required|string',
+            'skills.*.level' => 'required|string|in:moderate,advanced,proficient,basic',
         ];
         $skills->examples = [
             'skills' => [
