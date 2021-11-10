@@ -63,14 +63,6 @@ class EditQuote extends ModalComponent
 
         $quotes = $this->module->module_parameters->where('parameter', '=', 'quotes')->first();
 
-        // check for empty quotes
-        foreach ($this->quotes as $key => $quote)
-        {
-            if ($quote['quote'] == null && $quote['author'] == null) {
-                unset($this->quotes[$key]);
-            }
-        }
-
         $quotes->value = $this->quotes;
         $quotes->save();
 
