@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
@@ -66,6 +67,9 @@ class EditProject extends ModalComponent
 
         $projects->value = $this->projects;
         $projects->save();
+
+        $this->module->updated_at = Carbon::now();
+        $this->module->save();
 
         $this->closeModal();
         $this->redirect(URL::previous());

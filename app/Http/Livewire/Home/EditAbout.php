@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -57,6 +58,9 @@ class EditAbout extends ModalComponent
 
         $body->value = $this->body;
         $body->save();
+
+        $this->module->updated_at = Carbon::now();
+        $this->module->save();
 
         $this->closeModal();
         $this->redirect(URL::previous());

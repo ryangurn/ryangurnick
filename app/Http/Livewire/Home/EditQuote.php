@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -65,6 +66,9 @@ class EditQuote extends ModalComponent
 
         $quotes->value = $this->quotes;
         $quotes->save();
+
+        $this->module->updated_at = Carbon::now();
+        $this->module->save();
 
         $this->closeModal();
         $this->redirect(URL::previous());
