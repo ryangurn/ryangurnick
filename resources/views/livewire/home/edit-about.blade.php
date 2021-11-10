@@ -1,9 +1,9 @@
 <div>
   <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
     <label for="name" class="sr-only">name</label>
-    <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Title" value="{{ $name }}" wire:model="name">
+    <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Title" wire:model="name">
     <label for="card body" class="sr-only">card body</label>
-    <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a body..." wire:model="body">{{ $body }}</textarea>
+    <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a body..." wire:model="body"></textarea>
 
     <div aria-hidden="true">
       <div class="h-px"></div>
