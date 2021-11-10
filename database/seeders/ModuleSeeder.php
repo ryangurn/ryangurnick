@@ -24,12 +24,12 @@ class ModuleSeeder extends Seeder
         $about->parameters = [
             'name' => 'required|string',
             'body' => 'required|string',
-            'image' => 'required|mimes:jpg,bmp,png'
+            'image' => 'nullable|image|max:1024'
         ];
         $about->examples = [
             'name' => 'ryan gurnick',
             'body' => 'I am a technologist who sees the dreams of the world as an opportunity for innovation through machines. Over many years I have worked in various areas to improve my understanding of how technology functions and impacts the world in a meaningful way. I have received a bachelor’s degree in computer information science and computer information technologies while also following my passion for cybersecurity, theatrical productions, and much more. I hope you enjoy my website and learn something new in the process that will spark joy and intrigue in your life.',
-            'image' => 'https://ryangurnick.com/wp-content/uploads/2018/12/EJB2a6T9_400x400.jpg'
+            'image' => 'avatar/ryangurnick.jpg'
         ];
         $about->save();
 
@@ -88,7 +88,7 @@ class ModuleSeeder extends Seeder
                 <p class="pb-2">I hope you enjoy!</p>'
         ];
         $gallery->save();
-        
+
         // photo grid
         $grid = Module::firstOrNew([
             'name' => 'Photo Grid',
@@ -102,7 +102,7 @@ class ModuleSeeder extends Seeder
             'photos.date' => 'nullable|string',
         ];
         $grid->examples = [
-            'photos' => [ 
+            'photos' => [
                 [
                     'image' => 'img/1.jpg',
                     'description' => 'this is a testing description for a testing image',
@@ -215,7 +215,7 @@ class ModuleSeeder extends Seeder
             ]
         ];
         $computer_skills->save();
-    
+
         // software card
         $software = Module::firstOrNew([
             'name' => 'Software Card',
@@ -401,7 +401,7 @@ class ModuleSeeder extends Seeder
             'institutions' => 'required|array',
             'institutions.organization' => 'required|string',
             'institutions.duration' => 'required|string',
-            'institutions.body' => 'nullable|string' 
+            'institutions.body' => 'nullable|string'
         ];
         $education->examples = [
             'institutions' => [
@@ -433,7 +433,7 @@ class ModuleSeeder extends Seeder
             ]
         ];
         $education->save();
-    
+
 
         // committee work card
         $committee = Module::firstOrNew([
@@ -445,7 +445,7 @@ class ModuleSeeder extends Seeder
             'institutions.organization' => 'required|string',
             'institutions.position' => 'required|string',
             'institutions.duration' => 'required|string',
-            'institutions.location' => 'nullable|string' 
+            'institutions.location' => 'nullable|string'
         ];
         $committee->examples = [
             'institutions' => [
