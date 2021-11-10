@@ -11,13 +11,13 @@
                 <ul class="text-lg ml-4">
                     @if (!$quotes->isEmpty())
                         @foreach ($quotes as $quote)
-                    <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">{{ $quote['quote'] }} <span class="text-sm">-{{ $quote['author'] }}</span><span></li>
+                    <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">{{ $quote['quote'] }} @if($quote['author'] != null)<span class="text-sm">-{{ $quote['author'] }}</span>@endif<span></li>
                         @endforeach
                     @endif
                 </ul>
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="home.edit-quote" :modal_parameters="['quotes' => $quotes]" />
         </div>
     </div>
 </div>
