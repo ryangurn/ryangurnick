@@ -10,8 +10,35 @@ class EditQuote extends ModalComponent
 {
     public $quotes;
 
+    public $module;
+
+    public function mount()
+    {
+        $this->module = Module::where('component', '=', 'home.quote-card')->first();
+    }
+
+    public function rules()
+    {
+        return $this->module->parameters;
+    }
+
+    public function messages()
+    {
+        $arr = [];
+        for ($i = 0; $i < count($this->quotes); $i++)
+        {
+            $arr['quotes.'.$i.'.quote.required'] = 'Quote #'.($i+1).' cannot be blank.';
+            $arr['quotes.'.$i.'.quote.string'] = 'Quote #'.($i+1).' must be a string.';
+            $arr['quotes.'.$i.'.author.required'] = 'Author #'.($i+1).' cannot be blank.';
+            $arr['quotes.'.$i.'.author.string'] = 'Author #'.($i+1).' must be a string.';
+        }
+
+        return $arr;
+    }
+
     public function check()
     {
+        $this->messages();
         if (count($this->quotes) == 0)
         {
             $this->add();
@@ -20,6 +47,7 @@ class EditQuote extends ModalComponent
 
     public function add()
     {
+        $this->messages();
         $this->quotes[] = ['quote' => '', 'author' => ''];
     }
 
@@ -31,8 +59,9 @@ class EditQuote extends ModalComponent
 
     public function save()
     {
-        $module = Module::where('component', '=', 'home.quote-card')->first();
-        $quotes = $module->module_parameters->where('parameter', '=', 'quotes')->first();
+        $this->validate();
+
+        $quotes = $this->module->module_parameters->where('parameter', '=', 'quotes')->first();
 
         // check for empty quotes
         foreach ($this->quotes as $key => $quote)

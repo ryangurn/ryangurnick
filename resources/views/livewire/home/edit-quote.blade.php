@@ -34,6 +34,9 @@
         <div class="py-2">
             <div class="py-px">
                 <div class="h-12"></div>
+                @for($i = count($errors->all())-2; $i > 0; $i-- )
+                <div class="h-5"></div>
+                @endfor
             </div>
         </div>
     </div>
@@ -45,6 +48,16 @@
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save">
                     Save
                 </button>
+            </div>
+            <div>
+                <ul class="list-disc">
+                    @if (!$quotes->isEmpty())
+                        @foreach($quotes as $key => $quote)
+                    @error('quotes.'.$key.'.quote') <li class="text-red-800">{{ $message }}</li> @enderror
+                    @error('quotes.'.$key.'.author') <li class="text-red-800">{{ $message }}</li> @enderror
+                        @endforeach
+                    @endif
+                </ul>
             </div>
         </div>
     </div>

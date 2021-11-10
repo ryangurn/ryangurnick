@@ -59,7 +59,9 @@ class ModuleSeeder extends Seeder
             'component' => 'home.quote-card'
         ]);
         $quotes->parameters = [
-            'quotes' => 'required|array:*.quote,*.author'
+            'quotes' => 'required|array',
+            'quotes.*.author' => 'nullable|string',
+            'quotes.*.quote' => 'required|string'
         ];
         $quotes->examples = [
             'quotes' => [

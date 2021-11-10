@@ -38,7 +38,7 @@ class ModuleParameterSeeder extends Seeder
         $com = Module::where('component', '=', 'resume.committee-work-card')->first();
 
         // about card
-        foreach($about->parameters as $key => $value) 
+        foreach($about->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $about->id,
@@ -49,7 +49,7 @@ class ModuleParameterSeeder extends Seeder
         }
 
         // project card
-        foreach($project->parameters as $key => $value) 
+        foreach($project->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $project->id,
@@ -60,18 +60,16 @@ class ModuleParameterSeeder extends Seeder
         }
 
         // quote card
-        foreach($quote->parameters as $key => $value) 
-        {
-            $param = ModuleParameter::firstOrNew([
-                'module_id' => $quote->id,
-                'parameter' => $key,
-            ]);
-            $param->value = json_encode($quote->examples[$key]);
-            $param->save();
-        }
+        $quute = ModuleParameter::firstOrNew([
+            'module_id' => $quote->id,
+            'parameter' => 'quotes',
+        ]);
+        $quute->value = json_encode($quote->examples['quotes']);
+        $quute->save();
+
 
         // gallery card
-        foreach($gallery->parameters as $key => $value) 
+        foreach($gallery->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $gallery->id,
@@ -90,7 +88,7 @@ class ModuleParameterSeeder extends Seeder
         $param->save();
 
         // goals card
-        foreach($goals->parameters as $key => $value) 
+        foreach($goals->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $goals->id,
@@ -117,7 +115,7 @@ class ModuleParameterSeeder extends Seeder
         $computer_skill->save();
 
         // software card
-        foreach($goals->parameters as $key => $value) 
+        foreach($goals->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $software->id,
@@ -136,7 +134,7 @@ class ModuleParameterSeeder extends Seeder
         $system->save();
 
         // cyber security card
-        foreach($cyber->parameters as $key => $value) 
+        foreach($cyber->parameters as $key => $value)
         {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $cyber->id,
@@ -161,7 +159,7 @@ class ModuleParameterSeeder extends Seeder
         ]);
         $es_exp->value = json_encode($es_experience->examples['roles']);
         $es_exp->save();
-    
+
         // event services experience card
         $education = ModuleParameter::firstOrNew([
             'module_id' => $edu->id,
