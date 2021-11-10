@@ -6,7 +6,7 @@
     </div>
 
     <div class="flex px-2 py-6 w-full">
-        <img src="{{ $image }}" alt="{{ $name }}" class="ml-4 w-64 h-46 rounded-xl" />
+        <img src="{{ asset($image) }}" alt="{{ $name }}" class="ml-4 w-64 h-46 rounded-xl" />
         <div class="mx-4 w-full">
             <h4 class="text-xl font-semibold">{{ $name }}</h4>
             <div class="text-gray-600 mt-3">
