@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-computer-science-experience" :modal_parameters="['roles' => $roles]" />
         </div>
     </div>
 </div>
