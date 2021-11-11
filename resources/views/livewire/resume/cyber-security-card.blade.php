@@ -11,7 +11,7 @@
                 {{ $body }}
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-cyber-security" :modal_parameters="['body' => $body]" />
         </div>
     </div>
 </div>
