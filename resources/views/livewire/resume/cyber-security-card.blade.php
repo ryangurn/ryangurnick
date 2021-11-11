@@ -8,7 +8,7 @@
     <div class="flex px-2 py-6 w-full">
         <div class="mx-4 w-full">
             <div class="text-gray-600 mt-3">
-                Advanced penetration testing for computer systems, API’s, infrastructure and operating system level security expert.
+                {{ $body }}
             </div>
 
             <livewire:core.card-footer :duration="$updated_at" />
