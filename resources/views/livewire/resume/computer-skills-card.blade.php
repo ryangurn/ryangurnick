@@ -21,7 +21,7 @@
                 </ul>
             </div>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-computer-skills" :modal_parameters="['skills' => $skills]" />
         </div>
     </div>
 </div>
