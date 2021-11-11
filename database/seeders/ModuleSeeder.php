@@ -273,11 +273,11 @@ class ModuleSeeder extends Seeder
         ]);
         $cs_experience->parameters = [
             'roles' => 'required|array',
-            'roles.duration' => 'required|string',
-            'roles.location' => 'required|string',
-            'roles.role' => 'required|string',
-            'roles.company' => 'required|string',
-            'roles.body' => 'nullable|string'
+            'roles.*.duration' => 'required|string',
+            'roles.*.location' => 'required|string',
+            'roles.*.role' => 'required|string',
+            'roles.*.company' => 'required|string',
+            'roles.*.body' => 'nullable|string'
         ];
         $cs_experience->examples = [
             'roles' => [
@@ -362,11 +362,11 @@ class ModuleSeeder extends Seeder
         ]);
         $es_experience->parameters = [
             'roles' => 'required|array',
-            'roles.duration' => 'required|string',
-            'roles.location' => 'required|string',
-            'roles.role' => 'required|string',
-            'roles.company' => 'required|string',
-            'roles.body' => 'nullable|string'
+            'roles.*.duration' => 'required|string',
+            'roles.*.location' => 'required|string',
+            'roles.*.role' => 'required|string',
+            'roles.*.company' => 'required|string',
+            'roles.*.body' => 'nullable|string'
         ];
         $es_experience->examples = [
             'roles' => [
@@ -403,9 +403,9 @@ class ModuleSeeder extends Seeder
         ]);
         $education->parameters = [
             'institutions' => 'required|array',
-            'institutions.organization' => 'required|string',
-            'institutions.duration' => 'required|string',
-            'institutions.body' => 'nullable|string'
+            'institutions.*.organization' => 'required|string',
+            'institutions.*.duration' => 'required|string',
+            'institutions.*.body' => 'nullable|string'
         ];
         $education->examples = [
             'institutions' => [
@@ -446,10 +446,10 @@ class ModuleSeeder extends Seeder
         ]);
         $committee->parameters = [
             'institutions' => 'required|array',
-            'institutions.organization' => 'required|string',
-            'institutions.position' => 'required|string',
-            'institutions.duration' => 'required|string',
-            'institutions.location' => 'nullable|string'
+            'institutions.*.organization' => 'required|string',
+            'institutions.*.position' => 'required|string',
+            'institutions.*.duration' => 'required|string',
+            'institutions.*.location' => 'nullable|string'
         ];
         $committee->examples = [
             'institutions' => [
