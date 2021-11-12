@@ -23,7 +23,7 @@
               @endif
             </ul>
 
-            <livewire:core.card-footer :duration="$updated_at" />
+            <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-committee-work" :modal_parameters="['institutions' => $institutions]" />
         </div>
     </div>
 </div>
