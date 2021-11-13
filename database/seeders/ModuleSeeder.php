@@ -441,7 +441,7 @@ class ModuleSeeder extends Seeder
 
         // committee work card
         $committee = Module::firstOrNew([
-            'name' => 'committee work Card',
+            'name' => 'Committee Work Card',
             'component' => 'resume.committee-work-card'
         ]);
         $committee->parameters = [
