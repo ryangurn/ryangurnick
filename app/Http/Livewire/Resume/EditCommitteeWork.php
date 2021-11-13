@@ -28,11 +28,6 @@ class EditCommitteeWork extends ModalComponent
         $arr = [];
         for ($i = 0; $i < count($this->institutions); $i++)
         {
-//            'institutions.*.organization' => 'required|string',
-//            'institutions.*.position' => 'required|string',
-//            'institutions.*.duration' => 'required|string',
-//            'institutions.*.location' => 'nullable|string'
-
             $arr['institutions.'.$i.'.organization.required'] = 'Organization #'.($i+1).' cannot be blank.';
             $arr['institutions.'.$i.'.organization.string'] = 'Organization #'.($i+1).' must be a string.';
             $arr['institutions.'.$i.'.position.required'] = 'Position #'.($i+1).' cannot be blank.';
