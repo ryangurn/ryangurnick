@@ -35,7 +35,6 @@
                 document.getElementById('image-click').addEventListener('click', function() {
                     document.getElementById('image').click();
                 });
-
             </script>
         </div>
         <div>
