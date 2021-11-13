@@ -99,11 +99,11 @@ class ModuleSeeder extends Seeder
             'component' => 'photo.photo-grid',
         ]);
         $grid->parameters = [
-            'photos' => 'required|array',
-            'photos.image' => 'required|mimes:jpg,bmp,png',
-            'photos.description' => 'nullable|string',
-            'photos.location' => 'nullable|string',
-            'photos.date' => 'nullable|string',
+            'photo' => 'required|array',
+            'image' => 'nullable|image|max:1024',
+            'photo.description' => 'nullable|string',
+            'photo.location' => 'nullable|string',
+            'photo.date' => 'nullable|string',
         ];
         $grid->examples = [
             'photos' => [
