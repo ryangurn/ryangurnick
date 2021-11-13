@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class CardFooter extends Component
 {
+    public $show_timestamp = true;
+
     public $duration;
 
     public $show = false;

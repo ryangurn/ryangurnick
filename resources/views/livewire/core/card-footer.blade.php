@@ -1,6 +1,7 @@
-<div class="flex items-center justify-between mt-6">
+<div class="flex items-center justify-{{ ($show_timestamp) ? 'between' : 'center'}} mt-6">
+    @if ($show_timestamp)
     <livewire:core.footer-metadata :duration="$duration" />
-
+    @endif
     <div class="flex items-center space-x-2" x-init="$wire.show">
         @if ($modal != null)
         <div class="bg-gray-100 hover:bg-gray-200 text-xxs font-bold leading-none rounded-full text-center w-28 h-7 py-2 px-4" wire:click="$emit('openModal', '{{ $modal }}', {{ json_encode($modal_parameters) }})">
