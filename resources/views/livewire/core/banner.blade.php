@@ -1,5 +1,15 @@
 <div>
     @if ($auth_required && $auth)
+    <div aria-hidden="true">
+        <div class="h-px"></div>
+        <div class="py-2">
+            <div class="py-px">
+                <div class="h-14"></div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 z-50">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="p-2 rounded-lg bg-indigo-600 shadow-lg sm:p-3">
