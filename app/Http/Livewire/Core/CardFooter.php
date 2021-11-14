@@ -8,13 +8,19 @@ class CardFooter extends Component
 {
     public $show_timestamp = true;
 
+    public $button_text = 'edit';
+
+    public $modal_parameters = [];
+
+    public $show_menu = false;
+
+    public $menu_options = [];
+
     public $duration;
 
     public $show = false;
 
     public $modal;
-
-    public $modal_parameters;
 
     public function hidePopup()
     {
