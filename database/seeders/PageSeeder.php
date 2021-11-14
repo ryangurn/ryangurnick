@@ -28,7 +28,7 @@ class PageSeeder extends Seeder
             'slug' => '/',
         ]);
         $home->name = 'home';
-        $home->controller = 'App\Http\Controllers\HomeController';
+        $home->controller = 'App\Http\Controllers\PageController';
         $home->method = 'index';
         $home->publish_date = Carbon::now();
         $home->save();
@@ -40,7 +40,7 @@ class PageSeeder extends Seeder
             'slug' => '/photos',
         ]);
         $gallery->name = 'photos';
-        $gallery->controller = 'App\Http\Controllers\PhotoController';
+        $gallery->controller = 'App\Http\Controllers\PageController';
         $gallery->method = 'index';
         $gallery->publish_date = Carbon::now();
         $gallery->save();
@@ -52,7 +52,7 @@ class PageSeeder extends Seeder
             'slug' => '/resume',
         ]);
         $resume->name = 'resume';
-        $resume->controller = 'App\Http\Controllers\ResumeController';
+        $resume->controller = 'App\Http\Controllers\PageController';
         $resume->method = 'index';
         $resume->publish_date = Carbon::now();
         $resume->save();
