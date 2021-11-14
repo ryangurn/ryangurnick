@@ -26,6 +26,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
 
         /*
+         * PageNavigationSeeder will add in the default pages
+         * to show them on the main menu of the website.
+         */
+        $this->call(PageNavigationSeeder::class);
+
+        /*
         * ModuleSeeder needs to be seeded next before adding
         * the modules to a specific page
         */
