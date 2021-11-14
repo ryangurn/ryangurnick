@@ -42,9 +42,10 @@
             </div>
             <div>
                 <ul class="list-disc">
-{{--                    @error('name') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                    @error('body') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                    @error('image') <li class="text-red-800">{{ $message }}</li> @enderror--}}
+                    @error('photo.description') <li class="text-red-800">{{ $message }}</li> @enderror
+                    @error('photo.location') <li class="text-red-800">{{ $message }}</li> @enderror
+                    @error('photo.date') <li class="text-red-800">{{ $message }}</li> @enderror
+                    @error('image') <li class="text-red-800">{{ $message }}</li> @enderror
                 </ul>
             </div>
         </div>
