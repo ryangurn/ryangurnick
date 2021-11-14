@@ -3,9 +3,9 @@
         <label for="name" class="sr-only">location</label>
         <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="location" wire:model="photo.location">
         <label for="name" class="sr-only">date</label>
-        <input type="text" name="name" id="name" class="block w-full border-0 pt-0.5 text-md font-medium placeholder-gray-500 focus:ring-0" placeholder="location" wire:model="photo.date">
+        <input type="text" name="name" id="name" class="block w-full border-0 pt-0.5 text-md font-medium placeholder-gray-500 focus:ring-0" placeholder="date" wire:model="photo.date">
         <label for="card body" class="sr-only">photo body</label>
-        <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a body..." wire:model="photo.description"></textarea>
+        <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="body" wire:model="photo.description"></textarea>
 
         <div aria-hidden="true">
             <div class="h-px"></div>
