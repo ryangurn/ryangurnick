@@ -15,6 +15,7 @@ class Page extends Model
         'type_id',
         'title',
         'slug',
+        'name',
         'controller',
         'method',
         'publish_date',
