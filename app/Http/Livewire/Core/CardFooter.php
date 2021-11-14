@@ -2,10 +2,15 @@
 
 namespace App\Http\Livewire\Core;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CardFooter extends Component
 {
+    public $auth_required = true;
+
+    public $auth = false;
+
     public $show_timestamp = true;
 
     public $button_text = 'edit';
@@ -21,6 +26,11 @@ class CardFooter extends Component
     public $show = false;
 
     public $modal;
+
+    public function mount()
+    {
+        $this->auth = Auth::check();
+    }
 
     public function hidePopup()
     {
