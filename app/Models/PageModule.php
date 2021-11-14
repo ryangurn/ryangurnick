@@ -18,9 +18,9 @@ class PageModule extends Model
         'enabled',
     ];
 
-    public function module() 
+    public function module()
     {
-        return $this->hasOne(Module::class);
+        return $this->hasOne(Module::class, 'id', 'module_id');
     }
 
     public function page()
