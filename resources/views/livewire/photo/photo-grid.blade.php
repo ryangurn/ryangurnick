@@ -1,5 +1,15 @@
 <div>
-    <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+    <div class="card-container shadow-sm hover:shadow-md transition duration-150 ease-in bg-white rounded-xl flex">
+        <div class="flex w-full pb-6">
+            <div class="mx-4 w-full">
+                <div class="text-gray-600 mt-3">
+                    <livewire:core.card-footer :show_timestamp="false" modal="photo.add-grid" button_text="add" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul role="list" class="space-y-12 pt-8 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
           @foreach($photos as $index => $photo)
         <li>
