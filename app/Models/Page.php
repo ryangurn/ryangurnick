@@ -20,7 +20,7 @@ class Page extends Model
         'publish_date',
     ];
 
-    public function page_modules() 
+    public function page_modules()
     {
         return $this->hasMany(PageModule::class);
     }
@@ -29,4 +29,10 @@ class Page extends Model
     {
         return $this->hasOne(PageType::class);
     }
+
+    public function page_navigations()
+    {
+        return $this->hasMany(PageNavigation::class);
+    }
+
 }
