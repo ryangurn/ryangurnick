@@ -13,6 +13,8 @@
         @endif
     </x-slot>
 
+    <livewire:core.banner />
+
     <div class="cards-container space-y-6 my-6">
         @if(!$modules->isEmpty())
             @foreach($modules as $module)
