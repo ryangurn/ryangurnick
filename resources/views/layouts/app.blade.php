@@ -60,9 +60,7 @@
             <div class="w-full">
                 <nav class="flex items-center justify-between text-xs">
                     <ul class="flex font-semibold border-b-4 pb-3 space-x-10">
-                        <li><a href="{{ route('home') }}" class="border-b-4 pb-3 border-solid {{ (Route::currentRouteName() == 'home') ? 'border-blue' : 'text-gray-400 hover:border-blue' }}">Home</a></li>
-                        <li><a href="{{ route('photos') }}" class="transition duration-150 ease-in border-b-4 pb-3 {{ (Route::currentRouteName() == 'photos') ? 'border-blue' : 'text-gray-400 hover:border-blue' }}">Photos</a></li>
-                        <li><a href="{{ route('resume') }}" class="transition duration-150 ease-in border-b-4 pb-3 {{ (Route::currentRouteName() == 'resume') ? 'border-blue' : 'text-gray-400 hover:border-blue' }}">resume</a></li>
+                        {{ $menu }}
                     </ul>
                 </nav>
 
@@ -77,6 +75,6 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
         @livewire('livewire-ui-modal')
-        
+
     </body>
 </html>
