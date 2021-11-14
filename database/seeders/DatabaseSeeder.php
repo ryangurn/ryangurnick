@@ -32,9 +32,15 @@ class DatabaseSeeder extends Seeder
         $this->call(ModuleSeeder::class);
 
         /*
-        * ModuleParameterSeeder sets some parameters before 
+        * ModuleParameterSeeder sets some parameters before
         * adding modules to pages (mainly for testing purposes)
         */
         $this->call(ModuleParameterSeeder::class);
+
+        /*
+         * PageModuleSeeder will generate the associations
+         * between pages and modules to seed the relationships.
+         */
+        $this->call(PageModuleSeeder::class);
     }
 }
