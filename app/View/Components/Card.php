@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class Card extends Component
 {
+    public $page_module;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($pm)
     {
-        //
+        $this->page_module = $pm;
     }
 
     /**
