@@ -19,9 +19,13 @@
                 @if ($module->enabled)
                     @livewire($module->module->component)
                 @endif
+
+                @if (!$module->enabled && Auth::check())
+                    @livewire($module->module->component)
+                @endif
             @endforeach
         @endif
     </div>
 
-    <livewire:core.banner />
+    <livewire:core.banner :page="$page" />
 </x-app-layout>
