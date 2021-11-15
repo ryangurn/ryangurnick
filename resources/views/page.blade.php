@@ -17,11 +17,11 @@
         @if(!$modules->isEmpty())
             @foreach($modules as $module)
                 @if ($module->enabled)
-                    @livewire($module->module->component)
+                    @livewire($module->module->component, ['page_module' => $module])
                 @endif
 
                 @if (!$module->enabled && Auth::check())
-                    @livewire($module->module->component)
+                    @livewire($module->module->component, ['page_module' => $module])
                 @endif
             @endforeach
         @endif
