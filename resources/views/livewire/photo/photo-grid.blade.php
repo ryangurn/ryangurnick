@@ -4,7 +4,7 @@
         <div class="flex w-full pb-6">
             <div class="mx-4 w-full">
                 <div class="text-gray-600 mt-3">
-                    <livewire:core.card-footer :show_timestamp="false" modal="photo.add-grid" button_text="add" />
+                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" button_text="add" />
                 </div>
             </div>
         </div>
