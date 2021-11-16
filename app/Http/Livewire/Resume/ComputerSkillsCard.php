@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class ComputerSkillsCard extends Component
 {
+    public $page_module;
+
     public $skills;
 
     public function mount()

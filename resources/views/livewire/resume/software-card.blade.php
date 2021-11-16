@@ -1,4 +1,4 @@
-<x-card>
+<x-card :pm="$page_module">
     <x-slot name="title">software</x-slot>
     <x-slot name="body">
 

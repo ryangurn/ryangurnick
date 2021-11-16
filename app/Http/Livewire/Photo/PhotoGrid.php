@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class PhotoGrid extends Component
 {
+    public $page_module;
+
     public $photos;
 
     public function mount()

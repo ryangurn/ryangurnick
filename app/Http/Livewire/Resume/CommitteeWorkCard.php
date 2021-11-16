@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class CommitteeWorkCard extends Component
 {
+    public $page_module;
+
     public $institutions;
 
     public function mount()

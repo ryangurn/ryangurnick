@@ -1,4 +1,4 @@
-<x-card>
+<x-card :pm="$page_module">
     <x-slot name="title">quote</x-slot>
     <x-slot name="body">
 

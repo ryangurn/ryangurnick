@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class QuoteCard extends Component
 {
+    public $page_module;
+
     public $quotes;
 
     public function mount()

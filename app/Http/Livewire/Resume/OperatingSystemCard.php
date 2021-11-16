@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class OperatingSystemCard extends Component
 {
+    public $page_module;
+
     public $systems;
 
     public function mount()

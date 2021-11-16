@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class ProjectCard extends Component
 {
+    public $page_module;
+
     public $projects;
 
     public function mount()

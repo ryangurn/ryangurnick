@@ -1,4 +1,4 @@
-<x-card>
+<x-card :pm="$page_module">
     <x-slot name="title">computer science experience</x-slot>
     <x-slot name="body">
         <div class="text-gray-600 mt-3">

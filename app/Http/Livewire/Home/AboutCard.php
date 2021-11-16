@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class AboutCard extends Component
 {
+    public $page_module;
+
     public $name;
 
     public $image;

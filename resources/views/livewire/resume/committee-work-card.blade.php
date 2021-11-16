@@ -1,4 +1,4 @@
-<x-card>
+<x-card :pm="$page_module">
     <x-slot name="title">committee work</x-slot>
     <x-slot name="body">
         <ul class="divide-y divide-gray-200">

@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class CyberSecurityCard extends Component
 {
+    public $page_module;
+
     public $body;
 
     public function mount()

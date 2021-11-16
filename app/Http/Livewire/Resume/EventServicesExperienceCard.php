@@ -7,6 +7,8 @@ use App\Models\Module;
 
 class EventServicesExperienceCard extends Component
 {
+    public $page_module;
+
     public $roles;
 
     public function mount()
