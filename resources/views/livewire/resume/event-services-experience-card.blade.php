@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-event-services-experience" :modal_parameters="['roles' => $roles]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-event-services-experience" :modal_parameters="['roles' => $roles]" />
 
     </x-slot>
 </x-card>

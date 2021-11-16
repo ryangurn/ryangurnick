@@ -8,7 +8,7 @@
             {{ $body }}
         </div>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="home.edit-about" :modal_parameters="['name' => $name, 'body' => $body]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="home.edit-about" :modal_parameters="['name' => $name, 'body' => $body]" />
 
     </x-slot>
 </x-card>

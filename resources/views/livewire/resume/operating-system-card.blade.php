@@ -16,7 +16,7 @@
             </ul>
         </div>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-operating-system" :modal_parameters="['systems' => $systems]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-operating-system" :modal_parameters="['systems' => $systems]" />
 
     </x-slot>
 </x-card>

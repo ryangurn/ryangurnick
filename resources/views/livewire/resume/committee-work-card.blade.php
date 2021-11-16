@@ -17,6 +17,6 @@
             @endif
         </ul>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-committee-work" :modal_parameters="['institutions' => $institutions]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-committee-work" :modal_parameters="['institutions' => $institutions]" />
     </x-slot>
 </x-card>

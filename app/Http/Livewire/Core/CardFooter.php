@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Core;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 
 class CardFooter extends Component
@@ -20,6 +21,8 @@ class CardFooter extends Component
     public $show_menu = false;
 
     public $menu_options = [];
+
+    public $page_module;
 
     public $duration;
 
@@ -40,6 +43,22 @@ class CardFooter extends Component
     public function showPopup()
     {
         $this->show = true;
+    }
+
+    public function enable()
+    {
+        $this->page_module->enabled = true;
+        $this->page_module->save();
+
+        $this->redirect(URL::previous());
+    }
+
+    public function disable()
+    {
+        $this->page_module->enabled = false;
+        $this->page_module->save();
+
+        $this->redirect(URL::previous());
     }
 
     public function render()

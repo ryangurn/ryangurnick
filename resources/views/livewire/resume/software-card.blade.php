@@ -6,7 +6,7 @@
             {{ $body }}
         </div>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-software" :modal_parameters="['body' => $body]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-software" :modal_parameters="['body' => $body]" />
 
     </x-slot>
 </x-card>

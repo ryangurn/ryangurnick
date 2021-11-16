@@ -22,7 +22,7 @@
             </ul>
         </div>
 
-        <livewire:core.card-footer :duration="$updated_at" modal="resume.edit-skills" :modal_parameters="['skills' => $skills]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-skills" :modal_parameters="['skills' => $skills]" />
 
     </x-slot>
 </x-card>
