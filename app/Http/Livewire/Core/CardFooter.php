@@ -61,6 +61,13 @@ class CardFooter extends Component
         $this->redirect(URL::previous());
     }
 
+    public function delete()
+    {
+        $this->page_module->delete();
+
+        $this->redirect(URL::previous());
+    }
+
     public function render()
     {
         return view('livewire.core.card-footer');

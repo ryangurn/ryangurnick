@@ -19,7 +19,8 @@
                         @elseif (!$page_module->enabled)
                             <li><a wire:click="enable" class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">enable card</a></li>
                         @endif
-                        <li><a wire:click="$emit('openModal', 'core.change-order', {{ json_encode(['page_module' => $page_module]) }})" class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">change order</a></li>
+                            <li><a wire:click="delete" class="hover:bg-red-100 rounded-xl block transition duration-150 ease-in px-5 py-3">delete card</a></li>
+                            <li><a wire:click="$emit('openModal', 'core.change-order', {{ json_encode(['page_module' => $page_module]) }})" class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">change order</a></li>
 
                         @if (count($menu_options) > 0)
                             @foreach($menu_options as $option)
