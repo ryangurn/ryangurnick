@@ -30,6 +30,8 @@ class Banner extends Component
     {
         $this->auth = Auth::check();
         $this->modules = Module::all();
+
+        $this->module_id = Module::first()->id;
     }
 
     public function refresh()
@@ -64,8 +66,7 @@ class Banner extends Component
         PageModule::create([
             'module_id' => $module->id,
             'page_id' => $this->page->id,
-            'order' => $new_order,
-            'enabled' => 1
+            'order' => $new_order
         ]);
 
         $this->refresh();
