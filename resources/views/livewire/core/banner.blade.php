@@ -4,7 +4,7 @@
         <div class="h-px"></div>
         <div class="py-2">
             <div class="py-px">
-                <div class="h-14"></div>
+                <div class="h-32"></div>
             </div>
         </div>
     </div>
