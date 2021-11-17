@@ -13,7 +13,7 @@ class GalleryCard extends Component
 
     public function mount()
     {
-        $module = Module::where('component', '=', 'photo.gallery-card')->first();
+        $module = $this->page_module->module;
 
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)

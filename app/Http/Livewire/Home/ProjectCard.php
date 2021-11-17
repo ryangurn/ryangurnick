@@ -13,7 +13,7 @@ class ProjectCard extends Component
 
     public function mount()
     {
-        $module = Module::where('component', '=', 'home.project-card')->first();
+        $module = $this->page_module->module;
 
         if ($module->module_parameters->count() == 0)
         {
