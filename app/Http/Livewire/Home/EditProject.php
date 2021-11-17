@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
@@ -10,13 +11,15 @@ use LivewireUI\Modal\ModalComponent;
 
 class EditProject extends ModalComponent
 {
+    public $page_module;
+
     public $projects;
 
     public $module;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'home.project-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

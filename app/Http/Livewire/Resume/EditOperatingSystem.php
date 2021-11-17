@@ -3,19 +3,24 @@
 namespace App\Http\Livewire\Resume;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditOperatingSystem extends ModalComponent
 {
+    public $page_module;
+
+    public $module;
+
     public $systems;
 
     public $modals;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'resume.operating-system-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

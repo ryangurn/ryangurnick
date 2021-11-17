@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Photo;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
@@ -11,6 +12,8 @@ use LivewireUI\Modal\ModalComponent;
 class EditGrid extends ModalComponent
 {
     use WithFileUploads;
+
+    public $page_module;
 
     public $photo;
 
@@ -26,7 +29,7 @@ class EditGrid extends ModalComponent
         $this->photo['date'] = Carbon::create($this->photo['date'])->toDateString();
 
         // grab module
-        $this->module = Module::where('component', '=', 'photo.photo-grid')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

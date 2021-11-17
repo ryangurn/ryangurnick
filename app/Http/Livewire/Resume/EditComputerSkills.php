@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Resume;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditComputerSkills extends ModalComponent
 {
+    public $page_module;
+
     public $skills;
 
     public $modals;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'resume.computer-skills-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

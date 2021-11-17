@@ -4,7 +4,7 @@
         <div class="flex w-full pb-6">
             <div class="mx-4 w-full">
                 <div class="text-gray-600 mt-3">
-                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" button_text="add" />
+                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module]" button_text="add" />
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                      x-transition:leave="transition ease-in duration-300"
                      x-transition:leave-start="opacity-100 transform scale-100"
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.edit-grid" :modal_parameters="['photo' => $photo, 'index' => $index]" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.edit-grid" :modal_parameters="['photo' => $photo, 'index' => $index, 'page_module' => $page_module]" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo['image'] }}" alt="">
             </div>

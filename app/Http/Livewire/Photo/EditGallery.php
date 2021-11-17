@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Photo;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditGallery extends ModalComponent
 {
+    public $page_module;
+
     public $body;
 
     public $module;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'photo.gallery-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

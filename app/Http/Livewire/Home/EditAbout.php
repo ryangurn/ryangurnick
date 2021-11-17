@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
@@ -12,6 +13,8 @@ use LivewireUI\Modal\ModalComponent;
 class EditAbout extends ModalComponent
 {
     use WithFileUploads;
+
+    public $page_module;
 
     public $name;
 
@@ -23,7 +26,7 @@ class EditAbout extends ModalComponent
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'home.about-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

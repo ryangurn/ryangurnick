@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Resume;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditEducation extends ModalComponent
 {
+    public $page_module;
+
     public $institutions;
 
     public $module;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'resume.education-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

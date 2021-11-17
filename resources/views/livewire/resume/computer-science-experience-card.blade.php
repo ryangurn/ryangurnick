@@ -37,6 +37,6 @@
             </div>
         </div>
 
-        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-computer-science-experience" :modal_parameters="['roles' => $roles]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="resume.edit-computer-science-experience" :modal_parameters="['roles' => $roles, 'page_module' => $page_module]" />
     </x-slot>
 </x-card>

@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Resume;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditEventServicesExperience extends ModalComponent
 {
+    public $page_module;
+
     public $roles;
 
     public $modules;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'resume.event-services-experience-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()

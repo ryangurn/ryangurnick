@@ -3,19 +3,22 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Module;
+use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
 class EditQuote extends ModalComponent
 {
+    public $page_module;
+
     public $quotes;
 
     public $module;
 
     public function mount()
     {
-        $this->module = Module::where('component', '=', 'home.quote-card')->first();
+        $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
     public function rules()
