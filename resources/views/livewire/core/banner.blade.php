@@ -21,20 +21,6 @@
                             </svg>
                             page
                         </a>
-                        <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="add_module_show = ! add_module_show">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            module
-                        </a>
-                        @if (!$menu_options->isEmpty())
-                        <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="add_menu_show = ! add_menu_show">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            menu option
-                        </a>
-                        @endif
                         <div x-show="add_page_show" class="flex items-center justify-center gap-2"
                              x-transition:enter="transition ease-out duration-300"
                              x-transition:enter-start="opacity-0 transform scale-90"
@@ -47,6 +33,12 @@
                                 add
                             </button>
                         </div>
+                        <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="add_module_show = ! add_module_show">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            module
+                        </a>
                         <div class="flex items-center justify-center gap-2 order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
                             <div x-show="add_module_show" class="flex items-center justify-center gap-2"
                                  x-transition:enter="transition ease-out duration-300"
@@ -55,19 +47,25 @@
                                  x-transition:leave="transition ease-in duration-300"
                                  x-transition:leave-start="opacity-100 transform scale-100"
                                  x-transition:leave-end="opacity-0 transform scale-90">
-                                <select class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" wire:model="module_id" x-on:click="add_module_show = false">
+                                <select class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" wire:model="module_id" >
                                     @if (!$modules->isEmpty())
                                         @foreach($modules as $module)
                                             <option value="{{ $module->id }}">{{ $module->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
-                                <button type="button" class="flex items-center justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add_module">
+                                <button type="button" class="flex items-center justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add_module" x-on:click="add_module_show = false">
                                     add
                                 </button>
                             </div>
                         </div>
                         @if (!$menu_options->isEmpty())
+                        <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="add_menu_show = ! add_menu_show">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            menu option
+                        </a>
                         <div class="flex items-center justify-center gap-2 order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
                             <div x-show="add_menu_show" class="flex items-center justify-center gap-2"
                                  x-transition:enter="transition ease-out duration-300"
@@ -76,17 +74,44 @@
                                  x-transition:leave="transition ease-in duration-300"
                                  x-transition:leave-start="opacity-100 transform scale-100"
                                  x-transition:leave-end="opacity-0 transform scale-90">
-                                <select class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" wire:model="menu_id" x-on:click="add_menu_show = false">
+                                <select class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" wire:model="menu_id" >
                                         @foreach($menu_options as $page)
                                             <option value="{{ $page->id }}">{{ $page->title }}</option>
                                         @endforeach
                                 </select>
-                                <button type="button" class="flex items-center justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add_menu">
+                                <button type="button" class="flex items-center justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add_menu" x-on:click="add_menu_show = false">
                                     add
                                 </button>
                             </div>
                         </div>
                         @endif
+
+                    </div>
+                    <div class="flex gap-2" x-data="{ remove_page_show: false }">
+                        <div class="flex justify-center gap-2 order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                            <div x-show="remove_page_show" class="flex items-center justify-center gap-2"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 transform scale-90"
+                                 x-transition:enter-end="opacity-100 transform scale-100"
+                                 x-transition:leave="transition ease-in duration-300"
+                                 x-transition:leave-start="opacity-100 transform scale-100"
+                                 x-transition:leave-end="opacity-0 transform scale-90">
+                                <select class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" wire:model="page_id">
+                                    @foreach($pages as $page)
+                                        <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="button" class="flex items-center justify-center inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" wire:click="delete_page" x-on:click="remove_page_show = false">
+                                    remove
+                                </button>
+                            </div>
+                            <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="remove_page_show = ! remove_page_show">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+                                </svg>
+                                page
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

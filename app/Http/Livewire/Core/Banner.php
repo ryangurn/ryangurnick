@@ -25,6 +25,10 @@ class Banner extends Component
 
     public $page;
 
+    public $pages;
+
+    public $page_id;
+
     public $menu_id;
 
     public $menu_options;
@@ -35,16 +39,18 @@ class Banner extends Component
     {
         $this->auth = Auth::check();
         $this->modules = Module::all();
+        $this->pages = Page::all();
 
         $in_menu = PageNavigation::all()->pluck('page_id');
         $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
 
-
         $this->module_id = Module::first()->id;
+        $this->module_id = $this->pages->first()->id;
         if (!$this->menu_options->isEmpty())
         {
             $this->menu_id = $this->menu_options->first()->id;
         }
+
     }
 
     public function refresh()
@@ -74,7 +80,7 @@ class Banner extends Component
         $module = Module::where('id', '=', $this->module_id)->first();
 
         $order = PageModule::where('page_id', '=', $this->page->id)->orderBy('order', 'desc')->first();
-        $new_order = $order->order + 10;
+        $new_order = (($order != null) ? $order->order : 0) + 10;
 
         PageModule::create([
             'module_id' => $module->id,
@@ -91,6 +97,17 @@ class Banner extends Component
             'page_id' => $this->menu_id,
             'enabled' => true
         ]);
+
+        $this->refresh();
+    }
+
+    public function delete_page()
+    {
+        PageNavigation::where('page_id', '=', $this->page_id)->delete();
+
+        PageModule::where('page_id', '=', $this->page_id)->delete();
+
+        Page::where('id', '=', $this->page_id)->first()->delete();
 
         $this->refresh();
     }
