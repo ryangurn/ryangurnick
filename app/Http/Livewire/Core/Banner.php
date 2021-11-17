@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Core;
 use App\Models\Module;
 use App\Models\Page;
 use App\Models\PageModule;
+use App\Models\PageNavigation;
 use App\Models\PageType;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,10 @@ class Banner extends Component
 
     public $page;
 
+    public $menu_id;
+
+    public $menu_options;
+
     public $module_id;
 
     public function mount()
@@ -31,7 +36,15 @@ class Banner extends Component
         $this->auth = Auth::check();
         $this->modules = Module::all();
 
+        $in_menu = PageNavigation::all()->pluck('page_id');
+        $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
+
+
         $this->module_id = Module::first()->id;
+        if (!$this->menu_options->isEmpty())
+        {
+            $this->menu_id = $this->menu_options->first()->id;
+        }
     }
 
     public function refresh()
@@ -46,7 +59,7 @@ class Banner extends Component
         $page = Page::create([
             'type_id' => $standard->id,
             'title' => $this->page_name,
-            'slug' => Str::slug($this->page_name),
+            'slug' => '/'.Str::slug($this->page_name),
             'name' => Str::slug($this->page_name),
             'controller' => 'App\Http\Controllers\PageController',
             'method' => 'index',
@@ -67,6 +80,16 @@ class Banner extends Component
             'module_id' => $module->id,
             'page_id' => $this->page->id,
             'order' => $new_order
+        ]);
+
+        $this->refresh();
+    }
+
+    public function add_menu()
+    {
+        PageNavigation::create([
+            'page_id' => $this->menu_id,
+            'enabled' => true
         ]);
 
         $this->refresh();
