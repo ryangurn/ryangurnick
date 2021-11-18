@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Core;
 
 use App\Models\Module;
+use App\Models\ModuleParameter;
 use App\Models\Page;
 use App\Models\PageModule;
 use App\Models\PageNavigation;
@@ -82,11 +83,25 @@ class Banner extends Component
         $order = PageModule::where('page_id', '=', $this->page->id)->orderBy('order', 'desc')->first();
         $new_order = (($order != null) ? $order->order : 0) + 10;
 
-        PageModule::create([
-            'module_id' => $module->id,
-            'page_id' => $this->page->id,
-            'order' => $new_order
-        ]);
+        $page_module = new PageModule();
+        $page_module->module_id = $module->id;
+        $page_module->page_id = $this->page->id;
+        $page_module->order = $new_order;
+        if ($module->dynamic) {
+            $hash = md5(time());
+            $page_module->hash = $hash;
+
+            foreach ($module->parameters as $parameter => $rule)
+            {
+                $param = new ModuleParameter();
+                $param->module_id = $module->id;
+                $param->parameter = $parameter;
+                $param->hash = $hash;
+                $param->value = $module->examples[$parameter];
+                $param->save();
+            }
+        }
+        $page_module->save();
 
         $this->refresh();
     }
