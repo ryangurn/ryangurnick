@@ -143,7 +143,6 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * laravel
 * breeze
 * telescope
-* awobaz/compoships
 
 ### look into
 * [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
