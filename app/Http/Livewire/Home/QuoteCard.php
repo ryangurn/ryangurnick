@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Home;
 
 use Livewire\Component;
-use App\Models\Module;
 
 class QuoteCard extends Component
 {

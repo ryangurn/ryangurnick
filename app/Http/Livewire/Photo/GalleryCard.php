@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Photo;
 
 use Livewire\Component;
-use App\Models\Module;
 
 class GalleryCard extends Component
 {

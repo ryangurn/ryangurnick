@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Resume;
 
 use Livewire\Component;
-use App\Models\Module;
 
 class OperatingSystemCard extends Component
 {

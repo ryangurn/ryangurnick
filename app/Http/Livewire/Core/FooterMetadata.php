@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Core;
 
-use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +11,7 @@ class FooterMetadata extends Component
 
     public $page;
 
-    public function mount() 
+    public function mount()
     {
         $this->duration = ($this->duration != null) ? $this->duration->diffForHumans() : 'Unknown';
 

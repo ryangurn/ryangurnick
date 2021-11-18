@@ -2,11 +2,9 @@
 
 namespace App\Http\Livewire\Home;
 
-use App\Models\Module;
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 

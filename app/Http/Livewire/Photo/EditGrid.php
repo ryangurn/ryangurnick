@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Photo;
 
-use App\Models\Module;
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
