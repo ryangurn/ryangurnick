@@ -15,6 +15,7 @@ class Module extends Model
     protected $fillable = [
         'name',
         'parameters',
+        'dynamic',
         'examples',
         'component'
     ];
@@ -24,7 +25,7 @@ class Module extends Model
         'examples' => 'array'
     ];
 
-    public function page_modules() 
+    public function page_modules()
     {
         return $this->hasMany(PageModule::class);
     }
