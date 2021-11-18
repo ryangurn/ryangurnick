@@ -31,22 +31,25 @@ class PageModuleSeeder extends Seeder
         $about = PageModule::firstOrNew([
             'module_id' => $about_card->id,
             'page_id' => $home->id,
-            'order' => 10
         ]);
+        $about->order = 10;
+        $about->enabled = true;
         $about->save();
 
         $project = PageModule::firstOrNew([
             'module_id' => $project_card->id,
             'page_id' => $home->id,
-            'order' => 20
         ]);
+        $project->order = 20;
+        $project->enabled = true;
         $project->save();
 
         $quote = PageModule::firstOrNew([
             'module_id' => $quote_card->id,
             'page_id' => $home->id,
-            'order' => 30
         ]);
+        $quote->order = 30;
+        $quote->enabled = true;
         $quote->save();
 
         // photo page modules
@@ -57,15 +60,17 @@ class PageModuleSeeder extends Seeder
         $gallery = PageModule::firstOrNew([
             'module_id' => $gallery_card->id,
             'page_id' => $photo->id,
-            'order' => 10,
         ]);
+        $gallery->order = 10;
+        $gallery->enabled = true;
         $gallery->save();
 
         $photo = PageModule::firstOrNew([
             'module_id' => $photo_grid->id,
             'page_id' => $photo->id,
-            'order' => 20
         ]);
+        $photo->order = 20;
+        $photo->enabled = true;
         $photo->save();
 
         // resume page modules
@@ -84,78 +89,89 @@ class PageModuleSeeder extends Seeder
         $abt = PageModule::firstOrCreate([
             'module_id' => $about_card->id,
             'page_id' => $resume->id,
-            'order' => 10,
         ]);
+        $abt->order = 10;
+        $abt->enabled = true;
         $abt->save();
 
         $goals = PageModule::firstOrCreate([
             'module_id' => $goals_card->id,
             'page_id' => $resume->id,
-            'order' => 20,
         ]);
+        $goals->order = 20;
+        $goals->enabled = true;
         $goals->save();
 
         $skills = PageModule::firstOrCreate([
             'module_id' => $skills_card->id,
             'page_id' => $resume->id,
-            'order' => 30,
         ]);
+        $skills->order = 30;
+        $skills->enabled = true;
         $skills->save();
 
         $cs_skills = PageModule::firstOrCreate([
             'module_id' => $computer_skills_card->id,
             'page_id' => $resume->id,
-            'order' => 40,
         ]);
+        $cs_skills->order = 40;
+        $cs_skills->enabled = true;
         $cs_skills->save();
 
         $software = PageModule::firstOrCreate([
             'module_id' => $software_card->id,
             'page_id' => $resume->id,
-            'order' => 50,
         ]);
+        $software->order = 50;
+        $software->enabled = true;
         $software->save();
 
         $operating = PageModule::firstOrCreate([
             'module_id' => $operating_system_card->id,
             'page_id' => $resume->id,
-            'order' => 60,
         ]);
+        $operating->order = 60;
+        $operating->enabled = true;
         $operating->save();
 
         $cyber = PageModule::firstOrCreate([
             'module_id' => $cyber_security_card->id,
             'page_id' => $resume->id,
-            'order' => 70,
         ]);
+        $cyber->order = 70;
+        $cyber->enabled = true;
         $cyber->save();
 
         $cs_experience = PageModule::firstOrCreate([
             'module_id' => $computer_science_experience_card->id,
             'page_id' => $resume->id,
-            'order' => 80,
         ]);
+        $cs_experience->order = 80;
+        $cs_experience->enabled = true;
         $cs_experience->save();
 
         $es_experience = PageModule::firstOrCreate([
             'module_id' => $event_services_experience_card->id,
             'page_id' => $resume->id,
-            'order' => 90,
         ]);
+        $es_experience->order = 90;
+        $es_experience->enabled = true;
         $es_experience->save();
 
         $education = PageModule::firstOrCreate([
             'module_id' => $education_card->id,
             'page_id' => $resume->id,
-            'order' => 100,
         ]);
+        $education->order = 100;
+        $education->enabled = true;
         $education->save();
 
         $committee = PageModule::firstOrCreate([
             'module_id' => $committee_work_card->id,
             'page_id' => $resume->id,
-            'order' => 110,
         ]);
+        $committee->order = 110;
+        $committee->enabled = true;
         $committee->save();
     }
 }
