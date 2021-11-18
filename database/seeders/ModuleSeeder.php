@@ -480,5 +480,20 @@ class ModuleSeeder extends Seeder
             ]
         ];
         $committee->save();
+
+        $text = Module::firstOrNew([
+            'name' => 'Text Card',
+            'component' => 'core.text-card'
+        ]);
+        $text->dynamic = true;
+        $text->parameters = [
+            'body' => 'required|string',
+            'header' => 'required|string'
+        ];
+        $text->examples = [
+            'header' => 'text card',
+            'body' => 'This is a text card, you can put these anywhere and the content on one is not tied to the content on another!'
+        ];
+        $text->save();
     }
 }
