@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Core;
 
+use App\Models\ModuleParameter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
@@ -63,6 +64,12 @@ class CardFooter extends Component
 
     public function delete()
     {
+        if ($this->page_module->module->dynamic)
+        {
+            // delete dynamic parameters
+            ModuleParameter::where('module_id', '=', $this->page_module->module_id)->where('hash', '=', $this->page_module->hash)->delete();
+        }
+
         $this->page_module->delete();
 
         $this->redirect(URL::previous());
