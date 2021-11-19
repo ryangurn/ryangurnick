@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ $page->title . ' | ' }}ryangurnick
+        {{ $page->title . ' | ' }}{{ json_decode($sitename->value)[0] }}
     </x-slot>
 
     <x-slot name="menu">

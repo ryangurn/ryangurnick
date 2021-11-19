@@ -34,5 +34,11 @@ class SettingSeeder extends Seeder
             ]
         ];
         $footer_links->save();
+
+        $sitename = Setting::firstOrNew([
+            'key' => 'sitename'
+        ]);
+        $sitename->value = 'ryan gurnick';
+        $sitename->save();
     }
 }

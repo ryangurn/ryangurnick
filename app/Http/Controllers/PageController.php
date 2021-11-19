@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\PageNavigation;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,6 +17,8 @@ class PageController extends Controller
 
         $menu = PageNavigation::all();
 
-        return view('page', compact('page', 'modules', 'menu'));
+        $sitename = Setting::where('key', '=', 'sitename')->first();
+
+        return view('page', compact('page', 'modules', 'menu', 'sitename'));
     }
 }
