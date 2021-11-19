@@ -37,7 +37,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline" onclick="event.preventDefault(); this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </a>
                             </form>
