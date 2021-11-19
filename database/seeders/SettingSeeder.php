@@ -43,7 +43,7 @@ class SettingSeeder extends Seeder
         $sitename->save();
 
         $contact_email = Setting::firstOrNew([
-            'key' => 'contact.email'
+            'key' => 'contact.from'
         ]);
         $contact_email->value = 'ryangurnick@gmail.com';
         $contact_email->save();
