@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Resume;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditGoals extends ModalComponent
+class EditSoftware extends ModalComponent
 {
     public $page_module;
 
@@ -43,6 +43,6 @@ class EditGoals extends ModalComponent
 
     public function render()
     {
-        return view('livewire.resume.edit-goals');
+        return view('livewire.resume.edit-software');
     }
 }

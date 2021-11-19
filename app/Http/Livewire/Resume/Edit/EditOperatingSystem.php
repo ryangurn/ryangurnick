@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\Home;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditProject extends ModalComponent
+class EditOperatingSystem extends ModalComponent
 {
     public $page_module;
 
-    public $projects;
-
     public $module;
+
+    public $systems;
+
+    public $modals;
 
     public function mount()
     {
@@ -28,12 +30,10 @@ class EditProject extends ModalComponent
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->projects); $i++)
+        for ($i = 0; $i < count($this->systems); $i++)
         {
-            $arr['projects.'.$i.'.project.required'] = 'Project #'.($i+1).' cannot be blank.';
-            $arr['projects.'.$i.'.project.string'] = 'Project #'.($i+1).' must be a string.';
-            $arr['projects.'.$i.'.status.required'] = 'Status #'.($i+1).' cannot be blank.';
-            $arr['projects.'.$i.'.status.string'] = 'Status #'.($i+1).' must be a string.';
+            $arr['systems.'.$i.'.required'] = 'Operating System #'.($i+1).' cannot be blank.';
+            $arr['systems.'.$i.'.string'] = 'Operating System #'.($i+1).' must be a string.';
         }
 
         return $arr;
@@ -42,7 +42,7 @@ class EditProject extends ModalComponent
     public function check()
     {
         $this->messages();
-        if (count($this->projects) == 0)
+        if (count($this->systems) == 0)
         {
             $this->add();
         }
@@ -51,12 +51,12 @@ class EditProject extends ModalComponent
     public function add()
     {
         $this->messages();
-        $this->projects[] = ['project' => '', 'status' => 'archived'];
+        $this->systems[] = '';
     }
 
     public function remove($i)
     {
-        unset($this->projects[$i]);
+        unset($this->systems[$i]);
         $this->check();
     }
 
@@ -64,10 +64,10 @@ class EditProject extends ModalComponent
     {
         $this->validate();
 
-        $projects = $this->module->module_parameters->where('parameter', '=', 'projects')->first();
+        $systems = $this->module->module_parameters->where('parameter', '=', 'systems')->first();
 
-        $projects->value = $this->projects;
-        $projects->save();
+        $systems->value = $this->systems;
+        $systems->save();
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();
@@ -79,7 +79,7 @@ class EditProject extends ModalComponent
     public function render()
     {
         $this->check();
-        $this->projects = collect($this->projects);
-        return view('livewire.home.edit-project');
+        $this->systems = collect($this->systems);
+        return view('livewire.resume.edit-operating-system');
     }
 }

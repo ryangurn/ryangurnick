@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Photo;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditGallery extends ModalComponent
+class EditGoals extends ModalComponent
 {
     public $page_module;
 
@@ -40,8 +40,9 @@ class EditGallery extends ModalComponent
         $this->closeModal();
         $this->redirect(URL::previous());
     }
+
     public function render()
     {
-        return view('livewire.photo.edit-gallery');
+        return view('livewire.resume.edit-goals');
     }
 }

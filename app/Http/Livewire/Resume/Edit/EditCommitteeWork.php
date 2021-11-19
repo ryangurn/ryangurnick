@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Resume;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditEducation extends ModalComponent
+class EditCommitteeWork extends ModalComponent
 {
     public $page_module;
 
@@ -32,9 +32,11 @@ class EditEducation extends ModalComponent
         {
             $arr['institutions.'.$i.'.organization.required'] = 'Organization #'.($i+1).' cannot be blank.';
             $arr['institutions.'.$i.'.organization.string'] = 'Organization #'.($i+1).' must be a string.';
+            $arr['institutions.'.$i.'.position.required'] = 'Position #'.($i+1).' cannot be blank.';
+            $arr['institutions.'.$i.'.position.string'] = 'Position #'.($i+1).' must be a string.';
             $arr['institutions.'.$i.'.duration.required'] = 'Duration #'.($i+1).' cannot be blank.';
             $arr['institutions.'.$i.'.duration.string'] = 'Duration #'.($i+1).' must be a string.';
-            $arr['institutions.'.$i.'.body.string'] = 'Body #'.($i+1).' must be a string.';
+            $arr['institutions.'.$i.'.location.string'] = 'Location #'.($i+1).' must be a string.';
         }
 
         return $arr;
@@ -53,10 +55,11 @@ class EditEducation extends ModalComponent
     {
         $this->messages();
         $this->institutions[] = [
-            'organization' => '',
-            'duration' => '',
-            'body' => '',
-        ];
+                'organization' => '',
+                'position' => '',
+                'duration' => '',
+                'location' => '',
+            ];
     }
 
     public function remove($i)
@@ -85,6 +88,6 @@ class EditEducation extends ModalComponent
     {
         $this->check();
         $this->institutions = collect($this->institutions);
-        return view('livewire.resume.edit-education');
+        return view('livewire.resume.edit-committee-work');
     }
 }

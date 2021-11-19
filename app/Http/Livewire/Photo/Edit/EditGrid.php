@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Home;
+namespace App\Http\Livewire\Photo\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 
-class EditAbout extends ModalComponent
+class EditGrid extends ModalComponent
 {
     use WithFileUploads;
 
     public $page_module;
 
-    public $name;
+    public $photo;
 
-    public $body;
+    public $index;
 
     public $image;
 
@@ -24,6 +24,10 @@ class EditAbout extends ModalComponent
 
     public function mount()
     {
+        // set date formatting
+        $this->photo['date'] = Carbon::create($this->photo['date'])->toDateString();
+
+        // grab module
         $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
     }
 
@@ -35,11 +39,10 @@ class EditAbout extends ModalComponent
     public function save()
     {
         $this->validate();
-        // grab module parameters and update
-        $name = $this->module->module_parameters->where('parameter', '=', 'name')->first();
-        $body = $this->module->module_parameters->where('parameter', '=', 'body')->first();
-        $image = $this->module->module_parameters->where('parameter', '=', 'image')->first();
 
+        $photo = $this->module->module_parameters->where('parameter', '=', 'photos')->first();
+
+        $value = json_decode($photo->value, true);
         if ($this->image != null)
         {
             // get original filename and extract extension
@@ -47,18 +50,17 @@ class EditAbout extends ModalComponent
             $ext = $filename[count($filename)-1];
 
             // save the file
-            $output = $this->image->storePubliclyAs('avatar', md5(time()).'.'.$ext, 'public');
+            $output = $this->image->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
 
-            // save the asset path
-            $image->value = $output;
-            $image->save();
+            $value[$this->index]['image'] = $output;
         }
 
-        $name->value = $this->name;
-        $name->save();
+        $value[$this->index]['description'] = $this->photo['description'];
+        $value[$this->index]['location'] = $this->photo['location'];
+        $value[$this->index]['date'] = new Carbon($this->photo['date']);
 
-        $body->value = $this->body;
-        $body->save();
+        $photo->value = $value;
+        $photo->save();
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();
@@ -69,6 +71,6 @@ class EditAbout extends ModalComponent
 
     public function render()
     {
-        return view('livewire.home.edit-about');
+        return view('livewire.photo.edit-grid');
     }
 }

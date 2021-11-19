@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Home;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditQuote extends ModalComponent
+class EditComputerSkills extends ModalComponent
 {
     public $page_module;
 
-    public $quotes;
+    public $skills;
 
-    public $module;
+    public $modals;
 
     public function mount()
     {
@@ -28,12 +28,10 @@ class EditQuote extends ModalComponent
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->quotes); $i++)
+        for ($i = 0; $i < count($this->skills); $i++)
         {
-            $arr['quotes.'.$i.'.quote.required'] = 'Quote #'.($i+1).' cannot be blank.';
-            $arr['quotes.'.$i.'.quote.string'] = 'Quote #'.($i+1).' must be a string.';
-            $arr['quotes.'.$i.'.author.required'] = 'Author #'.($i+1).' cannot be blank.';
-            $arr['quotes.'.$i.'.author.string'] = 'Author #'.($i+1).' must be a string.';
+            $arr['skills.'.$i.'.required'] = 'Skill #'.($i+1).' cannot be blank.';
+            $arr['skills.'.$i.'.string'] = 'Skill #'.($i+1).' must be a string.';
         }
 
         return $arr;
@@ -42,7 +40,7 @@ class EditQuote extends ModalComponent
     public function check()
     {
         $this->messages();
-        if (count($this->quotes) == 0)
+        if (count($this->skills) == 0)
         {
             $this->add();
         }
@@ -51,12 +49,12 @@ class EditQuote extends ModalComponent
     public function add()
     {
         $this->messages();
-        $this->quotes[] = ['quote' => '', 'author' => ''];
+        $this->skills[] = '';
     }
 
     public function remove($i)
     {
-        unset($this->quotes[$i]);
+        unset($this->skills[$i]);
         $this->check();
     }
 
@@ -64,10 +62,10 @@ class EditQuote extends ModalComponent
     {
         $this->validate();
 
-        $quotes = $this->module->module_parameters->where('parameter', '=', 'quotes')->first();
+        $skills = $this->module->module_parameters->where('parameter', '=', 'skills')->first();
 
-        $quotes->value = $this->quotes;
-        $quotes->save();
+        $skills->value = $this->skills;
+        $skills->save();
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();
@@ -79,7 +77,7 @@ class EditQuote extends ModalComponent
     public function render()
     {
         $this->check();
-        $this->quotes = collect($this->quotes);
-        return view('livewire.home.edit-quote');
+        $this->skills = collect($this->skills);
+        return view('livewire.resume.edit-computer-skills');
     }
 }

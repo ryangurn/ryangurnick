@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Resume;
+namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditComputerSkills extends ModalComponent
+class EditSkills extends ModalComponent
 {
     public $page_module;
 
     public $skills;
 
-    public $modals;
+    public $module;
 
     public function mount()
     {
@@ -30,8 +30,11 @@ class EditComputerSkills extends ModalComponent
         $arr = [];
         for ($i = 0; $i < count($this->skills); $i++)
         {
-            $arr['skills.'.$i.'.required'] = 'Skill #'.($i+1).' cannot be blank.';
-            $arr['skills.'.$i.'.string'] = 'Skill #'.($i+1).' must be a string.';
+            $arr['skills.'.$i.'.skill.required'] = 'Skill #'.($i+1).' cannot be blank.';
+            $arr['skills.'.$i.'.skill.string'] = 'Skill #'.($i+1).' must be a string.';
+            $arr['skills.'.$i.'.level.required'] = 'Level #'.($i+1).' cannot be blank.';
+            $arr['skills.'.$i.'.level.string'] = 'Level #'.($i+1).' must be a string.';
+            $arr['skills.'.$i.'.level.in'] = 'Level #'.($i+1).' must be one of the values in the select.';
         }
 
         return $arr;
@@ -49,7 +52,7 @@ class EditComputerSkills extends ModalComponent
     public function add()
     {
         $this->messages();
-        $this->skills[] = '';
+        $this->skills[] = ['skill' => '', 'level' => 'moderate'];
     }
 
     public function remove($i)
@@ -78,6 +81,6 @@ class EditComputerSkills extends ModalComponent
     {
         $this->check();
         $this->skills = collect($this->skills);
-        return view('livewire.resume.edit-computer-skills');
+        return view('livewire.resume.edit-skills');
     }
 }
