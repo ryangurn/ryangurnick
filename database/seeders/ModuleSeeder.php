@@ -495,5 +495,18 @@ class ModuleSeeder extends Seeder
             'body' => 'This is a text card, you can put these anywhere and the content on one is not tied to the content on another!'
         ];
         $text->save();
+
+        $contact = Module::firstOrNew([
+            'name' => 'Contact Card',
+            'component' => 'core.contact-card'
+        ]);
+        $contact->dynamic = true;
+        $contact->parameters = [
+            'header' => 'required|string'
+        ];
+        $contact->examples = [
+            'header' => 'contact',
+        ];
+        $contact->save();
     }
 }

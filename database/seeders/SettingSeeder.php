@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Setting;
+use Hamcrest\Core\Set;
 use Illuminate\Database\Seeder;
 
 class SettingSeeder extends Seeder
@@ -40,5 +41,17 @@ class SettingSeeder extends Seeder
         ]);
         $sitename->value = 'ryan gurnick';
         $sitename->save();
+
+        $contact_email = Setting::firstOrNew([
+            'key' => 'contact.email'
+        ]);
+        $contact_email->value = 'ryangurnick@gmail.com';
+        $contact_email->save();
+
+        $contact_subject = Setting::firstOrNew([
+            'key' => 'contact.subject'
+        ]);
+        $contact_subject->value = 'new contact';
+        $contact_subject->save();
     }
 }
