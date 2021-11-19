@@ -48,5 +48,11 @@ class DatabaseSeeder extends Seeder
          * between pages and modules to seed the relationships.
          */
         $this->call(PageModuleSeeder::class);
+
+        /*
+         * SettingSeeder will generate the required settings for
+         * the application to properly function.
+         */
+        $this->call(SettingSeeder::class);
     }
 }
