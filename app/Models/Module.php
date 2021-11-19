@@ -17,7 +17,8 @@ class Module extends Model
         'parameters',
         'dynamic',
         'examples',
-        'component'
+        'component',
+        'edit_component',
     ];
 
     protected $casts = [
