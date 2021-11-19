@@ -16,7 +16,7 @@ class ContactCard extends Component
 
     public $contact;
 
-    public function mount()
+    public function clear()
     {
         $this->contact = [
             'first_name' => '',
@@ -26,6 +26,11 @@ class ContactCard extends Component
             'phone_number' => '',
             'message' => ''
         ];
+    }
+
+    public function mount()
+    {
+        $this->clear();
 
         $module = $this->page_module->module;
 
@@ -88,6 +93,10 @@ class ContactCard extends Component
         $email->save();
 
         Mail::to($this->contact['email'])->send(new ContactMessage($email));
+
+        $this->clear();
+
+        session()->flash('message', 'message sent!');
     }
 
     public function render()
