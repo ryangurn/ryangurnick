@@ -27,5 +27,7 @@
         @endif
     </div>
 
+    <livewire:core.footer />
+
     <livewire:core.banner :page="$page" />
 </x-app-layout>
