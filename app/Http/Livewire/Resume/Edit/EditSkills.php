@@ -81,6 +81,6 @@ class EditSkills extends ModalComponent
     {
         $this->check();
         $this->skills = collect($this->skills);
-        return view('livewire.resume.edit-skills');
+        return view('livewire.resume.edit.edit-skills');
     }
 }

@@ -71,6 +71,6 @@ class EditGrid extends ModalComponent
 
     public function render()
     {
-        return view('livewire.photo.edit-grid');
+        return view('livewire.photo.edit.edit-grid');
     }
 }

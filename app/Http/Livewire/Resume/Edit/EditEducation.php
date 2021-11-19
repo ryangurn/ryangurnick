@@ -85,6 +85,6 @@ class EditEducation extends ModalComponent
     {
         $this->check();
         $this->institutions = collect($this->institutions);
-        return view('livewire.resume.edit-education');
+        return view('livewire.resume.edit.edit-education');
     }
 }

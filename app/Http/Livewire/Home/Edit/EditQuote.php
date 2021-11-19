@@ -80,6 +80,6 @@ class EditQuote extends ModalComponent
     {
         $this->check();
         $this->quotes = collect($this->quotes);
-        return view('livewire.home.edit-quote');
+        return view('livewire.home.edit.edit-quote');
     }
 }

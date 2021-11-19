@@ -43,6 +43,6 @@ class EditCyberSecurity extends ModalComponent
 
     public function render()
     {
-        return view('livewire.resume.edit-cyber-security');
+        return view('livewire.resume.edit.edit-cyber-security');
     }
 }

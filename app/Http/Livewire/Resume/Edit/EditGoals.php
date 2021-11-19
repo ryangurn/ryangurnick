@@ -43,6 +43,6 @@ class EditGoals extends ModalComponent
 
     public function render()
     {
-        return view('livewire.resume.edit-goals');
+        return view('livewire.resume.edit.edit-goals');
     }
 }

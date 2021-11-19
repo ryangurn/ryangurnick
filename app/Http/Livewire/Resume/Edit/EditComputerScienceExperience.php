@@ -91,6 +91,6 @@ class EditComputerScienceExperience extends ModalComponent
     {
         $this->check();
         $this->roles = collect($this->roles);
-        return view('livewire.resume.edit-computer-science-experience');
+        return view('livewire.resume.edit.edit-computer-science-experience');
     }
 }

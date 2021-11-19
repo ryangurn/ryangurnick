@@ -80,6 +80,6 @@ class EditOperatingSystem extends ModalComponent
     {
         $this->check();
         $this->systems = collect($this->systems);
-        return view('livewire.resume.edit-operating-system');
+        return view('livewire.resume.edit.edit-operating-system');
     }
 }

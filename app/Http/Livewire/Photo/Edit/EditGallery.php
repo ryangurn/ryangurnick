@@ -42,6 +42,6 @@ class EditGallery extends ModalComponent
     }
     public function render()
     {
-        return view('livewire.photo.edit-gallery');
+        return view('livewire.photo.edit.edit-gallery');
     }
 }

@@ -91,6 +91,6 @@ class EditEventServicesExperience extends ModalComponent
     {
         $this->check();
         $this->roles = collect($this->roles);
-        return view('livewire.resume.edit-event-services-experience');
+        return view('livewire.resume.edit.edit-event-services-experience');
     }
 }

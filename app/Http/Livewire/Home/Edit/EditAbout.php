@@ -69,6 +69,6 @@ class EditAbout extends ModalComponent
 
     public function render()
     {
-        return view('livewire.home.edit-about');
+        return view('livewire.home.edit.edit-about');
     }
 }

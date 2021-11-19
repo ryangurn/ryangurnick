@@ -43,6 +43,6 @@ class EditSoftware extends ModalComponent
 
     public function render()
     {
-        return view('livewire.resume.edit-software');
+        return view('livewire.resume.edit.edit-software');
     }
 }

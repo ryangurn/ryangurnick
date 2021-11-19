@@ -88,6 +88,6 @@ class EditCommitteeWork extends ModalComponent
     {
         $this->check();
         $this->institutions = collect($this->institutions);
-        return view('livewire.resume.edit-committee-work');
+        return view('livewire.resume.edit.edit-committee-work');
     }
 }

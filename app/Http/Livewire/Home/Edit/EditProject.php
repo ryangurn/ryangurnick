@@ -80,6 +80,6 @@ class EditProject extends ModalComponent
     {
         $this->check();
         $this->projects = collect($this->projects);
-        return view('livewire.home.edit-project');
+        return view('livewire.home.edit.edit-project');
     }
 }
