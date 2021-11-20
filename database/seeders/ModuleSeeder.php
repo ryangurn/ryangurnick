@@ -525,5 +525,23 @@ class ModuleSeeder extends Seeder
             'header' => 'contact',
         ];
         $contact->save();
+
+        $header = Module::firstOrNew([
+            'name' => 'Header',
+            'component' => 'core.header',
+            'edit_component' => 'core.edit.edit-header'
+        ]);
+        $header->dynamic = true;
+        $header->parameters = [
+            'header' => 'required|string',
+            'description' => 'nullable|string',
+            'color' => 'required|in:light,dark'
+        ];
+        $header->examples = [
+            'header' => 'welcome!',
+            'description' => 'this is a header, what fun!',
+            'color' => 'light'
+        ];
+        $header->save();
     }
 }
