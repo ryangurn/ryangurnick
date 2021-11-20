@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Core\edit;
+namespace App\Http\Livewire\Core\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
