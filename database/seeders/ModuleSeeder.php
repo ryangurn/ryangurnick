@@ -19,7 +19,8 @@ class ModuleSeeder extends Seeder
         // about card
         $about = Module::firstOrNew([
             'name' => 'About Card',
-            'component' => 'home.about-card'
+            'component' => 'home.about-card',
+            'edit_component' => 'home.edit.edit-about'
         ]);
         $about->parameters = [
             'name' => 'required|string',
@@ -36,7 +37,8 @@ class ModuleSeeder extends Seeder
         // project card
         $project = Module::firstOrNew([
             'name' => 'Projects Card',
-            'component' => 'home.project-card'
+            'component' => 'home.project-card',
+            'edit_component' => 'home.edit.edit-project'
         ]);
         $project->parameters = [
             'projects' => 'required|array',
@@ -58,7 +60,8 @@ class ModuleSeeder extends Seeder
         // quotes card
         $quotes = Module::firstOrNew([
             'name' => 'Quotes Card',
-            'component' => 'home.quote-card'
+            'component' => 'home.quote-card',
+            'edit_component' => 'home.edit.edit-quote'
         ]);
         $quotes->parameters = [
             'quotes' => 'required|array',
@@ -77,7 +80,8 @@ class ModuleSeeder extends Seeder
         // gallery card
         $gallery = Module::firstOrNew([
             'name' => 'Gallery Card',
-            'component' => 'photo.gallery-card'
+            'component' => 'photo.gallery-card',
+            'edit_component' => 'photo.edit.edit-gallery',
         ]);
         $gallery->parameters = [
             'body' => 'required|string'
@@ -97,6 +101,7 @@ class ModuleSeeder extends Seeder
         $grid = Module::firstOrNew([
             'name' => 'Photo Grid',
             'component' => 'photo.photo-grid',
+            'edit_component' => 'photo.edit.edit-grid',
         ]);
         $grid->parameters = [
             'photo' => 'required|array',
@@ -121,7 +126,8 @@ class ModuleSeeder extends Seeder
         // goals card
         $goals = Module::firstOrNew([
             'name' => 'Goals Card',
-            'component' => 'resume.goals-card'
+            'component' => 'resume.goals-card',
+            'edit_component' => 'resume.edit.edit-goals',
         ]);
         $goals->parameters = [
             'body' => 'required|string'
@@ -134,7 +140,8 @@ class ModuleSeeder extends Seeder
         // skills card
         $skills = Module::firstOrNew([
             'name' => 'Skills Card',
-            'component' => 'resume.skills-card'
+            'component' => 'resume.skills-card',
+            'edit_component' => 'resume.edit.edit-skills',
         ]);
         $skills->parameters = [
             'skills' => 'required|array',
@@ -202,7 +209,8 @@ class ModuleSeeder extends Seeder
         // computer skills card
         $computer_skills = Module::firstOrNew([
             'name' => 'Computer Skills Card',
-            'component' => 'resume.computer-skills-card'
+            'component' => 'resume.computer-skills-card',
+            'edit_component' => 'resume.edit.edit-computer-skills',
         ]);
         $computer_skills->parameters = [
             'skills' => 'required|array',
@@ -223,7 +231,8 @@ class ModuleSeeder extends Seeder
         // software card
         $software = Module::firstOrNew([
             'name' => 'Software Card',
-            'component' => 'resume.software-card'
+            'component' => 'resume.software-card',
+            'edit_component' => 'resume.edit.edit-software-card',
         ]);
         $software->parameters = [
             'body' => 'required|string'
@@ -237,6 +246,7 @@ class ModuleSeeder extends Seeder
         $operating = Module::firstOrNew([
             'name' => 'Operating System Proficiency Card',
             'component' => 'resume.operating-system-card',
+            'edit_component' => 'resume.edit.edit-operating-system',
         ]);
         $operating->parameters = [
             'systems' => 'required|array',
@@ -256,7 +266,8 @@ class ModuleSeeder extends Seeder
         // cyber security card
         $cyber = Module::firstOrNew([
             'name' => 'Cyber Security Card',
-            'component' => 'resume.cyber-security-card'
+            'component' => 'resume.cyber-security-card',
+            'edit_component' => 'resume.edit.edit-cyber-security',
         ]);
         $cyber->parameters = [
             'body' => 'required|string'
@@ -269,7 +280,8 @@ class ModuleSeeder extends Seeder
         // computer science experience card
         $cs_experience = Module::firstOrNew([
             'name' => 'Computer Science Experience Card',
-            'component' => 'resume.computer-science-experience-card'
+            'component' => 'resume.computer-science-experience-card',
+            'edit_component' => 'resume.edit.edit-computer-science-experience',
         ]);
         $cs_experience->parameters = [
             'roles' => 'required|array',
@@ -358,7 +370,8 @@ class ModuleSeeder extends Seeder
         // event services experience
         $es_experience = Module::firstOrNew([
             'name' => 'Event Services Experience Card',
-            'component' => 'resume.event-services-experience-card'
+            'component' => 'resume.event-services-experience-card',
+            'edit_component' => 'resume.edit.edit-event-services-experience',
         ]);
         $es_experience->parameters = [
             'roles' => 'required|array',
@@ -399,7 +412,8 @@ class ModuleSeeder extends Seeder
         // education card
         $education = Module::firstOrNew([
             'name' => 'Education Card',
-            'component' => 'resume.education-card'
+            'component' => 'resume.education-card',
+            'edit_component' => 'resume.edit.edit-education',
         ]);
         $education->parameters = [
             'institutions' => 'required|array',
@@ -442,7 +456,8 @@ class ModuleSeeder extends Seeder
         // committee work card
         $committee = Module::firstOrNew([
             'name' => 'Committee Work Card',
-            'component' => 'resume.committee-work-card'
+            'component' => 'resume.committee-work-card',
+            'edit_component' => 'resume.edit.edit-committee-work',
         ]);
         $committee->parameters = [
             'institutions' => 'required|array',
@@ -483,7 +498,8 @@ class ModuleSeeder extends Seeder
 
         $text = Module::firstOrNew([
             'name' => 'Text Card',
-            'component' => 'core.text-card'
+            'component' => 'core.text-card',
+            'edit_component' => 'core.edit.edit-text',
         ]);
         $text->dynamic = true;
         $text->parameters = [
@@ -498,7 +514,8 @@ class ModuleSeeder extends Seeder
 
         $contact = Module::firstOrNew([
             'name' => 'Contact Card',
-            'component' => 'core.contact-card'
+            'component' => 'core.contact-card',
+            'edit_component' => 'core.edit.edit-contact',
         ]);
         $contact->dynamic = true;
         $contact->parameters = [
