@@ -13,6 +13,8 @@ class EditContact extends ModalComponent
 
     public $header;
 
+    public $module;
+
     public function mount()
     {
         $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
