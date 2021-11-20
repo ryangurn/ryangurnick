@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Core;
+namespace App\Http\Livewire\Core\edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
@@ -49,6 +49,6 @@ class EditTextCard extends ModalComponent
 
     public function render()
     {
-        return view('livewire.core.edit-text-card');
+        return view('livewire.core.edit.edit-text-card');
     }
 }
