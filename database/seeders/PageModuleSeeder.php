@@ -86,7 +86,7 @@ class PageModuleSeeder extends Seeder
         $committee_work_card = Module::where('component', '=', 'resume.committee-work-card')->first();
 
         // resume page create relations
-        $abt = PageModule::firstOrCreate([
+        $abt = PageModule::firstOrNew([
             'module_id' => $about_card->id,
             'page_id' => $resume->id,
         ]);
@@ -94,7 +94,7 @@ class PageModuleSeeder extends Seeder
         $abt->enabled = true;
         $abt->save();
 
-        $goals = PageModule::firstOrCreate([
+        $goals = PageModule::firstOrNew([
             'module_id' => $goals_card->id,
             'page_id' => $resume->id,
         ]);
@@ -102,7 +102,7 @@ class PageModuleSeeder extends Seeder
         $goals->enabled = true;
         $goals->save();
 
-        $skills = PageModule::firstOrCreate([
+        $skills = PageModule::firstOrNew([
             'module_id' => $skills_card->id,
             'page_id' => $resume->id,
         ]);
@@ -110,7 +110,7 @@ class PageModuleSeeder extends Seeder
         $skills->enabled = true;
         $skills->save();
 
-        $cs_skills = PageModule::firstOrCreate([
+        $cs_skills = PageModule::firstOrNew([
             'module_id' => $computer_skills_card->id,
             'page_id' => $resume->id,
         ]);
@@ -118,7 +118,7 @@ class PageModuleSeeder extends Seeder
         $cs_skills->enabled = true;
         $cs_skills->save();
 
-        $software = PageModule::firstOrCreate([
+        $software = PageModule::firstOrNew([
             'module_id' => $software_card->id,
             'page_id' => $resume->id,
         ]);
@@ -126,7 +126,7 @@ class PageModuleSeeder extends Seeder
         $software->enabled = true;
         $software->save();
 
-        $operating = PageModule::firstOrCreate([
+        $operating = PageModule::firstOrNew([
             'module_id' => $operating_system_card->id,
             'page_id' => $resume->id,
         ]);
@@ -134,7 +134,7 @@ class PageModuleSeeder extends Seeder
         $operating->enabled = true;
         $operating->save();
 
-        $cyber = PageModule::firstOrCreate([
+        $cyber = PageModule::firstOrNew([
             'module_id' => $cyber_security_card->id,
             'page_id' => $resume->id,
         ]);
@@ -142,7 +142,7 @@ class PageModuleSeeder extends Seeder
         $cyber->enabled = true;
         $cyber->save();
 
-        $cs_experience = PageModule::firstOrCreate([
+        $cs_experience = PageModule::firstOrNew([
             'module_id' => $computer_science_experience_card->id,
             'page_id' => $resume->id,
         ]);
@@ -150,7 +150,7 @@ class PageModuleSeeder extends Seeder
         $cs_experience->enabled = true;
         $cs_experience->save();
 
-        $es_experience = PageModule::firstOrCreate([
+        $es_experience = PageModule::firstOrNew([
             'module_id' => $event_services_experience_card->id,
             'page_id' => $resume->id,
         ]);
@@ -158,7 +158,7 @@ class PageModuleSeeder extends Seeder
         $es_experience->enabled = true;
         $es_experience->save();
 
-        $education = PageModule::firstOrCreate([
+        $education = PageModule::firstOrNew([
             'module_id' => $education_card->id,
             'page_id' => $resume->id,
         ]);
@@ -166,7 +166,7 @@ class PageModuleSeeder extends Seeder
         $education->enabled = true;
         $education->save();
 
-        $committee = PageModule::firstOrCreate([
+        $committee = PageModule::firstOrNew([
             'module_id' => $committee_work_card->id,
             'page_id' => $resume->id,
         ]);
