@@ -25,18 +25,21 @@ class PageNavigationSeeder extends Seeder
             'page_id' => $home_page->id,
             'name' => null,
         ]);
+        $home->enabled = true;
         $home->save();
 
         $photo = PageNavigation::firstOrNew([
             'page_id' => $photo_page->id,
             'name' => null,
         ]);
+        $photo->enabled = true;
         $photo->save();
 
         $resume = PageNavigation::firstOrNew([
             'page_id' => $resume_page->id,
             'name' => null,
         ]);
+        $resume->enabled = true;
         $resume->save();
     }
 }
