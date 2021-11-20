@@ -6,7 +6,9 @@
         </div>
     </div>
 
+    @if (Auth::check())
     <div class="m-4 pb-2">
-        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['header' => $header, 'description' => $description, 'page_module' => $page_module]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['header' => $header, 'description' => $description, 'color' => $color, 'page_module' => $page_module]" />
     </div>
+    @endif
 </div>
