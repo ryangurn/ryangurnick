@@ -22,7 +22,7 @@
             </ul>
         </div>
 
-        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="home.edit.edit-project" :modal_parameters="['projects' => $projects, 'page_module' => $page_module]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['projects' => $projects, 'page_module' => $page_module]" />
 
     </x-slot>
 </x-card>

@@ -74,6 +74,6 @@
                 </div>
             </div>
 
-            <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at"  />
+            <livewire:core.card-footer :page_module="$page_module" :modal="$page_module->module->edit_component" :modal_parameters="['page_module' => $page_module, 'header' => $header]" :duration="$updated_at"  />
     </x-slot>
 </x-card>

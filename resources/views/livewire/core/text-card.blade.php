@@ -6,7 +6,7 @@
             {!! $body !!}
         </div>
 
-        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" modal="core.edit-text-card" :modal_parameters="['body' => $body, 'header' => $header, 'page_module' => $page_module]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['body' => $body, 'header' => $header, 'page_module' => $page_module]" />
 
     </x-slot>
 </x-card>

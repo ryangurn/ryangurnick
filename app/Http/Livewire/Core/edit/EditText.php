@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
-class EditTextCard extends ModalComponent
+class EditText extends ModalComponent
 {
     public $page_module;
 
@@ -49,6 +49,6 @@ class EditTextCard extends ModalComponent
 
     public function render()
     {
-        return view('livewire.core.edit.edit-text-card');
+        return view('livewire.core.edit.edit-text');
     }
 }
