@@ -39,8 +39,8 @@ class Banner extends Component
     public function mount()
     {
         $this->auth = Auth::check();
-        $this->modules = Module::all();
-        $this->pages = Page::all();
+        $this->modules = Module::all()->sortBy('name');
+        $this->pages = Page::all()->sortBy('name');
 
         $in_menu = PageNavigation::all()->pluck('page_id');
         $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
