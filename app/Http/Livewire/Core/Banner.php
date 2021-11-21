@@ -97,7 +97,7 @@ class Banner extends Component
                 $param->module_id = $module->id;
                 $param->parameter = $parameter;
                 $param->hash = $hash;
-                $param->value = $module->examples[$parameter];
+                $param->value = (is_array($module->examples[$parameter])) ? json_encode($module->examples[$parameter]) : $module->examples[$parameter];
                 $param->save();
             }
         }
