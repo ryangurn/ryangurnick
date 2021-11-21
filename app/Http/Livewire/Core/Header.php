@@ -22,7 +22,7 @@ class Header extends Component
         if ($module->module_parameters->count() == 0)
         {
             $this->header = $module->examples['header'];
-            $this->header = $module->examples['color'];
+            $this->color = $module->examples['color'];
             $this->description = $module->examples['description'];
         }
         else
