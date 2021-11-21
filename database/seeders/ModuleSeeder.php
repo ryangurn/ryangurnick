@@ -543,5 +543,25 @@ class ModuleSeeder extends Seeder
             'color' => 'light'
         ];
         $header->save();
+
+        $stats = Module::firstOrNew([
+            'name' => 'Stats',
+            'component' => 'core.stats',
+            'edit_component' => 'core.edit.edit-stats'
+        ]);
+        $stats->dynamic = true;
+        $stats->parameters = [
+            'cards' => 'required|array',
+            'header' => 'required|string'
+        ];
+        $stats->examples = [
+            'cards' => [
+                ['item' => 'Total Subscribers', 'number' => 71897, 'percentage' => false],
+                ['item' => 'Avg. Open Rate', 'number' => 58.16, 'percentage' => true],
+                ['item' => 'Avg. Click Rate', 'number' => 24.57, 'percentage' => true],
+            ],
+            'header' => 'demo stats'
+        ];
+        $stats->save();
     }
 }
