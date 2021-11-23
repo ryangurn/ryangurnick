@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Core;
 
+use App\Models\Gallery;
 use App\Models\Module;
 use App\Models\ModuleParameter;
 use App\Models\Page;
@@ -36,11 +37,14 @@ class Banner extends Component
 
     public $module_id;
 
+    public $galleries;
+
     public function mount()
     {
         $this->auth = Auth::check();
         $this->modules = Module::all()->sortBy('name');
         $this->pages = Page::all()->sortBy('name');
+        $this->galleries = Gallery::all()->sortBy('name');
 
         $in_menu = PageNavigation::all()->pluck('page_id');
         $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
@@ -114,6 +118,11 @@ class Banner extends Component
         ]);
 
         $this->refresh();
+    }
+
+    public function add_gallery()
+    {
+
     }
 
     public function delete_page()
