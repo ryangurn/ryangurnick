@@ -13,7 +13,6 @@ class Gallery extends Model
     protected $fillable = [
         'name',
         'description',
-        'enabled'
     ];
 
     public function gallery_images()
