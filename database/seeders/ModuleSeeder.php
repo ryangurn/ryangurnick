@@ -103,6 +103,7 @@ class ModuleSeeder extends Seeder
             'component' => 'photo.photo-grid',
             'edit_component' => 'photo.edit.edit-grid',
         ]);
+        $grid->dynamic = true;
         $grid->parameters = [
             'gallery_id' => 'required|numeric|exists:galleries,id'
         ];
