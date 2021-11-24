@@ -17,6 +17,6 @@ class Gallery extends Model
 
     public function gallery_images()
     {
-        return $this->hasOne(GalleryImage::class);
+        return $this->hasMany(GalleryImage::class, 'gallery_id', 'id');
     }
 }
