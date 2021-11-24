@@ -42,7 +42,7 @@ class Banner extends Component
     public function mount()
     {
         $this->auth = Auth::check();
-        $this->modules = Module::all()->sortBy('name');
+        $this->modules = Module::where('component', '!=', 'photo.photo-grid')->get()->sortBy('name');
         $this->pages = Page::all()->sortBy('name');
         $this->galleries = Gallery::all()->sortBy('name');
 
