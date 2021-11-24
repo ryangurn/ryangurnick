@@ -104,21 +104,10 @@ class ModuleSeeder extends Seeder
             'edit_component' => 'photo.edit.edit-grid',
         ]);
         $grid->parameters = [
-            'photo' => 'required|array',
-            'image' => 'nullable|image|max:1024',
-            'photo.description' => 'nullable|string',
-            'photo.location' => 'nullable|string',
-            'photo.date' => 'nullable|string',
+            'gallery_id' => 'required|numeric|exists:galleries,id'
         ];
         $grid->examples = [
-            'photos' => [
-                [
-                    'image' => 'img/1.jpg',
-                    'description' => 'this is a testing description for a testing image',
-                    'location' => 'a location, california',
-                    'date' => Carbon::now()->addDays(-800)
-                ]
-            ],
+            'gallery_id' => '1'
         ];
         $grid->save();
 

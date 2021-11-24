@@ -76,14 +76,6 @@ class ModuleParameterSeeder extends Seeder
             $param->save();
         }
 
-        // photo grid
-        $param = ModuleParameter::firstOrNew([
-            'module_id' => $grid->id,
-            'parameter' => 'photos',
-        ]);
-        $param->value = json_encode($grid->examples['photos']);
-        $param->save();
-
         // goals card
         foreach($goals->parameters as $key => $value)
         {
