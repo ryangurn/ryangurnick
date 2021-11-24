@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gallery;
 use Illuminate\Database\Seeder;
 use App\Models\Module;
 use Carbon\Carbon;
@@ -98,6 +99,12 @@ class ModuleSeeder extends Seeder
         $gallery->save();
 
         // photo grid
+        $gall = Gallery::firstOrNew([
+            'name' => 'Initial Gallery',
+        ]);
+        $gall->description = 'This is the initial gallery and was created by the seeder as an example.';
+        $gall->save();
+
         $grid = Module::firstOrNew([
             'name' => 'Photo Grid',
             'component' => 'photo.photo-grid',
@@ -108,7 +115,7 @@ class ModuleSeeder extends Seeder
             'gallery_id' => 'required|numeric|exists:galleries,id'
         ];
         $grid->examples = [
-            'gallery_id' => '1'
+            'gallery_id' => $gall->id
         ];
         $grid->save();
 
