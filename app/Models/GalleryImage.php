@@ -28,6 +28,6 @@ class GalleryImage extends Model
 
     public function image()
     {
-        return $this->hasOne(GalleryImage::class);
+        return $this->hasOne(Image::class, 'id', 'image_id');
     }
 }
