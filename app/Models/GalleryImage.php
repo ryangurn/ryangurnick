@@ -16,6 +16,7 @@ class GalleryImage extends Model
         'gallery_id',
         'image_id',
         'caption',
+        'date',
         'location',
         'people',
         'visible'
