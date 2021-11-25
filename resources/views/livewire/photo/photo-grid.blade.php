@@ -26,30 +26,30 @@
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
                     <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo' => $photo, 'index' => $index, 'page_module' => $page_module]" />
                 </div>
-                <img class="object-cover shadow-lg rounded-lg" src="{{ $photo['image'] }}" alt="">
+                <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
             </div>
 
             <div class="space-y-2">
               <div class="flex">
-                @if (isset($photo['location']) && $photo['location'] != null)
+                @if (isset($photo->location) && $photo->location != null)
                 <span class="float-right inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                     <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
                         <circle cx="4" cy="4" r="3" />
                     </svg>
-                    {{ $photo['location'] }}
+                    {{ $photo->location }}
                 </span>
                 @endif
-                @if (isset($photo['date']) && $photo['date'] != null)
-                <span class="float-right inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 {{ (isset($photo['location']) && $photo['location'] != null) ? 'ml-2' : '' }}">
+                @if (isset($photo->created_at) && $photo->created_at != null)
+                <span class="float-right inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 {{ (isset($photo->location) && $photo->location != null) ? 'ml-2' : '' }}">
                     <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
                         <circle cx="4" cy="4" r="3" />
                     </svg>
-                    {{ Carbon\Carbon::parse($photo['date'])->diffForHumans() }}
+                    {{ Carbon\Carbon::parse($photo->created_at)->diffForHumans() }}
                 </span>
                 @endif
               </div>
               <div class="text-lg leading-6 font-medium space-y-1">
-                <p>{{ $photo['description'] }}</p>
+                <p>{{ $photo->caption }}</p>
               </div>
               <ul role="list" class="flex space-x-5">
                 <li>

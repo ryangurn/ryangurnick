@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Photo;
 
+use App\Models\Gallery;
 use Livewire\Component;
 
 class PhotoGrid extends Component
@@ -17,11 +18,13 @@ class PhotoGrid extends Component
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)
         {
-            $this->photos = collect($module->examples['photos']);
+            $gallery = Gallery::where('id', '=', $module->examples['gallery_id'])->first();
+            $this->photos = $gallery->gallery_images;
         }
         else
         {
-            $this->photos = collect(json_decode($module->module_parameters->where('parameter', '=', 'photos')->first()->value, true));
+            $gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
+            $this->photos = $gallery->gallery_images;
         }
 
         // updated at
