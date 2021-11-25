@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Module;
+use App\Models\ModuleParameter;
 use App\Models\Page;
 use App\Models\PageModule;
 use Illuminate\Database\Seeder;
@@ -69,9 +70,17 @@ class PageModuleSeeder extends Seeder
             'module_id' => $photo_grid->id,
             'page_id' => $photo->id,
         ]);
+        $photo->hash = md5(time());
         $photo->order = 20;
         $photo->enabled = true;
         $photo->save();
+
+        $photoParam = new ModuleParameter();
+        $photoParam->hash = $photo->hash;
+        $photoParam->module_id = $photo_grid->id;
+        $photoParam->parameter = 'gallery_id';
+        $photoParam->value = $photo_grid->examples['gallery_id'];
+        $photoParam->save();
 
         // resume page modules
         $goals_card = Module::where('component', '=', 'resume.goals-card')->first();
