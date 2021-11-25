@@ -4,7 +4,7 @@
         <div class="flex w-full pb-6">
             <div class="mx-4 w-full">
                 <div class="text-gray-600 mt-3">
-                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module]" button_text="add" />
+                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add" />
                 </div>
             </div>
         </div>
@@ -39,12 +39,12 @@
                     {{ $photo->location }}
                 </span>
                 @endif
-                @if (isset($photo->created_at) && $photo->created_at != null)
+                @if (isset($photo->date) && $photo->date != null)
                 <span class="float-right inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 {{ (isset($photo->location) && $photo->location != null) ? 'ml-2' : '' }}">
                     <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
                         <circle cx="4" cy="4" r="3" />
                     </svg>
-                    {{ Carbon\Carbon::parse($photo->created_at)->diffForHumans() }}
+                    {{ Carbon\Carbon::parse($photo->date)->diffForHumans() }}
                 </span>
                 @endif
               </div>

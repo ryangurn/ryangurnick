@@ -9,6 +9,8 @@ class PhotoGrid extends Component
 {
     public $page_module;
 
+    public $gallery_id;
+
     public $photos;
 
     public function mount()
@@ -20,11 +22,13 @@ class PhotoGrid extends Component
         {
             $gallery = Gallery::where('id', '=', $module->examples['gallery_id'])->first();
             $this->photos = $gallery->gallery_images;
+            $this->gallery_id = $gallery->id;
         }
         else
         {
             $gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
             $this->photos = $gallery->gallery_images;
+            $this->gallery_id = $gallery->id;
         }
 
         // updated at
