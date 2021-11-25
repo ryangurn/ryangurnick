@@ -1,19 +1,20 @@
 <div>
-    <div class="card-container shadow-sm hover:shadow-md transition duration-150 ease-in bg-white rounded-xl mb-4">
-        <div class="p-4">
+    <x-card :pm="$page_module">
+        <x-slot name="body">
             <div class="text-lg pb-2">
                 {{ $gallery->name }}
             </div>
             <div class="text-md pb-2">
                 {{ $gallery->description }}
             </div>
-            <div>
-                @auth
+        </x-slot>
+
+        <x-slot name="subBody">
+            @auth
                 <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add" />
-                @endauth
-            </div>
-        </div>
-    </div>
+            @endauth
+        </x-slot>
+    </x-card>
 
     <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : '' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
