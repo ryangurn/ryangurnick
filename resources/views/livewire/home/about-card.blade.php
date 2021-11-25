@@ -7,6 +7,13 @@
         <div class="text-gray-600 mt-3">
             {{ $body }}
         </div>
+    </x-slot>
+    <x-slot name="subBody">
+        @if ($link != null && $linkText != null)
+        <a href="{{ $link }}" class="flex items-center justify-center mt-4 mx-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-800 hover:bg-blue-600">
+            {{ $linkText }}
+        </a>
+        @endif
 
         <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['name' => $name, 'body' => $body, 'page_module' => $page_module]" />
 
