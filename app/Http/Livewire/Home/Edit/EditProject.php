@@ -34,6 +34,8 @@ class EditProject extends ModalComponent
             $arr['projects.'.$i.'.project.string'] = 'Project #'.($i+1).' must be a string.';
             $arr['projects.'.$i.'.status.required'] = 'Status #'.($i+1).' cannot be blank.';
             $arr['projects.'.$i.'.status.string'] = 'Status #'.($i+1).' must be a string.';
+            $arr['projects.'.$i.'.link.url'] = 'Link #'.($i+1).' must be a url.';
+            $arr['projects.'.$i.'.link.string'] = 'Link #'.($i+1).' must be a url.';
         }
 
         return $arr;

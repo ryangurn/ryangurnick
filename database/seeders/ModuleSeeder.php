@@ -51,14 +51,15 @@ class ModuleSeeder extends Seeder
             'projects' => 'required|array',
             'projects.*.project' => 'required|string',
             'projects.*.status' => 'required|string|in:archived,current',
+            'projects.*.link' => 'nullable|string|url',
         ];
         $project->examples = [
             'projects' => [
-                ['project' => 'cste', 'status' => 'current'],
-                ['project' => 'trackerjacker', 'status' => 'current'],
-                ['project' => 'fakebank', 'status' => 'current'],
-                ['project' => 'regtools', 'status' => 'archived'],
-                ['project' => 'minicasty', 'status' => 'archived'],
+                ['project' => 'cste', 'status' => 'current', 'link' => 'https://github.com/ryangurn/cste'],
+                ['project' => 'trackerjacker', 'status' => 'current', 'link' => 'https://github.com/ryangurn/trackerjacker'],
+                ['project' => 'fakebank', 'status' => 'current', 'link' => 'https://github.com/ryangurn/fakebank'],
+                ['project' => 'regtools', 'status' => 'archived', 'link' => 'https://github.com/ryangurn/regtools'],
+                ['project' => 'minicasty', 'status' => 'archived', 'link' => 'https://github.com/ryangurn/minicasty'],
                 ['project' => 'emu visitor estimate', 'status' => 'archived'],
             ]
         ];

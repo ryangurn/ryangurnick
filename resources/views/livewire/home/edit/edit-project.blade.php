@@ -1,18 +1,29 @@
 <div class="p-2">
     @if (!$projects->isEmpty())
         @foreach($projects as $key => $project)
+            @if ($key != 0)
+                <div class="col-span-6 pt-2">
+                    <hr />
+                </div>
+            @endif
+
             <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-3">
+                <div class="col-span-3 pb-0">
                     <label for="project" class="block text-sm font-medium text-gray-700">project #{{ $key+1 }}</label>
                     <input type="text" name="project" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.project">
                 </div>
 
-                <div class="col-span-2">
+                <div class="col-span-3">
                     <label class="block text-sm font-medium text-gray-700">status #{{ $key+1 }}</label>
                     <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.status">
                         <option>archived</option>
                         <option>current</option>
                     </select>
+                </div>
+
+                <div class="col-span-5">
+                    <label for="project" class="block text-sm font-medium text-gray-700">link #{{ $key+1 }}</label>
+                    <input type="text" name="project" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.link">
                 </div>
 
                 <div class="col-span-1">
