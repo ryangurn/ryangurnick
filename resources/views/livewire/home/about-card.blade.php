@@ -15,7 +15,7 @@
         </a>
         @endif
 
-        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['name' => $name, 'body' => $body, 'page_module' => $page_module]" />
+        <livewire:core.card-footer :page_module="$page_module" :duration="$updated_at" :modal="$page_module->module->edit_component" :modal_parameters="['name' => $name, 'body' => $body, 'link' => $link, 'link_text' => $linkText, 'page_module' => $page_module]" />
 
     </x-slot>
 </x-card>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Home\Edit;
 
+use App\Models\Module;
+use App\Models\ModuleParameter;
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
@@ -17,6 +19,10 @@ class EditAbout extends ModalComponent
     public $name;
 
     public $body;
+
+    public $link;
+
+    public $link_text;
 
     public $image;
 
@@ -39,6 +45,8 @@ class EditAbout extends ModalComponent
         $name = $this->module->module_parameters->where('parameter', '=', 'name')->first();
         $body = $this->module->module_parameters->where('parameter', '=', 'body')->first();
         $image = $this->module->module_parameters->where('parameter', '=', 'image')->first();
+        $link = $this->module->module_parameters->where('parameter', '=', 'link')->first();
+        $linkText = $this->module->module_parameters->where('parameter', '=', 'link_text')->first();
 
         if ($this->image != null)
         {
@@ -59,6 +67,34 @@ class EditAbout extends ModalComponent
 
         $body->value = $this->body;
         $body->save();
+
+        if ($link == null)
+        {
+            $linkParam = new ModuleParameter();
+            $linkParam->module_id = $this->module->id;
+            $linkParam->parameter = 'link';
+            $linkParam->value = $this->link;
+            $linkParam->save();
+        }
+        else
+        {
+            $link->value = $this->link;
+            $link->save();
+        }
+
+        if ($linkText == null)
+        {
+            $linkTextParam = new ModuleParameter();
+            $linkTextParam->module_id = $this->module->id;
+            $linkTextParam->parameter = 'link_text';
+            $linkTextParam->value = $this->link_text;
+            $linkTextParam->save();
+        }
+        else
+        {
+            $linkText->value = $this->link_text;
+            $linkText->save();
+        }
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();

@@ -2,7 +2,12 @@
   <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
     <label for="name" class="sr-only">name</label>
     <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Title" wire:model="name">
-    <label for="card body" class="sr-only">card body</label>
+      <label for="name" class="sr-only">link</label>
+      <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Link URL" wire:model="link">
+      <label for="name" class="sr-only">link text</label>
+      <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Link Label" wire:model="link_text">
+
+      <label for="card body" class="sr-only">card body</label>
     <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a body..." wire:model="body"></textarea>
 
     <div aria-hidden="true">
@@ -42,6 +47,8 @@
                 @error('name') <li class="text-red-800">{{ $message }}</li> @enderror
                 @error('body') <li class="text-red-800">{{ $message }}</li> @enderror
                 @error('image') <li class="text-red-800">{{ $message }}</li> @enderror
+                @error('link') <li class="text-red-800">{{ $message }}</li> @enderror
+                @error('link_text') <li class="text-red-800">{{ $message }}</li> @enderror
             </ul>
         </div>
     </div>
