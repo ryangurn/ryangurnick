@@ -1,5 +1,6 @@
 <div class="card-container shadow-sm hover:shadow-md transition duration-150 ease-in bg-white rounded-xl {{ ($page_module->enabled) ? '' : 'border-dashed border-4' }}">
     <div class="flex">
+        @isset($title)
         <div class="border-r border-gray-100 px-5 py-8 w-1/5">
             <div class="text-left grid grid-cols-1">
                 <div>
@@ -14,6 +15,7 @@
                 @endif
             </div>
         </div>
+        @endisset
 
         <div class="px-2 py-6 w-full">
             <div class="flex">
