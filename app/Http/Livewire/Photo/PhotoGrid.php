@@ -11,6 +11,8 @@ class PhotoGrid extends Component
 
     public $gallery_id;
 
+    public $gallery;
+
     public $photos;
 
     public function mount()
@@ -20,15 +22,15 @@ class PhotoGrid extends Component
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)
         {
-            $gallery = Gallery::where('id', '=', $module->examples['gallery_id'])->first();
-            $this->photos = $gallery->gallery_images;
-            $this->gallery_id = $gallery->id;
+            $this->gallery = Gallery::where('id', '=', $module->examples['gallery_id'])->first();
+            $this->photos = $this->gallery->gallery_images;
+            $this->gallery_id = $this->gallery->id;
         }
         else
         {
-            $gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
-            $this->photos = $gallery->gallery_images;
-            $this->gallery_id = $gallery->id;
+            $this->gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
+            $this->photos = $this->gallery->gallery_images;
+            $this->gallery_id = $this->gallery->id;
         }
 
         // updated at
