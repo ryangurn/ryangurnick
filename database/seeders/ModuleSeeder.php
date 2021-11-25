@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Gallery;
+use App\Models\GalleryImage;
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 use App\Models\Module;
 use Carbon\Carbon;
@@ -104,6 +106,23 @@ class ModuleSeeder extends Seeder
         ]);
         $gall->description = 'This is the initial gallery and was created by the seeder as an example.';
         $gall->save();
+
+        $image = Image::firstOrNew([
+            'file' => 'img/1.jpg',
+            'disk' => 'local',
+        ]);
+        $image->hash = md5(time());
+        $image->save();
+
+        $gall_image = GalleryImage::firstOrNew([
+            'gallery_id' => $gall->id,
+        ]);
+        $gall_image->image_id = $image->id;
+        $gall_image->caption = "What a great example photo";
+        $gall_image->visible = true;
+        $gall_image->location = "woodland hills, ca";
+        $gall_image->people = "none";
+        $gall_image->save();
 
         $grid = Module::firstOrNew([
             'name' => 'Photo Grid',
