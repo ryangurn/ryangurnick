@@ -7,20 +7,13 @@
             <div class="text-md pb-2">
                 {{ $gallery->description }}
             </div>
-        </div>
-    </div>
-
-    @if (Auth::check())
-    <div class="card-container shadow-sm hover:shadow-md transition duration-150 ease-in bg-white rounded-xl flex">
-        <div class="flex w-full pb-6">
-            <div class="mx-4 w-full">
-                <div class="text-gray-600 mt-3">
-                    <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add" />
-                </div>
+            <div>
+                @auth
+                <livewire:core.card-footer :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add" />
+                @endauth
             </div>
         </div>
     </div>
-    @endif
 
     <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : '' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
