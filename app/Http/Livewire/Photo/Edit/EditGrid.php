@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Photo\Edit;
 
+use App\Models\GalleryImage;
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
@@ -16,6 +17,10 @@ class EditGrid extends ModalComponent
 
     public $photo;
 
+    public $photo_model;
+
+    public $photo_id;
+
     public $index;
 
     public $image;
@@ -24,8 +29,15 @@ class EditGrid extends ModalComponent
 
     public function mount()
     {
+        $this->photo_model = GalleryImage::where('id', '=', $this->photo_id)->first();
+        $this->photo = [
+            'date' => $this->photo_model->date,
+            'description' => $this->photo_model->caption,
+            'location' => $this->photo_model->location
+        ];
+
         // set date formatting
-        $this->photo['date'] = Carbon::create($this->photo['date'])->toDateString();
+        $this->photo['date'] = Carbon::create($this->photo_model->date)->toDateString();
 
         // grab module
         $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
@@ -33,16 +45,19 @@ class EditGrid extends ModalComponent
 
     public function rules()
     {
-        return $this->module->parameters;
+        return [
+            'photo' => 'required|array',
+            'image' => 'nullable|image|max:1024',
+            'photo.description' => 'nullable|string',
+            'photo.location' => 'nullable|string',
+            'photo.date' => 'nullable|string',
+        ];
     }
 
     public function save()
     {
         $this->validate();
 
-        $photo = $this->module->module_parameters->where('parameter', '=', 'photos')->first();
-
-        $value = json_decode($photo->value, true);
         if ($this->image != null)
         {
             // get original filename and extract extension
@@ -52,15 +67,15 @@ class EditGrid extends ModalComponent
             // save the file
             $output = $this->image->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
 
-            $value[$this->index]['image'] = $output;
+            $this->photo_model->image->file = $output;
+            $this->photo_model->image->hash = md5(time());
+            $this->photo_model->image->save();
         }
 
-        $value[$this->index]['description'] = $this->photo['description'];
-        $value[$this->index]['location'] = $this->photo['location'];
-        $value[$this->index]['date'] = new Carbon($this->photo['date']);
-
-        $photo->value = $value;
-        $photo->save();
+        $this->photo_model->caption = $this->photo['description'];
+        $this->photo_model->location = $this->photo['location'];
+        $this->photo_model->date = new Carbon($this->photo['date']);
+        $this->photo_model->save();
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();

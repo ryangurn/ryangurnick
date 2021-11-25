@@ -13,7 +13,7 @@
 
     <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : '' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
-          @foreach($photos as $index => $photo)
+          @foreach($photos as $photo)
         <li>
           <div class="space-y-4" x-data="{ open: false }" @mouseleave="open = false" >
             <div class="aspect-w-3 aspect-h-2 relative w-full" @mouseover="open = true">
@@ -24,7 +24,7 @@
                      x-transition:leave="transition ease-in duration-300"
                      x-transition:leave-start="opacity-100 transform scale-100"
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo' => $photo, 'index' => $index, 'page_module' => $page_module]" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
             </div>
