@@ -24,7 +24,7 @@
 
                         @if (count($menu_options) > 0)
                             @foreach($menu_options as $option)
-                                <li><a href="{{ $option['link'] }}" class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">{{ $option['value'] }}</a></li>
+                                <li><a @isset($option['link']) href="{{ $option['link'] }}" @endisset @isset($option['modal'], $option['parameters']) wire:click="$emit('openModal', '{{ $option['modal'] }}', {{ json_encode($option['parameters']) }})" @endisset class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">{{ $option['value'] }}</a></li>
                             @endforeach
                         @endif
                     </ul>
