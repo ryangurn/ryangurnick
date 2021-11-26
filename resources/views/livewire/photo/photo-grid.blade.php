@@ -16,7 +16,7 @@
         </x-slot>
     </x-card>
 
-    <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : '' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+    <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : 'pt-4' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
           @foreach($photos as $photo)
               @if($photo->visible)
