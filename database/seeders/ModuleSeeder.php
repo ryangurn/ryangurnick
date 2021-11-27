@@ -584,5 +584,25 @@ class ModuleSeeder extends Seeder
             'header' => 'demo stats'
         ];
         $stats->save();
+
+        $hero = Module::firstOrNew([
+            'name' => 'Hero',
+            'component' => 'core.hero',
+            'edit_component' => 'core.edit.edit-hero'
+        ]);
+        $hero->dynamic = true;
+        $hero->parameters = [
+            'header' => 'required|string',
+            'body' => 'nullable|string',
+            'image' => 'nullable|image',
+            'links' => 'nullable'
+        ];
+        $hero->examples = [
+            'header' => 'Hero Section!',
+            'body' => 'What a great hero he is!?',
+            'image' => 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100',
+            'links' => [['value' => 'click me!', 'link' => 'https://ryangurnick.test/']]
+        ];
+        $hero->save();
     }
 }
