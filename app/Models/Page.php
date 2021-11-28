@@ -36,4 +36,8 @@ class Page extends Model
         return $this->hasMany(PageNavigation::class);
     }
 
+    public function statistic_views()
+    {
+        return $this->hasMany(StatisticView::class, 'page_id', 'id');
+    }
 }

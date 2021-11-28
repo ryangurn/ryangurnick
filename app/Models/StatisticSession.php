@@ -14,4 +14,9 @@ class StatisticSession extends Model
         'ip_address',
         'user_agent'
     ];
+
+    public function statistic_views()
+    {
+        return $this->hasMany(StatisticView::class, 'session_id', 'session_id');
+    }
 }
