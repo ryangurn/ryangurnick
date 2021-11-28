@@ -31,6 +31,7 @@
                      x-transition:leave-start="opacity-100 transform scale-100"
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
                     <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
             </div>
