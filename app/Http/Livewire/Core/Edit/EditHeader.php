@@ -22,7 +22,6 @@ class EditHeader extends ModalComponent
     public function mount()
     {
         $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
-//        $this->color = 'light';
     }
 
     public function rules()
