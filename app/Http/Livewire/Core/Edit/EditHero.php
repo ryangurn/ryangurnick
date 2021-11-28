@@ -5,10 +5,13 @@ namespace App\Http\Livewire\Core\Edit;
 use App\Models\PageModule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
+use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 
 class EditHero extends ModalComponent
 {
+    use WithFileUploads;
+
     public $page_module;
 
     public $header;
@@ -77,7 +80,33 @@ class EditHero extends ModalComponent
     {
         $this->validate();
 
-        
+        $header = $this->module->module_parameters->where('hash', '=', $this->page_module['hash'])->where('parameter', '=', 'header')->first();
+        $body = $this->module->module_parameters->where('hash', '=', $this->page_module['hash'])->where('parameter', '=', 'body')->first();
+        $links = $this->module->module_parameters->where('hash', '=', $this->page_module['hash'])->where('parameter', '=', 'links')->first();
+        $image = $this->module->module_parameters->where('hash', '=', $this->page_module['hash'])->where('parameter', '=', 'image')->first();
+
+        if ($this->image != null)
+        {
+            // get original filename and extract extension
+            $filename = explode(".", $this->image->getFilename());
+            $ext = $filename[count($filename)-1];
+
+            // save the file
+            $output = $this->image->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
+
+            // save the asset path
+            $image->value = $output;
+            $image->save();
+        }
+
+        $header->value = $this->header;
+        $header->save();
+
+        $body->value = $this->body;
+        $body->save();
+
+        $links->value = json_encode($this->links);
+        $links->save();
 
         $this->module->updated_at = Carbon::now();
         $this->module->save();
