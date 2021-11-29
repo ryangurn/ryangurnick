@@ -1,4 +1,4 @@
-<div class="p-2">
+<div class="p-2" x-data>
     @if (!$roles->isEmpty())
         @foreach($roles as $key => $role)
             <div class="grid grid-cols-6 gap-6">
@@ -67,7 +67,11 @@
     <div class="absolute bottom-0 inset-x-px">
         <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save">
+                <button @keydown.window.prevent.ctrl.s="$wire.save()"
+                        @keydown.window.prevent.cmd.s="$wire.save()"
+                        type="submit"
+                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        wire:click="save">
                     Save
                 </button>
             </div>
