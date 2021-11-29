@@ -253,7 +253,7 @@ class ModuleSeeder extends Seeder
         $software = Module::firstOrNew([
             'name' => 'Software Card',
             'component' => 'resume.software-card',
-            'edit_component' => 'resume.edit.edit-software-card',
+            'edit_component' => 'resume.edit.edit-software',
         ]);
         $software->parameters = [
             'body' => 'required|string'
