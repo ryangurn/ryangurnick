@@ -1,4 +1,6 @@
-<div x-data>
+<div x-data
+     @keydown.window.prevent.ctrl.a="$wire.add()"
+     @keydown.window.prevent.cmd.a="$wire.add()">
     <div class="pt-2 border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
         <label for="card body" class="sr-only">card body</label>
         <textarea rows="10" name="card body" id="card body" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a body..." wire:model="body"></textarea>

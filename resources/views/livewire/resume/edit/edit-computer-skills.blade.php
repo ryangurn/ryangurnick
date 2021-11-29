@@ -1,4 +1,6 @@
-<div class="p-2" x-data>
+<div class="p-2" x-data
+     @keydown.window.prevent.ctrl.a="$wire.add()"
+     @keydown.window.prevent.cmd.a="$wire.add()">
     @if (!$skills->isEmpty())
         @foreach($skills as $key => $skill)
             <div class="grid grid-cols-6 gap-6">
