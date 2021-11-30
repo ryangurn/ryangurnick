@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Photo;
+namespace App\Http\Livewire\Photo\Add;
 
 use App\Models\Gallery;
 use App\Models\GalleryImage;
@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
+use function view;
 
 class AddGrid extends ModalComponent
 {
@@ -82,6 +83,6 @@ class AddGrid extends ModalComponent
 
     public function render()
     {
-        return view('livewire.photo.add-grid');
+        return view('livewire.photo.add.add-grid');
     }
 }

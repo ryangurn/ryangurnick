@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Photo;
+namespace App\Http\Livewire\Photo\Remove;
 
 
 use App\Models\GalleryImage;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
+use function view;
 
 class RemoveGridPhoto extends ModalComponent
 {
@@ -22,6 +23,6 @@ class RemoveGridPhoto extends ModalComponent
 
     public function render()
     {
-        return view('livewire.photo.remove-grid-photo');
+        return view('livewire.photo.remove.remove-grid-photo');
     }
 }

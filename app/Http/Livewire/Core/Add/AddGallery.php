@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Core;
+namespace App\Http\Livewire\Core\Add;
 
 use App\Models\Gallery;
 use App\Models\Module;
@@ -8,6 +8,7 @@ use App\Models\ModuleParameter;
 use App\Models\PageModule;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
+use function view;
 
 class AddGallery extends ModalComponent
 {
@@ -91,6 +92,6 @@ class AddGallery extends ModalComponent
 
     public function render()
     {
-        return view('livewire.core.add-gallery');
+        return view('livewire.core.add.add-gallery');
     }
 }
