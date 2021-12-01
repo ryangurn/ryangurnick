@@ -27,12 +27,15 @@
                 <span class="text-xl">Ryan Gurnick</span>
             </a>
 
-            <div class="flex items-center">
+            <div class="flex items-center gap-2">
+                <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    Analytics
+                </a>
                 <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Telescope
                 </a>
                 @if (Route::has('login'))
-                    <div class="top-0 right-0 px-6 py-4">
+                    <div class="right-0">
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
