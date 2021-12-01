@@ -120,18 +120,13 @@ class Banner extends Component
         $this->refresh();
     }
 
-    public function add_gallery()
-    {
-
-    }
-
     public function delete_page()
     {
         PageNavigation::where('page_id', '=', $this->page_id)->delete();
 
         PageModule::where('page_id', '=', $this->page_id)->delete();
 
-        Page::where('id', '=', $this->page_id)->first()->delete();
+        Page::where('id', '=', $this->page_id)->delete();
 
         $this->refresh();
     }
