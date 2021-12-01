@@ -28,14 +28,14 @@
             </a>
 
             <div class="flex items-center gap-4">
+                <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    Telescope
+                </a>
                 @auth
                 <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Analytics
                 </a>
                 @endauth
-                <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
-                    Telescope
-                </a>
                 @if (Route::has('login'))
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
