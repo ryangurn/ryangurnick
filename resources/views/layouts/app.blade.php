@@ -27,31 +27,31 @@
                 <span class="text-xl">Ryan Gurnick</span>
             </a>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-4">
+                @auth
                 <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Analytics
                 </a>
+                @endauth
                 <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Telescope
                 </a>
                 @if (Route::has('login'))
-                    <div class="right-0">
-                        @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
 
-                                <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </a>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                            <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline" onclick="event.preventDefault(); this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                            @endif
-                        @endauth
-                    </div>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth
                 @endif
                 <a href="#">
                     <img src="https://www.gravatar.com/avatar/0000?d=mp" alt="avatar" class="w-10 h-10 rounded-full" />
