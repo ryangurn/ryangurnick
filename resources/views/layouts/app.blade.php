@@ -53,9 +53,11 @@
                         @endif
                     @endauth
                 @endif
+                @auth
                 <a href="#">
-                    <img src="https://www.gravatar.com/avatar/0000?d=mp" alt="avatar" class="w-10 h-10 rounded-full" />
+                    <img src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="avatar" class="w-10 h-10 rounded-full" />
                 </a>
+                @endauth
             </div>
         </header>
 
