@@ -13,7 +13,7 @@ class Reaction extends Model
     protected $fillable = [
         'reaction',
         'icon',
-        'color'
+        'supported'
     ];
 
     public function gallery_reactions()
