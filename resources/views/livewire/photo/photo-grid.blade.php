@@ -11,7 +11,7 @@
 
         <x-slot name="subBody">
             @auth
-                <livewire:core.card-footer :menu_options="[['value' => 'edit gallery', 'modal' => 'photo.edit.edit-gallery-data', 'parameters' => ['page_module' => $page_module, 'gallery_id' => $gallery_id, 'name' => $gallery->name, 'description' => $gallery->description]]]" :page_module="$page_module" :show_timestamp="false" modal="photo.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add photo" />
+                <livewire:core.card-footer :menu_options="[['value' => 'edit gallery', 'modal' => 'photo.edit.edit-gallery-data', 'parameters' => ['page_module' => $page_module, 'gallery_id' => $gallery_id, 'name' => $gallery->name, 'description' => $gallery->description]]]" :page_module="$page_module" :show_timestamp="false" modal="photo.add.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add photo" />
             @endauth
         </x-slot>
     </x-card>
@@ -32,7 +32,7 @@
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
                     <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.view-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="view" />
                     <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" />
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
             </div>
