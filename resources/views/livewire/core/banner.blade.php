@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="flex gap-2" x-data="{ remove_page_show: false, show_minus_menu: false }">
-                        <div class="flex justify-center gap-2 order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                        <div class="flex justify-center gap-2 mt-2 flex-shrink-0 w-full sm:mt-0 sm:w-auto">
                             <div x-show="remove_page_show" class="flex items-center justify-center gap-2"
                                  x-transition:enter="transition ease-out duration-300"
                                  x-transition:enter-start="opacity-0 transform scale-90"
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="relative inline-block text-left">
-                            <div class="flex justify-center gap-2 order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                            <div class="flex justify-center gap-2 mt-2 flex-shrink-0 w-full sm:mt-0 sm:w-auto">
                                 <a href="#" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50" x-on:click="show_minus_menu = ! show_minus_menu">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
