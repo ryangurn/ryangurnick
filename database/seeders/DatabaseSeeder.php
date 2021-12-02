@@ -54,5 +54,12 @@ class DatabaseSeeder extends Seeder
          * the application to properly function.
          */
         $this->call(SettingSeeder::class);
+
+        /*
+         * ReactionSeeder will generate the predefined reactions
+         * for the gallery to use so users can share their feelings
+         * of content.
+         */
+        $this->call(ReactionSeeder::class);
     }
 }
