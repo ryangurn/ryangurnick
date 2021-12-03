@@ -143,6 +143,11 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * laravel
 * breeze
 * telescope
+* [doctrine/dbal](https://github.com/doctrine/dbal)
+* [propaganistas/laravel-phone](https://github.com/propaganistas/laravel-phone)
+* [spatie/emoji](https://github.com/spatie/emoji)
+* [adrianorosa/laravel-geolocation](https://github.com/adrianorsouza/laravel-geolocation)
+* [jenssegers/agent](https://github.com/jenssegers/agent)
 
 ### look into
 * [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
@@ -150,5 +155,5 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
 * [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown)
 * [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
-* [pragmarx/tracker](https://github.com/mikha-dev/pragmarx-tracker)
+* [pragmarx/tracker](https://github.com/mikha-dev/pragmarx-tracker) **not used as its quite old, and not actively maintained**
 * [wire-elements/modal](https://github.com/wire-elements/modal)
