@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\PageNavigation;
 use App\Models\Setting;
+use App\Models\StatisticIpAddress;
 use App\Models\StatisticSession;
 use App\Models\StatisticView;
 use Illuminate\Http\Request;
@@ -17,9 +18,15 @@ class PageController extends Controller
         $session = StatisticSession::firstOrNew([
             'session_id' => session()->getId(),
         ]);
-        $session->ip_address = $request->ip();
         $session->user_agent = $request->userAgent();
         $session->save();
+
+        // save the ip address related to the session
+        $ip = StatisticIpAddress::firstOrNew([
+            'session_id' => session()->getId(),
+            'ip_address' => $request->ip()
+        ]);
+        $ip->save();
 
         // get page
         $page = Page::where('slug', '=', $request->getRequestUri())->first();
