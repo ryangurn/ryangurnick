@@ -13,6 +13,10 @@
                         unique views today
                     </span>
                 </div>
+
+                <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+                    total views {{ $page->statistic_views()->sum('count') }}
+                </div>
             </dd>
         </div>
             @endforeach
