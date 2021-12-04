@@ -16,6 +16,11 @@ class ViewPhoto extends ModalComponent
 
     public $updated_at;
 
+    public static function modalMaxWidth(): string
+    {
+        return 'xl';
+    }
+
     public function mount()
     {
         $this->photo = GalleryImage::where('id', '=', $this->photo_id)->first();
