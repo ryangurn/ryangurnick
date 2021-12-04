@@ -35,6 +35,9 @@
                 <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Analytics
                 </a>
+                <a href="#" onclick="Livewire.emitTo('framework.email-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    Contacts
+                </a>
                 @endauth
                 @if (Route::has('login'))
                     @auth

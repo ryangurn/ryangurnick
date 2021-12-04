@@ -27,7 +27,12 @@
         @endif
     </div>
 
+
     <livewire:core.footer />
 
     <livewire:core.banner :page="$page" />
+
+    @auth
+    <livewire:framework.email-slideover />
+    @endauth
 </x-app-layout>
