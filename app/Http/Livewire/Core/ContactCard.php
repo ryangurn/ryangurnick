@@ -82,6 +82,7 @@ class ContactCard extends Component
         $this->validate();
 
         $email = new Email();
+        $email->class = 'App\Mail\ContactMessage';
         $email->to = $this->contact['email'];
         $email->message = $this->contact['message'];
         $email->parameters = [
