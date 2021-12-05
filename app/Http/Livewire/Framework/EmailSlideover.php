@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Framework;
 
 use App\Models\Email;
+use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 
 class EmailSlideover extends Component
@@ -26,6 +27,14 @@ class EmailSlideover extends Component
     public function hide()
     {
         $this->show = false;
+    }
+
+    public function read(Email $email)
+    {
+        $email->read = true;
+        $email->save();
+
+        $this->redirect(URL::previous());
     }
 
     public function render()
