@@ -15,7 +15,7 @@ class EmailSlideover extends Component
 
     public function mount()
     {
-        $this->emails = Email::all();
+        $this->emails = Email::where('read', '<>', true)->get();
     }
 
     public function show()

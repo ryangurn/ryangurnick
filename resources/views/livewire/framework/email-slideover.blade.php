@@ -26,11 +26,26 @@
                     </div>
                 </div>
                 <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                    <!-- Replace with your content -->
                     <div class="absolute inset-0 px-4 sm:px-6">
-                        {{--                    <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true"></div>--}}
+                        <div class="accordion accordion-flush">
+                        @if (!$emails->isEmpty())
+                            @foreach($emails as $email)
+                                <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200" x-data="{ show_{{ $email->id }}: false }">
+                                    <h2 class="accordion-header mb-0">
+                                        <button class="accordion-button relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none" type="button" x-on:click="show_{{ $email->id }} = ! show_{{ $email->id }}">
+                                            {{ $email->parameters['first_name'] }} {{ $email->parameters['last_name'] }}
+                                        </button>
+                                    </h2>
+                                    <div x-show="show_{{ $email->id }}" class="accordion-collapse border-0 collapse show">
+                                        <div class="accordion-body py-4 px-5">
+                                            <iframe class="w-full h-full overflow-auto" src="{{ route('mailable', $email) }}"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                        </div>
                     </div>
-                    <!-- /End replace -->
                 </div>
             </div>
         </div>
