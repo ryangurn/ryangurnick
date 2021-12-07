@@ -15,7 +15,7 @@ class AddDateToGalleryImagesTable extends Migration
     public function up()
     {
         Schema::table('gallery_images', function (Blueprint $table) {
-            $table->dateTime('date')->after('caption')->default(Carbon::now());
+            $table->dateTime('date')->after('caption')->default('current_timestamp()');
             $table->string('people')->nullable()->change();
         });
     }
