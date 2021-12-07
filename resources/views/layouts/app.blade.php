@@ -38,6 +38,9 @@
                 <a href="#" onclick="Livewire.emitTo('framework.email-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 underline">
                     Contacts
                 </a>
+                <a href="#" onclick="Livewire.emitTo('framework.settings-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 underline">
+                    settings
+                </a>
                 @endauth
                 @if (Route::has('login'))
                     @auth
