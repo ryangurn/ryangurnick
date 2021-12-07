@@ -19,7 +19,7 @@ this application is intended to help with personal website management. it will p
     3. unique views
     4. click tracking
 6. settings
-    1. toggle mainanence mode
+    1. toggle maintenance mode
     2. configure security
     3. laravel configuration management
         * website name
@@ -31,74 +31,22 @@ this application is intended to help with personal website management. it will p
             * lockout durations
 
 ## data structures
-all of the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
+all the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
 
 ### first party tables
 
-#### pages (App\Models\Page)
+#### emails (App\Models\Email)
 * id (unsigned big integer)
-* type_id (unsigned big integer)
-* title (string)
-* slug (string)
-* controller (string) [nullable]
-* method (string) [nullable]
-* publish_date (datetime)
-
-#### page types (App\Model\PageType)
-* id (unsigned big integer)
-* name (string)
-
-#### page modules (App\Models\PageModules)
-* id (unsigned big integer) 
-* module_id (unsigned big integer)
-* page_id (unsigned big integer)
-* order (integer)
-* enabled (boolean) [default: false]
-
-#### modules (App\Models\Module)
-* id (unsigned big integer)
-* name (string)
-* parameters (text)
-* examples (text) [nullable]
-* component (string)
-
-#### module parameters (App\Models\ModuleParameter)
-* id (unsigned big integer)
-* module_id (unsigned big integer)
-* parameter (string)
-* value (text)
-
-#### module images (App\Modules\ModuleImage)
-* id (unsigned big integer)
-* module_id (unsigned big integer)
-* image_id (unsigned big integer)
-
-#### images (App\Models\Image)
-* id (unsigned big integer)
-* disk (string)
-* file (string)
-* hash (string)
-
-#### reactions (App\Models\Reaction)
-* id (unsigned big integer)
-* reaction (string)
-* icon (string)
-* color (string)
+* class (string)
+* to (string)
+* message (long text)
+* parameters (text) [nullable]
+* read (boolean)
 
 #### galleries (App\Models\Gallery)
 * id (unsigned big integer)
 * name (string)
 * description (string)
-* enabled (boolean) [default: false]
-
-#### gallery images (App\Models\GalleryImage)
-* id (unsigned big integer)
-* gallery_id (unsigned big integer)
-* image_id (unsigned big integer)
-* caption (string)
-* location (text)
-* people (text)
-* visible (boolean) [default: false]
 
 #### gallery comments (App\Models\GalleryComment)
 * id (unsigned big integer)
@@ -107,6 +55,16 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * session_id (unsigned big integer)
 * message (text)
 
+#### gallery images (App\Models\GalleryImage)
+* id (unsigned big integer)
+* gallery_id (unsigned big integer)
+* image_id (unsigned big integer)
+* caption (string)
+* date (datetime) [default: current_timestamp()]
+* location (text)
+* people (text)
+* visible (boolean) [default: false]
+
 #### gallery reactions (App\Models\GalleryReactions)
 * id (unsigned big integer)
 * gallery_image_id (unsigned big integer)
@@ -114,9 +72,136 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * user_id (unsigned big integer)
 * session_id (unsigned big integer)
 
+#### images (App\Models\Image)
+* id (unsigned big integer)
+* disk (string)
+* file (string)
+* hash (string)
+
+#### module images (App\Modules\ModuleImage)
+* id (unsigned big integer)
+* module_id (unsigned big integer)
+* image_id (unsigned big integer)
+
+#### module parameters (App\Models\ModuleParameter)
+* id (unsigned big integer)
+* module_id (unsigned big integer)
+* hash (string) [nullable]
+* parameter (string)
+* value (text)
+
+#### modules (App\Models\Module)
+* id (unsigned big integer)
+* name (string)
+* parameters (text)
+* dynamic (boolean)
+* examples (text) [nullable]
+* component (string)
+* edit_component (string) [nullable]
+
+#### page modules (App\Models\PageModules)
+* id (unsigned big integer)
+* module_id (unsigned big integer)
+* page_id (unsigned big integer)
+* hash (string) [nullable]
+* order (integer)
+* enabled (boolean) [default: false]
+
+#### page navigations (App\Models\PageNavigation)
+* id (unsigned big integer)
+* page_id (unsigned big integer)
+* name (string) [nullable]
+* enabled (boolean) [default: true]
+
+#### page types (App\Model\PageType)
+* id (unsigned big integer)
+* name (string)
+
+#### pages (App\Models\Page)
+* id (unsigned big integer)
+* type_id (unsigned big integer)
+* title (string)
+* slug (string)
+* name (string)
+* controller (string) [nullable]
+* method (string) [nullable]
+* publish_date (datetime)
+
+#### reactions (App\Models\Reaction)
+* id (unsigned big integer)
+* reaction (string)
+* icon (string)
+* supported (boolean) [default: true]
+
+#### settings (App\Models\Setting)
+* id (unsigned big integer)
+* key (string)
+* value (text)
+
+#### statistic devices (App\Models\StatisticDevice)
+* id (unsigned big integer)
+* session_id (string)
+* browser (string)
+* browser_version (string)
+* platform (string)
+* platform_version (string)
+* device (string)
+* desktop (boolean)
+* mobile (boolean)
+* mobile_bot (boolean)
+* tablet (boolean)
+* bot (boolean)
+* robot (boolean)
+* robot_name (string)
+* languages (string)
+
+#### statistic ip addresses (App\Models\StatisticIpAddress)
+* id (unsigned big integer)
+* session_id (string)
+* ip_address (string)
+* city (string) [nullable]
+* region (string) [nullable]
+* country (string) [nullable]
+* country_code (string) [nullable]
+* latitude (string) [nullable]
+* longitude (string) [nullable]
+
+#### statistic sessions (App\Models\StatisticSession)
+* id (unsigned big integer)
+* session_id (string)
+* user_agent (text)
+
+#### statistic views (App\Models\StatisticView)
+* id (unsigned big integer)
+* session_id (string)
+* page_id (unsigned big integer)
+* count (integer) [default:0]
+
 ### third party tables
 
 #### laravel/laravel
+
+##### failed_jobs (no model)
+* id (unsigned big integer)
+* uuid (string)
+* connection (text)
+* queue (text)
+* payload (long text)
+* exception (long text)
+* failed_at (timestamp)
+
+##### password resets (no model)
+* email (string)
+* token (string)
+
+##### personal access tokens (no model)
+* id (unsigned big integer)
+* tokenable_type (string)
+* tokenable_id (unsigned big integer)
+* name (string)
+* token (string)
+* abilities (text) [nullable]
+* last_used_at (timestamp) [nullable]
 
 ##### sessions (no model)
 * id (string)
@@ -126,17 +211,23 @@ all of the tables should be assumed to have a created_at and updated_at timestam
 * payload (text)
 * last_activity (integer)
 
-#### spatie/laravel-activitylog
+#### laravel/telescope
 
-##### activity_log (Spatie\Activitylog\Models\Activity)
-* id (unsigned big integer)
-* log_name (string) [nullable]
-* description (text)
-* subject (nullableMorphs)
-* causer (nullableMorphs)
-* properties (json)
-* batch_uuid (uuid) [nullable]
-* event (string) [nullable]
+##### telescope entries (no model)
+* sequence (unsigned big integer)
+* uuid (char 36)
+* batch_id (char 36)
+* family_hash (string) [nullable]
+* should_display_on_index (boolean) [default:true]
+* type (string)
+* content (longtext)
+
+##### telescope entries tags (no model)
+* entry_uuid (char 36)
+* tag (string)
+
+##### telescope monitoring (no model)
+* tag (string)
 
 ## packages
 * tailwindcss/tailwindui
