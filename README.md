@@ -177,6 +177,14 @@ all the tables should be assumed to have a created_at and updated_at timestamp w
 * page_id (unsigned big integer)
 * count (integer) [default:0]
 
+#### users (App\User)
+* id (unsigned big integer)
+* name (string)
+* email (string)
+* email_verified_at (timestamp) [nullable]
+* password (string)
+* remember_token (string) [nullable]
+
 ### third party tables
 
 #### laravel/laravel
