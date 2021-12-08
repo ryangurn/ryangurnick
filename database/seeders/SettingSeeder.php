@@ -53,5 +53,11 @@ class SettingSeeder extends Seeder
         ]);
         $contact_subject->value = 'new contact';
         $contact_subject->save();
+
+        $maintenance = Setting::firstOrNew([
+            'key' => 'maintenance'
+        ]);
+        $maintenance->value = false;
+        $maintenance->save();
     }
 }

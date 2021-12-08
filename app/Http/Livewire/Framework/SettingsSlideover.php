@@ -22,6 +22,8 @@ class SettingsSlideover extends Component
 
     public $footer_links;
 
+    public $maintenance;
+
     public function mount()
     {
         $this->sitename = Setting::where('key', '=', 'sitename')->first()->value;
@@ -29,7 +31,9 @@ class SettingsSlideover extends Component
         $this->contact_from = Setting::where('key', '=', 'contact.from')->first()->value;
 
         $this->footer_copyright = Setting::where('key', '=', 'footer.copyright')->first()->value;
-        $this->footer_links = Setting::where('key', '=', 'footer.links')->first()->value;
+        $this->footer_links = collect(Setting::where('key', '=', 'footer.links')->first()->value);
+
+        $this->maintenance = Setting::where('key', '=', 'maintenance')->first()->value;
     }
 
     public function show()
@@ -103,6 +107,15 @@ class SettingsSlideover extends Component
         $links = Setting::where('key', '=', 'footer.links')->first();
         $links->value = $this->footer_links;
         $links->save();
+
+        $this->redirect(URL::previous());
+    }
+
+    public function save_maintenance()
+    {
+        $maintenance = Setting::where('key', '=', 'maintenance')->first();
+        $maintenance->value = $this->maintenance;
+        $maintenance->save();
 
         $this->redirect(URL::previous());
     }
