@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Email;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use App\Models\Page;
 use App\Http\Controllers\HomeController;
@@ -18,6 +19,15 @@ use App\Http\Controllers\ResumeController;
 |
 */
 
+// add maintenance route
+$maintanence = Setting::where('key', '=', 'maintenance')->first();
+if ($maintanence != null && $maintanence->value)
+{
+    Route::get('/maintenance', function() {
+        return view('errors.maintenance');
+    })->name('maintenance');
+}
+
 // grab all the pages and add routes
 $pages = Page::all();
 if (!$pages->isEmpty())
@@ -27,6 +37,7 @@ if (!$pages->isEmpty())
     }
 }
 
+// present mailable route
 Route::get('/mailable/{email}', function (Email $email) {
     return new $email->class($email);
 })->name('mailable');

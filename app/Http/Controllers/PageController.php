@@ -28,6 +28,13 @@ class PageController extends Controller
         ]);
         $ip->save();
 
+        // check if maintenance mode
+        $maintenance = Setting::where('key', '=', 'maintenance')->first();
+        if ($maintenance != null && $maintenance->value && !auth()->check())
+        {
+            return redirect()->route('maintenance');
+        }
+
         // get page
         $page = Page::where('slug', '=', $request->getRequestUri())->first();
 

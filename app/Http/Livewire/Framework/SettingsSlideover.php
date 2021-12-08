@@ -33,7 +33,7 @@ class SettingsSlideover extends Component
         $this->footer_copyright = Setting::where('key', '=', 'footer.copyright')->first()->value;
         $this->footer_links = collect(Setting::where('key', '=', 'footer.links')->first()->value);
 
-        $this->maintenance = Setting::where('key', '=', 'maintenance')->first()->value;
+        $this->maintenance = (Setting::where('key', '=', 'maintenance')->first() != null) ? Setting::where('key', '=', 'maintenance')->first()->value : false;
     }
 
     public function show()
@@ -113,7 +113,7 @@ class SettingsSlideover extends Component
 
     public function save_maintenance()
     {
-        $maintenance = Setting::where('key', '=', 'maintenance')->first();
+        $maintenance = Setting::firstOrNew(['key' => 'maintenance']);
         $maintenance->value = $this->maintenance;
         $maintenance->save();
 
