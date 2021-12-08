@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Core;
+namespace App\Http\Livewire\Framework;
 
 use App\Models\Gallery;
 use App\Models\Module;
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use function view;
 
 class Banner extends Component
 {
@@ -133,6 +134,6 @@ class Banner extends Component
 
     public function render()
     {
-        return view('livewire.core.banner');
+        return view('livewire.framework.banner');
     }
 }

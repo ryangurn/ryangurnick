@@ -30,7 +30,7 @@
 
     <livewire:core.footer />
 
-    <livewire:core.banner :page="$page" />
+    <livewire:framework.banner :page="$page" />
 
     @auth
     <livewire:framework.email-slideover />
