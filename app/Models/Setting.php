@@ -14,6 +14,6 @@ class Setting extends Model
     ];
 
     protected $casts = [
-        'value' => 'collection'
+        'value' => 'json'
     ];
 }

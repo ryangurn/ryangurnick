@@ -14,7 +14,7 @@ class Footer extends Component
     public function mount()
     {
         $this->copyright = Setting::where('key', '=', 'footer.copyright')->first();
-        $this->links = Setting::where('key', '=', 'footer.links')->first();
+        $this->links = collect(Setting::where('key', '=', 'footer.links')->first()->value);
     }
 
     public function render()
