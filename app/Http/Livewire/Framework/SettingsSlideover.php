@@ -145,7 +145,7 @@ class SettingsSlideover extends Component
             $image->hash = md5(time());
             $image->save();
 
-            $logo = Setting::where('key', '=', 'application.logo')->first();
+            $logo = Setting::firstOrNew(['key' => 'application.logo']);
             $logo->value = $image->id;
             $logo->save();
         }
