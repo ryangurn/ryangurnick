@@ -2,17 +2,23 @@
 
 namespace App\Http\Livewire\Framework;
 
+use App\Models\Image;
 use App\Models\Setting;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class SettingsSlideover extends Component
 {
+    use WithFileUploads;
+
     protected $listeners = ['show' => 'show', 'hide' => 'hide'];
 
     public $show = false;
 
     public $sitename;
+
+    public $sitelogo;
 
     public $contact_subject;
 
@@ -27,6 +33,8 @@ class SettingsSlideover extends Component
     public function mount()
     {
         $this->sitename = Setting::where('key', '=', 'sitename')->first()->value;
+        $this->sitelogo = Setting::where('key', '=', 'application.logo')->first()->value;
+
         $this->contact_subject = Setting::where('key', '=', 'contact.subject')->first()->value;
         $this->contact_from = Setting::where('key', '=', 'contact.from')->first()->value;
 
@@ -117,6 +125,30 @@ class SettingsSlideover extends Component
         $maintenance->value = $this->maintenance;
         $maintenance->save();
 
+        $this->redirect(URL::previous());
+    }
+
+    public function save_sitelogo()
+    {
+        if ($this->sitelogo != null)
+        {
+            // get original filename and extract extension
+            $filename = explode(".", $this->sitelogo->getFilename());
+            $ext = $filename[count($filename)-1];
+
+            // save the file
+            $output = $this->sitelogo->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
+
+            $image = new Image();
+            $image->disk = 'public';
+            $image->file = $output;
+            $image->hash = md5(time());
+            $image->save();
+
+            $logo = Setting::where('key', '=', 'application.logo')->first();
+            $logo->value = $image->id;
+            $logo->save();
+        }
         $this->redirect(URL::previous());
     }
 
