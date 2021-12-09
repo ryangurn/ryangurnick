@@ -59,5 +59,11 @@ class SettingSeeder extends Seeder
         ]);
         $maintenance->value = false;
         $maintenance->save();
+
+        $site_logo = Setting::firstOrNew([
+            'key' => 'application.logo'
+        ]);
+        $site_logo->value = '';
+        $site_logo->save();
     }
 }
