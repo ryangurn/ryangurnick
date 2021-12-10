@@ -35,5 +35,6 @@
     @auth
     <livewire:framework.email-slideover />
     <livewire:framework.settings-slideover />
+    <livewire:framework.configuration-slideover />
     @endauth
 </x-app-layout>
