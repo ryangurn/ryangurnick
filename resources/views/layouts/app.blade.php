@@ -6,27 +6,37 @@
 
 @section('additional_headers')
     <div class="flex items-center gap-4">
-        <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 underline">
-            Telescope
+        <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M21.8,27.4l-6-9c0,0,0,0-0.1,0C15.6,18.2,15.3,18,15,18s-0.6,0.2-0.8,0.4c0,0,0,0-0.1,0l-6,9c-0.3,0.5-0.2,1.1,0.3,1.4  c0.5,0.3,1.1,0.2,1.4-0.3l4.2-6.3V30c0,0.6,0.4,1,1,1s1-0.4,1-1v-7.7l4.2,6.3c0.2,0.3,0.5,0.4,0.8,0.4c0.2,0,0.4-0.1,0.6-0.2  C22,28.5,22.1,27.9,21.8,27.4z"/><g><path d="M21.4,14.9c-0.1,0-0.3,0-0.4-0.1c-0.2-0.1-0.4-0.3-0.5-0.5l-2.9-7.2c-0.2-0.5,0-1.1,0.6-1.3l9-3.6c0.5-0.2,1.1,0,1.3,0.6   l2.9,7.2c0.2,0.5,0,1.1-0.6,1.3l-9,3.6C21.6,14.8,21.5,14.9,21.4,14.9z"/></g><g><path d="M15,20c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4S17.2,20,15,20z"/></g><path d="M9,16c0-3.3,2.7-6,6-6c0.6,0,1.1,0.1,1.7,0.2l-1-2.4l-9.1,3.6C6.3,11.6,6.2,11.8,6,12C6,12.2,6,12.5,6,12.7l-5.1,2  c-0.5,0.2-0.8,0.8-0.6,1.3l1.4,3.6c0.1,0.2,0.3,0.4,0.5,0.5c0.1,0.1,0.3,0.1,0.4,0.1c0.1,0,0.3,0,0.4-0.1l5.1-2  c0.2,0.2,0.5,0.4,0.8,0.4c0.1,0,0.2,0,0.4-0.1l0.1,0C9.2,17.6,9,16.8,9,16z"/>
+            </svg>
         </a>
         @auth
-            <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 underline">
-                Analytics
+            <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm9 4a1 1 0 10-2 0v6a1 1 0 102 0V7zm-3 2a1 1 0 10-2 0v4a1 1 0 102 0V9zm-3 3a1 1 0 10-2 0v1a1 1 0 102 0v-1z" clip-rule="evenodd" />
+                </svg>
             </a>
-            <a href="#" onclick="Livewire.emitTo('framework.email-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 underline">
-                Contacts
+            <a href="#" onclick="Livewire.emitTo('framework.email-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
             </a>
-            <a href="#" onclick="Livewire.emitTo('framework.settings-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 underline">
-                settings
+            <a href="#" onclick="Livewire.emitTo('framework.settings-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                </svg>
             </a>
         @endauth
         @if (Route::has('login'))
             @auth
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
                     @csrf
 
-                    <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline" onclick="event.preventDefault(); this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                    <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:text-gray-300 underline" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                        </svg>
                     </a>
                 </form>
             @else
