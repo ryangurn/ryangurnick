@@ -48,7 +48,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('APP_NAME') }}
+                                                        {{ (env('APP_NAME') != null) ? env('APP_NAME') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -61,7 +61,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('APP_URL') }}
+                                                        {{ (env('APP_URL') != null) ? env('APP_URL') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -74,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('APP_ENV') }}
+                                                        {{ (env('APP_ENV') != null) ? env('APP_ENV') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -109,7 +109,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('LOG_CHANNEL') }}
+                                                        {{ (env('LOG_CHANNEL') != null) ? env('LOG_CHANNEL') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -122,7 +122,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('LOG_LEVEL') }}
+                                                        {{ (env('LOG_LEVEL') != null) ? env('LOG_LEVEL') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -144,7 +144,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('DB_CONNECTION') }}
+                                                        {{ (env('DB_CONNECTION') != null) ? env('DB_CONNECTION') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -157,7 +157,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('DB_HOST') }}
+                                                        {{ (env('DB_HOST') != null) ? env('DB_HOST') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -170,7 +170,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('DB_PORT') }}
+                                                        {{ (env('DB_PORT') != null) ? env('DB_PORT') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -183,7 +183,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('DB_DATABASE') }}
+                                                        {{ (env('DB_DATABASE') != null) ? env('DB_DATABASE') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -196,7 +196,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('DB_USERNAME') }}
+                                                        {{ (env('DB_USERNAME') != null) ? env('DB_USERNAME') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -218,7 +218,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('BROADCAST_DRIVER') }}
+                                                        {{ (env('BROADCAST_DRIVER') != null) ? env('BROADCAST_DRIVER') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -231,7 +231,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('CACHE_DRIVER') }}
+                                                        {{ (env('CACHE_DRIVER') != null) ? env('CACHE_DRIVER') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -244,7 +244,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('FILESYSTEM_DRIVER') }}
+                                                        {{ (env('FILESYSTEM_DRIVER') != null) ? env('FILESYSTEM_DRIVER') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -257,7 +257,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('QUEUE_CONNECTION') }}
+                                                        {{ (env('QUEUE_CONNECTION') != null) ? env('QUEUE_CONNECTION') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -270,7 +270,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('SESSION_DRIVER') }}
+                                                        {{ (env('SESSION_DRIVER') != null) ? env('SESSION_DRIVER') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -283,7 +283,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('SESSION_LIFETIME') }}
+                                                        {{ (env('SESSION_LIFETIME') != null) ? env('SESSION_LIFETIME') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -305,7 +305,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MEMCACHED_HOST') }}
+                                                        {{ (env('MEMCACHED_HOST') != null) ? env('MEMCACHED_HOST') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -327,7 +327,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('REDIS_HOST') }}
+                                                        {{ (env('REDIS_HOST') != null) ? env('REDIS_HOST') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -340,7 +340,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('REDIS_PORT') }}
+                                                        {{ (env('REDIS_PORT') != null) ? env('REDIS_PORT') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -362,7 +362,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_MAILER') }}
+                                                        {{ (env('MAIL_MAILER') != null) ? env('MAIL_MAILER') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -375,7 +375,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_HOST') }}
+                                                        {{ (env('MAIL_HOST') != null) ? env('MAIL_HOST') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -388,7 +388,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_PORT') }}
+                                                        {{ (env('MAIL_PORT') != null) ? env('MAIL_PORT') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -401,7 +401,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_USERNAME') }}
+                                                        {{ (env('MAIL_USERNAME') != null) ? env('MAIL_USERNAME') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -414,7 +414,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_ENCRYPTION') }}
+                                                        {{ (env('MAIL_ENCRYPTION') != null) ? env('MAIL_ENCRYPTION') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -427,7 +427,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_FROM_ADDRESS') }}
+                                                        {{ (env('MAIL_FROM_ADDRESS') != null) ? env('MAIL_FROM_ADDRESS') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -440,7 +440,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('MAIL_FROM_NAME') }}
+                                                        {{ (env('MAIL_FROM_NAME') != null) ? env('MAIL_FROM_NAME') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -462,7 +462,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('TELESCOPE_ENABLED') }}
+                                                        {{ (env('TELESCOPE_ENABLED') != null) ? env('TELESCOPE_ENABLED') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
@@ -475,10 +475,69 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-                                                        {{ env('GEOLOCATION_IPINFO_ACCESS_TOKEN') }}
+                                                        {{ (env('GEOLOCATION_IPINFO_ACCESS_TOKEN') != null) ? env('GEOLOCATION_IPINFO_ACCESS_TOKEN') : 'empty' }}
                                                     </div>
                                                 </div>
                                             </li>
+                                        </ul>
+
+                                        <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                                            <svg class="mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
+                                                <circle cx="4" cy="4" r="3" />
+                                            </svg>
+                                        file system information
+                                        </span>
+                                        <ul role="list" class="divide-y divide-gray-200 mt-2 rounded-lg border border-gray-300">
+                                            <li class="relative bg-white py-5 px-4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                                <div class="flex justify-between space-x-3 rounded-lg">
+                                                    <div class="min-w-0 flex-1">
+                                                        <div href="#" class="block focus:outline-none">
+                                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                                            <p class="text-sm font-medium text-gray-900 truncate">Default</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
+                                                        {{ config('filesystems.default') }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            @if (count(config('filesystems.disks')) > 0)
+                                                @foreach(config('filesystems.disks') as $disks)
+                                            <li class="relative bg-white py-5 px-4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                                <div class="flex justify-between space-x-3 rounded-lg">
+                                                    <div class="min-w-0 flex-1">
+                                                        <div href="#" class="block focus:outline-none">
+                                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                                            <p class="text-sm font-medium text-gray-900 truncate">disk</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
+                                                        {{ $disks['driver'] }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                                    @if (count($disks) > 0)
+                                                        @foreach ($disks as $key => $disk)
+                                                            @if ($key != "secret" && $key != "root")
+                                                            <li class="relative bg-white py-5 px-4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                                                <div class="flex justify-between space-x-3 rounded-lg">
+                                                                    <div class="min-w-0 flex-1">
+                                                                        <div href="#" class="block focus:outline-none">
+                                                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                                                {{ $key }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500 text-wrap">
+                                                                        {{ ($disk != null) ? $disk : 'empty' }}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
