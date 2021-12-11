@@ -19,6 +19,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans @yield('additional_body_css') bg-gray-background text-color-900 text-sm lowercase">
+<livewire:framework.maintenance-banner />
 <header class="flex items-center justify-between px-8 py-4">
     <a href="#" class="flex items-center">
         <x-application-logo class="w-14 h-14" />
