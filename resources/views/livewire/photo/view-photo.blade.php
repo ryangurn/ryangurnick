@@ -56,6 +56,53 @@
                 @endif
             </div>
                 @endif
+
+                @if ($allow_comments)
+            <div>
+                <hr />
+                <div class="flex items-start space-x-4 pt-2">
+                    <div class="flex-shrink-0">
+                        <img src="https://www.gravatar.com/avatar/{{ md5(auth()->user()->email) }}?d=mp" alt="avatar" class="inline-block h-10 w-10 rounded-full" />
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="border-b border-gray-200 focus-within:border-indigo-600">
+                            <label for="comment" class="sr-only">Add your comment</label>
+                            <textarea rows="3" name="comment" id="comment" class="block w-full border-0 border-b border-transparent p-0 pb-2 resize-none focus:ring-0 focus:border-indigo-600 sm:text-sm" placeholder="Add your comment..." wire:model="comment"></textarea>
+                        </div>
+                        <div class="pt-2 flex justify-between">
+                            <div class="flex-shrink-0">
+                                <button type="submit" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="comment">
+                                    comment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-3">
+                    <hr />
+                    <ul role="list" class="divide-y divide-gray-200">
+                        @if (!$comments->isEmpty())
+                            @foreach ($comments as $comment)
+                        <li class="py-4">
+                            <div class="flex space-x-3">
+                                <img class="h-6 w-6 rounded-full" src="https://www.gravatar.com/avatar/{{ md5($comment->user->email) }}?d=mp" alt="">
+                                <div class="flex-1 space-y-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="text-sm font-medium">{{ $comment->user->name }}</h3>
+                                        <p class="text-sm text-gray-500">{{ $comment->updated_at->diffForHumans() }}</p>
+                                    </div>
+                                    <p class="text-sm text-gray-500">{{ $comment->message }}</p>
+                                </div>
+                            </div>
+                        </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+
+            </div>
+                @endif
             @endauth
         </div>
     </div>
