@@ -24,7 +24,7 @@ $maintanence = Setting::where('key', '=', 'maintenance')->first();
 if ($maintanence != null && $maintanence->value)
 {
     Route::get('/maintenance', function() {
-        return response(view('errors.maintenance'), 503);
+        return abort(503);
     })->name('maintenance');
 }
 
