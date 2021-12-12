@@ -35,6 +35,19 @@
                     <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
+                @if (!$user_reactions->isEmpty() && $allow_reactions)
+                    <div  class="flex flex-col content-start justify-start m-auto absolute h-1 inset-0 mt-2 ml-2 mr-2">
+                        <div class="grid grid-cols-10 grid-end-7">
+                            @foreach($user_reactions->where('gallery_image_id', $photo->id)->take(10) as $reaction)
+                                <div class="col-span-1">
+                                    <span class="inline-flex items-center p-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                                    {{ $reaction->reaction->icon }}
+                                    </span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <div class="space-y-2">

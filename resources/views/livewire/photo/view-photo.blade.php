@@ -1,5 +1,20 @@
 <div class="bg-transparent">
-    <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}">
+    <div class="flex">
+        <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}">
+        @if (!$user_reactions->isEmpty() && $allow_reactions)
+        <div  class="flex flex-col content-start justify-start m-auto absolute h-1 inset-0 mt-2 ml-2 mr-2">
+            <div class="grid grid-cols-10">
+                @foreach($user_reactions as $reaction)
+                <div class="col-span-1">
+                    <span class="inline-flex items-center p-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                    {{ $reaction->reaction->icon }}
+                    </span>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+    </div>
     <div class="m-2 bg-transparent">
         <div class="flex">
             @if (isset($photo->location) && $photo->location != null)
@@ -25,15 +40,15 @@
             </p>
             @auth
                 @if ($allow_reactions)
-            <div class="grid grid-cols-10 gap-2 mt-4 mb-4" x-data="{ show_reactions: false }">
-                <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="show_reactions = !show_reactions">
+            <div class="grid grid-cols-10 gap-2 mt-4 mb-4" x-data="{ show_reactions: @entangle('show_reactions') }">
+                <a href="#" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="$toggle('show_reactions')">
                     react
-                </button>
+                </a>
 
                 @if (!$reactions->isEmpty())
                     @foreach($reactions as $reaction)
                     <div class="col-span-1 cursor-pointer" x-show="show_reactions">
-                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800" wire:click="react({{$reaction->id}})">
+                        <span class="inline-flex items-center p-1 rounded-full text-sm font-medium {{ ($active_reaction != null && $active_reaction->reaction_id == $reaction->id) ? 'bg-indigo-600' : 'bg-gray-100' }} text-gray-800" wire:click="react({{$reaction->id}})">
                         {{ $reaction->icon }}
                         </span>
                     </div>

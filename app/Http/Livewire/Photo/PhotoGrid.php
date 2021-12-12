@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Photo;
 
 use App\Models\Gallery;
+use App\Models\GalleryReaction;
+use App\Models\Setting;
 use Livewire\Component;
 
 class PhotoGrid extends Component
@@ -14,6 +16,10 @@ class PhotoGrid extends Component
     public $gallery;
 
     public $photos;
+
+    public $user_reactions;
+
+    public $allow_reactions;
 
     public function mount()
     {
@@ -35,6 +41,11 @@ class PhotoGrid extends Component
 
         // updated at
         $this->updated_at = $module->updated_at;
+
+        $this->user_reactions = GalleryReaction::where('active', true)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        $this->allow_reactions = Setting::where('key', 'gallery.allow_reactions')->first()->value;
     }
 
     public function render()
