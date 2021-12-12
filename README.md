@@ -30,6 +30,9 @@ this application is intended to help with personal website management. it will p
         * authentication management
             * password timeout
             * lockout durations
+7. permissions
+   1. roles
+   2. permissions
 
 ## data structures
 all the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
@@ -249,6 +252,7 @@ all the tables should be assumed to have a created_at and updated_at timestamp w
 * [adrianorosa/laravel-geolocation](https://github.com/adrianorsouza/laravel-geolocation)
 * [jenssegers/agent](https://github.com/jenssegers/agent)
 * [patoui/laravel-bad-word](https://github.com/patoui/laravel-bad-word)
+* [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 
 ### look into
 * [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
