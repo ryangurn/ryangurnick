@@ -50,6 +50,12 @@
                                     </div>
 
                                     <div>
+                                        <div class="flex items-center justify-between pb-2">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">site logo</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">image shown in the header and on all authenication pages.</span>
+                                            </span>
+                                        </div>
                                         <div class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
                                             <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">site logo</label>
                                             <input type="file" wire:model="sitelogo" />
@@ -60,6 +66,12 @@
                                     </div>
 
                                     <div>
+                                        <div class="flex items-center justify-between pb-2">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">site name</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">the application name that shows in the header and on each tab in the browser.</span>
+                                            </span>
+                                        </div>
                                         <div class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
                                             <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">site title</label>
                                             <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="site title" wire:model="sitename">
@@ -70,6 +82,12 @@
                                     </div>
 
                                     <div>
+                                        <div class="flex items-center justify-between pb-2">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">contact information</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">the settings that control the contacts module.</span>
+                                            </span>
+                                        </div>
                                         <div class="isolate -space-y-px rounded-md shadow-sm">
                                             <div class="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
                                                 <label for="name" class="block text-xs font-medium text-gray-700">contact subject</label>
@@ -86,6 +104,12 @@
                                     </div>
 
                                     <div>
+                                        <div class="flex items-center justify-between pb-2">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">footer information</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">information that is displayed on the footer of the website, including copyright and social links.</span>
+                                            </span>
+                                        </div>
                                         <div class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
                                             <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">footer copyright</label>
                                             <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="your name" wire:model="footer_copyright">
@@ -127,7 +151,6 @@
                                             <button type="submit" class="mt-1 bg-green-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add_footer">
                                                 + add footer link
                                             </button>
-
                                         </div>
                                     </div>
                                 </div>
