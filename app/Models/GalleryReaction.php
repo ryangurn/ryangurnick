@@ -26,7 +26,7 @@ class GalleryReaction extends Model
 
     public function reaction()
     {
-        return $this->hasOne(Reaction::class);
+        return $this->hasOne(Reaction::class, 'id', 'reaction_id');
     }
 
     public function user()
