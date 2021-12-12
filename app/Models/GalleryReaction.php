@@ -15,8 +15,8 @@ class GalleryReaction extends Model
     protected $fillable = [
         'gallery_image_id',
         'user_id',
-        'session_id',
         'reaction_id',
+        'active'
     ];
 
     public function gallery_image()
