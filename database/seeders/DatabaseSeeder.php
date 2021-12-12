@@ -61,5 +61,11 @@ class DatabaseSeeder extends Seeder
          * of content.
          */
         $this->call(ReactionSeeder::class);
+
+        /*
+         * BadwordSeeder will populate the bad words that are not allowed
+         * for use within the system.
+         */
+        $this->call(BadwordSeeder::class);
     }
 }
