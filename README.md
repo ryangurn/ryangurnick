@@ -10,6 +10,7 @@ this application is intended to help with personal website management. it will p
     1. single/multiple gallery system
     2. metadata attachment process (location, date & time, people, notes)
     3. comment system (can be enabled or disabled)
+       1. prohibited words
     4. reactions (can be enabled or disabled)
 3. resume builder
 4. storage management
