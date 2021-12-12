@@ -14,7 +14,6 @@ class GalleryComment extends Model
     protected $fillable = [
         'gallery_image_id',
         'user_id',
-        'session_id',
         'message',
     ];
 
@@ -27,6 +26,4 @@ class GalleryComment extends Model
     {
         return $this->hasOne(User::class);
     }
-
-    // todo: attach to model from pragmarx/tracker
 }

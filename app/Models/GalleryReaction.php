@@ -33,6 +33,4 @@ class GalleryReaction extends Model
     {
         return $this->hasOne(User::class);
     }
-
-    // todo: attach to model from pragmarx/tracker
 }
