@@ -106,6 +106,54 @@
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">gallery settings</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">the settings that adjust the behavior of the gallery, from reactions to comments.</span>
+                                            </span>
+                                        </div>
+
+                                        <div class="flex items-center justify-between pb-4">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">allow reactions</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">turn on or off reactions for all galleries.</span>
+                                            </span>
+                                            <button type="button" class="{{ ($gallery_allow_reactions) ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" role="switch" aria-checked="false" aria-labelledby="availability-label" aria-describedby="availability-description" wire:click="$toggle('gallery_allow_reactions')">
+                                                <span aria-hidden="true" class="{{ ($gallery_allow_reactions) ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                                            </button>
+                                        </div>
+
+                                        <div class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 mb-4">
+                                            <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">gallery reactions (limit 10)</label>
+                                            <textarea type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="your name" wire:model="gallery_reactions" rows="10"></textarea>
+                                        </div>
+
+                                        <div class="flex items-center justify-between pb-4">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">allow comments</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">turn on or off comments for all galleries.</span>
+                                            </span>
+                                            <button type="button" class="{{ ($gallery_allow_comments) ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" role="switch" aria-checked="false" aria-labelledby="availability-label" aria-describedby="availability-description" wire:click="$toggle('gallery_allow_comments')">
+                                                <span aria-hidden="true" class="{{ ($gallery_allow_comments) ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                                            </button>
+                                        </div>
+
+                                        <div class="flex items-center justify-between pb-4">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">allow bad words</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">allow bad words within comments in the galleries.</span>
+                                            </span>
+                                            <button type="button" class="{{ ($gallery_bad_words) ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" role="switch" aria-checked="false" aria-labelledby="availability-label" aria-describedby="availability-description" wire:click="$toggle('gallery_bad_words')">
+                                                <span aria-hidden="true" class="{{ ($gallery_bad_words) ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
+                                            </button>
+                                        </div>
+
+                                        <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_gallery">
+                                            save gallery
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex items-center justify-between pb-2">
+                                            <span class="flex-grow flex flex-col">
                                                 <span class="text-sm font-medium text-gray-900" id="availability-label">footer information</span>
                                                 <span class="text-sm text-gray-500" id="availability-description">information that is displayed on the footer of the website, including copyright and social links.</span>
                                             </span>
