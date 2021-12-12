@@ -248,6 +248,7 @@ all the tables should be assumed to have a created_at and updated_at timestamp w
 * [spatie/emoji](https://github.com/spatie/emoji)
 * [adrianorosa/laravel-geolocation](https://github.com/adrianorsouza/laravel-geolocation)
 * [jenssegers/agent](https://github.com/jenssegers/agent)
+* [patoui/laravel-bad-word](https://github.com/patoui/laravel-bad-word)
 
 ### look into
 * [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
