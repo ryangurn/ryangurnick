@@ -23,11 +23,25 @@
             <p>
                 {{ $photo->caption }}
             </p>
-            <p>
-                <button type="button" class="mt-4 mb-4 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            @auth
+                @if ($allow_reactions)
+            <div class="grid grid-cols-10 gap-2 mt-4 mb-4" x-data="{ show_reactions: false }">
+                <button type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="show_reactions = !show_reactions">
                     react
                 </button>
-            </p>
+
+                @if (!$reactions->isEmpty())
+                    @foreach($reactions as $reaction)
+                    <div class="col-span-1 cursor-pointer" x-show="show_reactions">
+                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800" wire:click="react({{$reaction->id}})">
+                        {{ $reaction->icon }}
+                        </span>
+                    </div>
+                    @endforeach
+                @endif
+            </div>
+                @endif
+            @endauth
         </div>
     </div>
 </div>
