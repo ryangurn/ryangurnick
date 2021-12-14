@@ -10,38 +10,103 @@ use App\Models\PageModule;
 use App\Models\PageNavigation;
 use App\Models\PageType;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use function view;
 
+/**
+ * Banner is a livewire component that provides
+ * administrative functionality to an authorized
+ * user. Its aim is to prevent the need for a
+ * dashboard in which content can be modified.
+ */
 class Banner extends Component
 {
+    /**
+     * the toggle to determine if the banner shows
+     * when a user is logged in or not.
+     * @var bool
+     */
     public $auth_required = true;
 
+    /**
+     * the toggle that is populated with the current
+     * authentication status. (ie: is the user logged
+     * in or not.)
+     * @var bool
+     */
     public $auth = false;
 
+    /**
+     * the value that stores all the module models.
+     * @var
+     */
     public $modules;
 
+    /**
+     * the value populated when adding a page.
+     * @var
+     */
     public $page_name;
 
+    /**
+     * the value that stores the current page model.
+     * @var
+     */
     public $page;
 
+    /**
+     * the value that stores all the pages models.
+     * @var
+     */
     public $pages;
 
+    /**
+     * the value that stores the current page id.
+     * @var
+     */
     public $page_id;
 
+    /**
+     * the value populated when adding a page to the
+     * menu.
+     * @var
+     */
     public $menu_id;
 
+    /**
+     * the variable that stores all pages that can be
+     * added to the menu.
+     * @var
+     */
     public $menu_options;
 
+    /**
+     * the value that is populated when selecting a module
+     * to add to a page.
+     * @var
+     */
     public $module_id;
 
+    /**
+     * the value that stores all the gallery models.
+     * @var
+     */
     public $galleries;
 
+    /**
+     * function that is called when the livewire component is
+     * initialized.
+     * @return void
+     */
     public function mount()
     {
+        // populate all the variables
         $this->auth = Auth::check();
         $this->modules = Module::where('component', '!=', 'photo.photo-grid')->get()->sortBy('name');
         $this->pages = Page::all()->sortBy('name');
@@ -59,15 +124,26 @@ class Banner extends Component
 
     }
 
+    /**
+     * a function that will refresh the page.
+     * @return void
+     */
     public function refresh()
     {
         $this->redirect(URL::previous());
     }
 
+    /**
+     * the function that when called will add
+     * a new page using the $page variable.
+     * @return void
+     */
     public function add_page()
     {
+        // get the standard page type
         $standard = PageType::where('name', '=', 'standard')->first();
 
+        // add the page
         $page = Page::create([
             'type_id' => $standard->id,
             'title' => $this->page_name,
@@ -78,24 +154,36 @@ class Banner extends Component
             'publish_date' => Carbon::now()
         ]);
 
+        // refresh the current page.
         $this->refresh();
     }
 
+    /**
+     * the function that when called will
+     * add a module to the current page.
+     * @return void
+     */
     public function add_module()
     {
+        // get the module using the id
         $module = Module::where('id', '=', $this->module_id)->first();
 
+        // determine the new order number
         $order = PageModule::where('page_id', '=', $this->page->id)->orderBy('order', 'desc')->first();
         $new_order = (($order != null) ? $order->order : 0) + 10;
 
+        // add the module to a page.
         $page_module = new PageModule();
         $page_module->module_id = $module->id;
         $page_module->page_id = $this->page->id;
         $page_module->order = $new_order;
+        // handle dynamic modules
         if ($module->dynamic) {
+            // generate a hash and store it
             $hash = md5(time());
             $page_module->hash = $hash;
 
+            // loop through all the parameters and create rows for them
             foreach ($module->parameters as $parameter => $rule)
             {
                 $param = new ModuleParameter();
@@ -108,30 +196,51 @@ class Banner extends Component
         }
         $page_module->save();
 
+        // refresh the page.
         $this->refresh();
     }
 
+    /**
+     * the function that when called will add a page to the
+     * menu using $menu_id
+     * @return void
+     */
     public function add_menu()
     {
+        // add the page to the menu
         PageNavigation::create([
             'page_id' => $this->menu_id,
             'enabled' => true
         ]);
 
+        // refresh the page
         $this->refresh();
     }
 
+    /**
+     * the function that when called will delete a page.
+     * @return void
+     */
     public function delete_page()
     {
+        // first delete any menu references
         PageNavigation::where('page_id', '=', $this->page_id)->delete();
 
+        // delete all the modules from the page.
         PageModule::where('page_id', '=', $this->page_id)->delete();
 
+        // delete the page.
         Page::where('id', '=', $this->page_id)->delete();
 
+        // fresh the page.
         $this->refresh();
     }
 
+    /**
+     * the method that is automatically called to render
+     * the view for the livewire component.
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('livewire.framework.banner');
