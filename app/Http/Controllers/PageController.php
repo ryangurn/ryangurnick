@@ -5,46 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\PageNavigation;
 use App\Models\Setting;
-use App\Models\StatisticIpAddress;
-use App\Models\StatisticSession;
-use App\Models\StatisticView;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index(Request $request)
     {
-        // save the session for analytics purposes
-        $session = StatisticSession::firstOrNew([
-            'session_id' => session()->getId(),
-        ]);
-        $session->user_agent = $request->userAgent();
-        $session->save();
+        // handle all the session data
+        $this->handle_sessions($request);
 
-        // save the ip address related to the session
-        $ip = StatisticIpAddress::firstOrNew([
-            'session_id' => session()->getId(),
-            'ip_address' => $request->ip()
-        ]);
-        $ip->save();
-
-        // check if maintenance mode
-        $maintenance = Setting::where('key', '=', 'maintenance')->first();
-        if ($maintenance != null && $maintenance->value && !auth()->check())
+        // handle the maintenance redirection
+        if ($this->maintenance_check() != null)
         {
-            return redirect()->route('maintenance');
+            // return the redirect response.
+            return $this->maintenance_check();
         }
 
         // get page
         $page = Page::where('slug', '=', $request->getRequestUri())->first();
 
-        // save/update the page view count
-        $count = StatisticView::firstOrNew([
-            'session_id' => session()->getId(),
-            'page_id' => $page->id
-        ]);
-        $count->count = $count->count + 1;
-        $count->save();
+        // handle the view statistics
+        $this->handle_views($request, $page);
 
         // get modules on page
         $modules = $page->page_modules->sortBy('order');
@@ -53,7 +34,7 @@ class PageController extends Controller
         $menu = PageNavigation::all();
 
         // get the site title setting
-        $sitename = Setting::where('key', '=', 'sitename')->first();
+        $sitename = Setting::where('key', 'application.sitename')->first();
 
         // render the view
         return view('page', compact('page', 'modules', 'menu', 'sitename'));
