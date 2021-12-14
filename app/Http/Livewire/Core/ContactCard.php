@@ -4,20 +4,56 @@ namespace App\Http\Livewire\Core;
 
 use App\Mail\ContactMessage;
 use App\Models\Email;
-use App\Models\Setting;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
+/**
+ * ContactCard is a livewire component that provides
+ * a contact form that can be added to any page. Its
+ * aim is to allow unauthenticated users to reach out
+ * to authorized users within the system.
+ */
 class ContactCard extends Component
 {
+    /**
+     * the page module model that is passed throughout
+     * the application to identify modals and page
+     * information
+     * @var
+     */
     public $page_module;
 
+    /**
+     * the value to display on the header of the module.
+     * @var
+     */
     public $header;
 
+    /**
+     * the data provided by the user that will populate
+     * the email sent out, and the emails table.
+     * @var
+     */
     public $contact;
 
+    /**
+     * the value to pass through to the card footer
+     * as the last time it was modified.
+     * @var
+     */
+    public $updated_at;
+
+    /**
+     * the method that clears out all values
+     * for the contact form.
+     * @return void
+     */
     public function clear()
     {
+        // clear all values in the contact array.
         $this->contact = [
             'first_name' => '',
             'last_name' => '',
@@ -28,19 +64,28 @@ class ContactCard extends Component
         ];
     }
 
+    /**
+     * function that is called when the livewire component is
+     * initialized.
+     * @return void
+     */
     public function mount()
     {
+        // clear the contact form
         $this->clear();
 
+        // get the module information.
         $module = $this->page_module->module;
 
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)
         {
+            // set the header value based on the modules example
             $this->header = $module->examples['header'];
         }
         else
         {
+            // get the dynamic value for the header
             $this->header = $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'header')->first()->value;
         }
 
@@ -48,6 +93,11 @@ class ContactCard extends Component
         $this->updated_at = $module->updated_at;
     }
 
+    /**
+     * validation rules that will be checked when the
+     * change order modal is saved.
+     * @return string[]
+     */
     public function rules()
     {
         return [
@@ -60,6 +110,11 @@ class ContactCard extends Component
         ];
     }
 
+    /**
+     * messages to display when validation errors
+     * occur.
+     * @return string[]
+     */
     public function messages()
     {
         return [
@@ -77,10 +132,18 @@ class ContactCard extends Component
         ];
     }
 
+    /**
+     * method that will save the contact information
+     * via email to the configured user, and save the
+     * contact to the emails table.
+     * @return void
+     */
     public function send()
     {
+        // validate the request
         $this->validate();
 
+        // save the contact information to the emails table.
         $email = new Email();
         $email->class = 'App\Mail\ContactMessage';
         $email->to = $this->contact['email'];
@@ -93,13 +156,21 @@ class ContactCard extends Component
         ];
         $email->save();
 
+        // send out the email
         Mail::to($this->contact['email'])->send(new ContactMessage($email));
 
+        // clear the form
         $this->clear();
 
+        // flash message to the user notifying them that it is sent.
         session()->flash('message', 'message sent!');
     }
 
+    /**
+     * the method that is automatically called to render
+     * the view for the livewire component.
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('livewire.core.contact-card');
