@@ -4,9 +4,6 @@ use App\Models\Email;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use App\Models\Page;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +16,23 @@ use App\Http\Controllers\ResumeController;
 |
 */
 
-// add maintenance route
-$maintanence = Setting::where('key', '=', 'maintenance')->first();
-if ($maintanence != null && $maintanence->value)
+/**
+ * add the maintenance route if the application is in
+ * maintenance mode.
+ */
+$maintenance = Setting::where('key', '=', 'application.maintenance')->first();
+if ($maintenance != null && $maintenance->value)
 {
     Route::get('/maintenance', function() {
         return abort(503);
     })->name('maintenance');
 }
 
-// grab all the pages and add routes
+/**
+ * add all the page routes as long as the pages' table
+ * is not empty, if the pages' table is empty then any route
+ * will result in a 404.
+ */
 $pages = Page::all();
 if (!$pages->isEmpty())
 {
@@ -37,7 +41,11 @@ if (!$pages->isEmpty())
     }
 }
 
-// present mailable route
+/**
+ * create a mailable route for previewing the various
+ * contacts that have been submitted through the contact
+ * module.
+ */
 Route::get('/mailable/{email}', function (Email $email) {
     return new $email->class($email);
 })->name('mailable');

@@ -11,7 +11,7 @@ class MaintenanceBanner extends Component
 
     public function mount()
     {
-        $this->maintenance_mode = Setting::where('key', 'maintenance')->first()->value && auth()->check();
+        $this->maintenance_mode = Setting::where('key', 'application.maintenance')->first()->value && auth()->check();
     }
 
     public function render()

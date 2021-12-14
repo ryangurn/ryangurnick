@@ -44,10 +44,9 @@ class SettingSeeder extends Seeder
 
         /*
          * Application site name is the name of teh website that gets placed in the header & browser tab title.
-         * TODO: change to application.sitename
          */
         $sitename = Setting::firstOrNew([
-            'key' => 'sitename'
+            'key' => 'application.sitename'
         ]);
         $sitename->value = 'ryan gurnick';
         $sitename->save();
@@ -72,10 +71,9 @@ class SettingSeeder extends Seeder
 
         /*
          * Maintenance is setting for toggling if the site is in maintenance mode.
-         * TODO: change to application.maintenance
          */
         $maintenance = Setting::firstOrNew([
-            'key' => 'maintenance'
+            'key' => 'application.maintenance'
         ]);
         $maintenance->value = false;
         $maintenance->save();

@@ -23,8 +23,8 @@
 <header class="flex items-center justify-between px-8 py-4">
     <a href="#" class="flex items-center">
         <x-application-logo class="w-14 h-14" />
-        @if (\App\Models\Setting::where('key', '=', 'sitename')->first() != null)
-        <span class="text-xl">{{ \App\Models\Setting::where('key', '=', 'sitename')->first()->value }}</span>
+        @if (\App\Models\Setting::where('key', '=', 'application.sitename')->first() != null)
+        <span class="text-xl">{{ \App\Models\Setting::where('key', '=', 'application.sitename')->first()->value }}</span>
         @endif
     </a>
 

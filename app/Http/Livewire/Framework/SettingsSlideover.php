@@ -40,7 +40,7 @@ class SettingsSlideover extends Component
 
     public function mount()
     {
-        $this->sitename = Setting::where('key', '=', 'sitename')->first()->value;
+        $this->sitename = Setting::where('key', '=', 'application.sitename')->first()->value;
         $this->sitelogo = Setting::where('key', '=', 'application.logo')->first()->value;
 
         $this->contact_subject = Setting::where('key', '=', 'contact.subject')->first()->value;
@@ -49,7 +49,7 @@ class SettingsSlideover extends Component
         $this->footer_copyright = Setting::where('key', '=', 'footer.copyright')->first()->value;
         $this->footer_links = collect(Setting::where('key', '=', 'footer.links')->first()->value);
 
-        $this->maintenance = (Setting::where('key', '=', 'maintenance')->first() != null) ? Setting::where('key', '=', 'maintenance')->first()->value : false;
+        $this->maintenance = (Setting::where('key', '=', 'application.maintenance')->first() != null) ? Setting::where('key', '=', 'application.maintenance')->first()->value : false;
 
         $this->gallery_reactions = implode(",\n", Setting::where('key', 'gallery.reactions')->first()->value);
         $this->gallery_allow_reactions = (Setting::where('key', 'gallery.allow_reactions')->first() != null) ? Setting::where('key', 'gallery.allow_reactions')->first()->value : false;
@@ -69,7 +69,7 @@ class SettingsSlideover extends Component
 
     public function save_sitename()
     {
-        $sitename = Setting::where('key', '=', 'sitename')->first();
+        $sitename = Setting::firstOrNew(['key' => 'application.sitename']);
         $sitename->value = $this->sitename;
         $sitename->save();
 
@@ -134,7 +134,7 @@ class SettingsSlideover extends Component
 
     public function save_maintenance()
     {
-        $maintenance = Setting::firstOrNew(['key' => 'maintenance']);
+        $maintenance = Setting::firstOrNew(['key' => 'application.maintenance']);
         $maintenance->value = $this->maintenance;
         $maintenance->save();
 
