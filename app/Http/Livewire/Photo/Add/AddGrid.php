@@ -7,27 +7,71 @@ use App\Models\GalleryImage;
 use App\Models\Image;
 use App\Models\PageModule;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
 use function view;
 
+/**
+ * AddGrid is a livewire modal component that provides
+ * the ability to add an image to a specific gallery.
+ */
 class AddGrid extends ModalComponent
 {
+    /**
+     * Allowing for file uploads within the modal
+     */
     use WithFileUploads;
 
+    /**
+     * the page_module model reference that will be
+     * used as a reference to update the page_modules
+     * table.
+     * @var
+     */
     public $page_module;
 
+    /**
+     * this variable stores the gallery identifier to
+     * add the image to.
+     * @var
+     */
     public $gallery_id;
 
+    /**
+     * this variable stores the gallery model that
+     * the image is associated to.
+     * @var
+     */
     public $gallery;
 
+    /**
+     * this variable stores the parameters of the
+     * uploaded photo.
+     * @var
+     */
     public $photo;
 
+    /**
+     * this variable stores the uploaded image.
+     * @var
+     */
     public $image;
 
+    /**
+     * the value that stores the module model.
+     * @var
+     */
     public $module;
 
+    /**
+     * function that is called when the livewire component is
+     * initialized.
+     * @return void
+     */
     public function mount()
     {
         // grab module
@@ -35,6 +79,11 @@ class AddGrid extends ModalComponent
         $this->gallery = Gallery::where('id', '=', $this->gallery_id)->first();
     }
 
+    /**
+     * validation rules that will be checked when the
+     * add grid modal is saved.
+     * @return string[]
+     */
     public function rules()
     {
         return [
@@ -46,8 +95,14 @@ class AddGrid extends ModalComponent
         ];
     }
 
+    /**
+     * the function that when called will save the new
+     * values in the photo grid component.
+     * @return void
+     */
     public function save()
     {
+        // validate the request
         $this->validate();
 
         // get original filename and extract extension
@@ -74,13 +129,20 @@ class AddGrid extends ModalComponent
         $gallery_image->visible = true;
         $gallery_image->save();
 
+        // set the new updated_at timestamp on the module.
         $this->module->updated_at = Carbon::now();
         $this->module->save();
 
+        // close modal and redirect
         $this->closeModal();
         $this->redirect(URL::previous());
     }
 
+    /**
+     * the method that is automatically called to render
+     * the view for the livewire component.
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('livewire.photo.add.add-grid');
