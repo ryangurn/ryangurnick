@@ -25,6 +25,10 @@ class EditQuote extends ModalComponent
      */
     public $page_module;
 
+    /**
+     * the value that stores quotes in an array.
+     * @var
+     */
     public $quotes;
 
     /**
