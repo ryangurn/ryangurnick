@@ -1,6 +1,10 @@
-# ryangurnick
+# simple-cms
 
 this application is intended to help with personal website management. it will provide a variety of functionality to aid in setting up a simplistic website that contains a variety of information about a person and their respective interests.
+
+## installation
+
+## upgrade
 
 ## functionality
 1. management of custom pages
