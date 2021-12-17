@@ -67,5 +67,15 @@ class DatabaseSeeder extends Seeder
          * for use within the system.
          */
         $this->call(BadwordSeeder::class);
+
+        /*
+         * PermissionSeeder will populate the permissions that exist for
+         * an administrator to assign
+         *
+         * RoleSeeder will populate the various permission grouping that
+         * can be assigned by an administrator
+         */
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }
