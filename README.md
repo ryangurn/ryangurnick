@@ -4,6 +4,10 @@ this application is intended to help with personal website management. it will p
 
 ## installation
 
+### docker
+
+### non-docker
+
 ## upgrade
 
 ## functionality
@@ -244,6 +248,32 @@ all the tables should be assumed to have a created_at and updated_at timestamp w
 
 ##### telescope monitoring (no model)
 * tag (string)
+
+#### spatie/permission
+
+##### permission (Spatie\Permission\Models\Permission)
+* id (unsigned big integer)
+* name (string)
+* guard_name (string)
+
+##### role (Spatie\Permission\Models\Role)
+* id (unsigned big integer)
+* name (string)
+* guard_name (string)
+
+##### role_has_permissions (no model)
+* permission_id (unsigned big integer)
+* role_id (unsigned big integer)
+
+##### user_has_permissions (no model)
+* permission_id (unsigned big integer)
+* model_type (string)
+* user_id (unsigned big integer)
+
+##### user_has_roles (no model)
+* role_id (unsigned big integer)
+* model_type (string)
+* user_id (unsigned big integer)
 
 ## packages
 * tailwindcss/tailwindui
