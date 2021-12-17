@@ -37,7 +37,7 @@ class PermissionSeeder extends Seeder
         ]);
 
         // modules
-        $modules = Module::whereNotIn('name', ['Photo Grid'])->get();
+        $modules = Module::all();
 
         foreach($modules as $module)
         {
@@ -51,6 +51,10 @@ class PermissionSeeder extends Seeder
 
             Permission::firstOrCreate([
                 'name' => 'view '. strtolower($module->name)
+            ]);
+
+            Permission::firstOrCreate([
+                'name' => 'reorder '. strtolower($module->name)
             ]);
         }
 

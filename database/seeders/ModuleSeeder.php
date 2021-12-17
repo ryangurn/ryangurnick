@@ -39,6 +39,12 @@ class ModuleSeeder extends Seeder
             'link' => '/photos',
             'link_text' => 'checkout my photos!'
         ];
+        $about->permissions = [
+              'edit' => 'edit about card',
+              'delete' => 'delete about card',
+              'view' => 'view about card',
+              'reorder' => 'reorder about card',
+        ];
         $about->save();
 
         // project card
@@ -63,6 +69,12 @@ class ModuleSeeder extends Seeder
                 ['project' => 'emu visitor estimate', 'status' => 'archived'],
             ]
         ];
+        $project->permissions = [
+            'edit' => 'edit projects card',
+            'delete' => 'delete projects card',
+            'view' => 'view projects card',
+            'reorder' => 'reorder projects card',
+        ];
         $project->save();
 
         // quotes card
@@ -81,6 +93,12 @@ class ModuleSeeder extends Seeder
                 ['quote' => 'Stay hungry, stay foolish', 'author' => 'steve jobs'],
                 ['quote' => 'Just Watch', 'author' => 'ryan gurnick'],
             ]
+        ];
+        $quotes->permissions = [
+            'edit' => 'edit quotes card',
+            'delete' => 'delete quotes card',
+            'view' => 'view quotes card',
+            'reorder' => 'reorder quotes card',
         ];
         $quotes->save();
 
@@ -102,6 +120,12 @@ class ModuleSeeder extends Seeder
                 <p class="pb-2">This page is a continual work in progress. Please bare with me as I shake out the method to this madness. Once this page is complete, so is my time with instagram.</p>
 
                 <p class="pb-2">I hope you enjoy!</p>'
+        ];
+        $gallery->permissions = [
+            'edit' => 'edit gallery card',
+            'delete' => 'delete gallery card',
+            'view' => 'view gallery card',
+            'reorder' => 'reorder gallery card',
         ];
         $gallery->save();
 
@@ -141,6 +165,12 @@ class ModuleSeeder extends Seeder
         $grid->examples = [
             'gallery_id' => $gall->id
         ];
+        $grid->permissions = [
+            'edit' => 'edit photo grid',
+            'delete' => 'delete photo grid',
+            'view' => 'view photo grid',
+            'reorder' => 'reorder photo grid',
+        ];
         $grid->save();
 
         // resume page
@@ -155,6 +185,12 @@ class ModuleSeeder extends Seeder
         ];
         $goals->examples = [
             'body' => 'i am working to further my knowledge in computer science and other computer-related areas in preparation for a career in software development, computer information systems, cybersecurity. over the past couple of years, i have strived to learn the more formal side to computer science, and i wish to continue developing new technologies that find truth in the fundamentals.'
+        ];
+        $goals->permissions = [
+            'edit' => 'edit goals card',
+            'delete' => 'delete goals card',
+            'view' => 'view goals card',
+            'reorder' => 'reorder goals card',
         ];
         $goals->save();
 
@@ -225,6 +261,12 @@ class ModuleSeeder extends Seeder
                 ],
             ]
         ];
+        $skills->permissions = [
+            'edit' => 'edit skills card',
+            'delete' => 'delete skills card',
+            'view' => 'view skills card',
+            'reorder' => 'reorder skills card',
+        ];
         $skills->save();
 
         // computer skills card
@@ -247,6 +289,12 @@ class ModuleSeeder extends Seeder
                 'setting up and operating sound systems',
             ]
         ];
+        $computer_skills->permissions = [
+            'edit' => 'edit computer skills card',
+            'delete' => 'delete computer skills card',
+            'view' => 'view computer skills card',
+            'reorder' => 'reorder computer skills card',
+        ];
         $computer_skills->save();
 
         // software card
@@ -260,6 +308,12 @@ class ModuleSeeder extends Seeder
         ];
         $software->examples = [
             'body' => 'most development tools for programming, and devops tools.'
+        ];
+        $software->permissions = [
+            'edit' => 'edit software card',
+            'delete' => 'delete software card',
+            'view' => 'view software card',
+            'reorder' => 'reorder software card',
         ];
         $software->save();
 
@@ -282,6 +336,12 @@ class ModuleSeeder extends Seeder
                 'macos'
             ],
         ];
+        $operating->permissions = [
+            'edit' => 'edit operating system proficiency card',
+            'delete' => 'delete operating system proficiency card',
+            'view' => 'view operating system proficiency card',
+            'reorder' => 'reorder operating system proficiency card',
+        ];
         $operating->save();
 
         // cyber security card
@@ -295,6 +355,12 @@ class ModuleSeeder extends Seeder
         ];
         $cyber->examples = [
             'body' => 'advanced penetration testing for computer systems, api’s, infrastructure and operating system level security expert.'
+        ];
+        $cyber->permissions = [
+            'edit' => 'edit cyber security card',
+            'delete' => 'delete cyber security card',
+            'view' => 'view cyber security card',
+            'reorder' => 'reorder cyber security card',
         ];
         $cyber->save();
 
@@ -386,6 +452,12 @@ class ModuleSeeder extends Seeder
                 ],
             ]
         ];
+        $cs_experience->permissions = [
+            'edit' => 'edit computer science experience card',
+            'delete' => 'delete computer science experience card',
+            'view' => 'view computer science experience card',
+            'reorder' => 'reorder computer science experience card',
+        ];
         $cs_experience->save();
 
         // event services experience
@@ -427,6 +499,12 @@ class ModuleSeeder extends Seeder
                     'body' => 'Responsible for helping to setup and operate 4 clusters of wideline speaker arrays, along with Allen & Heath sound-boards',
                 ],
             ]
+        ];
+        $es_experience->permissions = [
+            'edit' => 'edit event services experience card',
+            'delete' => 'delete event services experience card',
+            'view' => 'view event services experience card',
+            'reorder' => 'reorder event services experience card',
         ];
         $es_experience->save();
 
@@ -470,6 +548,12 @@ class ModuleSeeder extends Seeder
                     'body' => 'Participant in a program for high school students to learn how to secure networks and computers to prevent hacking and malicious attacks based on national and international standards. The program teaches students cyber security through the use of virtualized systems such as VMWare and other testing software. The goal is to provide a realistic environment where cyber security standards are ignored and learn to secure a vulnerable environment. Semi-finalist in 2013 competition',
                 ],
             ]
+        ];
+        $education->permissions = [
+            'edit' => 'edit education card',
+            'delete' => 'delete education card',
+            'view' => 'view education card',
+            'reorder' => 'reorder education card',
         ];
         $education->save();
 
@@ -515,6 +599,12 @@ class ModuleSeeder extends Seeder
                 ],
             ]
         ];
+        $committee->permissions = [
+            'edit' => 'edit committee work card',
+            'delete' => 'delete committee work card',
+            'view' => 'view committee work card',
+            'reorder' => 'reorder committee work card',
+        ];
         $committee->save();
 
         $text = Module::firstOrNew([
@@ -531,6 +621,12 @@ class ModuleSeeder extends Seeder
             'header' => 'text card',
             'body' => 'This is a text card, you can put these anywhere and the content on one is not tied to the content on another!'
         ];
+        $text->permissions = [
+            'edit' => 'edit text card',
+            'delete' => 'delete text card',
+            'view' => 'view text card',
+            'reorder' => 'reorder text card',
+        ];
         $text->save();
 
         $contact = Module::firstOrNew([
@@ -544,6 +640,12 @@ class ModuleSeeder extends Seeder
         ];
         $contact->examples = [
             'header' => 'contact',
+        ];
+        $contact->permissions = [
+            'edit' => 'edit contact card',
+            'delete' => 'delete contact card',
+            'view' => 'view contact card',
+            'reorder' => 'reorder contact card',
         ];
         $contact->save();
 
@@ -562,6 +664,12 @@ class ModuleSeeder extends Seeder
             'header' => 'welcome!',
             'description' => 'this is a header, what fun!',
             'color' => 'light'
+        ];
+        $header->permissions = [
+            'edit' => 'edit header',
+            'delete' => 'delete header',
+            'view' => 'view header',
+            'reorder' => 'reorder header',
         ];
         $header->save();
 
@@ -583,6 +691,12 @@ class ModuleSeeder extends Seeder
             ],
             'header' => 'demo stats'
         ];
+        $stats->permissions = [
+            'edit' => 'edit stats',
+            'delete' => 'delete stats',
+            'view' => 'view stats',
+            'reorder' => 'reorder stats',
+        ];
         $stats->save();
 
         $hero = Module::firstOrNew([
@@ -602,6 +716,12 @@ class ModuleSeeder extends Seeder
             'body' => 'What a great hero he is!?',
             'image' => 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100',
             'links' => [['value' => 'click me!', 'link' => 'https://ryangurnick.test/']]
+        ];
+        $hero->permissions = [
+            'edit' => 'edit hero',
+            'delete' => 'delete hero',
+            'view' => 'view hero',
+            'reorder' => 'reorder hero',
         ];
         $hero->save();
     }
