@@ -19,11 +19,13 @@ class Module extends Model
         'examples',
         'component',
         'edit_component',
+        'permissions'
     ];
 
     protected $casts = [
         'parameters' => 'array',
-        'examples' => 'array'
+        'examples' => 'array',
+        'permissions' => 'array'
     ];
 
     public function page_modules()
