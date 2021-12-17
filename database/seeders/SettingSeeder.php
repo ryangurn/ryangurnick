@@ -84,7 +84,10 @@ class SettingSeeder extends Seeder
         $site_logo = Setting::firstOrNew([
             'key' => 'application.logo'
         ]);
-        $site_logo->value = '';
+        if ($site_logo->value == "")
+        {
+            $site_logo->value = '';
+        }
         $site_logo->save();
 
         /*
