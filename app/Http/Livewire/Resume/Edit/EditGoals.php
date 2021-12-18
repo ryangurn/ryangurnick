@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Resume\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -16,6 +18,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class EditGoals extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the page_module model reference that will be
      * used as a reference to update the page_modules
@@ -60,9 +68,13 @@ class EditGoals extends ModalComponent
      * the function that when called will save the new
      * edited values submitted to the component.
      * @return void
+     * @throws AuthorizationException
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         // validate the request
         $this->validate();
 
