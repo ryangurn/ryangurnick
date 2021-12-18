@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire\Core;
 
+use App\Models\Module;
 use App\Models\PageModule;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -18,6 +21,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class ChangeOrder extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the page_module model reference that will be
      * used as a reference to update the page_modules
@@ -57,9 +66,16 @@ class ChangeOrder extends ModalComponent
      * method that is called when the user is ready
      * to have the value changed.
      * @return void
+     * @throws AuthorizationException
      */
     public function save()
     {
+        // get the module
+        $module = Module::where('id', $this->page_module['module_id'])->first();
+
+        // verify authorization
+        $this->authorize($module->permissions['reorder']);
+
         // validate the request first.
         $this->validate();
 

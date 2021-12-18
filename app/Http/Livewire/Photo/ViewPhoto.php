@@ -11,6 +11,7 @@ use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -20,6 +21,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class ViewPhoto extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the page_module model reference that will be
      * used as a reference to update the page_modules
@@ -112,6 +119,8 @@ class ViewPhoto extends ModalComponent
      */
     public function react(Reaction $reaction)
     {
+        $this->authorize('react to photo');
+
         // grab the first reaction that meets the criteria
         // or create a new instance of the model
         $react = GalleryReaction::firstOrNew([
@@ -155,6 +164,8 @@ class ViewPhoto extends ModalComponent
      */
     public function comment()
     {
+        $this->authorize('comment on photo');
+
         // verify that there are no bad-words present.
         $explode = explode(" ", $this->comment);
         foreach($explode as $e)
