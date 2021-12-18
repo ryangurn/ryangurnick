@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\Core;
 
 use App\Models\ModuleParameter;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
@@ -18,6 +20,12 @@ use Livewire\Component;
  */
 class CardFooter extends Component
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * determine if authentication is required
      * for the card footer to show, by default
@@ -130,9 +138,12 @@ class CardFooter extends Component
      * method that is called to enable the module on a
      * specific page.
      * @return void
+     * @throws AuthorizationException
      */
     public function enable()
     {
+        $this->authorize($this->page_module->module->permissions['edit']);
+
         // change the enabled value to true & save.
         $this->page_module->enabled = true;
         $this->page_module->save();
@@ -147,9 +158,12 @@ class CardFooter extends Component
      * method that is called to disable the module on a
      * specific page.
      * @return void
+     * @throws AuthorizationException
      */
     public function disable()
     {
+        $this->authorize($this->page_module->module->permissions['edit']);
+
         // change the enabled value to false & save.
         $this->page_module->enabled = false;
         $this->page_module->save();
@@ -165,9 +179,12 @@ class CardFooter extends Component
      * a specific page, this will permanently remove
      * the module from the page_modules table.
      * @return void
+     * @throws AuthorizationException
      */
     public function delete()
     {
+        $this->authorize($this->page_module->module->permissions['delete']);
+
         // check if the module is dynamic
         if ($this->page_module->module->dynamic)
         {
