@@ -32,6 +32,7 @@
                                 <div class="absolute inset-0 px-4 sm:px-6">
                                     <div class="accordion accordion-flush">
                                         <div class="text-xs border border-dashed border-black rounded-lg p-2 text-red-800">this information is only editable by adjusting the various configuration files for the application, unfortunately is not changable through this web interface.</div>
+                                        @can('view application information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
                                             <svg class="mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -92,7 +93,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view logging information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">
                                             <svg class="mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -127,7 +130,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view database information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
                                             <svg class="mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -201,7 +206,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view driver information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
                                             <svg class="mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -288,7 +295,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view memcached information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
                                             <svg class="mr-1.5 h-2 w-2 text-blue-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -310,7 +319,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view redis information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
                                             <svg class="mr-1.5 h-2 w-2 text-indigo-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -345,7 +356,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view mail information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">
                                             <svg class="mr-1.5 h-2 w-2 text-purple-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -445,7 +458,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view misc information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-pink-100 text-pink-800">
                                             <svg class="mr-1.5 h-2 w-2 text-pink-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -480,7 +495,9 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        @endcan
 
+                                        @can('view file system information')
                                         <span class="mt-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
                                             <svg class="mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewBox="0 0 8 8">
                                                 <circle cx="4" cy="4" r="3" />
@@ -539,6 +556,7 @@
                                                 @endforeach
                                             @endif
                                         </ul>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
