@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -17,6 +18,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class EditProject extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the page_module model reference that will be
      * used as a reference to update the page_modules
@@ -99,6 +106,9 @@ class EditProject extends ModalComponent
      */
     public function add()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         $this->messages();
         $this->projects[] = ['project' => '', 'status' => 'archived'];
     }
@@ -112,6 +122,9 @@ class EditProject extends ModalComponent
      */
     public function remove($i)
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         unset($this->projects[$i]);
         $this->check();
     }
@@ -123,6 +136,9 @@ class EditProject extends ModalComponent
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         // validate the request
         $this->validate();
 

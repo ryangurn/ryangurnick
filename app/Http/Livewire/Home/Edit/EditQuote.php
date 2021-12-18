@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
@@ -17,6 +18,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class EditQuote extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the page_module model reference that will be
      * used as a reference to update the page_modules
@@ -97,6 +104,9 @@ class EditQuote extends ModalComponent
      */
     public function add()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         $this->messages();
         $this->quotes[] = ['quote' => '', 'author' => ''];
     }
@@ -110,6 +120,9 @@ class EditQuote extends ModalComponent
      */
     public function remove($i)
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         unset($this->quotes[$i]);
         $this->check();
     }
@@ -121,6 +134,9 @@ class EditQuote extends ModalComponent
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         // validate the request
         $this->validate();
 

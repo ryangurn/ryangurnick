@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
@@ -19,6 +20,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class EditAbout extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * Allowing for file uploads within the modal
      */
@@ -101,6 +108,9 @@ class EditAbout extends ModalComponent
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize($this->module->permissions['edit']);
+
         // validate the request
         $this->validate();
         // grab module parameters and update
