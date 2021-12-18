@@ -11,7 +11,7 @@
 
         <x-slot name="subBody">
             @auth
-                <livewire:core.card-footer :menu_options="[['value' => 'edit gallery', 'modal' => 'photo.edit.edit-gallery-data', 'parameters' => ['page_module' => $page_module, 'gallery_id' => $gallery_id, 'name' => $gallery->name, 'description' => $gallery->description]]]" :page_module="$page_module" :show_timestamp="false" modal="photo.add.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add photo" />
+                <livewire:core.card-footer :menu_options="[['value' => 'edit gallery', 'modal' => 'photo.edit.edit-gallery-data', 'parameters' => ['page_module' => $page_module, 'gallery_id' => $gallery_id, 'name' => $gallery->name, 'description' => $gallery->description]]]" :page_module="$page_module" :show_timestamp="false" modal="photo.add.add-grid" :modal_parameters="['page_module' => $page_module, 'gallery_id' => $gallery_id]" button_text="add photo" :show_menu="true" />
             @endauth
         </x-slot>
     </x-card>
@@ -30,9 +30,9 @@
                      x-transition:leave="transition ease-in duration-300"
                      x-transition:leave-start="opacity-100 transform scale-100"
                      x-transition:leave-end="opacity-0 transform scale-90" class="flex flex-col content-center justify-center m-auto absolute inset-0 mr-2">
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.view-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="view" />
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" />
-                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.view-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="view" :page_module="$page_module" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" :modal="$page_module->module->edit_component" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" :page_module="$page_module" />
+                    <livewire:core.card-footer :duration="$updated_at" :show_timestamp="false" modal="photo.remove.remove-grid-photo" :modal_parameters="['photo_id' => $photo->id, 'page_module' => $page_module]" button_text="remove" :page_module="$page_module" />
                 </div>
                 <img class="object-cover shadow-lg rounded-lg" src="{{ $photo->image->file }}" alt="">
                 @if (!$user_reactions->isEmpty() && $allow_reactions)
@@ -53,7 +53,7 @@
             <div class="space-y-2">
               <ul role="list" class="flex space-x-5">
                 <li>
-                  <livewire:core.footer-metadata :duration="$updated_at" />
+                  <livewire:core.footer-metadata :duration="$updated_at" :page_module="$page_module" />
                 </li>
               </ul>
             </div>
