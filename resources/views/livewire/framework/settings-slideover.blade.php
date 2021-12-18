@@ -30,6 +30,7 @@
                             </div>
                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                 <div class="grid grid-cols-1 space-y-6 inset-0 px-4 sm:px-6">
+                                    @can('view maintenance settings')
                                     <div class="pb-2">
                                         <div class="flex items-center justify-between">
                                             <span class="flex-grow flex flex-col">
@@ -41,14 +42,18 @@
                                             </button>
                                         </div>
 
+                                        @can('update maintenance settings')
                                         <div>
                                             <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_maintenance">
                                                 save maintenance
                                             </button>
                                         </div>
+                                        @endcan
 
                                     </div>
+                                    @endcan
 
+                                    @can('view logo settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
@@ -60,11 +65,15 @@
                                             <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">site logo</label>
                                             <input type="file" wire:model="sitelogo" />
                                         </div>
+                                        @can('update maintenance settings')
                                         <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_sitelogo">
                                             save site logo
                                         </button>
+                                        @endcan
                                     </div>
+                                    @endcan
 
+                                    @can('view name settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
@@ -76,11 +85,15 @@
                                             <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">site title</label>
                                             <input type="text" name="name" id="name" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="site title" wire:model="sitename">
                                         </div>
+                                        @can('update name settings')
                                         <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_sitename">
                                             save site title
                                         </button>
+                                        @endcan
                                     </div>
+                                    @endcan
 
+                                    @can('view contact settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
@@ -98,11 +111,15 @@
                                                 <input type="text" name="job-title" id="job-title" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="name@example.com" wire:model="contact_from">
                                             </div>
                                         </div>
+                                        @can('update contact settings')
                                         <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_contact">
                                             save contact
                                         </button>
+                                        @endcan
                                     </div>
+                                    @endcan
 
+                                    @can('view gallery settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
@@ -145,12 +162,15 @@
                                                 <span aria-hidden="true" class="{{ ($gallery_bad_words) ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
                                             </button>
                                         </div>
-
+                                        @can('update gallery settings')
                                         <button type="submit" class="mt-4 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_gallery">
                                             save gallery
                                         </button>
+                                        @endcan
                                     </div>
+                                    @endcan
 
+                                    @can('view footer settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">
                                             <span class="flex-grow flex flex-col">
@@ -192,6 +212,7 @@
                                         </div>
                                         @endforeach
                                     @endif
+                                        @can('update footer settings')
                                         <div class="col-span-7">
                                             <button type="submit" class="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save_footer">
                                                 save footer
@@ -200,7 +221,9 @@
                                                 + add footer link
                                             </button>
                                         </div>
+                                        @endcan
                                     </div>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

@@ -4,15 +4,17 @@ namespace App\Http\Livewire\Framework;
 
 use App\Models\Image;
 use App\Models\Setting;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 /**
- * SettingsSliceover is a livewire component that
+ * SettingsSlideover is a livewire component that
  * provides a slideover interface for the user to
  * view and modify system settings. Its aim is to
  * provide a visual method for modifying application
@@ -20,6 +22,12 @@ use Livewire\WithFileUploads;
  */
 class SettingsSlideover extends Component
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * This component utilizes file uploads.
      */
@@ -164,9 +172,13 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save the site name.
      * @return void
+     * @throws AuthorizationException
      */
     public function save_sitename()
     {
+        // verify authorization
+        $this->authorize('update name settings');
+
         // save the site name
         $sitename = Setting::firstOrNew(['key' => 'application.sitename']);
         $sitename->value = $this->sitename;
@@ -180,9 +192,13 @@ class SettingsSlideover extends Component
      * the function that when called will save the contact
      * information.
      * @return void
+     * @throws AuthorizationException
      */
     public function save_contact()
     {
+        // verify authorization
+        $this->authorize('update contact settings');
+
         // grab the subject setting and update it
         $subject = Setting::where('key', '=', 'contact.subject')->first();
         $subject->value = $this->contact_subject;
@@ -201,6 +217,7 @@ class SettingsSlideover extends Component
      * the function that when called will check if
      * the footer links are empty and add one row.
      * @return void
+     * @throws AuthorizationException
      */
     public function check_footer()
     {
@@ -214,9 +231,13 @@ class SettingsSlideover extends Component
      * the function that when called will add
      * a new row to the footer_links array
      * @return void
+     * @throws AuthorizationException
      */
     public function add_footer()
     {
+        // verify authorization
+        $this->authorize('update contact settings');
+
         // add a new row
         $this->footer_links[] = [
             'type' => 'github',
@@ -230,9 +251,13 @@ class SettingsSlideover extends Component
      * on the index position $i
      * @param $i
      * @return void
+     * @throws AuthorizationException
      */
     public function remove_footer($i)
     {
+        // verify authorization
+        $this->authorize('update contact settings');
+
         // unset the index and check if the
         // array is empty
         unset($this->footer_links[$i]);
@@ -243,9 +268,13 @@ class SettingsSlideover extends Component
      * the function that when called will save the footer
      * content.
      * @return void
+     * @throws AuthorizationException
      */
     public function save_footer()
     {
+        // verify authorization
+        $this->authorize('update footer settings');
+
         // loop through each of the footer links and check
         // if the type or link is empty
         foreach($this->footer_links as $key => $links)
@@ -275,9 +304,13 @@ class SettingsSlideover extends Component
      * the function that when called will save
      * the maintenance mode.
      * @return void
+     * @throws AuthorizationException
      */
     public function save_maintenance()
     {
+        // verify authorization
+        $this->authorize('update maintenance settings');
+
         // update and save the application's maintenance mode.
         $maintenance = Setting::firstOrNew(['key' => 'application.maintenance']);
         $maintenance->value = $this->maintenance;
@@ -290,9 +323,13 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save the site logo
      * @return void
+     * @throws AuthorizationException
      */
     public function save_sitelogo()
     {
+        // verify authorization
+        $this->authorize('update logo settings');
+
         // check if the uploaded image is not null
         if ($this->sitelogo != null)
         {
@@ -322,9 +359,13 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save the gallery settings
      * @return void
+     * @throws AuthorizationException
      */
     public function save_gallery()
     {
+        // verify authorization
+        $this->authorize('update gallery settings');
+
         // update and save the setting allowing reactions for galleries
         $allow_reactions = Setting::firstOrNew(['key' => 'gallery.allow_reactions']);
         $allow_reactions->value = $this->gallery_allow_reactions;
