@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Home\Edit;
 
 use App\Models\PageModule;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -103,6 +104,7 @@ class EditProject extends ModalComponent
      * this function when called will recalculate the validation
      * messages and add a project with some default values.
      * @return void
+     * @throws AuthorizationException
      */
     public function add()
     {
@@ -119,6 +121,7 @@ class EditProject extends ModalComponent
      * least one project.
      * @param $i
      * @return void
+     * @throws AuthorizationException
      */
     public function remove($i)
     {
@@ -133,6 +136,7 @@ class EditProject extends ModalComponent
      * the function that when called will save the new
      * values in the about component.
      * @return void
+     * @throws AuthorizationException
      */
     public function save()
     {
