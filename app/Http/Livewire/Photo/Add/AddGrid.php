@@ -102,6 +102,9 @@ class AddGrid extends ModalComponent
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize('add photo');
+
         // validate the request
         $this->validate();
 

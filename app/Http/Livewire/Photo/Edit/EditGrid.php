@@ -5,9 +5,11 @@ namespace App\Http\Livewire\Photo\Edit;
 use App\Models\GalleryImage;
 use App\Models\PageModule;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
@@ -18,6 +20,12 @@ use LivewireUI\Modal\ModalComponent;
  */
 class EditGrid extends ModalComponent
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * Allowing for file uploads within the modal
      */
@@ -104,9 +112,13 @@ class EditGrid extends ModalComponent
      * the function that when called will save the new
      * values in the about component.
      * @return void
+     * @throws AuthorizationException
      */
     public function save()
     {
+        // verify authorization
+        $this->authorize('edit photo');
+
         // validate the request
         $this->validate();
 
