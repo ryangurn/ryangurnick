@@ -133,5 +133,30 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate([
             'name' => 'associate permissions'
         ]);
+
+        // banner
+        // page
+        Permission::firstOrCreate([
+            'name' => 'add page'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'delete page'
+        ]);
+
+        // menu
+        Permission::firstOrCreate([
+            'name' => 'edit menu'
+        ]);
+
+        // module
+        Permission::firstOrCreate([
+            'name' => 'add module'
+        ]);
+
+        // gallery
+        Permission::firstOrCreate([
+            'name' => 'add gallery'
+        ]);
     }
 }
