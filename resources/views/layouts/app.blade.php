@@ -12,11 +12,13 @@
             </svg>
         </a>
         @auth
+            @can('view site analytics')
             <a href="#" onclick="Livewire.emit('openModal', 'framework.analytics')" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm9 4a1 1 0 10-2 0v6a1 1 0 102 0V7zm-3 2a1 1 0 10-2 0v4a1 1 0 102 0V9zm-3 3a1 1 0 10-2 0v1a1 1 0 102 0v-1z" clip-rule="evenodd" />
                 </svg>
             </a>
+            @endcan
             @can('view emails')
             <a href="#" onclick="Livewire.emitTo('framework.email-slideover', 'show')" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

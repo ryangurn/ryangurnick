@@ -1,3 +1,4 @@
+@can('view site analytics')
 <div>
     <dl class="grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-x divide-gray-200 md:grid-cols-3 md:divide-y md:divide-x">
         @if (!$pages->isEmpty())
@@ -28,3 +29,4 @@
         @endif
     </dl>
 </div>
+@endcan
