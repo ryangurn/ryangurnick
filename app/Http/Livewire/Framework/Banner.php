@@ -10,9 +10,11 @@ use App\Models\PageModule;
 use App\Models\PageNavigation;
 use App\Models\PageType;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -27,6 +29,12 @@ use function view;
  */
 class Banner extends Component
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the toggle to determine if the banner shows
      * when a user is logged in or not.
@@ -137,9 +145,13 @@ class Banner extends Component
      * the function that when called will add
      * a new page using the $page variable.
      * @return void
+     * @throws AuthorizationException
      */
     public function add_page()
     {
+        // verify authorization
+        $this->authorize('add page');
+
         // get the standard page type
         $standard = PageType::where('name', '=', 'standard')->first();
 
@@ -162,9 +174,13 @@ class Banner extends Component
      * the function that when called will
      * add a module to the current page.
      * @return void
+     * @throws AuthorizationException
      */
     public function add_module()
     {
+        // verify authorization
+        $this->authorize('add module');
+
         // get the module using the id
         $module = Module::where('id', '=', $this->module_id)->first();
 
@@ -204,9 +220,13 @@ class Banner extends Component
      * the function that when called will add a page to the
      * menu using $menu_id
      * @return void
+     * @throws AuthorizationException
      */
     public function add_menu()
     {
+        // verify authorization
+        $this->authorize('edit menu');
+
         // add the page to the menu
         PageNavigation::create([
             'page_id' => $this->menu_id,
@@ -220,9 +240,13 @@ class Banner extends Component
     /**
      * the function that when called will delete a page.
      * @return void
+     * @throws AuthorizationException
      */
     public function delete_page()
     {
+        // verify authorization
+        $this->authorize('delete page');
+
         // first delete any menu references
         PageNavigation::where('page_id', '=', $this->page_id)->delete();
 
