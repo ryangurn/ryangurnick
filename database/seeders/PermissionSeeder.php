@@ -112,5 +112,26 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate([
             'name' => 'access telescope'
         ]);
+
+        // access controls
+        Permission::firstOrCreate([
+            'name' => 'view access controls'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'add roles'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'delete roles'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'update roles'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'associate permissions'
+        ]);
     }
 }

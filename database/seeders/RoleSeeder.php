@@ -30,6 +30,9 @@ class RoleSeeder extends Seeder
             ->where('name', 'NOT LIKE', '%emails')
             ->where('name', 'NOT LIKE', '%analytics')
             ->where('name', 'NOT LIKE', '%comment')
+            ->where('name', 'NOT LIKE', '%access controls')
+            ->where('name', 'NOT LIKE', '%roles')
+            ->where('name', 'NOT LIKE', '%permissions')
             ->get());
 
         // moderator
