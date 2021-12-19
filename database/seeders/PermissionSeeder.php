@@ -107,5 +107,10 @@ class PermissionSeeder extends Seeder
         Permission::firstOrCreate([
             'name' => 'update comment'
         ]);
+
+        // telescope
+        Permission::firstOrCreate([
+            'name' => 'access telescope'
+        ]);
     }
 }
