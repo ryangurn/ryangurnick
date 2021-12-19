@@ -6,6 +6,7 @@ use App\Models\Email;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 
@@ -18,6 +19,12 @@ use Livewire\Component;
  */
 class EmailSlideover extends Component
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the listeners variable is the livewire method
      * for binding events to a function for use within
@@ -77,6 +84,9 @@ class EmailSlideover extends Component
      */
     public function read(Email $email)
     {
+        // verify authorization
+        $this->authorize('read emails');
+
         $email->read = true;
         $email->save();
 

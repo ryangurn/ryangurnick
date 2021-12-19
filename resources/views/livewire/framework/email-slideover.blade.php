@@ -1,3 +1,4 @@
+@can('view emails')
 <div x-data="{show: @entangle('show')}">
     <div x-show="show" class="fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
         <div class="absolute inset-0 overflow-hidden">
@@ -54,9 +55,11 @@
                                                 <div x-show="show_{{ $email->id }}" class="accordion-collapse border-0 collapse show">
                                                     <div class="accordion-body py-4 px-5">
                                                         <iframe class="w-full h-100" src="{{ route('mailable', $email) }}"></iframe>
+                                                        @can('read emails')
                                                         <a href="#" wire:click="read({{ $email->id }})" class="mt-4 inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-yellow-100 text-yellow-800">
                                                             mark as read
                                                         </a>
+                                                        @endcan
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,3 +86,4 @@
         </div>
     </div>
 </div>
+@endcan
