@@ -38,6 +38,8 @@ class RoleSeeder extends Seeder
         ]);
         $moderator->givePermissionTo(Permission::where('name', 'LIKE', '%comment')
             ->get());
+        $moderator->givePermissionTo(Permission::where('name', 'react to photo')->get());
+        $moderator->givePermissionTo(Permission::where('name', 'comment on photo')->get());
 
         // photographer
         $photographer = Role::firstOrCreate([
@@ -51,5 +53,14 @@ class RoleSeeder extends Seeder
         $blogger = Role::firstOrCreate([
             'name' => 'Blogger'
         ]);
+        $blogger->givePermissionTo(Permission::where('name', 'react to photo')->get());
+        $blogger->givePermissionTo(Permission::where('name', 'comment on photo')->get());
+
+        // standard user
+        $user = Role::firstOrCreate([
+            'name' => 'User'
+        ]);
+        $user->givePermissionTo(Permission::where('name', 'react to photo')->get());
+        $user->givePermissionTo(Permission::where('name', 'comment on photo')->get());
     }
 }
