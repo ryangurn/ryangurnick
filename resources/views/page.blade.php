@@ -37,5 +37,6 @@
     <livewire:framework.settings-slideover />
     <livewire:framework.configuration-slideover />
     <livewire:framework.access-slideover />
+    <livewire:framework.user-slideover />
     @endauth
 </x-app-layout>
