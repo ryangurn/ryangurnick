@@ -1,3 +1,4 @@
+@can('view access controls')
 <div class="shadow sm:rounded-md sm:overflow-hidden" x-data>
     <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
         <div>
@@ -34,3 +35,4 @@
         </button>
     </div>
 </div>
+@endcan
