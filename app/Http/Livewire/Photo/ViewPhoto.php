@@ -8,6 +8,7 @@ use App\Models\GalleryImage;
 use App\Models\GalleryReaction;
 use App\Models\Reaction;
 use App\Models\Setting;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -116,6 +117,7 @@ class ViewPhoto extends ModalComponent
      * a reaction for the given image.
      * @param Reaction $reaction
      * @return void
+     * @throws AuthorizationException
      */
     public function react(Reaction $reaction)
     {
@@ -161,6 +163,7 @@ class ViewPhoto extends ModalComponent
      * this function when called will add a comment
      * to the specific image being viewed.
      * @return void
+     * @throws AuthorizationException
      */
     public function comment()
     {
