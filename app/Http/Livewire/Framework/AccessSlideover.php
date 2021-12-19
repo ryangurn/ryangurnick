@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Framework;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
@@ -20,6 +22,12 @@ use Spatie\Permission\Models\Role;
  */
 class AccessSlideover extends Component
 {
+    /**
+     * Provide authorization functionality for permissions
+     * verification.
+     */
+    use AuthorizesRequests;
+
     /**
      * the listeners variable is the livewire method
      * for binding events to a function for use within
@@ -78,8 +86,19 @@ class AccessSlideover extends Component
         $this->permissions = Permission::all();
     }
 
+    /**
+     * function that when called will remove a permission from
+     * a specific role.
+     * @param Role $role
+     * @param Permission $permission
+     * @return void
+     * @throws AuthorizationException
+     */
     public function remove(Role $role, Permission $permission)
     {
+        // verify authorization
+        $this->authorize('associate permissions');
+
         $role->revokePermissionTo($permission);
 
         // redirect to show updated changes
