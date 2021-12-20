@@ -28,7 +28,7 @@ class Page extends Model
 
     public function page_type()
     {
-        return $this->hasOne(PageType::class);
+        return $this->hasOne(PageType::class, 'id', 'type_id');
     }
 
     public function page_navigations()

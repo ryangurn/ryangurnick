@@ -42,4 +42,9 @@ class Module extends Model
     {
         return $this->hasMany(ModuleParameter::class);
     }
+
+    public function page_type_module()
+    {
+        return $this->hasMany(PageTypeModule::class, 'module_id', 'id');
+    }
 }
