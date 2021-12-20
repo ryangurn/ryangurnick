@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Module;
+use App\Models\PageTypeModule;
 use Illuminate\Database\Seeder;
 use App\Models\PageType;
 
@@ -15,21 +17,30 @@ class PageTypeSeeder extends Seeder
     public function run()
     {
         // standard
-        $standard = PageType::firstOrNew([
+        $standard = PageType::firstOrCreate([
             'name' => 'standard',
         ]);
-        $standard->save();
 
-        // gallery
-        $gallery = PageType::firstOrNew([
-            'name' => 'gallery'
-        ]);
-        $gallery->save();
+        foreach(Module::where('component', 'NOT LIKE', 'blog.%')->get() as $module)
+        {
+            PageTypeModule::firstOrCreate([
+                'type_id' => $standard->id,
+                'module_id' => $module->id
+            ]);
+        }
 
-        // resume
-        $resume = PageType::firstOrNew([
-            'name' => 'resume'
+
+        // blog
+        $blog = PageType::firstOrCreate([
+            'name' => 'blog'
         ]);
-        $resume->save();
+
+        foreach(Module::where('component', 'LIKE', 'blog.%')->orWhere('component', 'LIKE', 'core.%')->get() as $module)
+        {
+            PageTypeModule::firstOrCreate([
+                'type_id' => $blog->id,
+                'module_id' => $module->id
+            ]);
+        }
     }
 }
