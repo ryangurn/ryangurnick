@@ -27,16 +27,7 @@ class PageController extends Controller
         // handle the view statistics
         $this->handle_views($request, $page);
 
-        // get modules on page
-        $modules = $page->page_modules->sortBy('order');
-
-        // get the main menu
-        $menu = PageNavigation::all();
-
-        // get the site title setting
-        $sitename = Setting::where('key', 'application.sitename')->first();
-
         // render the view
-        return view('page', compact('page', 'modules', 'menu', 'sitename'));
+        return $this->handle_page_template($page);
     }
 }
