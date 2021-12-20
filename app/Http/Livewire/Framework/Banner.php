@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\PageModule;
 use App\Models\PageNavigation;
 use App\Models\PageType;
+use App\Models\PageTypeModule;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
@@ -108,22 +109,35 @@ class Banner extends Component
     public $galleries;
 
     /**
+     * the array that stores all the allowed
+     * modules for a page type.
+     * @var
+     */
+    public $allowed_modules = [];
+
+    /**
      * function that is called when the livewire component is
      * initialized.
      * @return void
      */
     public function mount()
     {
+        // grab the modules for the page type
+        $type_modules = PageTypeModule::where('type_id', $this->page->type_id)->get();
+        foreach($type_modules as $module)
+        {
+            $this->allowed_modules[] = $module->module->component;
+        }
+
         // populate all the variables
         $this->auth = Auth::check();
-        $this->modules = Module::where('component', '!=', 'photo.photo-grid')->get()->sortBy('name');
+        $this->modules = Module::whereIn('component', $this->allowed_modules)->where('component', '!=', 'photo.photo-grid')->get()->sortBy('name');
         $this->pages = Page::all()->sortBy('name');
         $this->galleries = Gallery::all()->sortBy('name');
 
         $in_menu = PageNavigation::all()->pluck('page_id');
         $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
 
-        $this->module_id = Module::first()->id;
         $this->module_id = $this->pages->first()->id;
         if (!$this->menu_options->isEmpty())
         {
@@ -152,19 +166,38 @@ class Banner extends Component
         // verify authorization
         $this->authorize('add page');
 
-        // get the standard page type
-        $standard = PageType::where('name', '=', 'standard')->first();
+        if ($this->page_name != 'blog')
+        {
+            // get the standard page type
+            $standard = PageType::where('name', '=', 'standard')->first();
 
-        // add the page
-        $page = Page::create([
-            'type_id' => $standard->id,
-            'title' => $this->page_name,
-            'slug' => '/'.Str::slug($this->page_name),
-            'name' => Str::slug($this->page_name),
-            'controller' => 'App\Http\Controllers\PageController',
-            'method' => 'index',
-            'publish_date' => Carbon::now()
-        ]);
+            // add the page
+            $page = Page::create([
+                'type_id' => $standard->id,
+                'title' => $this->page_name,
+                'slug' => '/'.Str::slug($this->page_name),
+                'name' => Str::slug($this->page_name),
+                'controller' => 'App\Http\Controllers\PageController',
+                'method' => 'index',
+                'publish_date' => Carbon::now()
+            ]);
+        }
+        else
+        {
+            // get the standard page type
+            $blog = PageType::where('name', '=', 'blog')->first();
+
+            // add the page
+            $page = Page::create([
+                'type_id' => $blog->id,
+                'title' => $this->page_name,
+                'slug' => '/'.Str::slug($this->page_name),
+                'name' => Str::slug($this->page_name),
+                'controller' => 'App\Http\Controllers\PageController',
+                'method' => 'index',
+                'publish_date' => Carbon::now()
+            ]);
+        }
 
         // refresh the current page.
         $this->refresh();
