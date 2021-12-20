@@ -34,9 +34,8 @@
 
     <livewire:core.footer />
 
-    <livewire:framework.banner :page="$page" />
-
     @auth
+    <livewire:framework.banner :page="$page" />
     <livewire:framework.email-slideover />
     <livewire:framework.settings-slideover />
     <livewire:framework.configuration-slideover />
