@@ -724,5 +724,27 @@ class ModuleSeeder extends Seeder
             'reorder' => 'reorder hero',
         ];
         $hero->save();
+
+        $post = Module::firstOrNew([
+            'name' => 'Post',
+            'component' => 'blog.post',
+            'edit_component' => 'blog.edit.post'
+        ]);
+        $post->dynamic = true;
+        $post->parameters = [
+            'title' => 'required|string',
+            'body' => 'required|string'
+        ];
+        $post->examples = [
+            'title' => 'My First Post',
+            'body' => 'This is my first post and it is wonderful!'
+        ];
+        $post->permissions = [
+            'edit' => 'edit post',
+            'delete' => 'delete post',
+            'view' => 'view post',
+            'reorder' => 'reorder post'
+        ];
+        $post->save();
     }
 }
