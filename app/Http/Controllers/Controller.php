@@ -90,13 +90,6 @@ class Controller extends BaseController
         // get the site title setting
         $sitename = Setting::where('key', 'application.sitename')->first();
 
-        switch ($page->page_type->name) {
-            case 'blog':
-                return view('page', compact('page', 'modules', 'menu', 'sitename'));
-                break;
-            default:
-                return view('page', compact('page', 'modules', 'menu', 'sitename'));
-                break;
-        }
+        return view($page->page_type->view, compact('page', 'modules', 'menu', 'sitename'));
     }
 }
