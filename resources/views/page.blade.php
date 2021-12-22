@@ -16,7 +16,14 @@
     <div class="cards-container space-y-6 my-6">
         @if(!$modules->isEmpty())
             @foreach($modules as $module)
-                @livewire($module->module->component, ['page_module' => $module])
+                @if ($module->enabled)
+                    @livewire($module->module->component, ['page_module' => $module])
+                @endif
+
+                @if (!$module->enabled && Auth::check())
+                    @livewire($module->module->component, ['page_module' => $module])
+                @endif
+
             @endforeach
         @else
             <div class="relative block w-full border-2 border-gray-300 border-dashed rounded-lg p-12 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
