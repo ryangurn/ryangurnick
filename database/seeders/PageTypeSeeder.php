@@ -17,9 +17,11 @@ class PageTypeSeeder extends Seeder
     public function run()
     {
         // standard
-        $standard = PageType::firstOrCreate([
+        $standard = PageType::firstOrNew([
             'name' => 'standard',
         ]);
+        $standard->view = 'page';
+        $standard->save();
 
         foreach(Module::where('component', 'NOT LIKE', 'blog.%')->get() as $module)
         {
@@ -29,11 +31,12 @@ class PageTypeSeeder extends Seeder
             ]);
         }
 
-
         // blog
-        $blog = PageType::firstOrCreate([
+        $blog = PageType::firstOrNew([
             'name' => 'blog'
         ]);
+        $blog->view = 'blog';
+        $blog->save();
 
         foreach(Module::where('component', 'LIKE', 'blog.%')->orWhere('component', 'LIKE', 'core.%')->get() as $module)
         {

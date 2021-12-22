@@ -11,7 +11,8 @@ class PageType extends Model
     protected $table = 'page_types';
 
     protected $fillable = [
-        'name'
+        'name',
+        'view'
     ];
 
     public function pages()
