@@ -77,16 +77,14 @@ class Controller extends BaseController
     /**
      * handle the rendering of views based on page types.
      * @param Page $page
+     * @param $identifier
      * @return Application|Factory|View
      */
     public function handle_page_template(Page $page, $identifier)
     {
-        // get modules on page
-        $modules = $page->page_modules->sortBy('order');
-
         // get the site title setting
         $sitename = Setting::where('key', 'application.sitename')->first();
 
-        return view($page->page_type->view, compact('page', 'modules', 'sitename', 'identifier'));
+        return view($page->page_type->view, compact('page', 'sitename', 'identifier'));
     }
 }
