@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ $page->title . ' | ' }}{{ $sitename->value }}
+        <livewire:framework.site-title :page="$page" />
     </x-slot>
 
     <x-slot name="menu">
