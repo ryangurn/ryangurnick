@@ -14,6 +14,7 @@
     </x-slot>
 
     <div class="cards-container space-y-6 my-6">
+        {{ $identifier }}
         @if(!$modules->isEmpty())
             @foreach($modules as $module)
                 @if ($module->enabled)
