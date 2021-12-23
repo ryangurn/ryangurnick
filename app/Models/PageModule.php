@@ -26,6 +26,6 @@ class PageModule extends Model
 
     public function page()
     {
-        return $this->hasOne(Page::class);
+        return $this->hasOne(Page::class, 'id', 'page_id');
     }
 }

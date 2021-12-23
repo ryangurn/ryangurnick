@@ -23,7 +23,7 @@ class Page extends Model
 
     public function page_modules()
     {
-        return $this->hasMany(PageModule::class);
+        return $this->hasMany(PageModule::class, 'page_id', 'id');
     }
 
     public function page_type()
