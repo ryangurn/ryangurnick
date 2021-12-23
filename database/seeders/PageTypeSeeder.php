@@ -45,5 +45,20 @@ class PageTypeSeeder extends Seeder
                 'module_id' => $module->id
             ]);
         }
+
+        // post
+        $post = PageType::firstOrNew([
+            'name' => 'post'
+        ]);
+        $post->view = 'post';
+        $post->save();
+
+        foreach(Module::where('component', 'LIKE', 'core.%')->get() as $module)
+        {
+            PageTypeModule::firstOrCreate([
+                'type_id' => $post->id,
+                'module_id' => $module->id
+            ]);
+        }
     }
 }
