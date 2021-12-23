@@ -136,7 +136,7 @@ class Banner extends Component
         $this->galleries = Gallery::all()->sortBy('name');
 
         $in_menu = PageNavigation::all()->pluck('page_id');
-        $this->menu_options = Page::whereNotIn('id', $in_menu)->get();
+        $this->menu_options = Page::whereNotIn('id', $in_menu)->where('name', '<>', 'post')->get();
 
         $this->module_id = $this->pages->first()->id;
         if (!$this->menu_options->isEmpty())
@@ -221,6 +221,33 @@ class Banner extends Component
         $order = PageModule::where('page_id', '=', $this->page->id)->orderBy('order', 'desc')->first();
         $new_order = (($order != null) ? $order->order : 0) + 10;
 
+        // setup a dynamic module hash
+        $hash = md5(time());
+
+        // add post page if a post is added and there is not already a post page.
+        $post_check = Page::where('name', 'post')->count();
+        if ($module->component == "blog.post" && $post_check == 0)
+        {
+            $post_type = PageType::where('name', '=', 'post')->first();
+            $post = Page::firstOrCreate([
+                'type_id' => $post_type->id,
+                'title' => 'post',
+                'slug' => '/post/{page_module:hash}',
+                'name' => 'post',
+                'controller' => 'App\Http\Controllers\PageController',
+                'method' => 'index',
+                'publish_date' => Carbon::now()
+            ]);
+
+            $post_module = new PageModule();
+            $post_module->module_id = $module->id;
+            $post_module->page_id = $post->id;
+            $post_module->order = $new_order;
+            $post_module->hash = $hash;
+            $post_module->enabled = true;
+            $post_module->save();
+        }
+
         // add the module to a page.
         $page_module = new PageModule();
         $page_module->module_id = $module->id;
@@ -229,7 +256,6 @@ class Banner extends Component
         // handle dynamic modules
         if ($module->dynamic) {
             // generate a hash and store it
-            $hash = md5(time());
             $page_module->hash = $hash;
 
             // loop through all the parameters and create rows for them
