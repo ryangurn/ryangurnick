@@ -79,7 +79,7 @@ class Controller extends BaseController
      * @param Page $page
      * @return Application|Factory|View
      */
-    public function handle_page_template(Page $page)
+    public function handle_page_template(Page $page, $identifier)
     {
         // get modules on page
         $modules = $page->page_modules->sortBy('order');
@@ -90,6 +90,6 @@ class Controller extends BaseController
         // get the site title setting
         $sitename = Setting::where('key', 'application.sitename')->first();
 
-        return view($page->page_type->view, compact('page', 'modules', 'menu', 'sitename'));
+        return view($page->page_type->view, compact('page', 'modules', 'menu', 'sitename', 'identifier'));
     }
 }
