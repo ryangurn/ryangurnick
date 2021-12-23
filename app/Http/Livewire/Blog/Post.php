@@ -39,6 +39,20 @@ class Post extends Component
     public $body;
 
     /**
+     * the value that stores the page module hash to
+     * route to the post.
+     * @var
+     */
+    public $hash;
+
+    /**
+     * the value that stores the hash from the URI
+     * as passed through the view.
+     * @var
+     */
+    public $identifier;
+
+    /**
      * function that is called when the livewire component is
      * initialized.
      * @return void
@@ -47,6 +61,10 @@ class Post extends Component
     {
         // grab the module
         $module = $this->page_module->module;
+
+        // grab the hash, if the identifier is not null use that, otherwise use the page_module hash.
+        // this is to allow for the post view to be rendered dynamically.
+        $this->hash = ($this->identifier != null) ? $this->identifier : $this->page_module->hash;
 
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)
@@ -58,8 +76,8 @@ class Post extends Component
         else
         {
             // populate the variables with dynamic parameters (using hash)
-            $this->title = $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'title')->first()->value;
-            $this->body = $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'body')->first()->value;
+            $this->title = $module->module_parameters->where('hash', '=', $this->hash)->where('parameter', '=', 'title')->first()->value;
+            $this->body = $module->module_parameters->where('hash', '=', $this->hash)->where('parameter', '=', 'body')->first()->value;
         }
 
         // updated at
