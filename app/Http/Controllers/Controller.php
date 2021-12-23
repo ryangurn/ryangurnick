@@ -84,12 +84,9 @@ class Controller extends BaseController
         // get modules on page
         $modules = $page->page_modules->sortBy('order');
 
-        // get the main menu
-        $menu = PageNavigation::all();
-
         // get the site title setting
         $sitename = Setting::where('key', 'application.sitename')->first();
 
-        return view($page->page_type->view, compact('page', 'modules', 'menu', 'sitename', 'identifier'));
+        return view($page->page_type->view, compact('page', 'modules', 'sitename', 'identifier'));
     }
 }
