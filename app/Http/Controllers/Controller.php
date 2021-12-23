@@ -82,9 +82,6 @@ class Controller extends BaseController
      */
     public function handle_page_template(Page $page, $identifier)
     {
-        // get the site title setting
-        $sitename = Setting::where('key', 'application.sitename')->first();
-
-        return view($page->page_type->view, compact('page', 'sitename', 'identifier'));
+        return view($page->page_type->view, compact('page', 'identifier'));
     }
 }
