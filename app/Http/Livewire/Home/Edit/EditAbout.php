@@ -141,7 +141,7 @@ class EditAbout extends ModalComponent
             $img->save();
 
             // save the asset path
-            $image->value = $image->id;
+            $image->value = $img->id;
             $image->save();
         }
 
