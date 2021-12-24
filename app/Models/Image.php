@@ -23,6 +23,6 @@ class Image extends Model
 
     public function getFileAttribute($value)
     {
-        return url($value);
+        return asset('storage/'.$value);
     }
 }
