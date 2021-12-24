@@ -1,4 +1,4 @@
-<div>
+<div class="pl-4 pr-4">
     @if ($auth_required && $auth)
     <div class="flex items-center justify-{{ ($show_timestamp) ? 'between' : 'center'}} mt-6">
         @if ($show_timestamp)
@@ -16,7 +16,7 @@
             @if (($show_menu || $page_module->module->name != "Photo Grid") && auth()->user()->canAny([$page_module->module->permissions['edit'], $page_module->module->permissions['delete'], $page_module->module->permissions['reorder']]))
                 <button wire:click="$toggle('show')" x-data="{ hide(){ $wire.hidePopup() }, show() { $wire.showPopup() } }" x-on:click.away="hide()" x-on:mouseover.debounce="show()" class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in py-2 px-3">
                     <svg fill="currentColor" width="24" height="6"><path d="M2.97.061A2.969 2.969 0 000 3.031 2.968 2.968 0 002.97 6a2.97 2.97 0 100-5.94zm9.184 0a2.97 2.97 0 100 5.939 2.97 2.97 0 100-5.939zm8.877 0a2.97 2.97 0 10-.003 5.94A2.97 2.97 0 0021.03.06z" style="color: rgba(163, 163, 163, .5)"></svg>
-                    <ul x-on:mouseleave.debounce="hide()" class="{{ ($show) ? '' : 'hidden' }} absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-1 px-1 ml-8 shadow-sm hover:shadow-md z-10">
+                    <ul x-on:mouseleave.debounce="hide()" class="{{ ($show) ? '' : 'hidden' }} absolute w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-1 px-1 md:ml-8 top-12 md:top-6 right-0 md:left-0 shadow-sm hover:shadow-md z-4 border border-gray-200">
                         @if ($page_module->enabled && auth()->user()->can($page_module->module->permissions['edit']))
                             <li><a wire:click="disable" class="hover:bg-gray-100 rounded-xl block transition duration-150 ease-in px-5 py-3">disable card</a></li>
                         @elseif (!$page_module->enabled && auth()->user()->can($page_module->module->permissions['edit']))

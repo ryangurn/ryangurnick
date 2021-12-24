@@ -1,9 +1,9 @@
 <x-card :pm="$page_module">
     <x-slot name="title">about</x-slot>
-    <x-slot name="image"><img src="{{ asset($image) }}" alt="{{ $name }}" class="ml-4 w-64 h-46 rounded-xl" /></x-slot>
+    <x-slot name="image"><img src="{{ asset($image) }}" alt="{{ $name }}" class="mr-2 md:mr-0 ml-4 w-auto h-auto md:h-64 md:h-46 rounded-xl object-cover" /></x-slot>
     <x-slot name="body">
 
-        <h4 class="text-xl font-semibold">{{ $name }}</h4>
+        <h4 class="text-xl font-semibold mt-2 md:mt-0">{{ $name }}</h4>
         <div class="text-gray-600 mt-3">
             {{ $body }}
         </div>

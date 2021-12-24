@@ -23,7 +23,7 @@
             @endforeach
                 @if ($pages->count() % 3 != 0)
                     @for ($i=$pages->count(); ($i % 3 != 0); $i++ )
-                        <div class="px-4 py-5 sm:p-6"></div>
+                        <div class="px-4 py-5 sm:p-6 hidden md:block"></div>
                     @endfor
                 @endif
         @endif

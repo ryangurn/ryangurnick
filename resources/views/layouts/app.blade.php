@@ -5,7 +5,7 @@
 @endsection
 
 @section('additional_headers')
-    <div class="flex items-center gap-4">
+    <div class="flex mt-2 md:mt-0 items-center gap-4">
         @can('access telescope')
             <a href="/telescope" class="text-sm text-gray-700 dark:text-gray-500 border rounded-full p-1 border-black hover:text-gray-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 32 32" fill="currentColor">
@@ -83,15 +83,15 @@
 @endsection
 
 @section('main')
-    <main class="container mx-auto max-w-5xl flex">
+    <main class="container mx-auto max-w-5xl flex flex-col md:flex-row">
         <div class="w-full">
             <nav class="flex items-center justify-between text-xs">
-                <ul class="flex font-semibold border-b-4 pb-3 space-x-10">
+                <ul class="flex mx-auto md:mx-4 font-semibold border-b-4 pb-3 space-x-10">
                     {{ $menu }}
                 </ul>
             </nav>
 
-            <div class="mt-8">
+            <div class="mt-8 px-2 md:px-4">
                 {{ $slot }}
             </div>
         </div>

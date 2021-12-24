@@ -1,7 +1,7 @@
 <div class="card-container shadow-sm hover:shadow-md transition duration-150 ease-in bg-white rounded-xl {{ ($page_module->enabled) ? '' : 'border-dashed border-4' }}">
-    <div class="flex">
+    <div class="flex flex-col md:flex-row md:flex-1">
         @isset($title)
-        <div class="border-r border-gray-100 px-5 py-8 w-1/5">
+        <div class="border-b md:border-r border-gray-100 px-6 md:px-5 py-2 md:py-8 w-auto md:w-1/5">
             <div class="text-left grid grid-cols-1">
                 <div>
                     <span class="text-lg">{{ $title }}</span>
@@ -18,17 +18,19 @@
         @endisset
 
         <div class="px-2 py-6 w-full">
-            <div class="flex">
+            <div class="flex flex-col md:flex-row">
                 @isset($image)
                     {{ $image }}
                 @endisset
-                <div class="mx-4 w-full">
+                <div class="mx-4 w-full pr-8 md:pr-0">
                     {{ $body }}
                 </div>
             </div>
-            @isset($subBody)
-                {{ $subBody }}
-            @endisset
+            <div>
+                @isset($subBody)
+                    {{ $subBody }}
+                @endisset
+            </div>
         </div>
     </div>
 
