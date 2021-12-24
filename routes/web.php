@@ -20,34 +20,37 @@ use App\Models\Page;
  * add the maintenance route if the application is in
  * maintenance mode.
  */
-$maintenance = Setting::where('key', '=', 'application.maintenance')->first();
-if ($maintenance != null && $maintenance->value)
+if (env('ROUTES_ENABLED'))
 {
-    Route::get('/maintenance', function() {
-        return abort(503);
-    })->name('maintenance');
-}
-
-/**
- * add all the page routes as long as the pages' table
- * is not empty, if the pages' table is empty then any route
- * will result in a 404.
- */
-$pages = Page::all();
-if (!$pages->isEmpty())
-{
-    foreach ($pages as $page) {
-        Route::get($page->slug, [$page->controller, $page->method])->name($page->name);
+    $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
+    if ($maintenance != null && $maintenance->value)
+    {
+        Route::get('/maintenance', function() {
+            return abort(503);
+        })->name('maintenance');
     }
-}
 
-/**
- * create a mailable route for previewing the various
- * contacts that have been submitted through the contact
- * module.
- */
-Route::get('/mailable/{email}', function (Email $email) {
-    return new $email->class($email);
-})->name('mailable');
+    /**
+     * add all the page routes as long as the pages' table
+     * is not empty, if the pages' table is empty then any route
+     * will result in a 404.
+     */
+    $pages = Page::all();
+    if (!$pages->isEmpty())
+    {
+        foreach ($pages as $page) {
+            Route::get($page->slug, [$page->controller, $page->method])->name($page->name);
+        }
+    }
+
+    /**
+     * create a mailable route for previewing the various
+     * contacts that have been submitted through the contact
+     * module.
+     */
+    Route::get('/mailable/{email}', function (Email $email) {
+        return new $email->class($email);
+    })->name('mailable');
+}
 
 require __DIR__.'/auth.php';
