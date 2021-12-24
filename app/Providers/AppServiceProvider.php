@@ -24,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // ensure key lengths are not too long
-        Schema::defaultStringLength(191);
+        //
     }
 }
