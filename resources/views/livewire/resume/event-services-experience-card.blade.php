@@ -10,13 +10,13 @@
                             @foreach($roles as $role)
                                 <div class="hover:bg-gray-100 hover:border-gray-300 hover:border-1 hover:shadow-lg hover:border-transparent p-3 rounded-lg">
                                     <div class="inline-block">
-                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 mt-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 mt-2 line-clamp-1">
                                             {{ $role['duration'] }}
                                         </span>
-                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mt-2 line-clamp-1">
                                             {{ $role['location'] }}
                                         </span>
-                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mt-2">
+                                        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mt-2 line-clamp-1">
                                             {{ $role['role'] }}
                                         </span>
                                     </div>
