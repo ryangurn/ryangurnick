@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Home;
 
+use App\Models\Image;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -85,7 +86,7 @@ class AboutCard extends Component
             // store off to the local variables using module parameters.
             $this->name = $module->module_parameters->where('parameter', '=', 'name')->first()->value;
             $this->body = $module->module_parameters->where('parameter', '=', 'body')->first()->value;
-            $this->image = $module->module_parameters->where('parameter', '=', 'image')->first()->value;
+            $this->image = Image::where('id', $module->module_parameters->where('parameter', '=', 'image')->first()->value)->first();
             $this->link = ($module->module_parameters->where('parameter', '=', 'link')->first() != null) ? $module->module_parameters->where('parameter', '=', 'link')->first()->value : null ;
             $this->linkText = ($module->module_parameters->where('parameter', '=', 'link_text')->first() != null) ? $module->module_parameters->where('parameter', '=', 'link_text')->first()->value : null ;
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Home\Edit;
 
+use App\Models\Image;
 use App\Models\ModuleParameter;
 use App\Models\PageModule;
 use Carbon\Carbon;
@@ -132,8 +133,15 @@ class EditAbout extends ModalComponent
             // save the file
             $output = $this->image->storePubliclyAs('avatar', md5(time()).'.'.$ext, 'public');
 
+            // add image
+            $img = new Image();
+            $img->disk = 'public';
+            $img->file = $output;
+            $img->hash = md5(time());
+            $img->save();
+
             // save the asset path
-            $image->value = $output;
+            $image->value = $image->id;
             $image->save();
         }
 

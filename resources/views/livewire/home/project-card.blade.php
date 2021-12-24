@@ -5,7 +5,7 @@
         <div class="text-gray-600 mt-3">
             <ul class="text-lg ml-4">
                 @if (!$projects->isEmpty())
-                    @foreach($projects as $project)
+                    @foreach($projects->sortByDesc('status') as $project)
                         <li class="pb-4">
                             <a href="{{ isset($project['link']) ? $project['link'] : '#' }}" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-{{ ($project['status'] == 'current') ? 'green' : 'yellow'}}">
                                 {{ $project['project'] }}

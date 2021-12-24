@@ -20,6 +20,12 @@ class ModuleSeeder extends Seeder
     {
         // home modules
         // about card
+        $img = new Image();
+        $img->disk = 'public';
+        $img->file = 'avatar/ryangurnick.jpg';
+        $img->hash = md5(time());
+        $img->save();
+
         $about = Module::firstOrNew([
             'name' => 'About Card',
             'component' => 'home.about-card',
@@ -35,9 +41,9 @@ class ModuleSeeder extends Seeder
         $about->examples = [
             'name' => 'ryan gurnick',
             'body' => 'I am a technologist who sees the dreams of the world as an opportunity for innovation through machines. Over many years I have worked in various areas to improve my understanding of how technology functions and impacts the world in a meaningful way. I have received a bachelor’s degree in computer information science and computer information technologies while also following my passion for cybersecurity, theatrical productions, and much more. I hope you enjoy my website and learn something new in the process that will spark joy and intrigue in your life.',
-            'image' => 'avatar/ryangurnick.jpg',
-            'link' => '/photos',
-            'link_text' => 'checkout my photos!'
+            'image' => $img->id,
+            'link' => '',
+            'link_text' => ''
         ];
         $about->permissions = [
               'edit' => 'edit about card',
@@ -138,7 +144,7 @@ class ModuleSeeder extends Seeder
 
         $image = Image::firstOrNew([
             'file' => 'img/1.jpg',
-            'disk' => 'local',
+            'disk' => 'public',
         ]);
         $image->hash = md5(time());
         $image->save();
