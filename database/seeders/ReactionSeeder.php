@@ -134,7 +134,7 @@ class ReactionSeeder extends Seeder
             $react = Reaction::firstOrNew([
                 'reaction' => Str::studly(strtolower(str_replace("CHARACTER_", "", $key)))
             ]);
-            $react->icon = $value;
+            $react->icon = $key;
             if (in_array($key, $not_supported)) $react->supported = false;
             $react->save();
         }

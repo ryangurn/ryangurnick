@@ -16,6 +16,11 @@ class Reaction extends Model
         'supported'
     ];
 
+    public function getIconAttribute($value)
+    {
+        return constant(sprintf("%s::%s", "\Spatie\Emoji\Emoji", $value));
+    }
+
     public function gallery_reactions()
     {
         return $this->hasMany(GalleryReaction::class);
