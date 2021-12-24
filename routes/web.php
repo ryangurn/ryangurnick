@@ -20,7 +20,7 @@ use App\Models\Page;
  * add the maintenance route if the application is in
  * maintenance mode.
  */
-if (env('ROUTES_ENABLED'))
+if (config('app.routes_enabled'))
 {
     $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
     if ($maintenance != null && $maintenance->value)

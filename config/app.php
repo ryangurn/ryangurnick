@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'routes_enabled' => env('ROUTES_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
