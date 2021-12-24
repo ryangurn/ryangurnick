@@ -20,4 +20,9 @@ class Image extends Model
     {
         return $this->hasOne(Module::class);
     }
+
+    public function getFileAttribute($value)
+    {
+        return url($value);
+    }
 }
