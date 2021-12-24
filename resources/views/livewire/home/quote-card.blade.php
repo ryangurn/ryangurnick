@@ -6,7 +6,14 @@
             <ul class="text-lg ml-4">
                 @if (!$quotes->isEmpty())
                     @foreach ($quotes as $quote)
-                        <li class="pb-4"><span class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">{{ $quote['quote'] }} @if($quote['author'] != null)<span class="text-sm">-{{ $quote['author'] }}</span>@endif<span></li>
+                        <li class="flex sm:flex-col md:flex-row justify-between pb-4">
+                            <span class="border-b-4 border-solid transition duration-150 ease-in border-b-4 hover:border-red">
+                                {{ $quote['quote'] }}
+                                @if($quote['author'] != null)
+                                    <span class="text-sm">-{{ $quote['author'] }}</span>
+                                @endif
+                            <span>
+                        </li>
                     @endforeach
                 @endif
             </ul>

@@ -6,8 +6,8 @@
             <ul class="text-lg ml-4">
                 @if (!$systems->isEmpty())
                     @foreach($systems as $system)
-                        <li class="pb-4">
-                            <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-yellow">
+                        <li class="flex sm:flex-col md:flex-row justify-between pb-4">
+                            <a href="#" class="border-b-4 border-solid transition duration-150 ease-in border-b-4 hover:border-yellow">
                                 {{ $system }}
                             </a>
                         </li>

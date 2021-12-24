@@ -5,8 +5,8 @@
             <ul class="text-lg ml-4">
                 @if (!$skills->isEmpty())
                     @foreach($skills as $skill)
-                        <li class="pb-4">
-                            <a href="#" class="border-b-4 pb-3 border-solid transition duration-150 ease-in border-b-4 pb-3 hover:border-red">
+                        <li class="flex sm:flex-col md:flex-row justify-between pb-4">
+                            <a href="#" class="border-b-4 border-solid transition duration-150 ease-in border-b-4 hover:border-red">
                                 {{ $skill }}
                             </a>
                         </li>
