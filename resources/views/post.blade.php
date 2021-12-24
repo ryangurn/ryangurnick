@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        <livewire:framework.site-title :page="$page" />
+        <livewire:framework.site-title :page="$page" :post="$identifier" />
     </x-slot>
 
     <x-slot name="menu">

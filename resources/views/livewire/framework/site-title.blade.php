@@ -1,1 +1,1 @@
-<title>{{ $page->title . ' | ' }}{{ $sitename->value }}</title>
+<title>{{ $post != null ? $post : $page->title }}{{ ' | ' }}{{ $sitename->value }}</title>
