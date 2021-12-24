@@ -77,7 +77,6 @@ return [
 
     'middleware' => [
         'web',
-        Authorize::class,
         'can:access telescope'
     ],
 
