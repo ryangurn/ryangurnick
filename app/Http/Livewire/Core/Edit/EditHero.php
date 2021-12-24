@@ -67,6 +67,7 @@ class EditHero extends ModalComponent
     public function mount()
     {
         $this->module = PageModule::where('id', '=', $this->page_module['id'])->first()->module;
+        $this->check();
     }
 
     /**
@@ -77,8 +78,8 @@ class EditHero extends ModalComponent
     public function rules()
     {
         $rules = $this->module->parameters;
-        $rules['links.*.value'] = 'required|string';
-        $rules['links.*.link'] = 'required|url';
+        $rules['links.*.value'] = 'nullable|string';
+        $rules['links.*.link'] = 'nullable|url';
         return $rules;
     }
 
