@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('site:get-ip-data')->daily();
         $schedule->command('site:get-data-data')->everyTwoHours();
+
+        $schedule->command('telescope:prune --hours=168')->daily();
     }
 
     /**
