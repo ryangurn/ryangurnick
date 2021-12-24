@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Adrianorosa\GeoLocation\GeoLocation;
 use App\Models\StatisticIpAddress;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class GetIPData extends Command
@@ -39,6 +40,7 @@ class GetIPData extends Command
      */
     public function handle()
     {
+        // grab rows in which the geolocation information is not provided
         $ips = StatisticIpAddress::whereNull('city')
             ->whereNull('region')
             ->whereNull('country')
@@ -53,6 +55,32 @@ class GetIPData extends Command
         }
         foreach($ips as $ip)
         {
+            // grab rows in which the geolocation information was provided within
+            // the last x hours based on jobs configuration file.
+            $previous = StatisticIpAddress::whereNotNull('city')
+                ->whereNotNull('region')
+                ->whereNotNull('country')
+                ->whereNotNull('country_code')
+                ->whereNotNull('latitude')
+                ->whereNotNull('longitude')
+                ->where('ip_address', $ip->ip_address)
+                ->where('created_at', '>=', Carbon::now()->addHours(-config('jobs.get-ip-data.lookback')))
+                ->orderBy('created_at', 'desc')
+                ->first();
+
+            if ($previous != null)
+            {
+                $ip->city = $previous->city;
+                $ip->region = $previous->region;
+                $ip->country = $previous->country;
+                $ip->country_code = $previous->country_code;
+                $ip->latitude = $previous->latitude;
+                $ip->longitude = $previous->longitude;
+                $ip->save();
+
+                continue;
+            }
+
             $this->info("IP: ". $ip->ip_address. " (Getting geolocation data)");
             $details = GeoLocation::lookup($ip->ip_address);
 
