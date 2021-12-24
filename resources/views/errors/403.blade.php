@@ -1,9 +1,5 @@
 @extends('layouts.base')
 
-@section('title')
-    404
-@endsection
-
 @section('additional_body_css')
     h-full
 @endsection
