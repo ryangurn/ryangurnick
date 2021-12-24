@@ -91,10 +91,10 @@
                                                             @if (!$role->permissions->isEmpty())
                                                                 @foreach($role->permissions as $permission)
                                                             <tr>
-                                                                <td class="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                <td class="w-2/3 px-4 py-2 text-wrap text-sm font-medium text-gray-900">
                                                                     {{ $permission->name }}
                                                                 </td>
-                                                                <td class="px-4 py-2 whitespace-nowrap text-right text-sm font-medium">
+                                                                <td class="w-1/3 px-4 py-2 whitespace-nowrap text-right text-sm font-medium">
                                                                     @can('delete roles')
                                                                     <a wire:click="remove({{ $role->id }}, {{ $permission->id }})" class="text-indigo-600 hover:text-indigo-900">delete</a>
                                                                     @endcan
