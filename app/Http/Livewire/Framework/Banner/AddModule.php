@@ -32,6 +32,13 @@ class AddModule extends ModalComponent
 
     public $page_id;
 
+    public function rules()
+    {
+        return [
+            'module_id' => 'required|numeric|exists:modules,id'
+        ];
+    }
+
     public function mount()
     {
         $this->page = Page::where('id', $this->page_id)->first();
@@ -56,6 +63,9 @@ class AddModule extends ModalComponent
     {
         // verify authorization
         $this->authorize('add module');
+
+        // validate the request
+        $this->validate();
 
         // get the module using the id
         $module = Module::where('id', '=', $this->module_id)->first();

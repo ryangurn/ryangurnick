@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
 
 class AddPage extends ModalComponent
@@ -24,6 +25,18 @@ class AddPage extends ModalComponent
 
     public $page_name;
 
+    public function rules()
+    {
+        return [
+            'page_name' => [
+                'required',
+                'string',
+                'unique:pages,name',
+                Rule::notIn('post')
+            ]
+        ];
+    }
+
     /**
      * the function that when called will add
      * a new page using the $page variable.
@@ -34,6 +47,9 @@ class AddPage extends ModalComponent
     {
         // verify authorization
         $this->authorize('add page');
+
+        // validate the request
+        $this->validate();
 
         if ($this->page_name != 'blog')
         {

@@ -22,6 +22,7 @@ class ModuleLoop extends Component
     {
         // get modules on page
         $this->modules = $page->page_modules->sortBy('order');
+        $this->identifier = $identifier;
     }
 
     /**

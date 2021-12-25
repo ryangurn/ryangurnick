@@ -32,7 +32,7 @@
             </div>
             <div>
                 <ul class="list-disc">
-{{--                    @error('link_text') <li class="text-red-800">{{ $message }}</li> @enderror--}}
+                    @error('page') <li class="text-red-800">{{ $message }}</li> @enderror
                 </ul>
             </div>
         </div>

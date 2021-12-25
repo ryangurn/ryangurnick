@@ -21,6 +21,13 @@ class AddMenu extends ModalComponent
 
     public $menu_id;
 
+    public function rules()
+    {
+        return [
+            'menu_id' => 'required|numeric|exists:pages,id|unique:page_navigations,id'
+        ];
+    }
+
     /**
      * the function that when called will add a page to the
      * menu using $menu_id
@@ -31,6 +38,9 @@ class AddMenu extends ModalComponent
     {
         // verify authorization
         $this->authorize('edit menu');
+
+        // validate the request
+        $this->validate();
 
         // add the page to the menu
         PageNavigation::create([

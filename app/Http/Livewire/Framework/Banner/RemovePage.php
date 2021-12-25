@@ -21,6 +21,13 @@ class RemovePage extends ModalComponent
 
     public $pages;
 
+    public function rules()
+    {
+        return [
+            'page' => 'required|numeric|exists:pages,id'
+        ];
+    }
+
     public function mount()
     {
         $this->pages = Page::all()->sortBy('name');
@@ -31,6 +38,9 @@ class RemovePage extends ModalComponent
     {
         // verify authorization
         $this->authorize('delete page');
+
+        // validate the request
+        $this->validate();
 
         // first delete any menu references
         PageNavigation::where('page_id', '=', $this->page)->delete();

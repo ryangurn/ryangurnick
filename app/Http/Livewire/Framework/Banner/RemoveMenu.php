@@ -20,6 +20,13 @@ class RemoveMenu extends ModalComponent
 
     public $menu_id;
 
+    public function rules()
+    {
+        return [
+            'menu_id' => 'required|numeric|exists:page_navigations,id'
+        ];
+    }
+
     public function mount()
     {
         $in_menu = PageNavigation::all()->pluck('page_id');
@@ -33,8 +40,13 @@ class RemoveMenu extends ModalComponent
 
     public function save()
     {
+        // ensure the request is authorized
         $this->authorize('delete menu');
 
+        // validate the request
+        $this->validate();
+
+        // delete the menu item
         PageNavigation::where('page_id', $this->menu_id)->delete();
 
         // refresh the page
