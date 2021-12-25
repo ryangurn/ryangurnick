@@ -91,7 +91,7 @@ class PhotoGrid extends Component
         {
             // populate the local variables with module parameters
             $this->gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
-            $this->photos = $this->gallery->gallery_images;
+            $this->photos = $this->gallery->gallery_images->sortByDesc('date');
             $this->gallery_id = $this->gallery->id;
         }
 
