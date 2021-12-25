@@ -149,6 +149,10 @@ class PermissionSeeder extends Seeder
             'name' => 'edit menu'
         ]);
 
+        Permission::firstOrCreate([
+            'name' => 'delete menu'
+        ]);
+
         // module
         Permission::firstOrCreate([
             'name' => 'add module'

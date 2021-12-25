@@ -71,6 +71,8 @@ class Banner extends Component
      */
     public $page;
 
+    public $navigations;
+
     /**
      * function that is called when the livewire component is
      * initialized.
@@ -89,6 +91,8 @@ class Banner extends Component
         {
             $this->allowed_modules[] = $module->module->component;
         }
+
+        $this->navigations = PageNavigation::all();
     }
 
     /**
