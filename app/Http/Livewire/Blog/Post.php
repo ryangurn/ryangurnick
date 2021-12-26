@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Blog;
 
+use App\Models\StatisticPost;
+use App\Models\StatisticSession;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -65,6 +67,22 @@ class Post extends Component
         // grab the hash, if the identifier is not null use that, otherwise use the page_module hash.
         // this is to allow for the post view to be rendered dynamically.
         $this->hash = ($this->identifier != null) ? $this->identifier : $this->page_module->hash;
+
+        if ($this->identifier != null)
+        {
+            $session = StatisticSession::firstOrNew([
+                'session_id' => session()->getId(),
+            ]);
+            $session->user_agent = request()->userAgent();
+            $session->save();
+
+            $post = StatisticPost::firstOrNew([
+                'session_id' => session()->getId(),
+                'module_hash' => $this->identifier
+            ]);
+            $post->count = $post->count + 1;
+            $post->save();
+        }
 
         // use examples if no parameters exist
         if ($module->module_parameters->count() == 0)

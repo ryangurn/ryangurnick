@@ -8,6 +8,9 @@ use App\Models\GalleryImage;
 use App\Models\GalleryReaction;
 use App\Models\Reaction;
 use App\Models\Setting;
+use App\Models\StatisticImage;
+use App\Models\StatisticPost;
+use App\Models\StatisticSession;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -215,6 +218,20 @@ class ViewPhoto extends ModalComponent
         // grab the photo and set the updated_at timestamp
         $this->photo = GalleryImage::where('id', '=', $this->photo_id)->first();
         $this->updated_at = $this->photo->updated_at;
+
+        // set session information
+        $session = StatisticSession::firstOrNew([
+            'session_id' => session()->getId(),
+        ]);
+        $session->user_agent = request()->userAgent();
+        $session->save();
+
+        $post = StatisticImage::firstOrNew([
+            'session_id' => session()->getId(),
+            'gallery_image_id' => $this->photo->id
+        ]);
+        $post->count = $post->count + 1;
+        $post->save();
 
         // get the rest of the local parameters and set them.
         $allowed_reactions = Setting::where('key', 'gallery.reactions')->first()->value;
