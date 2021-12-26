@@ -46,6 +46,12 @@ class ViewPhoto extends ModalComponent
     public $photo_id;
 
     /**
+     * the value that stores the gallery identifier.
+     * @var
+     */
+    public $gallery_id;
+
+    /**
      * the value that stores the photo model.
      * @var
      */
@@ -228,6 +234,7 @@ class ViewPhoto extends ModalComponent
 
         $post = StatisticImage::firstOrNew([
             'session_id' => session()->getId(),
+            'gallery_id' => $this->gallery_id,
             'gallery_image_id' => $this->photo->id
         ]);
         $post->count = $post->count + 1;

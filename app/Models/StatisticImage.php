@@ -11,6 +11,7 @@ class StatisticImage extends Model
 
     protected $fillable = [
         'session_id',
+        'gallery_id',
         'gallery_image_id',
         'count'
     ];
