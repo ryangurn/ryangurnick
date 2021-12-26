@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Photo;
 use App\Models\Gallery;
 use App\Models\GalleryReaction;
 use App\Models\Setting;
+use App\Models\StatisticImage;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

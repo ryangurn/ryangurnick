@@ -2,11 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Gallery;
-use App\Models\GalleryImage;
-
 
 class GalleryImage extends Model
 {
@@ -30,5 +26,10 @@ class GalleryImage extends Model
     public function image()
     {
         return $this->hasOne(Image::class, 'id', 'image_id');
+    }
+
+    public function statistic_images()
+    {
+        return $this->hasMany(StatisticImage::class, 'gallery_image_id', 'id');
     }
 }

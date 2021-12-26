@@ -16,6 +16,32 @@
         </x-slot>
     </x-card>
 
+    @can('view photo analytics')
+    <div class="mt-8">
+        <x-card :pm="$page_module">
+            <x-slot name="body">
+                <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    @if (!$photos->isEmpty())
+                        @foreach($photos as $photo)
+                    <li class="col-span-1 flex shadow-sm rounded-md">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md">
+                            <img src="{{ $photo->image->file }}" class="rounded-l-md" />
+                        </div>
+                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                            <div class="flex-1 px-4 py-2 text-sm truncate">
+                                <p class="text-gray-900 font-medium hover:text-gray-600">unique views</p>
+                                <p class="text-gray-500">{{ $photo->statistic_images->count() }} views</p>
+                            </div>
+                        </div>
+                    </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </x-slot>
+        </x-card>
+    </div>
+    @endcan
+
     <ul role="list" class="space-y-12 {{ (Auth::check()) ? 'pt-8' : 'pt-4' }} sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
         @if (!$photos->isEmpty())
           @foreach($photos as $photo)

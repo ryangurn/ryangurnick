@@ -36,6 +36,10 @@ class PermissionSeeder extends Seeder
             'name' => 'comment on photo'
         ]);
 
+        Permission::firstOrCreate([
+            'name' => 'view photo analytics'
+        ]);
+
         // modules
         $modules = Module::all();
 

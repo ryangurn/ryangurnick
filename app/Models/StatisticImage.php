@@ -20,4 +20,14 @@ class StatisticImage extends Model
     {
         return $this->hasOne(StatisticSession::class, 'session_id', 'session_id');
     }
+
+    public function gallery_image()
+    {
+        return $this->hasOne(GalleryImage::class, 'id', 'gallery_image_id');
+    }
+
+    public function gallery()
+    {
+        return $this->hasOne(Gallery::class, 'id', 'gallery_id');
+    }
 }
