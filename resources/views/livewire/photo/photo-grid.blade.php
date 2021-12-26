@@ -35,6 +35,18 @@
                         </div>
                     </li>
                         @endforeach
+                    @else
+                        <li class="col-span-1 flex shadow-sm rounded-md">
+                            <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 text-white bg-blue-600 text-sm font-medium rounded-l-md">
+                                No
+                            </div>
+                            <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                                <div class="flex-1 px-4 py-2 text-sm truncate">
+                                    <p class="text-gray-900 font-medium hover:text-gray-600">images</p>
+                                    <p class="text-gray-500">analytics</p>
+                                </div>
+                            </div>
+                        </li>
                     @endif
                 </ul>
             </x-slot>
