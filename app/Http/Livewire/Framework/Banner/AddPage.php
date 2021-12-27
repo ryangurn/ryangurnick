@@ -15,6 +15,10 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
 
+/**
+ * AddPage is a livewire modal component that provides
+ * the functionality to add a new page.
+ */
 class AddPage extends ModalComponent
 {
     /**
@@ -23,8 +27,17 @@ class AddPage extends ModalComponent
      */
     use AuthorizesRequests;
 
+    /**
+     * The value that stores the current value provided
+     * from the form for the new page name.
+     */
     public $page_name;
 
+    /**
+     * validation rules that will be checked when the
+     * modal is saved.
+     * @return string[]
+     */
     public function rules()
     {
         return [

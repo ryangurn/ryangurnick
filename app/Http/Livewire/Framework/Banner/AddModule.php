@@ -14,6 +14,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
 
+/**
+ * AddModule is a livewire modal component that 
+ * provides the functionality to add a module
+ * to the current page.
+ */
 class AddModule extends ModalComponent
 {
     /**
@@ -22,16 +27,39 @@ class AddModule extends ModalComponent
      */
     use AuthorizesRequests;
 
+    /**
+     * The value that stores the modules models that are
+     * allowed for a given page.
+     */
     public $modules;
 
+    /**
+     * The value that stores the currently selected 
+     * module from the form.
+     */
     public $module_id;
 
+    /**
+     * The array that stores the allowed module identifiers
+     * for the given page.
+     */
     public $allowed_modules;
 
+    /**
+     * The value that stores the current page model.
+     */
     public $page;
 
+    /**
+     * The value that stores the current page identifier.
+     */
     public $page_id;
 
+    /**
+     * validation rules that will be checked when the
+     * modal is saved.
+     * @return string[]
+     */
     public function rules()
     {
         return [
@@ -39,6 +67,11 @@ class AddModule extends ModalComponent
         ];
     }
 
+    /**
+     * function that is called when the livewire component is
+     * initialized.
+     * @return void
+     */
     public function mount()
     {
         $this->page = Page::where('id', $this->page_id)->first();
@@ -128,6 +161,11 @@ class AddModule extends ModalComponent
         $this->redirect(URL::previous());
     }
 
+    /**
+     * the method that is automatically called to render
+     * the view for the livewire component.
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('livewire.framework.banner.add-module');

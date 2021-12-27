@@ -41,7 +41,7 @@ class AddMenu extends ModalComponent
 
     /**
      * validation rules that will be checked when the
-     * update role modal is saved.
+     * modal is saved.
      * @return string[]
      */
     public function rules()
