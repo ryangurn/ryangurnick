@@ -20,30 +20,125 @@ this application is intended to help with personal website management. it will p
     3. comment system (can be enabled or disabled)
        1. prohibited words
     4. reactions (can be enabled or disabled)
+    5. mass import command
 3. resume builder
 4. storage management
 5. viewer analytics
     1. http agent
     2. page loads
     3. unique views
-    4. click tracking
+    4. click tracking (in theory)
 6. settings
     1. toggle maintenance mode
     2. configure security
     3. laravel configuration management
         * website name
-        * disk locations
+        * disk locations (view only)
         * database configuration (view only)
         * cors management
         * authentication management
             * password timeout
             * lockout durations
+        * search engine indexing
 7. permissions
    1. roles
    2. permissions
 
+## permissions
+all of the permissions that exist, their purposes and locations used in code. this is intended to help with managing and updating the permissions that are attached to each role in the application. **keep in mind this documentation is updated manually, and might be semi out of date.**
+
+### photo grid permissions
+* add photo
+* edit photo
+* delete photo
+* react to photo
+* comment on photo
+* view photo analytics
+
+### module permissions (excluding photo grid)
+* edit <module>
+* delete <module>
+* view <module>
+* reorder <module>
+
+### analytics permissions
+* view site analytics
+
+### configuration slideover permissions
+* view application information
+* view logging information
+* view database information
+* view driver information
+* view memcached information
+* view redis information
+* view mail information
+* view misc information
+* view file system information
+÷
+### email/contact slideover permissions
+* view emails
+* read emails
+
+### settings slideover permissions
+* view maintenance settings
+* update maintenance settings
+* view logo settings
+* update logo settings
+* view name settings
+* update name settings
+* view contact settings
+* update contact settings
+* view gallery settings
+* update gallery settings
+* view footer settings
+* update footer settings
+
+### comment moderation permissions
+* remove comment
+* update comment
+
+### telescope permissions
+* access telescope
+
+### access control permissions
+* view access controls
+* add roles
+* delete roles
+* update roles
+* associate permissions
+
+### banner permissions
+* add page
+* delete page
+* edit menu
+* delete menu
+* add module
+* add gallery
+
+## roles
+all of the permissions assigned to each of the roles.
+
+### administrator
+* all of the permissions
+
+### editor
+* work in progress
+
+### moderator
+* work in progress
+
+### photographer
+* work in progress
+
+### blogger
+* work in progress
+
+### user
+* react to comment
+* comment on photo
+
 ## data structures
-all the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted.
+all the tables should be assumed to have a created_at and updated_at timestamp without it being specified in the data structures listed below. additionally, all parent models (ie models that are related to other models but are the source of a foreign key) will be updated when a child model is updated however they will not be deleted if the child is deleted. **keep in mind this documentation is updated manually, and might be semi out of date.**
 
 ### first party tables
 
