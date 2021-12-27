@@ -8,6 +8,9 @@ use App\Models\PageNavigation;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\URL;
 use LivewireUI\Modal\ModalComponent;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 /**
  * RemovePage is a livewire modal component that provides
