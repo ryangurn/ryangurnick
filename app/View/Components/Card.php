@@ -4,8 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
+/**
+ * Card is a livewire component that handles
+ * the default card layout for many other
+ * modules.
+ */
 class Card extends Component
 {
+    /**
+     * The value that stores the page module
+     * model for use in the view. Mainly used 
+     * to pass the model to other modules.
+     */
     public $page_module;
 
     /**

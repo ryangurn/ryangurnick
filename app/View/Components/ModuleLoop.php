@@ -7,10 +7,23 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
+/**
+ * ModuleLoop is a livewire component that
+ * handles the addition of the modules 
+ * to a specific page.
+ */
 class ModuleLoop extends Component
 {
+    /**
+     * The value that stores the modules that
+     * should be linked on a given page.
+     */
     public $modules;
 
+    /**
+     * The value that stores the identifier
+     * to be passed to the module.
+     */
     public $identifier;
 
     /**
