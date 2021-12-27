@@ -50,9 +50,12 @@ class GetIPData extends Command
             ->where('ip_address', '<>', '127.0.0.1')
             ->get();
 
+        // determine if there are any ips to process
         if ($ips->count() == 0) {
             $this->info("No ips to process"); return Command::INVALID;
         }
+
+        // loop through the ips
         foreach($ips as $ip)
         {
             // grab rows in which the geolocation information was provided within
@@ -68,6 +71,7 @@ class GetIPData extends Command
                 ->orderBy('created_at', 'desc')
                 ->first();
 
+            // use previously stored information when possible
             if ($previous != null)
             {
                 $ip->city = $previous->city;
@@ -78,9 +82,11 @@ class GetIPData extends Command
                 $ip->longitude = $previous->longitude;
                 $ip->save();
 
+                // skip to the next iteration of the loop.
                 continue;
             }
 
+            // save the new ip information if there is no valid previous info
             $this->info("IP: ". $ip->ip_address. " (Getting geolocation data)");
             $details = GeoLocation::lookup($ip->ip_address);
 

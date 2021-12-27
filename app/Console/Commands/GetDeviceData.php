@@ -40,20 +40,27 @@ class GetDeviceData extends Command
      */
     public function handle()
     {
+        // grab the statistics for the device.
         $computed_devices = StatisticDevice::all()->pluck('session_id')->toArray();
+
+        // grab the statistics for the session.
         $sessions = StatisticSession::whereNotIn('session_id', $computed_devices)->get();
 
+        // determine if there is any processing to do.
         if ($sessions->count() == 0) {
             $this->info("No sessions to process"); return Command::INVALID;
         }
 
+        // loop through the sessions
         foreach($sessions as $session)
         {
             $this->info("Session: ". $session->session_id. " (Getting device data)");
 
+            // get the agent information from the user agent.
             $agent = new Agent();
             $agent->setUserAgent($session->user_agent);
 
+            // store the new device statistic information.
             $device = StatisticDevice::firstOrNew([
                 'session_id' => $session->session_id
             ]);
