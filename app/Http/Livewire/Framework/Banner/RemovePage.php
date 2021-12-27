@@ -17,10 +17,22 @@ class RemovePage extends ModalComponent
      */
     use AuthorizesRequests;
 
+    /**
+     * The value that stores the page identifier that will
+     * be removed.
+     */
     public $page;
 
+    /**
+     * The array that stores all of the page models.
+     */
     public $pages;
 
+    /**
+     * validation rules that will be checked when the
+     * modal is saved.
+     * @return string[]
+     */
     public function rules()
     {
         return [
@@ -28,12 +40,23 @@ class RemovePage extends ModalComponent
         ];
     }
 
+    /**
+     * function that is called when the livewire component is
+     * initialized.
+     * @return void
+     */
     public function mount()
     {
         $this->pages = Page::all()->sortBy('name');
         $this->page = $this->pages->first()->id;
     }
 
+    /**
+     * the function that when called will
+     * remove a page.
+     * @return void
+     * @throws AuthorizationException
+     */
     public function save()
     {
         // verify authorization
@@ -55,6 +78,11 @@ class RemovePage extends ModalComponent
         $this->redirect(URL::previous());
     }
 
+    /**
+     * the method that is automatically called to render
+     * the view for the livewire component.
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('livewire.framework.banner.remove-page');
