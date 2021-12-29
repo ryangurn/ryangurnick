@@ -49,43 +49,71 @@ all of the permissions that exist, their purposes and locations used in code. th
 
 ### photo grid permissions
 * add photo
+    * the "add photo" permission is intended to restrict who can add a photo to any of the photo grids.
 * edit photo
+    * the "edit photo" permission is intended to restrict who can edit a photo in any of the photo grids.
 * delete photo
+    * the "delete photo" permission is intended to restrict who can delete a photo from any of the photo grids.
 * react to photo
+    * the "react to photo" permission is intended to restrict who can add a reaction to any photo within a photo grid.
 * comment on photo
+    * the "comment on photo" permission is intended to restrict who can add a comment on any photo.
 * view photo analytics
+    * the "view photo analytics" permission is intended to restrict who can view the analytics for any photo grid.
 
 ### module permissions (excluding photo grid)
-* edit <module>
-* delete <module>
-* view <module>
-* reorder <module>
+* edit (module)
+    * the "edit (module)" permission is intended to restrict who can edit a specific module.
+* delete (module)
+    * the "delete (module)" permission is intended to restrict who can remove a module from a page.
+* view (module)
+    * the "view (module)" permission is intended to restrict who can view draft versions of modules on any linked pages.
+* reorder (module)
+    * the "reorder (module)" permission is intended to restrict who can change the order of a module on any page.
 
 ### analytics permissions
 * view site analytics
+    * the "view site analytics" permission is intended to restrict who can view the application analytics, [at this point mainly just page views].
 
 ### configuration slideover permissions
 * view application information
+    * the "view application information" permission is intended to restrict who can view the configuration information stored within laravel about the application.
 * view logging information
+    * the "view logging information" permission is intended to restrict who can view the configuration information stored within laravel about the methods in which logs are collected and handled.
 * view database information
+    * the "view database information" permission is intended to restrict who can view the configuration information stored within laravel about the database connection.
 * view driver information
+    * the "view driver information" permission is intended to restrict who can view the configuration information stored within laravel about the various drivers that the application __may__ use.
 * view memcached information
+    * the "view memcached information" permission is intended to restrict who can view the configuration information stored within laravel about the memcached server connection.
 * view redis information
+    * the "view redis information" permission is intended to restrict who can view the configuration information stored within laravel about the redis server connection.
 * view mail information
+    * the "view mail information" permission is intended to restrict who can view the configuration information stored within laravel about the email connection.
 * view misc information
+    * the "view misc information" permission is intended to restrict who can view the information stored within laravel about various settings that do not easily fit into another category.
 * view file system information
-÷
+    * the "view file system information" permission is intended to restrict who can view the information stored within laravel about the file system settings.
+
 ### email/contact slideover permissions
 * view emails
+    * the "view emails" permission is intended to restrict who can view contacts within the contact overlay when logged in.
 * read emails
+    * the "read emails" permission is intended to restrict who can mark an email as read within the contact overlay, this permission will only take effect when "view emails" is also enabled for a user.
 
 ### settings slideover permissions
 * view maintenance settings
+    * the "view maintenance settings" permission is intended to restict who can see the maintenance mode in the settings overlay. 
 * update maintenance settings
+    * the "update maintenance settings" permission is intended to restrict who can put the application into maintenance mode, this permission will only take effect when "update maintenance settings" is also enabled for a user.
 * view logo settings
+    * the "view logo settings" permission is intended to restrict who can see the logo upload form in the settings overlay.
 * update logo settings
+    * the "update logo settings" permisison is intended to restrict who can upload an image to the logo form in the settings overlay, this permission will only take effect when "view logo settings" is also enabled for a user.
 * view name settings
+    * the "view name settings" permission is intended to restrict who can view the application name in the settings overlay.
 * update name settings
+    * the "update name settings" permission is intended to restrict who can edit the application name in the settings overlay, this permission will only take effect when "view name settings" is also enabled for a user.
 * view contact settings
 * update contact settings
 * view gallery settings
