@@ -115,33 +115,53 @@ all of the permissions that exist, their purposes and locations used in code. th
 * update name settings
     * the "update name settings" permission is intended to restrict who can edit the application name in the settings overlay, this permission will only take effect when "view name settings" is also enabled for a user.
 * view contact settings
+    * the "view contact settings" permission is intended to restrict who can view the contact form options in the settings overlay.
 * update contact settings
+    * the "update contact settings" permission is intended to restrict who can edit the contact form options in the settings overlay, this permission will only take effect when "view contact settings" is also enabled for a user.
 * view gallery settings
+    * the "view gallery settings" permission is intended to restrict who can view the gallery options in the settings overlay.
 * update gallery settings
+    * the "update gallery settings" permission is intended to restrict who can update the gallery options in the settings overlay, this permission will only take effect when "view gallery settings" is also enabled for a user.
 * view footer settings
+    * the "view footer settings" permission is intended to restrict who can view the footer options in the settings overlay.
 * update footer settings
+    * the "update footer settings" permission is intended to restrict who can update the footer options in the settings overlay, this permission will only take effect when "view footer overlay" is also enabled for a user.
 
 ### comment moderation permissions
 * remove comment
+    * the "remove comment" permission is intended to restrict who can delete a comment from a gallery image.
 * update comment
+    * the "update comment" permission is intended to restrict who can update a comment in the gallery image.
 
 ### telescope permissions
 * access telescope
+    * the "access telescope" permission is intended to restrict who can access the telescope debugging interface.
 
 ### access control permissions
 * view access controls
+    * the "view access controls" permission is intended to restrict who can view the access control overlay.
 * add roles
+    * the "add roles" permission is intended to restrict who can add a new role into the access control system.
 * delete roles
+    * the "delete roles" permission is intended to restrict who can delete a role from the access control system.
 * update roles
+    * the "update roles" permission is intended to restrict who can update a role within the access control system.
 * associate permissions
+    * the "associate permissions" permission is intended to restrict who can associate a permission to a role within the access control system.
 
 ### banner permissions
 * add page
+    * the "add page" permission is intended to restrict who can add a page using the administrative banner.
 * delete page
+    * the "delete page" permission is intended to restrict who can delete a page using the administrative banner.
 * edit menu
+    * the "edit menu" permission is intended to restrict who can edit the menu using the administrative banner.
 * delete menu
+    * the "delete menu" permission is intended to restrict who can delete a menu option using the administrative banner.
 * add module
+    * the "add module" permission is intended to restrict who can add a module to a page using the administrative banner.
 * add gallery
+    * the "add gallery" permission is intended to restrict who can add a gallery to a page using the administrative banner.
 
 ## roles
 all of the permissions assigned to each of the roles.
