@@ -50,118 +50,243 @@ all of the permissions that exist, their purposes and locations used in code. th
 ### photo grid permissions
 * add photo
     * the "add photo" permission is intended to restrict who can add a photo to any of the photo grids.
+    * __locations used__:
+        * core.card-footer
+        * photo.add.add-grid
 * edit photo
     * the "edit photo" permission is intended to restrict who can edit a photo in any of the photo grids.
+    * __locations used__:
+        * photo.edit.edit-grid
 * delete photo
     * the "delete photo" permission is intended to restrict who can delete a photo from any of the photo grids.
+    * __locations used__:
+        * photo.remove.remove-grid-photo
+        * card.card-footer
 * react to photo
     * the "react to photo" permission is intended to restrict who can add a reaction to any photo within a photo grid.
+    * __locations used__:
+        * photo.view-photo
 * comment on photo
     * the "comment on photo" permission is intended to restrict who can add a comment on any photo.
+    * __locations used__:
+        * photo.view-photo
 * view photo analytics
     * the "view photo analytics" permission is intended to restrict who can view the analytics for any photo grid.
+    * __locations used__:
+        * photo.photo-grid
 
 ### module permissions (excluding photo grid)
 * edit (module)
     * the "edit (module)" permission is intended to restrict who can edit a specific module.
+    * __locations used__:
 * delete (module)
     * the "delete (module)" permission is intended to restrict who can remove a module from a page.
+    * __locations used__:
 * view (module)
     * the "view (module)" permission is intended to restrict who can view draft versions of modules on any linked pages.
+    * __locations used__:
 * reorder (module)
     * the "reorder (module)" permission is intended to restrict who can change the order of a module on any page.
+    * __locations used__:
 
 ### analytics permissions
 * view site analytics
     * the "view site analytics" permission is intended to restrict who can view the application analytics, [at this point mainly just page views].
+    * __locations used__:
+        * framework.analytics
+        * layouts.app
 
 ### configuration slideover permissions
 * view application information
     * the "view application information" permission is intended to restrict who can view the configuration information stored within laravel about the application.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view logging information
     * the "view logging information" permission is intended to restrict who can view the configuration information stored within laravel about the methods in which logs are collected and handled.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view database information
     * the "view database information" permission is intended to restrict who can view the configuration information stored within laravel about the database connection.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view driver information
     * the "view driver information" permission is intended to restrict who can view the configuration information stored within laravel about the various drivers that the application __may__ use.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view memcached information
     * the "view memcached information" permission is intended to restrict who can view the configuration information stored within laravel about the memcached server connection.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view redis information
     * the "view redis information" permission is intended to restrict who can view the configuration information stored within laravel about the redis server connection.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view mail information
     * the "view mail information" permission is intended to restrict who can view the configuration information stored within laravel about the email connection.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view misc information
     * the "view misc information" permission is intended to restrict who can view the information stored within laravel about various settings that do not easily fit into another category.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 * view file system information
     * the "view file system information" permission is intended to restrict who can view the information stored within laravel about the file system settings.
+    * __locations used__:
+        * layouts.app
+        * framework.configuration-slideover
 
 ### email/contact slideover permissions
 * view emails
     * the "view emails" permission is intended to restrict who can view contacts within the contact overlay when logged in.
+    * __locations used__:
+        * framework.email-slideover
+        * layouts.app
 * read emails
     * the "read emails" permission is intended to restrict who can mark an email as read within the contact overlay, this permission will only take effect when "view emails" is also enabled for a user.
+    * __locations used__:
+        * framework.email-slideover
 
 ### settings slideover permissions
 * view maintenance settings
     * the "view maintenance settings" permission is intended to restict who can see the maintenance mode in the settings overlay. 
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update maintenance settings
     * the "update maintenance settings" permission is intended to restrict who can put the application into maintenance mode, this permission will only take effect when "update maintenance settings" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 * view logo settings
     * the "view logo settings" permission is intended to restrict who can see the logo upload form in the settings overlay.
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update logo settings
     * the "update logo settings" permisison is intended to restrict who can upload an image to the logo form in the settings overlay, this permission will only take effect when "view logo settings" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 * view name settings
     * the "view name settings" permission is intended to restrict who can view the application name in the settings overlay.
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update name settings
     * the "update name settings" permission is intended to restrict who can edit the application name in the settings overlay, this permission will only take effect when "view name settings" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 * view contact settings
     * the "view contact settings" permission is intended to restrict who can view the contact form options in the settings overlay.
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update contact settings
     * the "update contact settings" permission is intended to restrict who can edit the contact form options in the settings overlay, this permission will only take effect when "view contact settings" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 * view gallery settings
     * the "view gallery settings" permission is intended to restrict who can view the gallery options in the settings overlay.
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update gallery settings
     * the "update gallery settings" permission is intended to restrict who can update the gallery options in the settings overlay, this permission will only take effect when "view gallery settings" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 * view footer settings
     * the "view footer settings" permission is intended to restrict who can view the footer options in the settings overlay.
+    * __locations used__:
+        * layouts.app
+        * framework.settings-slideover
 * update footer settings
     * the "update footer settings" permission is intended to restrict who can update the footer options in the settings overlay, this permission will only take effect when "view footer overlay" is also enabled for a user.
+    * __locations used__:
+        * framework.settings-slideover
 
 ### comment moderation permissions
 * remove comment
     * the "remove comment" permission is intended to restrict who can delete a comment from a gallery image.
+    * __locations used__:
+        * not implemented yet
 * update comment
     * the "update comment" permission is intended to restrict who can update a comment in the gallery image.
+    * __locations used__:
+        * not implemented yet
 
 ### telescope permissions
 * access telescope
     * the "access telescope" permission is intended to restrict who can access the telescope debugging interface.
+    * __locations used__:
+        * layouts.app
 
 ### access control permissions
 * view access controls
     * the "view access controls" permission is intended to restrict who can view the access control overlay.
+    * __locations used__:
+        * framework.user-modal
+        * framework.user-slideover
+        * framework.access-slideover
+        * layouts.app
 * add roles
     * the "add roles" permission is intended to restrict who can add a new role into the access control system.
+    * __locations used__:
+        * framework.add-role
 * delete roles
     * the "delete roles" permission is intended to restrict who can delete a role from the access control system.
+    * __locations used__:
+        * framework.edit-role
+        * framework.access-slideover
 * update roles
     * the "update roles" permission is intended to restrict who can update a role within the access control system.
+    * __locations used__:
+        * framework.edit-role
+        * framework.access-slideover
 * associate permissions
     * the "associate permissions" permission is intended to restrict who can associate a permission to a role within the access control system.
+    * __locations used__:
+        * framework.user-modal
+        * framework.add-permission
+        * framework.access-slideover
 
 ### banner permissions
 * add page
     * the "add page" permission is intended to restrict who can add a page using the administrative banner.
+    * __locations used__:
+        * framework.banner
 * delete page
     * the "delete page" permission is intended to restrict who can delete a page using the administrative banner.
+    * __locations used__:
+        * framework.banner
+        * framework.banner.remove-page
+        * core.card-footer
 * edit menu
     * the "edit menu" permission is intended to restrict who can edit the menu using the administrative banner.
+    * __locations used__:
+        * framework.banner
+        * framework.banner.add-menu
 * delete menu
     * the "delete menu" permission is intended to restrict who can delete a menu option using the administrative banner.
+    * __locations used__:
+        * framework.banner.remove-menu
+        * framework.banner
 * add module
     * the "add module" permission is intended to restrict who can add a module to a page using the administrative banner.
+    * __locations used__:
+        * framework.banner.add-module
+        * framework.banner
 * add gallery
     * the "add gallery" permission is intended to restrict who can add a gallery to a page using the administrative banner.
+    * __locations used__:
+        * core.add.add-gallery
+        * framework.banner
+        * photo.add.add-grid
 
 ## roles
 all of the permissions assigned to each of the roles.
