@@ -295,16 +295,131 @@ all of the permissions assigned to each of the roles.
 * all of the permissions
 
 ### editor
-* work in progress
+* add photo
+* edit photo
+* delete photo
+* react to photo
+* comment on photo
+* edit about card
+* delete about card
+* view about card
+* reorder about card
+* edit projects card
+* delete projects card
+* view projects card
+* reorder projects card
+* edit quotes card
+* delete quotes card
+* view quotes card
+* reorder quotes card
+* edit gallery card
+* delete gallery card
+* view gallery card
+* reorder gallery card
+* edit photo grid
+* delete photo grid
+* view photo grid
+* reorder photo grid
+* edit goals card
+* delete goals card
+* view goals card
+* reorder goals card
+* edit skills card
+* delete skills card
+* view skills card
+* reorder skills card
+* edit computer skills card
+* delete computer skills card
+* view computer skills card
+* reorder computer skills card
+* edit software card
+* delete software card
+* view software card
+* reorder software card
+* edit operating system proficiency card
+* delete operating system proficiency card
+* view operating system proficiency card
+* reorder operating system proficiency card
+* edit cyber security card
+* delete cyber security card
+* view cyber security card
+* reorder cyber security card
+* edit computer science experience card
+* delete computer science experience card
+* view computer science experience card
+* reorder computer science experience card
+* edit event services experience card
+* delete event services experience card
+* view event services experience card
+* reorder event services experience card
+* edit education card
+* delete education card
+* view education card
+* reorder education card
+* edit committee work card
+* delete committee work card
+* view committee work card
+* reorder committee work card
+* edit text card
+* delete text card
+* view text card
+* reorder text card
+* edit contact card
+* delete contact card
+* view contact card
+* reorder contact card
+* edit header
+* delete header
+* view header
+* reorder header
+* edit stats
+* delete stats
+* view stats
+* reorder stats
+* edit hero
+* delete hero
+* view hero
+* reorder hero
+* edit post
+* delete post
+* view post
+* reorder post
+* access telescope
+* add page
+* delete page
+* edit menu
+* add module
+* add gallery
+* delete menu
 
 ### moderator
-* work in progress
+* react to photo
+* comment on photo
+* remove comment
+* update comment
 
 ### photographer
-* work in progress
+* add photo
+* edit photo
+* delete photo
+* react to photo
+* comment on photo
+* edit gallery card
+* delete gallery card
+* view gallery card
+* reorder gallery card
+* edit photo grid
+* delete photo grid
+* vie photo grid
+* reorder photo grid
+* view gallery settings
+* update gallery settings
+* add gallery
+* view photo analytics
 
 ### blogger
-* work in progress
+* react to photo
+* comment on photo
 
 ### user
 * react to comment
