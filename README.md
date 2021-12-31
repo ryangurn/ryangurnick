@@ -2,48 +2,8 @@
 
 this application is intended to help with personal website management. it will provide a variety of functionality to aid in setting up a simplistic website that contains a variety of information about a person and their respective interests.
 
-## installation
-
-### docker
-
-### non-docker
-1. clone the respository:
-
-    `git clone https://github.com/ryangurn/ryangurnick`
-2. setup the .env file
-    * ensure that `ROUTES_ENABLED` is set to false when installing, this is important because there are routes that are generated using database models. If the routes are enabled before the migrations are processed and data seeded, you will be unable to access the website.
-    
-    ```
-    APP_NAME=<application name>
-    APP_ENV=<dev/staging/production>
-    APP_KEY=
-    APP_DEBUG=false
-    APP_URL=<application url>
-
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=<db name>
-    DB_USERNAME=<db username>
-    DB_PASSWORD=<db password>
-
-    MAIL_MAILER=smtp
-    MAIL_HOST=<mail provider host>
-    MAIL_PORT=<mail provider port>
-    MAIL_USERNAME=<mail provider email>
-    MAIL_PASSWORD=<mail provider password>
-    MAIL_ENCRYPTION=ssl
-    MAIL_FROM_ADDRESS=<mail provider email>
-    MAIL_FROM_NAME="${APP_NAME}"
-
-    TELESCOPE_ENABLED=true
-    GEOLOCATION_IPINFO_ACCESS_TOKEN=<token here>
-    ROUTES_ENABLED=false
-    ```
-3. `php artisan migrate`
-4. `php artisan db:seed`
-5. update `ROUTES_ENABLED` to be equal  to `true` in the .env file.
-6. `php artisan config:clear` 
+## wiki
+* [home](https://github.com/ryangurn/ryangurnick/wiki)
 
 ## functionality
 1. management of custom pages
