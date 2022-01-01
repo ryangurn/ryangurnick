@@ -4,6 +4,9 @@ this application is intended to help with personal website management. it will p
 
 ## wiki
 * [home](https://github.com/ryangurn/ryangurnick/wiki)
+* [installation](https://github.com/ryangurn/ryangurnick/wiki/installation)
+* [access controls](https://github.com/ryangurn/ryangurnick/wiki/access-controls)
+* [functionality](https://github.com/ryangurn/ryangurnick/wiki/functionality)
 
 ## functionality
 1. management of custom pages
