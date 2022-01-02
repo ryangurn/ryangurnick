@@ -1,5 +1,7 @@
 # simple-cms
 
+[![Laravel](https://github.com/ryangurn/ryangurnick/actions/workflows/laravel.yml/badge.svg?branch=master)](https://github.com/ryangurn/ryangurnick/actions/workflows/laravel.yml)
+
 this application is intended to help with personal website management. it will provide a variety of functionality to aid in setting up a simplistic website that contains a variety of information about a person and their respective interests.
 
 ## wiki
