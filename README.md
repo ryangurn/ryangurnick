@@ -9,6 +9,9 @@ this application is intended to help with personal website management. it will p
 * [functionality](https://github.com/ryangurn/ryangurnick/wiki/functionality)
 * [data structures](https://github.com/ryangurn/ryangurnick/wiki/data-structures)
 
+## features in progress
+there are many features for simple cms that are in progress, these can be tracked through the github project that is linked to this repository, or by clicking this [link](https://github.com/users/ryangurn/projects/1)
+
 ## packages
 * tailwindcss/tailwindui
 * laravel
@@ -21,6 +24,7 @@ this application is intended to help with personal website management. it will p
 * [jenssegers/agent](https://github.com/jenssegers/agent)
 * [patoui/laravel-bad-word](https://github.com/patoui/laravel-bad-word)
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+* [wire-elements/modal](https://github.com/wire-elements/modal)
 
 ### look into
 * [spatie/laravel-demo-mode](https://github.com/spatie/laravel-demo-mode)
@@ -29,4 +33,3 @@ this application is intended to help with personal website management. it will p
 * [spatie/laravel-markdown](https://github.com/spatie/laravel-markdown)
 * [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
 * [pragmarx/tracker](https://github.com/mikha-dev/pragmarx-tracker) **not used as its quite old, and not actively maintained**
-* [wire-elements/modal](https://github.com/wire-elements/modal)
