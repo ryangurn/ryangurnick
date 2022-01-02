@@ -14,6 +14,9 @@ this application is intended to help with personal website management. it will p
 ## features in progress
 there are many features for simple cms that are in progress, these can be tracked through the github project that is linked to this repository, or by clicking this [link](https://github.com/users/ryangurn/projects/1)
 
+## current state of development
+simple cms as it stands currently is functional however it is still quite buggy, for instance any logged in user can view draft modules even when they are not explicitly granted permission to do so. **keep in mind that this project is a work in progress, and it will get better and more functional with time**
+
 ## packages
 * tailwindcss/tailwindui
 * laravel
