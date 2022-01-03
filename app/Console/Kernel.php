@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AssociateRole;
 use App\Console\Commands\GetDeviceData;
 use App\Console\Commands\GetIPData;
 use Illuminate\Console\Scheduling\Schedule;
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         GetIPData::class,
         GetDeviceData::class,
+        AssociateRole::class,
     ];
 
     /**
