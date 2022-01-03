@@ -1,4 +1,4 @@
-<div class="p-2">
+<div class="p-2" x-data>
     <div class="grid grid-cols-6 gap-6">
         @if (!$new)
         <div class="col-span-6">
@@ -49,7 +49,7 @@
     <div class="absolute bottom-0 inset-x-px">
         <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save">
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="save" @keydown.window.prevent.ctrl.s="$wire.save()" @keydown.window.prevent.cmd.s="$wire.save()">
                     Save
                 </button>
             </div>
@@ -58,15 +58,6 @@
                     @error('name') <li class="text-red-800">{{ $message }}</li> @enderror
                     @error('description') <li class="text-red-800">{{ $message }}</li> @enderror
                     @error('gallery_id') <li class="text-red-800">{{ $message }}</li> @enderror
-{{--                    @if (!$roles->isEmpty())--}}
-{{--                        @foreach($roles as $key => $role)--}}
-{{--                            @error('roles.'.$key.'.duration') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                            @error('roles.'.$key.'.location') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                            @error('roles.'.$key.'.role') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                            @error('roles.'.$key.'.company') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                            @error('roles.'.$key.'.body') <li class="text-red-800">{{ $message }}</li> @enderror--}}
-{{--                        @endforeach--}}
-{{--                    @endif--}}
                 </ul>
             </div>
         </div>
