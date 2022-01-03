@@ -23,12 +23,15 @@ use App\Models\Page;
 if (config('app.routes_enabled'))
 {
     $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
-    if ($maintenance != null && $maintenance->value)
-    {
-        Route::get('/maintenance', function() {
+    Route::get('/maintenance', function() use ($maintenance) {
+        if ($maintenance != null && $maintenance->value) {
             return abort(503);
-        })->name('maintenance');
-    }
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    })->name('maintenance');
 
     /**
      * add all the page routes as long as the pages' table
