@@ -4,7 +4,7 @@
             @livewire($module->module->component, ['page_module' => $module, 'identifier' => $identifier])
         @endif
 
-        @if (!$module->enabled && Auth::check())
+        @if (!$module->enabled && Auth::check() && auth()->user()->can('view '.strtolower($module->module->name)))
             @livewire($module->module->component, ['page_module' => $module, 'identifier' => $identifier])
         @endif
 
