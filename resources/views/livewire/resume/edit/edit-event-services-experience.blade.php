@@ -52,6 +52,7 @@
                         </svg>
                     </button>
                 </div>
+            </div>
         @endforeach
     @endif
 
