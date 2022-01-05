@@ -6,24 +6,29 @@
             <div class="grid grid-cols-6 gap-6">
 
                 @if ($key != 0)
-                    <div class="col-span-6 pt-2">
+                    <div class="col-span-6 mt-2 mb-2">
                         <hr />
                     </div>
                 @endif
 
-                <div class="col-span-3">
-                    <label for="region" class="block text-sm font-medium text-gray-700">organization #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="institutions.{{ $key }}.organization">
-                </div>
-
-                <div class="col-span-3">
-                    <label for="quote" class="block text-sm font-medium text-gray-700">duration #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="institutions.{{ $key }}.duration">
-                </div>
-
                 <div class="col-span-5">
-                    <label for="region" class="block text-sm font-medium text-gray-700">organization #{{ $key+1 }}</label>
-                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="institutions.{{ $key }}.body"></textarea>
+                    <fieldset class="bg-white">
+                        <legend class="block text-sm font-medium text-gray-700">education #{{ $key+1 }}</legend>
+                        <div class="mt-1 rounded-md shadow-sm -space-y-px">
+                            <div>
+                                <label for="country" class="sr-only">organization #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="organization #{{ $key+1 }}" wire:model="institutions.{{ $key }}.organization">
+                            </div>
+                            <div>
+                                <label for="postal-code" class="sr-only">duration #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="duration #{{ $key+1 }}" wire:model="institutions.{{ $key }}.duration">
+                            </div>
+                            <div>
+                                <label for="postal-code" class="sr-only">description #{{ $key+1 }}</label>
+                                <textarea class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="description #{{ $key+1 }}" wire:model="institutions.{{ $key }}.body"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
 
                 <div class="col-span-1">
