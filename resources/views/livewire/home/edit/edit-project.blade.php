@@ -2,28 +2,33 @@
     @if (!$projects->isEmpty())
         @foreach($projects as $key => $project)
             @if ($key != 0)
-                <div class="col-span-6 pt-2">
+                <div class="col-span-6 mt-2 mb-2">
                     <hr />
                 </div>
             @endif
 
             <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-3 pb-0">
-                    <label for="project" class="block text-sm font-medium text-gray-700">project #{{ $key+1 }}</label>
-                    <input type="text" name="project" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.project">
-                </div>
-
-                <div class="col-span-3">
-                    <label class="block text-sm font-medium text-gray-700">status #{{ $key+1 }}</label>
-                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.status">
-                        <option>archived</option>
-                        <option>current</option>
-                    </select>
-                </div>
-
-                <div class="col-span-5">
-                    <label for="project" class="block text-sm font-medium text-gray-700">link #{{ $key+1 }}</label>
-                    <input type="text" name="project" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="projects.{{ $key }}.link">
+                <div class="col-span-5 pb-0">
+                    <fieldset>
+                        <legend class="block text-sm font-medium text-gray-700">project #{{ $key+1 }} details</legend>
+                        <div class="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+                            <div>
+                                <label class="sr-only">project name</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="projects.{{ $key }}.project" placeholder="project name">
+                            </div>
+                            <div>
+                                <label for="card-expiration-date" class="sr-only">project status</label>
+                                <select class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="projects.{{ $key }}.status">
+                                    <option>archived</option>
+                                    <option>current</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="sr-only">project link</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="project link" wire:model="projects.{{ $key }}.link">
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
 
                 <div class="col-span-1">
