@@ -6,44 +6,47 @@
             <div class="grid grid-cols-6 gap-6">
 
                 @if ($key != 0)
-                    <div class="col-span-6 pt-2">
+                    <div class="col-span-6 mb-2 mt-2">
                         <hr />
                     </div>
                 @endif
 
-                <div class="col-span-2">
-                    <label for="quote" class="block text-sm font-medium text-gray-700">duration #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="roles.{{ $key }}.duration">
-                </div>
-
-                <div class="col-span-2">
-                    <label for="region" class="block text-sm font-medium text-gray-700">location #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="roles.{{ $key }}.location">
-                </div>
-
-                <div class="col-span-2">
-                    <label for="region" class="block text-sm font-medium text-gray-700">role #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="roles.{{ $key }}.role">
-                </div>
-
-                <div class="col-span-2">
-                    <label for="region" class="block text-sm font-medium text-gray-700">company #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="roles.{{ $key }}.company">
-                </div>
-
-                <div class="col-span-3">
-                    <label for="region" class="block text-sm font-medium text-gray-700">company #{{ $key+1 }}</label>
-                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="roles.{{ $key }}.body"></textarea>
+                <div class="col-span-5">
+                    <fieldset class="bg-white">
+                        <legend class="block text-sm font-medium text-gray-700">experience #{{ $key+1 }}</legend>
+                        <div class="mt-1 rounded-md shadow-sm -space-y-px">
+                            <div>
+                                <label class="sr-only">duration #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="duration #{{ $key+1 }}" wire:model="roles.{{ $key }}.duration">
+                            </div>
+                            <div>
+                                <label class="sr-only">location #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="location #{{ $key+1 }}" wire:model="roles.{{ $key }}.location">
+                            </div>
+                            <div>
+                                <label class="sr-only">role #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="role #{{ $key+1 }}" wire:model="roles.{{ $key }}.role">
+                            </div>
+                            <div>
+                                <label class="sr-only">company #{{ $key+1 }}</label>
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="company #{{ $key+1 }}" wire:model="roles.{{ $key }}.company">
+                            </div>
+                            <div>
+                                <label class="sr-only">description #{{ $key+1 }}</label>
+                                <textarea class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="roles.{{ $key }}.body" placeholder="description #{{ $key+1 }}"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
 
                 <div class="col-span-1">
-                    <label for="region" class="block text-sm font-medium text-gray-700 mt-1">&nbsp;</label>
+                    <label class="block text-sm font-medium text-gray-700 mt-1">&nbsp;</label>
                     <button type="submit" class="inline-flex items-center px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" wire:click="remove({{ $key }})">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    <button type="submit" class="inline-flex items-center px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add">
+                    <button class="inline-flex items-center px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" wire:click="add">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
                         </svg>
