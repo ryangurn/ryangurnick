@@ -1,8 +1,8 @@
 <div class="relative">
-    <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+    <div class="relative hover:shadow-xl sm:rounded-2xl sm:overflow-hidden">
         <div class="absolute inset-0">
             <img class="h-full w-full object-cover" src="{{ $image }}" alt="People working on laptops">
-            <div class="absolute inset-0 bg-indigo-700 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-indigo-700 mix-blend-multiply rounded-2xl"></div>
         </div>
         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 {{ ($page_module->enabled) ? '' : 'border-dashed border-4' }}">
             <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">

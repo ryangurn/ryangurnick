@@ -60,6 +60,12 @@ class EditHero extends ModalComponent
     public $image;
 
     /**
+     * the value that stores the page module.
+     * @var
+     */
+    public $module;
+
+    /**
      * function that is called when the livewire component is
      * initialized.
      * @return void

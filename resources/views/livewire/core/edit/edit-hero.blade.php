@@ -1,18 +1,24 @@
 <div class="p-2" x-data>
     <div class="grid grid-cols-6 gap-6">
-        <div class="col-span-6">
-            <label for="quote" class="block text-sm font-medium text-gray-700">header</label>
-            <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="header">
-        </div>
 
         <div class="col-span-6">
-            <label for="region" class="block text-sm font-medium text-gray-700">body</label>
-            <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="body"></textarea>
-        </div>
-
-        <div class="col-span-6">
-            <label for="region" class="block text-sm font-medium text-gray-700">image</label>
-            <input type="file" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="image">
+            <fieldset class="bg-white">
+                <legend class="block text-sm font-medium text-gray-700">hero information</legend>
+                <div class="mt-1 rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label class="sr-only">header</label>
+                        <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="header" placeholder="header">
+                    </div>
+                    <div>
+                        <label class="sr-only">body</label>
+                        <textarea class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="body" wire:model="body"></textarea>
+                    </div>
+                    <div>
+                        <label class="sr-only">image</label>
+                        <input type="file" class="block rounded-b-md w-full border border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="image">
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
         @if (!$links->isEmpty())
