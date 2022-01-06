@@ -89,7 +89,7 @@ class PermissionSeeder extends Seeder
         ]);
 
         // settings
-        $configuration_sections = ['maintenance', 'logo', 'name', 'contact', 'gallery', 'footer'];
+        $configuration_sections = ['maintenance', 'logo', 'name', 'contact', 'gallery', 'footer', 'indexing'];
 
         foreach($configuration_sections as $section)
         {
