@@ -53,6 +53,81 @@
                                     </div>
                                     @endcan
 
+                                    @can('view indexing settings')
+                                    <div class="pb-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="flex-grow flex flex-col">
+                                                <span class="text-sm font-medium text-gray-900" id="availability-label">search engine indexing</span>
+                                                <span class="text-sm text-gray-500" id="availability-description">allow search engines to index your website and configure what is allowed.</span>
+                                            </span>
+                                        </div>
+
+                                        <div x-data="{show: false}">
+                                            <label id="listbox-label" class="sr-only">
+                                                Change published status
+                                            </label>
+                                            <div class="relative">
+                                                <div class="inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
+                                                    <div class="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-indigo-600">
+                                                        <div class="relative inline-flex items-center bg-indigo-500 py-2 pl-3 pr-4 border border-transparent rounded-l-md shadow-sm text-white">
+                                                            <!-- Heroicon name: solid/check -->
+                                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                            </svg>
+                                                            <p class="ml-2.5 text-sm font-medium">
+                                                                {{ $robots[$robots_current]['name'] }}
+                                                            </p>
+                                                        </div>
+                                                        <button type="button" class="relative inline-flex items-center bg-indigo-500 p-2 rounded-l-none rounded-r-md text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" @click="show = !show">
+                                                            <span class="sr-only">Change published status</span>
+                                                            <!-- Heroicon name: solid/chevron-down -->
+                                                            <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <ul class="origin-top-right absolute z-10 right-0 mt-2 w-72 rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-0"
+                                                    x-show="show"
+                                                    x-transition:enter=""
+                                                    x-transition:enter-start=""
+                                                    x-transition:enter-end=""
+                                                    x-transition:leave="transition ease-in duration-100"
+                                                    x-transition:leave-start="opacity-100"
+                                                    x-transition:leave-end="opacity-0">
+
+                                                    @if(!$robots->isEmpty())
+                                                        @foreach($robots as $key => $robot)
+                                                    <li class="text-gray-900 hover:text-white hover:bg-indigo-600 cursor-default select-none relative p-4 text-sm" id="listbox-option-0" role="option" @can('update indexing settings') wire:click="update_indexing('{{ $key }}')" @endcan>
+                                                        <div class="flex flex-col">
+                                                            <div class="flex justify-between">
+                                                                <p class="{{ ($key == $robots_current) ? 'font-semibold' : 'font-normal' }}">
+                                                                    {{ $robot['name'] }}
+                                                                </p>
+
+                                                                @if ($key == $robots_current)
+                                                                <span class="text-indigo-500">
+                                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                                    </svg>
+                                                                </span>
+                                                                @endif
+                                                            </div>
+
+                                                            <p class="text-gray-500 hover:text-indigo-200 mt-2">
+                                                                {{ $robot['description'] }}
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                        @endforeach
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endcan
+
                                     @can('view logo settings')
                                     <div>
                                         <div class="flex items-center justify-between pb-2">

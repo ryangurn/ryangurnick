@@ -127,6 +127,20 @@ class SettingsSlideover extends Component
     public $gallery_bad_words;
 
     /**
+     * the variable that stores the different search engine
+     * indexing settings.
+     * @var
+     */
+    public $robots;
+
+    /**
+     * the variable that stores the stored value for search
+     * engine indexing settings.
+     * @var
+     */
+    public $robots_current;
+
+    /**
      * function that is called when the livewire component is
      * initialized.
      * @return void
@@ -149,6 +163,18 @@ class SettingsSlideover extends Component
         $this->gallery_allow_reactions = (Setting::where('key', 'gallery.allow_reactions')->first() != null) ? Setting::where('key', 'gallery.allow_reactions')->first()->value : false;
         $this->gallery_allow_comments = (Setting::where('key', 'gallery.allow_comments')->first() != null) ? Setting::where('key', 'gallery.allow_comments')->first()->value : false;
         $this->gallery_bad_words = (Setting::where('key', 'gallery.bad_words')->first() != null) ? Setting::where('key', 'gallery.bad_words')->first()->value : false;
+
+        $this->robots = collect([
+            'all' => ['name' => 'No Restrictions', 'description' => 'There are no restrictions for indexing or serving. This directive is the default value and has no effect if explicitly listed.'],
+            'noindex' => ['name' => 'No indexing', 'description' => 'Do not show this page, media, or resource in search results. If you don\'t specify this directive, the page, media, or resource may be indexed and shown in search results.'],
+            'nofollow' => ['name' => 'No following links', 'description' => 'Do not follow the links on this page.'],
+            'none' => ['name' => 'None', 'description' => 'Equivalent to noindex, nofollow.'],
+            'noarchive' => ['name' => 'No caching', 'description' => 'Do not show a cached link in search results.'],
+            'nosnippet' => ['name' => 'No snippets', 'description' => 'Do not show a text snippet or video preview in the search results for this page. A static image thumbnail (if available) may still be visible, when it results in a better user experience.'],
+            'notranslate' => ['name' => 'No translation', 'description' => 'Don\'t offer translation of this page in search results.'],
+            'noimageindex' => ['name' => 'No image indexing', 'description' => 'Do not index images on this page.']
+        ]);
+        $this->robots_current = Setting::where('key', 'application.index')->first()->value;
     }
 
     /**
@@ -385,6 +411,26 @@ class SettingsSlideover extends Component
         $gallery_words = Setting::firstOrNew(['key' => 'gallery.bad_words']);
         $gallery_words->value = $this->gallery_bad_words;
         $gallery_words->save();
+
+        // redirect
+        $this->redirect(URL::previous());
+    }
+
+    /**
+     * the function that when called will update the application.index
+     * setting
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function update_indexing($key)
+    {
+        // verify authorization
+        $this->authorize('update indexing settings');
+
+        // update and save the setting specifying indexing operations
+        $allow_reactions = Setting::firstOrNew(['key' => 'application.index']);
+        $allow_reactions->value = $key;
+        $allow_reactions->save();
 
         // redirect
         $this->redirect(URL::previous());
