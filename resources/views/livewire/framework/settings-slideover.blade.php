@@ -62,7 +62,7 @@
                                             </span>
                                         </div>
 
-                                        <div x-data="{show: false}">
+                                        <div x-data="{show: false}" class="pt-2">
                                             <label id="listbox-label" class="sr-only">
                                                 Change published status
                                             </label>
