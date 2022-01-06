@@ -125,5 +125,14 @@ class SettingSeeder extends Seeder
         ]);
         $gallery_allow_comments->value = true;
         $gallery_allow_comments->save();
+
+        /*
+         * Allow the website to be indexed by search engines
+         */
+        $indexing = Setting::firstOrNew([
+            'key' => 'application.index'
+        ]);
+        $indexing->value = "all";
+        $indexing->save();
     }
 }
