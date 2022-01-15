@@ -138,7 +138,7 @@ class EditGrid extends ModalComponent
         }
 
         // update the parameters of the photo.
-        $this->photo_model->caption = $this->photo['description'];
+        $this->photo_model->caption = (array_key_exists('description', $this->photo)) ? $this->photo['description'] : '';
         $this->photo_model->location = $this->photo['location'];
         $this->photo_model->date = new Carbon($this->photo['date']);
         $this->photo_model->save();

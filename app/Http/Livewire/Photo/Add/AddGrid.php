@@ -135,7 +135,7 @@ class AddGrid extends ModalComponent
         $gallery_image = new GalleryImage();
         $gallery_image->gallery_id = $this->gallery->id;
         $gallery_image->image_id = $image->id;
-        $gallery_image->caption = $this->photo['description'];
+        $gallery_image->caption = (array_key_exists('description', $this->photo)) ? $this->photo['description'] : '';
         $gallery_image->date = new Carbon($this->photo['date']);
         $gallery_image->location = $this->photo['location'];
         $gallery_image->visible = true;
