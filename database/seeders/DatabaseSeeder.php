@@ -38,6 +38,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ModuleSeeder::class);
 
         /*
+         * PageTypeModuleSeeder needs to be seeded in order for
+         * the ability to add modules to a page, this is because
+         * the form dynamically changes what modules are allowed
+         * based on the page type.
+         */
+        $this->call(PageTypeModuleSeeder::class);
+
+        /*
         * ModuleParameterSeeder sets some parameters before
         * adding modules to pages (mainly for testing purposes)
         */
