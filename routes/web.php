@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Email;
+use App\Models\Module;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use App\Models\Page;
@@ -32,6 +33,18 @@ if (config('app.routes_enabled'))
             return redirect()->route('home');
         }
     })->name('maintenance');
+
+    /**
+     * create a sitemap route for seo optimization so that
+     * search engines can find the various pages on your
+     * site.
+     */
+    Route::get('/sitemap.xml', function () {
+        $pages = Page::all();
+        $posts = Module::where('component', 'blog.post')->first()->page_modules->unique('hash');
+
+        return response(view('sitemap', compact('pages', 'posts')), 200, ['Content-Type' => 'application/xml']);
+    })->name('sitename');
 
     /**
      * add all the page routes as long as the pages' table
