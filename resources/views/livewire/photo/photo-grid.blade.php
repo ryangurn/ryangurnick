@@ -1,10 +1,10 @@
 <div>
     <x-card :pm="$page_module">
         <x-slot name="body">
-            <div class="text-lg pb-2">
+            <div class="text-lg pb-2 dark:text-white">
                 {{ $gallery->name }}
             </div>
-            <div class="text-md pb-2">
+            <div class="text-md pb-2 dark:text-gray-400">
                 {{ $gallery->description }}
             </div>
         </x-slot>
