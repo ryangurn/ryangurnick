@@ -18,6 +18,10 @@ class GalleryImage extends Model
         'visible'
     ];
 
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
     public function gallery()
     {
         return $this->hasOne(Gallery::class);

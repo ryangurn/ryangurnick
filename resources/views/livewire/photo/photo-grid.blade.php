@@ -91,7 +91,7 @@
             <div class="space-y-2">
               <ul role="list" class="flex space-x-5">
                 <li>
-                  <livewire:core.footer-metadata :duration="$updated_at" :page_module="$page_module" />
+                  <livewire:core.footer-metadata :duration="$photo->date" :page_module="$page_module" />
                 </li>
               </ul>
             </div>
