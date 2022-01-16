@@ -2,7 +2,7 @@
     <x-slot name="title">skills</x-slot>
     <x-slot name="body">
 
-        <div class="text-gray-600 mt-3">
+        <div class="text-gray-600 dark:text-gray-400 mt-3">
             <ul class="text-lg ml-4">
                 @if (!$skills->isEmpty())
                     @foreach($skills as $skill)

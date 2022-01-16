@@ -2,7 +2,7 @@
     <x-slot name="title">gallery</x-slot>
     <x-slot name="body">
 
-        <div class="text-gray-600 mt-3">
+        <div class="text-gray-600 dark:text-gray-400 mt-3">
             {!! $body !!}
         </div>
 
