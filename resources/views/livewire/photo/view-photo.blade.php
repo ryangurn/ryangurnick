@@ -34,7 +34,7 @@
                 </span>
             @endif
         </div>
-        <div class="text-lg leading-6 font-medium space-y-1">
+        <div class="text-lg leading-6 font-medium space-y-1 dark:text-gray-300">
             <p>
                 {{ $photo->caption }}
             </p>
