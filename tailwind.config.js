@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-    purge: [
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
@@ -16,7 +16,7 @@ module.exports = {
 
                 black: colors.black,
                 white: colors.white,
-                gray: colors.trueGray,
+                gray: colors.neutral,
                 red: colors.red,
                 yellow: colors.amber,
                 green: colors.emerald,
@@ -32,13 +32,7 @@ module.exports = {
             },
         },
     },
-
-    variants: {
-        extend: {
-            opacity: ['disabled'],
-        },
-    },
-
+    darkMode: true,
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp')
