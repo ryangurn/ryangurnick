@@ -5,13 +5,13 @@
         @foreach($skills as $key => $skill)
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-3">
-                    <label for="quote" class="block text-sm font-medium text-gray-700">skill #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="skills.{{ $key }}.skill">
+                    <label for="quote" class="block text-sm font-medium text-gray-700 dark:text-gray-400">skill #{{ $key+1 }}</label>
+                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300" wire:model="skills.{{ $key }}.skill">
                 </div>
 
                 <div class="col-span-2">
-                    <label for="region" class="block text-sm font-medium text-gray-700">level #{{ $key+1 }}</label>
-                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="skills.{{ $key }}.level">
+                    <label for="region" class="block text-sm font-medium text-gray-700 dark:text-gray-400"">level #{{ $key+1 }}</label>
+                    <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:text-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:placeholder-gray-300" wire:model="skills.{{ $key }}.level">
                         <option>moderate</option>
                         <option>advanced</option>
                         <option>proficient</option>
@@ -50,7 +50,7 @@
 
 
     <div class="absolute bottom-0 inset-x-px">
-        <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
+        <div class="border-t border-gray-200 dark:border-gray-700 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
                 <button @keydown.window.prevent.ctrl.s="$wire.save()"
                         @keydown.window.prevent.cmd.s="$wire.save()"

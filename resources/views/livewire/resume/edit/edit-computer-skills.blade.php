@@ -5,12 +5,11 @@
         @foreach($skills as $key => $skill)
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-5">
-                    <label for="quote" class="block text-sm font-medium text-gray-700">skill #{{ $key+1 }}</label>
-                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model="skills.{{ $key }}">
+                    <label for="quote" class="block text-sm font-medium text-gray-700 dark:text-gray-400">skill #{{ $key+1 }}</label>
+                    <input type="text" name="quote" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300" wire:model="skills.{{ $key }}">
                 </div>
 
                 <div class="col-span-1">
-                    <label for="region" class="block text-sm font-medium text-gray-700 mt-1">&nbsp;</label>
                     <button type="submit" class="inline-flex items-center px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" wire:click="remove({{ $key }})">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
@@ -40,7 +39,7 @@
 
 
     <div class="absolute bottom-0 inset-x-px">
-        <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
+        <div class="border-t border-gray-200 dark:border-gray-700 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
                 <button @keydown.window.prevent.ctrl.s="$wire.save()"
                         @keydown.window.prevent.cmd.s="$wire.save()"
