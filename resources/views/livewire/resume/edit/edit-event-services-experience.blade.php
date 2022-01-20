@@ -33,7 +33,7 @@
                             </div>
                             <div>
                                 <label class="sr-only dark:text-gray-400">description #{{ $key+1 }}</label>
-                                <textarea class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="roles.{{ $key }}.body" placeholder="description #{{ $key+1 }}"></textarea>
+                                <textarea class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent p-3 focus:z-10 sm:text-sm border-gray-300" wire:model="roles.{{ $key }}.body" placeholder="description #{{ $key+1 }}"></textarea>
                             </div>
                         </div>
                     </fieldset>
