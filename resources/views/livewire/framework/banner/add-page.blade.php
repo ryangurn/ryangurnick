@@ -1,7 +1,7 @@
 <div x-data>
-    <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
-        <label for="name" class="sr-only">page name</label>
-        <input type="text" name="name" id="name" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="page name" wire:model="page_name">
+    <div class="border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+        <label class="sr-only">page name</label>
+        <input type="text" class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300 block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="page name" wire:model="page_name">
 
         <div aria-hidden="true">
             <div class="h-px"></div>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="absolute bottom-0 inset-x-px">
-        <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
+        <div class="border-t border-gray-200 dark:border-gray-700 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
                 <button @keydown.window.prevent.ctrl.s="$wire.save()"
                         @keydown.window.prevent.cmd.s="$wire.save()"
