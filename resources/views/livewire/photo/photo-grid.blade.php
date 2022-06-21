@@ -1,10 +1,10 @@
 <div>
     <x-card :pm="$page_module">
         <x-slot name="body">
-            <div class="text-lg pb-2">
+            <div class="text-lg pb-2 dark:text-white">
                 {{ $gallery->name }}
             </div>
-            <div class="text-md pb-2">
+            <div class="text-md pb-2 dark:text-gray-400">
                 {{ $gallery->description }}
             </div>
         </x-slot>
@@ -27,10 +27,10 @@
                         <div class="flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md">
                             <img src="{{ $photo->image->file }}" class="rounded-l-md" />
                         </div>
-                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
+                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-700 rounded-r-md truncate">
                             <div class="flex-1 px-4 py-2 text-sm truncate">
-                                <p class="text-gray-900 font-medium hover:text-gray-600">unique views</p>
-                                <p class="text-gray-500">{{ $photo->statistic_images->count() }} views</p>
+                                <p class="text-gray-900 font-medium hover:text-gray-600 dark:text-white dark:hover:text-gray-400">unique views</p>
+                                <p class="text-gray-500 dark:text-gray-400">{{ $photo->statistic_images->count() }} views</p>
                             </div>
                         </div>
                     </li>
@@ -91,7 +91,7 @@
             <div class="space-y-2">
               <ul role="list" class="flex space-x-5">
                 <li>
-                  <livewire:core.footer-metadata :duration="$updated_at" :page_module="$page_module" />
+                  <livewire:core.footer-metadata :duration="$photo->date" :page_module="$page_module" />
                 </li>
               </ul>
             </div>

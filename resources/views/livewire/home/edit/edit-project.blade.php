@@ -10,22 +10,22 @@
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-5 pb-0">
                     <fieldset>
-                        <legend class="block text-sm font-medium text-gray-700">project #{{ $key+1 }} details</legend>
+                        <legend class="block text-sm font-medium text-gray-700 dark:text-gray-400">project #{{ $key+1 }} details</legend>
                         <div class="mt-1 bg-white rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label class="sr-only">project name</label>
-                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="projects.{{ $key }}.project" placeholder="project name">
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-sm border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300" wire:model="projects.{{ $key }}.project" placeholder="project name">
                             </div>
                             <div>
                                 <label for="card-expiration-date" class="sr-only">project status</label>
-                                <select class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300" wire:model="projects.{{ $key }}.status">
+                                <select class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none bg-transparent focus:z-10 sm:text-sm border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300 p-3" wire:model="projects.{{ $key }}.status">
                                     <option>archived</option>
                                     <option>current</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="sr-only">project link</label>
-                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300" placeholder="project link" wire:model="projects.{{ $key }}.link">
+                                <input type="text" class="focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-sm border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300" placeholder="project link" wire:model="projects.{{ $key }}.link">
                             </div>
                         </div>
                     </fieldset>
@@ -62,7 +62,7 @@
 
 
     <div class="absolute bottom-0 inset-x-px">
-        <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
+        <div class="border-t border-gray-200 dark:border-gray-700 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
             <div class="flex-shrink-0">
                 <button @keydown.window.prevent.ctrl.s="$wire.save()"
                         @keydown.window.prevent.cmd.s="$wire.save()"

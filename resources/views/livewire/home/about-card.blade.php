@@ -3,8 +3,8 @@
     <x-slot name="image"><img src="{{ $image->file }}" alt="{{ $name }}" class="mr-2 md:mr-0 ml-4 w-auto h-auto md:h-64 md:h-46 rounded-xl object-cover" /></x-slot>
     <x-slot name="body">
 
-        <h4 class="text-xl font-semibold mt-2 md:mt-0">{{ $name }}</h4>
-        <div class="text-gray-600 mt-3">
+        <h4 class="text-xl font-semibold mt-2 md:mt-0 dark:text-white">{{ $name }}</h4>
+        <div class="text-gray-600 dark:text-gray-400 mt-3">
             {{ $body }}
         </div>
     </x-slot>

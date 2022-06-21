@@ -34,7 +34,7 @@
                 </span>
             @endif
         </div>
-        <div class="text-lg leading-6 font-medium space-y-1">
+        <div class="text-lg leading-6 font-medium space-y-1 dark:text-gray-300">
             <p>
                 {{ $photo->caption }}
             </p>
@@ -68,7 +68,7 @@
                     <div class="min-w-0 flex-1">
                         <div class="border-b border-gray-200 focus-within:border-indigo-600">
                             <label for="comment" class="sr-only">Add your comment</label>
-                            <textarea rows="3" name="comment" id="comment" class="block w-full border-0 border-b border-transparent p-0 pb-2 resize-none focus:ring-0 focus:border-indigo-600 sm:text-sm" placeholder="Add your comment..." wire:model="comment"></textarea>
+                            <textarea rows="3" name="comment" id="comment" class="block dark:text-gray-400 dark:bg-gray-900 dark:placeholder-gray-300 dark:border-gray-700 w-full border-0 border-b border-transparent p-0 pb-2 resize-none focus:ring-0 focus:border-indigo-600 sm:text-sm" placeholder="Add your comment..." wire:model="comment"></textarea>
                         </div>
                         <div class="pt-2 flex justify-between">
                             <div class="flex-shrink-0">
@@ -91,10 +91,10 @@
                                 <img class="h-6 w-6 rounded-full" src="https://www.gravatar.com/avatar/{{ md5($comment->user->email) }}?d=mp" alt="">
                                 <div class="flex-1 space-y-1">
                                     <div class="flex items-center justify-between">
-                                        <h3 class="text-sm font-medium">{{ $comment->user->name }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $comment->updated_at->diffForHumans() }}</p>
+                                        <h3 class="text-sm font-medium dark:text-gray-300">{{ $comment->user->name }}</h3>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $comment->updated_at->diffForHumans() }}</p>
                                     </div>
-                                    <p class="text-sm text-gray-500">{{ $comment->message }}</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $comment->message }}</p>
                                 </div>
                             </div>
                         </li>
