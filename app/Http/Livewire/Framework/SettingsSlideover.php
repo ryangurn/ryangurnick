@@ -357,6 +357,7 @@ class SettingsSlideover extends Component
         $this->authorize('update logo settings');
 
         // check if the uploaded image is not null
+        // todo: add support for storing images in the database
         if ($this->sitelogo != null)
         {
             // get original filename and extract extension

@@ -94,6 +94,7 @@ class Hero extends Component
      */
     public function render()
     {
+        // todo: add support for storing images in the images table and possibly referencing the files table.
         return view('livewire.core.hero');
     }
 }

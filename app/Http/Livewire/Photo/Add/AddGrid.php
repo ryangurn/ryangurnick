@@ -118,6 +118,7 @@ class AddGrid extends ModalComponent
         $this->validate();
 
         // get original filename and extract extension
+        // todo: add support for storing images in the database
         $filename = explode(".", $this->image->getFilename());
         $ext = $filename[count($filename)-1];
 

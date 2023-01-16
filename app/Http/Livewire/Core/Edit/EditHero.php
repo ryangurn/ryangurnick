@@ -172,6 +172,8 @@ class EditHero extends ModalComponent
         if ($this->image != null)
         {
             // get original filename and extract extension
+            // todo: provide the option to store files in the database
+            // todo: link the image parameter to the images table (and thus the files table)
             $filename = explode(".", $this->image->getFilename());
             $ext = $filename[count($filename)-1];
 

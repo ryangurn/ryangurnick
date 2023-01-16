@@ -124,6 +124,7 @@ class EditAbout extends ModalComponent
         $linkText = $this->module->module_parameters->where('parameter', '=', 'link_text')->first();
 
         // ensure the image is not null, (ie: an image has been uploaded)
+        // todo: add support for storing images in the database
         if ($this->image != null)
         {
             // get original filename and extract extension

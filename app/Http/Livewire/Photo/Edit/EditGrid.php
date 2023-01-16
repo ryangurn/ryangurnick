@@ -123,6 +123,7 @@ class EditGrid extends ModalComponent
         $this->validate();
 
         // ensure there is an uploaded image.
+        // todo: add support for storing images in the database
         if ($this->image != null)
         {
             // get original filename and extract extension
