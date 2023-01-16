@@ -19,11 +19,13 @@
                         <p class="mt-1 text-base text-gray-500">You are currently not authorized to make this request.</p>
                         <p class="mt-2 text-xs text-gray-500">please contact an administrator if you feel you need access.</p>
                     </div>
+                    @if (Route::has('home'))
                     <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
                         <a href="{{ route('home') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Go back home
                         </a>
                     </div>
+                    @endif
                 </div>
             </main>
         </div>

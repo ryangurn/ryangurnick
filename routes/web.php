@@ -3,6 +3,7 @@
 use App\Models\Email;
 use App\Models\Module;
 use App\Models\Setting;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
 use App\Models\Page;
 
@@ -23,7 +24,13 @@ use App\Models\Page;
  */
 if (config('app.routes_enabled'))
 {
-    $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
+    try {
+        $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
+    } catch (QueryException $q)
+    {
+        abort(404);
+    }
+
     Route::get('/maintenance', function() use ($maintenance) {
         if ($maintenance != null && $maintenance->value) {
             return abort(503);
@@ -51,7 +58,12 @@ if (config('app.routes_enabled'))
      * is not empty, if the pages' table is empty then any route
      * will result in a 404.
      */
-    $pages = Page::all();
+    try {
+        $pages = Page::all();
+    } catch (QueryException $q)
+    {
+        abort(404);
+    }
     if (!$pages->isEmpty())
     {
         foreach ($pages as $page) {
