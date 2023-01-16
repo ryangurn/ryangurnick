@@ -84,4 +84,13 @@ class Controller extends BaseController
     {
         return view($page->page_type->view, compact('page', 'identifier'));
     }
+
+    public static function upload_file($content)
+    {
+        if (config('files.storage') == 'laravel') {
+            // todo: handle laravel storage
+        } elseif (config('files.storage') == 'database') {
+            // todo: handle database storage
+        }
+    }
 }
