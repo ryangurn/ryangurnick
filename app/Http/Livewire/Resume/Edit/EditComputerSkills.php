@@ -28,6 +28,7 @@ class EditComputerSkills extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -35,12 +36,14 @@ class EditComputerSkills extends ModalComponent
     /**
      * the array that stores computer skills
      * data.
+     *
      * @var
      */
     public $skills;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -48,6 +51,7 @@ class EditComputerSkills extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditComputerSkills extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit computer skills modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,15 +73,15 @@ class EditComputerSkills extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->skills); $i++)
-        {
-            $arr['skills.'.$i.'.required'] = 'Skill #'.($i+1).' cannot be blank.';
-            $arr['skills.'.$i.'.string'] = 'Skill #'.($i+1).' must be a string.';
+        for ($i = 0; $i < count($this->skills); $i++) {
+            $arr['skills.'.$i.'.required'] = 'Skill #'.($i + 1).' cannot be blank.';
+            $arr['skills.'.$i.'.string'] = 'Skill #'.($i + 1).' must be a string.';
         }
 
         return $arr;
@@ -86,13 +91,13 @@ class EditComputerSkills extends ModalComponent
      * the function that when called will recalculate
      * the validation messages. it will also ensure
      * that there is at least one value.
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->skills) == 0)
-        {
+        if (count($this->skills) == 0) {
             $this->add();
         }
     }
@@ -101,7 +106,9 @@ class EditComputerSkills extends ModalComponent
      * the function that when called will recalculate
      * validation messages and add a new sub array to
      * skills with default values.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add()
@@ -117,8 +124,10 @@ class EditComputerSkills extends ModalComponent
      * given an index, $i, this function will remove
      * a specific institution sub array and verify that
      * at least one skill exists.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -133,7 +142,9 @@ class EditComputerSkills extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the computer skills component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -163,12 +174,14 @@ class EditComputerSkills extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->skills = collect($this->skills);
+
         return view('livewire.resume.edit.edit-computer-skills');
     }
 }

@@ -38,6 +38,7 @@ class AddGrid extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -45,6 +46,7 @@ class AddGrid extends ModalComponent
     /**
      * this variable stores the gallery identifier to
      * add the image to.
+     *
      * @var
      */
     public $gallery_id;
@@ -52,6 +54,7 @@ class AddGrid extends ModalComponent
     /**
      * this variable stores the gallery model that
      * the image is associated to.
+     *
      * @var
      */
     public $gallery;
@@ -59,18 +62,21 @@ class AddGrid extends ModalComponent
     /**
      * this variable stores the parameters of the
      * uploaded photo.
+     *
      * @var
      */
     public $photo;
 
     /**
      * this variable stores the uploaded image.
+     *
      * @var
      */
     public $image;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -78,6 +84,7 @@ class AddGrid extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -90,6 +97,7 @@ class AddGrid extends ModalComponent
     /**
      * validation rules that will be checked when the
      * add grid modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -106,7 +114,9 @@ class AddGrid extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the photo grid component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -119,8 +129,8 @@ class AddGrid extends ModalComponent
 
         // get original filename and extract extension
         // todo: add support for storing images in the database
-        $filename = explode(".", $this->image->getFilename());
-        $ext = $filename[count($filename)-1];
+        $filename = explode('.', $this->image->getFilename());
+        $ext = $filename[count($filename) - 1];
 
         // save the file
         $output = $this->image->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
@@ -154,6 +164,7 @@ class AddGrid extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

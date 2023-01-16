@@ -36,6 +36,7 @@ class AddPage extends ModalComponent
     /**
      * validation rules that will be checked when the
      * modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -45,15 +46,17 @@ class AddPage extends ModalComponent
                 'required',
                 'string',
                 'unique:pages,name',
-                Rule::notIn('post')
-            ]
+                Rule::notIn('post'),
+            ],
         ];
     }
 
     /**
      * the function that when called will add
      * a new page using the $page variable.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -64,8 +67,7 @@ class AddPage extends ModalComponent
         // validate the request
         $this->validate();
 
-        if ($this->page_name != 'blog')
-        {
+        if ($this->page_name != 'blog') {
             // get the standard page type
             $standard = PageType::where('name', '=', 'standard')->first();
 
@@ -77,11 +79,9 @@ class AddPage extends ModalComponent
                 'name' => Str::slug($this->page_name),
                 'controller' => 'App\Http\Controllers\PageController',
                 'method' => 'index',
-                'publish_date' => Carbon::now()
+                'publish_date' => Carbon::now(),
             ]);
-        }
-        else
-        {
+        } else {
             // get the standard page type
             $blog = PageType::where('name', '=', 'blog')->first();
 
@@ -93,7 +93,7 @@ class AddPage extends ModalComponent
                 'name' => Str::slug($this->page_name),
                 'controller' => 'App\Http\Controllers\PageController',
                 'method' => 'index',
-                'publish_date' => Carbon::now()
+                'publish_date' => Carbon::now(),
             ]);
         }
 
@@ -104,6 +104,7 @@ class AddPage extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

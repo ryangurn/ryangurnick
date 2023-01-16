@@ -28,6 +28,7 @@ class AddMenu extends ModalComponent
     /**
      * the array that stores the pages
      * that are not already in the menu
+     *
      * @var
      */
     public $menu_options;
@@ -35,6 +36,7 @@ class AddMenu extends ModalComponent
     /**
      * the value that stores the page to add
      * to the menubar
+     *
      * @var
      */
     public $menu_id;
@@ -42,19 +44,22 @@ class AddMenu extends ModalComponent
     /**
      * validation rules that will be checked when the
      * modal is saved.
+     *
      * @return string[]
      */
     public function rules()
     {
         return [
-            'menu_id' => 'required|numeric|exists:pages,id|unique:page_navigations,id'
+            'menu_id' => 'required|numeric|exists:pages,id|unique:page_navigations,id',
         ];
     }
 
     /**
      * the function that when called will add a page to the
      * menu using $menu_id
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -68,7 +73,7 @@ class AddMenu extends ModalComponent
         // add the page to the menu
         PageNavigation::create([
             'page_id' => $this->menu_id,
-            'enabled' => true
+            'enabled' => true,
         ]);
 
         // refresh the page
@@ -78,6 +83,7 @@ class AddMenu extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -85,8 +91,7 @@ class AddMenu extends ModalComponent
         $in_menu = PageNavigation::all()->pluck('page_id');
         $this->menu_options = Page::whereNotIn('id', $in_menu)->where('name', '<>', 'post')->get();
 
-        if (!$this->menu_options->isEmpty())
-        {
+        if (! $this->menu_options->isEmpty()) {
             $this->menu_id = $this->menu_options->first()->id;
         }
     }
@@ -94,6 +99,7 @@ class AddMenu extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

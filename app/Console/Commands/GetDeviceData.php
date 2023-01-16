@@ -48,13 +48,14 @@ class GetDeviceData extends Command
 
         // determine if there is any processing to do.
         if ($sessions->count() == 0) {
-            $this->info("No sessions to process"); return Command::INVALID;
+            $this->info('No sessions to process');
+
+            return Command::INVALID;
         }
 
         // loop through the sessions
-        foreach($sessions as $session)
-        {
-            $this->info("Session: ". $session->session_id. " (Getting device data)");
+        foreach ($sessions as $session) {
+            $this->info('Session: '.$session->session_id.' (Getting device data)');
 
             // get the agent information from the user agent.
             $agent = new Agent();
@@ -62,7 +63,7 @@ class GetDeviceData extends Command
 
             // store the new device statistic information.
             $device = StatisticDevice::firstOrNew([
-                'session_id' => $session->session_id
+                'session_id' => $session->session_id,
             ]);
             $device->browser = $agent->browser();
             $device->browser_version = $agent->version($device->browser);

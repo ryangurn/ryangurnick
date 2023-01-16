@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\GalleryReaction;
 
 class Reaction extends Model
 {
@@ -13,12 +11,12 @@ class Reaction extends Model
     protected $fillable = [
         'reaction',
         'icon',
-        'supported'
+        'supported',
     ];
 
     public function getIconAttribute($value)
     {
-        return constant(sprintf("%s::%s", "\Spatie\Emoji\Emoji", $value));
+        return constant(sprintf('%s::%s', "\Spatie\Emoji\Emoji", $value));
     }
 
     public function gallery_reactions()

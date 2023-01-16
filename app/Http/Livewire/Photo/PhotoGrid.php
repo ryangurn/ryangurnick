@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Photo;
 use App\Models\Gallery;
 use App\Models\GalleryReaction;
 use App\Models\Setting;
-use App\Models\StatisticImage;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -22,18 +21,21 @@ class PhotoGrid extends Component
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value that stores the gallery identifier
+     *
      * @var
      */
     public $gallery_id;
 
     /**
      * the value that stores the gallery model
+     *
      * @var
      */
     public $gallery;
@@ -41,6 +43,7 @@ class PhotoGrid extends Component
     /**
      * the value that stores all of the photo
      * models in an array
+     *
      * @var
      */
     public $photos;
@@ -52,6 +55,7 @@ class PhotoGrid extends Component
      * this is later filtered down to be for
      * just one specific image, in the view photo
      * component.
+     *
      * @var
      */
     public $user_reactions;
@@ -59,6 +63,7 @@ class PhotoGrid extends Component
     /**
      * the boolean that denotes if a gallery supports
      * reactions
+     *
      * @var
      */
     public $allow_reactions;
@@ -66,6 +71,7 @@ class PhotoGrid extends Component
     /**
      * the value that stores the last time the module was
      * updated.
+     *
      * @var
      */
     public $updated_at;
@@ -73,6 +79,7 @@ class PhotoGrid extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -81,15 +88,12 @@ class PhotoGrid extends Component
         $module = $this->page_module->module;
 
         // use examples if no parameters exist
-        if ($module->module_parameters->count() == 0)
-        {
+        if ($module->module_parameters->count() == 0) {
             // populate the local variables with example values
             $this->gallery = Gallery::where('id', '=', $module->examples['gallery_id'])->first();
             $this->photos = $this->gallery->gallery_images;
             $this->gallery_id = $this->gallery->id;
-        }
-        else
-        {
+        } else {
             // populate the local variables with module parameters
             $this->gallery = Gallery::where('id', '=', $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'gallery_id')->first()->value)->first();
             $this->photos = $this->gallery->gallery_images->sortByDesc('date');
@@ -108,6 +112,7 @@ class PhotoGrid extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

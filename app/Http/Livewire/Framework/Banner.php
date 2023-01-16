@@ -2,23 +2,14 @@
 
 namespace App\Http\Livewire\Framework;
 
-use App\Models\Gallery;
-use App\Models\Module;
-use App\Models\ModuleParameter;
 use App\Models\Page;
-use App\Models\PageModule;
 use App\Models\PageNavigation;
-use App\Models\PageType;
 use App\Models\PageTypeModule;
-use Carbon\Carbon;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
 use Livewire\Component;
 use function view;
 
@@ -39,6 +30,7 @@ class Banner extends Component
     /**
      * the toggle to determine if the banner shows
      * when a user is logged in or not.
+     *
      * @var bool
      */
     public $auth_required = true;
@@ -47,6 +39,7 @@ class Banner extends Component
      * the toggle that is populated with the current
      * authentication status. (ie: is the user logged
      * in or not.)
+     *
      * @var bool
      */
     public $auth = false;
@@ -54,6 +47,7 @@ class Banner extends Component
     /**
      * the variable that stores all pages that can be
      * added to the menu.
+     *
      * @var
      */
     public $menu_options;
@@ -61,12 +55,14 @@ class Banner extends Component
     /**
      * the array that stores all the allowed
      * modules for a page type.
+     *
      * @var
      */
     public $allowed_modules = [];
 
     /**
      * the value that stores the current page model.
+     *
      * @var
      */
     public $page;
@@ -76,6 +72,7 @@ class Banner extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -87,8 +84,7 @@ class Banner extends Component
 
         // grab the modules for the page type
         $type_modules = PageTypeModule::where('type_id', $this->page->type_id)->get();
-        foreach($type_modules as $module)
-        {
+        foreach ($type_modules as $module) {
             $this->allowed_modules[] = $module->module->component;
         }
 
@@ -98,6 +94,7 @@ class Banner extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

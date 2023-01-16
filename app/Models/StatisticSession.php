@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StatisticSession extends Model
@@ -11,7 +10,7 @@ class StatisticSession extends Model
 
     protected $fillable = [
         'session_id',
-        'user_agent'
+        'user_agent',
     ];
 
     public function statistic_views()

@@ -1,7 +1,7 @@
 <?php
 
 return [
-   /*
+    /*
     * Configuration information for the site:get-ip-data
     * job.
     */
@@ -13,6 +13,6 @@ return [
          *
          * This is the amount of time in hours
          */
-        'lookback' => '48'
-    ]
+        'lookback' => '48',
+    ],
 ];

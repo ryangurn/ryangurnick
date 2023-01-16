@@ -19,6 +19,7 @@ class Analytics extends ModalComponent
 {
     /**
      * this is the variable that stores all the page models.
+     *
      * @var
      */
     public $pages;
@@ -26,6 +27,7 @@ class Analytics extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -37,6 +39,7 @@ class Analytics extends ModalComponent
      * modalMaxWidth sets the maximum width for the modal
      * this needed to be set for the statistics to display
      * properly.
+     *
      * @return string
      */
     public static function modalMaxWidth(): string
@@ -47,6 +50,7 @@ class Analytics extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

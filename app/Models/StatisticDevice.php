@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StatisticDevice extends Model
@@ -27,7 +26,7 @@ class StatisticDevice extends Model
     ];
 
     protected $casts = [
-        'languages' => 'array'
+        'languages' => 'array',
     ];
 
     public function statistic_session()

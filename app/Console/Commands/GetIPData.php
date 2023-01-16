@@ -52,12 +52,13 @@ class GetIPData extends Command
 
         // determine if there are any ips to process
         if ($ips->count() == 0) {
-            $this->info("No ips to process"); return Command::INVALID;
+            $this->info('No ips to process');
+
+            return Command::INVALID;
         }
 
         // loop through the ips
-        foreach($ips as $ip)
-        {
+        foreach ($ips as $ip) {
             // grab rows in which the geolocation information was provided within
             // the last x hours based on jobs configuration file.
             $previous = StatisticIpAddress::whereNotNull('city')
@@ -72,8 +73,7 @@ class GetIPData extends Command
                 ->first();
 
             // use previously stored information when possible
-            if ($previous != null)
-            {
+            if ($previous != null) {
                 $ip->city = $previous->city;
                 $ip->region = $previous->region;
                 $ip->country = $previous->country;
@@ -87,7 +87,7 @@ class GetIPData extends Command
             }
 
             // save the new ip information if there is no valid previous info
-            $this->info("IP: ". $ip->ip_address. " (Getting geolocation data)");
+            $this->info('IP: '.$ip->ip_address.' (Getting geolocation data)');
             $details = GeoLocation::lookup($ip->ip_address);
 
             $ip->city = $details->getCity();

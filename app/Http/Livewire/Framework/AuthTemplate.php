@@ -18,6 +18,7 @@ class AuthTemplate extends Component
 {
     /**
      * the value that stores the page model
+     *
      * @var
      */
     public $page;
@@ -25,6 +26,7 @@ class AuthTemplate extends Component
     /**
      * the page identifier used to get the
      * page model.
+     *
      * @var
      */
     public $page_id;
@@ -32,6 +34,7 @@ class AuthTemplate extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -42,6 +45,7 @@ class AuthTemplate extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

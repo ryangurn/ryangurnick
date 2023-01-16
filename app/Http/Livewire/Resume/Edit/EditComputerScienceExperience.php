@@ -28,6 +28,7 @@ class EditComputerScienceExperience extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -35,12 +36,14 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * the array that stores computer science role
      * data.
+     *
      * @var
      */
     public $roles;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -48,6 +51,7 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit computer science experience modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,22 +73,22 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->roles); $i++)
-        {
-            $arr['roles.'.$i.'.duration.required'] = 'Duration #'.($i+1).' cannot be blank.';
-            $arr['roles.'.$i.'.location.required'] = 'Location #'.($i+1).' cannot be blank.';
-            $arr['roles.'.$i.'.role.required'] = 'Role #'.($i+1).' cannot be blank.';
-            $arr['roles.'.$i.'.company.required'] = 'Company #'.($i+1).' cannot be blank.';
-            $arr['roles.'.$i.'.duration.string'] = 'Duration #'.($i+1).' must be a string.';
-            $arr['roles.'.$i.'.location.string'] = 'Location #'.($i+1).' must be a string.';
-            $arr['roles.'.$i.'.role.string'] = 'Role #'.($i+1).' must be a string.';
-            $arr['roles.'.$i.'.company.string'] = 'Company #'.($i+1).' must be a string.';
-            $arr['roles.'.$i.'.body.string'] = 'Body #'.($i+1).' must be a string.';
+        for ($i = 0; $i < count($this->roles); $i++) {
+            $arr['roles.'.$i.'.duration.required'] = 'Duration #'.($i + 1).' cannot be blank.';
+            $arr['roles.'.$i.'.location.required'] = 'Location #'.($i + 1).' cannot be blank.';
+            $arr['roles.'.$i.'.role.required'] = 'Role #'.($i + 1).' cannot be blank.';
+            $arr['roles.'.$i.'.company.required'] = 'Company #'.($i + 1).' cannot be blank.';
+            $arr['roles.'.$i.'.duration.string'] = 'Duration #'.($i + 1).' must be a string.';
+            $arr['roles.'.$i.'.location.string'] = 'Location #'.($i + 1).' must be a string.';
+            $arr['roles.'.$i.'.role.string'] = 'Role #'.($i + 1).' must be a string.';
+            $arr['roles.'.$i.'.company.string'] = 'Company #'.($i + 1).' must be a string.';
+            $arr['roles.'.$i.'.body.string'] = 'Body #'.($i + 1).' must be a string.';
         }
 
         return $arr;
@@ -93,13 +98,13 @@ class EditComputerScienceExperience extends ModalComponent
      * the function that when called will recalculate
      * the validation messages. it will also ensure
      * that there is at least one value.
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->roles) == 0)
-        {
+        if (count($this->roles) == 0) {
             $this->add();
         }
     }
@@ -108,7 +113,9 @@ class EditComputerScienceExperience extends ModalComponent
      * the function that when called will recalculate
      * validation messages and add a new sub array to
      * roles with default values.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add()
@@ -130,8 +137,10 @@ class EditComputerScienceExperience extends ModalComponent
      * given an index, $i, this function will remove
      * a specific institution sub array and verify that
      * at least one role exists.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -146,7 +155,9 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the computer science experience component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -176,12 +187,14 @@ class EditComputerScienceExperience extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->roles = collect($this->roles);
+
         return view('livewire.resume.edit.edit-computer-science-experience');
     }
 }

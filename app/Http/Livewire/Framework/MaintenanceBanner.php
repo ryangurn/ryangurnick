@@ -22,6 +22,7 @@ class MaintenanceBanner extends Component
      * this variable stores a boolean that determines if the application
      * is in maintenance mode. it is used within the view to show the
      * banner.
+     *
      * @var
      */
     public $maintenance_mode;
@@ -29,6 +30,7 @@ class MaintenanceBanner extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -39,6 +41,7 @@ class MaintenanceBanner extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

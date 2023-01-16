@@ -17,6 +17,7 @@ class QuoteCard extends Component
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -24,6 +25,7 @@ class QuoteCard extends Component
     /**
      * the variable that stores an array of all
      * quotes and their parameters.
+     *
      * @var
      */
     public $quotes;
@@ -31,6 +33,7 @@ class QuoteCard extends Component
     /**
      * the variable that stores the last time
      * the module was updated.
+     *
      * @var
      */
     public $updated_at;
@@ -38,6 +41,7 @@ class QuoteCard extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -46,13 +50,10 @@ class QuoteCard extends Component
         $module = $this->page_module->module;
 
         // determine if there are any parameters
-        if ($module->module_parameters->count() == 0)
-        {
+        if ($module->module_parameters->count() == 0) {
             // populate quotes with module examples
             $this->quotes = collect($module->examples['quotes']);
-        }
-        else
-        {
+        } else {
             // populate quotes with module parameters
             $this->quotes = collect(json_decode($module->module_parameters->where('parameter', '=', 'quotes')->first()->value, true));
         }
@@ -64,6 +65,7 @@ class QuoteCard extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

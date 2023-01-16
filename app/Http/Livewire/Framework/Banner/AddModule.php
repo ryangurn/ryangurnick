@@ -10,15 +10,15 @@ use App\Models\PageType;
 use App\Models\PageTypeModule;
 use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\URL;
-use LivewireUI\Modal\ModalComponent;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\URL;
+use LivewireUI\Modal\ModalComponent;
 
 /**
- * AddModule is a livewire modal component that 
+ * AddModule is a livewire modal component that
  * provides the functionality to add a module
  * to the current page.
  */
@@ -37,7 +37,7 @@ class AddModule extends ModalComponent
     public $modules;
 
     /**
-     * The value that stores the currently selected 
+     * The value that stores the currently selected
      * module from the form.
      */
     public $module_id;
@@ -61,18 +61,20 @@ class AddModule extends ModalComponent
     /**
      * validation rules that will be checked when the
      * modal is saved.
+     *
      * @return string[]
      */
     public function rules()
     {
         return [
-            'module_id' => 'required|numeric|exists:modules,id'
+            'module_id' => 'required|numeric|exists:modules,id',
         ];
     }
 
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -81,8 +83,7 @@ class AddModule extends ModalComponent
 
         // grab the modules for the page type
         $type_modules = PageTypeModule::where('type_id', $this->page->type_id)->get();
-        foreach($type_modules as $module)
-        {
+        foreach ($type_modules as $module) {
             $this->allowed_modules[] = $module->module->component;
         }
 
@@ -92,7 +93,9 @@ class AddModule extends ModalComponent
     /**
      * the function that when called will
      * add a module to the current page.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -115,8 +118,7 @@ class AddModule extends ModalComponent
 
         // add post page if a post is added and there is not already a post page.
         $post_check = Page::where('name', 'post')->count();
-        if ($module->component == "blog.post" && $post_check == 0)
-        {
+        if ($module->component == 'blog.post' && $post_check == 0) {
             $post_type = PageType::where('name', '=', 'post')->first();
             $post = Page::firstOrCreate([
                 'type_id' => $post_type->id,
@@ -125,7 +127,7 @@ class AddModule extends ModalComponent
                 'name' => 'post',
                 'controller' => 'App\Http\Controllers\PageController',
                 'method' => 'index',
-                'publish_date' => Carbon::now()
+                'publish_date' => Carbon::now(),
             ]);
 
             $post_module = new PageModule();
@@ -148,8 +150,7 @@ class AddModule extends ModalComponent
             $page_module->hash = $hash;
 
             // loop through all the parameters and create rows for them
-            foreach ($module->parameters as $parameter => $rule)
-            {
+            foreach ($module->parameters as $parameter => $rule) {
                 $param = new ModuleParameter();
                 $param->module_id = $module->id;
                 $param->parameter = $parameter;
@@ -167,6 +168,7 @@ class AddModule extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

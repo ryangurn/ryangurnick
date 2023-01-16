@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StatisticImage extends Model
@@ -13,7 +12,7 @@ class StatisticImage extends Model
         'session_id',
         'gallery_id',
         'gallery_image_id',
-        'count'
+        'count',
     ];
 
     public function statistic_session()

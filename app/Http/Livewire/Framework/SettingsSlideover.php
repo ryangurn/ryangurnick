@@ -37,6 +37,7 @@ class SettingsSlideover extends Component
      * the listeners variable is the livewire method
      * for binding events to a function for use within
      * other livewire components.
+     *
      * @var string[]
      */
     protected $listeners = ['show' => 'show', 'hide' => 'hide'];
@@ -45,6 +46,7 @@ class SettingsSlideover extends Component
      * the variable that when toggled shows and hides the
      * slide over. This variable is entangled with alpine
      * to provide transitions
+     *
      * @var bool
      */
     public $show = false;
@@ -52,6 +54,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores form input from the sitename
      * input.
+     *
      * @var
      */
     public $sitename;
@@ -59,6 +62,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the site logo from the logo
      * input.
+     *
      * @var
      */
     public $sitelogo;
@@ -66,6 +70,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the subject for the contact
      * modules email
+     *
      * @var
      */
     public $contact_subject;
@@ -73,6 +78,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the from address for the
      * contact modules email
+     *
      * @var
      */
     public $contact_from;
@@ -80,6 +86,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the copyright notice
      * for the footer component
+     *
      * @var
      */
     public $footer_copyright;
@@ -87,6 +94,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the footer social
      * links for the footer component
+     *
      * @var
      */
     public $footer_links;
@@ -94,6 +102,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores a boolean denoting weather
      * the application is in maintenance mode.
+     *
      * @var
      */
     public $maintenance;
@@ -101,6 +110,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the list of reactions that
      * can be used in the gallery
+     *
      * @var
      */
     public $gallery_reactions;
@@ -108,6 +118,7 @@ class SettingsSlideover extends Component
     /**
      * the toggle that denotes weather the application allows
      * reactions on galleries
+     *
      * @var
      */
     public $gallery_allow_reactions;
@@ -115,6 +126,7 @@ class SettingsSlideover extends Component
     /**
      * the toggle that denotes weather the application allows
      * comments on galleries.
+     *
      * @var
      */
     public $gallery_allow_comments;
@@ -122,6 +134,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that denotes weather badwords are allowed
      * for comments in the gallery
+     *
      * @var
      */
     public $gallery_bad_words;
@@ -129,6 +142,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the different search engine
      * indexing settings.
+     *
      * @var
      */
     public $robots;
@@ -136,6 +150,7 @@ class SettingsSlideover extends Component
     /**
      * the variable that stores the stored value for search
      * engine indexing settings.
+     *
      * @var
      */
     public $robots_current;
@@ -143,6 +158,7 @@ class SettingsSlideover extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -172,13 +188,14 @@ class SettingsSlideover extends Component
             'noarchive' => ['name' => 'No caching', 'description' => 'Do not show a cached link in search results.'],
             'nosnippet' => ['name' => 'No snippets', 'description' => 'Do not show a text snippet or video preview in the search results for this page. A static image thumbnail (if available) may still be visible, when it results in a better user experience.'],
             'notranslate' => ['name' => 'No translation', 'description' => 'Don\'t offer translation of this page in search results.'],
-            'noimageindex' => ['name' => 'No image indexing', 'description' => 'Do not index images on this page.']
+            'noimageindex' => ['name' => 'No image indexing', 'description' => 'Do not index images on this page.'],
         ]);
         $this->robots_current = Setting::where('key', 'application.index')->first()->value;
     }
 
     /**
      * this function when called will show the slideover
+     *
      * @return void
      */
     public function show()
@@ -188,6 +205,7 @@ class SettingsSlideover extends Component
 
     /**
      * this function when called will hide the slideover.
+     *
      * @return void
      */
     public function hide()
@@ -197,7 +215,9 @@ class SettingsSlideover extends Component
 
     /**
      * the function that when called will save the site name.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_sitename()
@@ -217,7 +237,9 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save the contact
      * information.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_contact()
@@ -242,13 +264,14 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will check if
      * the footer links are empty and add one row.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function check_footer()
     {
-        if (count($this->footer_links) == 0)
-        {
+        if (count($this->footer_links) == 0) {
             $this->add_footer();
         }
     }
@@ -256,7 +279,9 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will add
      * a new row to the footer_links array
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add_footer()
@@ -275,8 +300,10 @@ class SettingsSlideover extends Component
      * the function that when called will remove
      * a row from the footer_links array based
      * on the index position $i
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove_footer($i)
@@ -293,7 +320,9 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save the footer
      * content.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_footer()
@@ -303,10 +332,8 @@ class SettingsSlideover extends Component
 
         // loop through each of the footer links and check
         // if the type or link is empty
-        foreach($this->footer_links as $key => $links)
-        {
-            if ($links['type'] == '' || $links['link'] == '')
-            {
+        foreach ($this->footer_links as $key => $links) {
+            if ($links['type'] == '' || $links['link'] == '') {
                 // remove any rows that have a type or link that is empty
                 $this->remove_footer($key);
             }
@@ -329,7 +356,9 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will save
      * the maintenance mode.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_maintenance()
@@ -348,7 +377,9 @@ class SettingsSlideover extends Component
 
     /**
      * the function that when called will save the site logo
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_sitelogo()
@@ -358,11 +389,10 @@ class SettingsSlideover extends Component
 
         // check if the uploaded image is not null
         // todo: add support for storing images in the database
-        if ($this->sitelogo != null)
-        {
+        if ($this->sitelogo != null) {
             // get original filename and extract extension
-            $filename = explode(".", $this->sitelogo->getFilename());
-            $ext = $filename[count($filename)-1];
+            $filename = explode('.', $this->sitelogo->getFilename());
+            $ext = $filename[count($filename) - 1];
 
             // save the file
             $output = $this->sitelogo->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
@@ -385,7 +415,9 @@ class SettingsSlideover extends Component
 
     /**
      * the function that when called will save the gallery settings
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save_gallery()
@@ -420,7 +452,9 @@ class SettingsSlideover extends Component
     /**
      * the function that when called will update the application.index
      * setting
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function update_indexing($key)
@@ -440,6 +474,7 @@ class SettingsSlideover extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

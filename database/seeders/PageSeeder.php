@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 use App\Models\Page;
 use App\Models\PageType;
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class PageSeeder extends Seeder
 {

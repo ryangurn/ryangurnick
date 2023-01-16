@@ -17,6 +17,7 @@ class SiteMeta extends Component
     /**
      * the variable stores the current indexing
      * options.
+     *
      * @var
      */
     public $indexing;
@@ -24,6 +25,7 @@ class SiteMeta extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -34,6 +36,7 @@ class SiteMeta extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

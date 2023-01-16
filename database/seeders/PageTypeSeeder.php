@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Module;
-use App\Models\PageTypeModule;
-use Illuminate\Database\Seeder;
 use App\Models\PageType;
+use Illuminate\Database\Seeder;
 
 class PageTypeSeeder extends Seeder
 {
@@ -25,14 +23,14 @@ class PageTypeSeeder extends Seeder
 
         // blog
         $blog = PageType::firstOrNew([
-            'name' => 'blog'
+            'name' => 'blog',
         ]);
         $blog->view = 'blog';
         $blog->save();
 
         // post
         $post = PageType::firstOrNew([
-            'name' => 'post'
+            'name' => 'post',
         ]);
         $post->view = 'post';
         $post->save();

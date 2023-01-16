@@ -28,12 +28,14 @@ class EditOperatingSystem extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -41,14 +43,15 @@ class EditOperatingSystem extends ModalComponent
     /**
      * the array that stores the operating system
      * data and associated parameters.
+     *
      * @var
      */
     public $systems;
 
-
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -59,6 +62,7 @@ class EditOperatingSystem extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edited data is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -69,15 +73,15 @@ class EditOperatingSystem extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->systems); $i++)
-        {
-            $arr['systems.'.$i.'.required'] = 'Operating System #'.($i+1).' cannot be blank.';
-            $arr['systems.'.$i.'.string'] = 'Operating System #'.($i+1).' must be a string.';
+        for ($i = 0; $i < count($this->systems); $i++) {
+            $arr['systems.'.$i.'.required'] = 'Operating System #'.($i + 1).' cannot be blank.';
+            $arr['systems.'.$i.'.string'] = 'Operating System #'.($i + 1).' must be a string.';
         }
 
         return $arr;
@@ -87,13 +91,13 @@ class EditOperatingSystem extends ModalComponent
      * the function that when called will recalculate
      * the validation messages. it will also ensure
      * that there is at least one value.
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->systems) == 0)
-        {
+        if (count($this->systems) == 0) {
             $this->add();
         }
     }
@@ -102,7 +106,9 @@ class EditOperatingSystem extends ModalComponent
      * the function that when called will recalculate
      * validation messages and add a new sub array
      * with default values.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add()
@@ -118,8 +124,10 @@ class EditOperatingSystem extends ModalComponent
      * given an index, $i, this function will remove
      * a specific sub array and verify that
      * at least one row exists.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -134,7 +142,9 @@ class EditOperatingSystem extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -164,12 +174,14 @@ class EditOperatingSystem extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->systems = collect($this->systems);
+
         return view('livewire.resume.edit.edit-operating-system');
     }
 }

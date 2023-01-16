@@ -16,6 +16,7 @@ class EditStats extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -23,12 +24,14 @@ class EditStats extends ModalComponent
     /**
      * the location in which the page module is stored to
      * for local use within the component.
+     *
      * @var
      */
     public $module;
 
     /**
      * the value to display on the header of the module.
+     *
      * @var
      */
     public $header;
@@ -36,6 +39,7 @@ class EditStats extends ModalComponent
     /**
      * the value in which all changes are store for the
      * statistics card.
+     *
      * @var
      */
     public $cards;
@@ -43,6 +47,7 @@ class EditStats extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -53,6 +58,7 @@ class EditStats extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit stats modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -60,26 +66,26 @@ class EditStats extends ModalComponent
         return [
             'cards.*.item' => 'required|string',
             'cards.*.number' => 'required|numeric',
-            'cards.*.percentage' => 'required|boolean'
+            'cards.*.percentage' => 'required|boolean',
         ];
     }
 
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->cards); $i++)
-        {
-            $arr['cards.'.$i.'.item.required'] = 'Item #'.($i+1).' cannot be blank.';
-            $arr['cards.'.$i.'.item.string'] = 'Item #'.($i+1).' must be a string.';
-            $arr['cards.'.$i.'.number.required'] = 'Number #'.($i+1).' cannot be blank.';
-            $arr['cards.'.$i.'.number.numeric'] = 'Number #'.($i+1).' format invalid.';
-            $arr['cards.'.$i.'.percentage.required'] = 'Percentage #'.($i+1).' cannot be blank.';
-            $arr['cards.'.$i.'.percentage.boolean'] = 'Percentage #'.($i+1).' is invalid.';
+        for ($i = 0; $i < count($this->cards); $i++) {
+            $arr['cards.'.$i.'.item.required'] = 'Item #'.($i + 1).' cannot be blank.';
+            $arr['cards.'.$i.'.item.string'] = 'Item #'.($i + 1).' must be a string.';
+            $arr['cards.'.$i.'.number.required'] = 'Number #'.($i + 1).' cannot be blank.';
+            $arr['cards.'.$i.'.number.numeric'] = 'Number #'.($i + 1).' format invalid.';
+            $arr['cards.'.$i.'.percentage.required'] = 'Percentage #'.($i + 1).' cannot be blank.';
+            $arr['cards.'.$i.'.percentage.boolean'] = 'Percentage #'.($i + 1).' is invalid.';
         }
 
         return $arr;
@@ -89,14 +95,14 @@ class EditStats extends ModalComponent
      * the function when called, will recalculate
      * the validation messages and ensure that there
      * is at least one card.
+     *
      * @return void
      */
     public function check()
     {
         // recalc validation messages
         $this->messages();
-        if (count($this->cards) == 0)
-        {
+        if (count($this->cards) == 0) {
             // add a new card if there are zero
             $this->add();
         }
@@ -107,6 +113,7 @@ class EditStats extends ModalComponent
      * the validation messages and add a new card.
      * this includes some predefined defaults when
      * needed.
+     *
      * @return void
      */
     public function add()
@@ -125,6 +132,7 @@ class EditStats extends ModalComponent
      * remove a specific card from the
      * cards array and ensure at least one card
      * exists.
+     *
      * @param $i
      * @return void
      */
@@ -137,6 +145,7 @@ class EditStats extends ModalComponent
     /**
      * this function when called will save all the
      * statistics information.
+     *
      * @return void
      */
     public function save()
@@ -168,12 +177,14 @@ class EditStats extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->cards = collect($this->cards);
+
         return view('livewire.core.edit.edit-stats');
     }
 }

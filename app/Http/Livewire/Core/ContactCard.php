@@ -22,12 +22,14 @@ class ContactCard extends Component
      * the page module model that is passed throughout
      * the application to identify modals and page
      * information
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value to display on the header of the module.
+     *
      * @var
      */
     public $header;
@@ -35,6 +37,7 @@ class ContactCard extends Component
     /**
      * the data provided by the user that will populate
      * the email sent out, and the emails table.
+     *
      * @var
      */
     public $contact;
@@ -42,6 +45,7 @@ class ContactCard extends Component
     /**
      * the value to pass through to the card footer
      * as the last time it was modified.
+     *
      * @var
      */
     public $updated_at;
@@ -49,6 +53,7 @@ class ContactCard extends Component
     /**
      * the method that clears out all values
      * for the contact form.
+     *
      * @return void
      */
     public function clear()
@@ -60,13 +65,14 @@ class ContactCard extends Component
             'company' => '',
             'email' => '',
             'phone_number' => '',
-            'message' => ''
+            'message' => '',
         ];
     }
 
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -78,13 +84,10 @@ class ContactCard extends Component
         $module = $this->page_module->module;
 
         // use examples if no parameters exist
-        if ($module->module_parameters->count() == 0)
-        {
+        if ($module->module_parameters->count() == 0) {
             // set the header value based on the modules example
             $this->header = $module->examples['header'];
-        }
-        else
-        {
+        } else {
             // get the dynamic value for the header
             $this->header = $module->module_parameters->where('hash', '=', $this->page_module->hash)->where('parameter', '=', 'header')->first()->value;
         }
@@ -96,6 +99,7 @@ class ContactCard extends Component
     /**
      * validation rules that will be checked when the
      * change order modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -106,13 +110,14 @@ class ContactCard extends Component
             'contact.company' => 'nullable|string',
             'contact.email' => 'required|email',
             'contact.phone_number' => 'nullable|phone:auto',
-            'contact.message' => 'required|string|min:5'
+            'contact.message' => 'required|string|min:5',
         ];
     }
 
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
@@ -136,6 +141,7 @@ class ContactCard extends Component
      * method that will save the contact information
      * via email to the configured user, and save the
      * contact to the emails table.
+     *
      * @return void
      */
     public function send()
@@ -169,6 +175,7 @@ class ContactCard extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

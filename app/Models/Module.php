@@ -2,11 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\PageModule;
-use App\Models\ModuleImage;
-use App\Models\ModuleParameter;
 
 class Module extends Model
 {
@@ -19,13 +15,13 @@ class Module extends Model
         'examples',
         'component',
         'edit_component',
-        'permissions'
+        'permissions',
     ];
 
     protected $casts = [
         'parameters' => 'array',
         'examples' => 'array',
-        'permissions' => 'array'
+        'permissions' => 'array',
     ];
 
     public function page_modules()

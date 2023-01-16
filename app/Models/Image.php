@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Module;
 
 class Image extends Model
 {
@@ -13,7 +11,7 @@ class Image extends Model
     protected $fillable = [
         'disk',
         'file',
-        'hash'
+        'hash',
     ];
 
     public function module()

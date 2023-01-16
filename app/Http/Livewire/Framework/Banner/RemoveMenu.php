@@ -4,15 +4,15 @@ namespace App\Http\Livewire\Framework\Banner;
 
 use App\Models\Page;
 use App\Models\PageNavigation;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\URL;
-use LivewireUI\Modal\ModalComponent;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\URL;
+use LivewireUI\Modal\ModalComponent;
 
 /**
- * RemoveMenu is a livewire modal component that 
+ * RemoveMenu is a livewire modal component that
  * provides the functionality to remove a menu
  * option.
  */
@@ -39,18 +39,20 @@ class RemoveMenu extends ModalComponent
     /**
      * validation rules that will be checked when the
      * modal is saved.
+     *
      * @return string[]
      */
     public function rules()
     {
         return [
-            'menu_id' => 'required|numeric|exists:page_navigations,id'
+            'menu_id' => 'required|numeric|exists:page_navigations,id',
         ];
     }
 
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -62,8 +64,7 @@ class RemoveMenu extends ModalComponent
         $this->menu_options = Page::whereIn('id', $in_menu)->where('name', '<>', 'post')->get();
 
         // set the default value for the form.
-        if (!$this->menu_options->isEmpty())
-        {
+        if (! $this->menu_options->isEmpty()) {
             $this->menu_id = $this->menu_options->first()->id;
         }
     }
@@ -71,7 +72,9 @@ class RemoveMenu extends ModalComponent
     /**
      * the function that when called will
      * remove a menu item.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -92,6 +95,7 @@ class RemoveMenu extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

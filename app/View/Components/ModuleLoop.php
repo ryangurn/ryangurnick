@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 
 /**
  * ModuleLoop is a livewire component that
- * handles the addition of the modules 
+ * handles the addition of the modules
  * to a specific page.
  */
 class ModuleLoop extends Component
@@ -31,7 +31,7 @@ class ModuleLoop extends Component
      *
      * @return void
      */
-    public function __construct(Page $page, $identifier = "")
+    public function __construct(Page $page, $identifier = '')
     {
         // get modules on page
         $this->modules = $page->page_modules->sortBy('order');

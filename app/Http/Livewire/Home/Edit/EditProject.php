@@ -29,18 +29,21 @@ class EditProject extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value that stores the list of projects models.
+     *
      * @var
      */
     public $projects;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -48,6 +51,7 @@ class EditProject extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditProject extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit about modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,19 +73,19 @@ class EditProject extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->projects); $i++)
-        {
-            $arr['projects.'.$i.'.project.required'] = 'Project #'.($i+1).' cannot be blank.';
-            $arr['projects.'.$i.'.project.string'] = 'Project #'.($i+1).' must be a string.';
-            $arr['projects.'.$i.'.status.required'] = 'Status #'.($i+1).' cannot be blank.';
-            $arr['projects.'.$i.'.status.string'] = 'Status #'.($i+1).' must be a string.';
-            $arr['projects.'.$i.'.link.url'] = 'Link #'.($i+1).' must be a url.';
-            $arr['projects.'.$i.'.link.string'] = 'Link #'.($i+1).' must be a url.';
+        for ($i = 0; $i < count($this->projects); $i++) {
+            $arr['projects.'.$i.'.project.required'] = 'Project #'.($i + 1).' cannot be blank.';
+            $arr['projects.'.$i.'.project.string'] = 'Project #'.($i + 1).' must be a string.';
+            $arr['projects.'.$i.'.status.required'] = 'Status #'.($i + 1).' cannot be blank.';
+            $arr['projects.'.$i.'.status.string'] = 'Status #'.($i + 1).' must be a string.';
+            $arr['projects.'.$i.'.link.url'] = 'Link #'.($i + 1).' must be a url.';
+            $arr['projects.'.$i.'.link.string'] = 'Link #'.($i + 1).' must be a url.';
         }
 
         return $arr;
@@ -89,13 +94,13 @@ class EditProject extends ModalComponent
     /**
      * the function that when called will recalculate the validation
      * messages and ensure that at least one project exists
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->projects) == 0)
-        {
+        if (count($this->projects) == 0) {
             $this->add();
         }
     }
@@ -103,7 +108,9 @@ class EditProject extends ModalComponent
     /**
      * this function when called will recalculate the validation
      * messages and add a project with some default values.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add()
@@ -119,8 +126,10 @@ class EditProject extends ModalComponent
      * Given an index, $i, this function will remove the project sub array
      * within the projects array. this function will also ensure there is at
      * least one project.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -135,7 +144,9 @@ class EditProject extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the about component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -165,12 +176,14 @@ class EditProject extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->projects = collect($this->projects);
+
         return view('livewire.home.edit.edit-project');
     }
 }

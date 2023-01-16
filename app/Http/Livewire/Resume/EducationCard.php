@@ -17,12 +17,14 @@ class EducationCard extends Component
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the array that stores the institution's data.
+     *
      * @var
      */
     public $institutions;
@@ -30,6 +32,7 @@ class EducationCard extends Component
     /**
      * the value that stores the last time the module was
      * updated.
+     *
      * @var
      */
     public $updated_at;
@@ -40,13 +43,10 @@ class EducationCard extends Component
         $module = $this->page_module->module;
 
         // use examples if no parameters exist
-        if ($module->module_parameters->count() == 0)
-        {
+        if ($module->module_parameters->count() == 0) {
             // set the institutions based on module examples
             $this->institutions = collect($module->examples['institutions']);
-        }
-        else
-        {
+        } else {
             // set the institutions based on module parameters
             $this->institutions = collect(json_decode($module->module_parameters->where('parameter', '=', 'institutions')->first()->value, true));
         }
@@ -58,6 +58,7 @@ class EducationCard extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

@@ -5,8 +5,8 @@ namespace App\Http\Livewire\Core;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Livewire\Component;
 use Illuminate\Support\Facades\Route;
+use Livewire\Component;
 
 /**
  * FooterMetadata is a livewire component that provides
@@ -19,6 +19,7 @@ class FooterMetadata extends Component
     /**
      * the variable that stores the duration
      * for use in the view.
+     *
      * @var
      */
     public $duration;
@@ -26,6 +27,7 @@ class FooterMetadata extends Component
     /**
      * the variable that stores the page name
      * for use in the view.
+     *
      * @var
      */
     public $page;
@@ -33,6 +35,7 @@ class FooterMetadata extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -48,6 +51,7 @@ class FooterMetadata extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

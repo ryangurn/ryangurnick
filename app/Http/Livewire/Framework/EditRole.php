@@ -27,6 +27,7 @@ class EditRole extends ModalComponent
     /**
      * the value that allows for the role to be pulled
      * from the database based on the identifier
+     *
      * @var
      */
     public $role_id;
@@ -34,6 +35,7 @@ class EditRole extends ModalComponent
     /**
      * the value that stores the role modal that is being
      * updated.
+     *
      * @var
      */
     public $role;
@@ -41,6 +43,7 @@ class EditRole extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -51,6 +54,7 @@ class EditRole extends ModalComponent
     /**
      * validation rules that will be checked when the
      * update role modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -60,7 +64,9 @@ class EditRole extends ModalComponent
 
     /**
      * the function that when called will save the role name.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -80,7 +86,9 @@ class EditRole extends ModalComponent
 
     /**
      * the function that when called will delete the role.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function delete()
@@ -98,6 +106,7 @@ class EditRole extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

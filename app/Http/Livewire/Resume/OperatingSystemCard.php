@@ -17,12 +17,14 @@ class OperatingSystemCard extends Component
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the array that stores the operating system data.
+     *
      * @var
      */
     public $systems;
@@ -30,6 +32,7 @@ class OperatingSystemCard extends Component
     /**
      * the value that stores the last time the module was
      * updated.
+     *
      * @var
      */
     public $updated_at;
@@ -37,6 +40,7 @@ class OperatingSystemCard extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -45,13 +49,10 @@ class OperatingSystemCard extends Component
         $module = $this->page_module->module;
 
         // use examples if no parameters exist
-        if ($module->module_parameters->count() == 0)
-        {
+        if ($module->module_parameters->count() == 0) {
             // set the systems based on module examples
             $this->systems = collect($module->examples['systems']);
-        }
-        else
-        {
+        } else {
             // set the systems based on module parameters
             $this->systems = collect(json_decode($module->module_parameters->where('parameter', '=', 'systems')->first()->value, true));
         }
@@ -63,6 +64,7 @@ class OperatingSystemCard extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

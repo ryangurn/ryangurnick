@@ -29,6 +29,7 @@ class UserModal extends ModalComponent
     /**
      * the value that is used to initialize the
      * user model
+     *
      * @var
      */
     public $user_id;
@@ -36,6 +37,7 @@ class UserModal extends ModalComponent
     /**
      * the value that is used to store the user
      * model
+     *
      * @var
      */
     public $user;
@@ -43,6 +45,7 @@ class UserModal extends ModalComponent
     /**
      * the value that stores the modified role
      * array from the modal.
+     *
      * @var
      */
     public $role;
@@ -50,6 +53,7 @@ class UserModal extends ModalComponent
     /**
      * the list of all roles that can be associated
      * to each user.
+     *
      * @var
      */
     public $roles;
@@ -57,6 +61,7 @@ class UserModal extends ModalComponent
     /**
      * validation rules that will be checked when the
      * user modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -71,6 +76,7 @@ class UserModal extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -83,7 +89,9 @@ class UserModal extends ModalComponent
     /**
      * function that when called will save the user
      * modal.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -103,6 +111,7 @@ class UserModal extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

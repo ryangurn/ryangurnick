@@ -22,6 +22,7 @@ class EditHeader extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -29,6 +30,7 @@ class EditHeader extends ModalComponent
     /**
      * the location in which the page module is stored to
      * for local use within the component.
+     *
      * @var
      */
     public $module;
@@ -36,6 +38,7 @@ class EditHeader extends ModalComponent
     /**
      * the value that stores changes to the header of the
      * module
+     *
      * @var
      */
     public $header;
@@ -43,6 +46,7 @@ class EditHeader extends ModalComponent
     /**
      * the value that stores changes to the description
      * of the module
+     *
      * @var
      */
     public $description;
@@ -50,6 +54,7 @@ class EditHeader extends ModalComponent
     /**
      * the value that stores changes to the color of
      * the module.
+     *
      * @var
      */
     public $color;
@@ -57,6 +62,7 @@ class EditHeader extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -67,6 +73,7 @@ class EditHeader extends ModalComponent
     /**
      * validation rules that will be checked when the
      * change order modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -77,6 +84,7 @@ class EditHeader extends ModalComponent
     /**
      * the function that when called will save changes
      * to the Header component.
+     *
      * @return void
      */
     public function save()
@@ -108,12 +116,12 @@ class EditHeader extends ModalComponent
         // close modal and refresh
         $this->closeModal();
         $this->redirect(URL::previous());
-
     }
 
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

@@ -25,6 +25,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that stores the current page
      * for use when the gallery is added.
+     *
      * @var
      */
     public $page_id;
@@ -32,6 +33,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that stores the module that
      * will be added.
+     *
      * @var
      */
     public $module;
@@ -39,6 +41,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that stores all the gallery
      * models used in the view.
+     *
      * @var
      */
     public $galleries;
@@ -46,6 +49,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that the selected gallery will
      * be stored to.
+     *
      * @var
      */
     public $gallery_id;
@@ -53,6 +57,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that a new gallery name is
      * stored to
+     *
      * @var
      */
     public $name;
@@ -60,6 +65,7 @@ class AddGallery extends ModalComponent
     /**
      * the variable that a new gallery description
      * is stored to.
+     *
      * @var
      */
     public $description;
@@ -68,6 +74,7 @@ class AddGallery extends ModalComponent
      * the toggle that stores if the user wants to
      * create a new one or utilizing a previous
      * gallery.
+     *
      * @var bool
      */
     public $new = false;
@@ -75,20 +82,19 @@ class AddGallery extends ModalComponent
     /**
      * validation rules that will be checked when the
      * add gallery modal is saved.
+     *
      * @return string[]
      */
     public function rules()
     {
-        if (!$this->new) {
+        if (! $this->new) {
             return [
                 'name' => 'required|string',
-                'description' => 'required|string|min:3'
+                'description' => 'required|string|min:3',
             ];
-        }
-        else
-        {
+        } else {
             return [
-                'gallery_id' => 'required|numeric|exists:galleries,id'
+                'gallery_id' => 'required|numeric|exists:galleries,id',
             ];
         }
     }
@@ -96,6 +102,7 @@ class AddGallery extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -107,6 +114,7 @@ class AddGallery extends ModalComponent
     /**
      * the function that when called will
      * add the gallery to a page.
+     *
      * @return void
      */
     public function save()
@@ -115,16 +123,13 @@ class AddGallery extends ModalComponent
         $this->validate();
 
         // if the gallery is new
-        if (!$this->new) // todo: fix the new boolean to be properly handled.
-        {
+        if (! $this->new) { // todo: fix the new boolean to be properly handled.
             // add the new gallery.
             $gallery = new Gallery();
             $gallery->name = $this->name;
             $gallery->description = $this->description;
             $gallery->save();
-        }
-        else
-        {
+        } else {
             // use the gallery that already exists
             $gallery = Gallery::where('id', '=', $this->gallery_id)->first();
         }
@@ -149,7 +154,6 @@ class AddGallery extends ModalComponent
             $param->hash = $hash;
             $param->value = $gallery->id;
             $param->save();
-
         }
         $page_module->save();
 
@@ -161,6 +165,7 @@ class AddGallery extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

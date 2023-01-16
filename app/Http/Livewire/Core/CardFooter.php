@@ -30,6 +30,7 @@ class CardFooter extends Component
      * determine if authentication is required
      * for the card footer to show, by default
      * authentication is required.
+     *
      * @var bool
      */
     public $auth_required = true;
@@ -37,6 +38,7 @@ class CardFooter extends Component
     /**
      * determine if there is an authenticated
      * user.
+     *
      * @var bool
      */
     public $auth = false;
@@ -44,12 +46,14 @@ class CardFooter extends Component
     /**
      * determine if timestamp should be shown
      * on a specific module.
+     *
      * @var bool
      */
     public $show_timestamp = true;
 
     /**
      * the text that will show on the main button
+     *
      * @var string
      */
     public $button_text = 'edit';
@@ -58,6 +62,7 @@ class CardFooter extends Component
      * parameters to send through to a linked modal
      * that will __generally__ be for content editing
      * or modification
+     *
      * @var array
      */
     public $modal_parameters = [];
@@ -65,6 +70,7 @@ class CardFooter extends Component
     /**
      * when toggled determines if the button with three
      * dots will be displayed on a specific module.
+     *
      * @var bool
      */
     public $show_menu = false;
@@ -72,6 +78,7 @@ class CardFooter extends Component
     /**
      * used to add menu options to the dropdown menu
      * can be either a link or a modal.
+     *
      * @var array
      */
     public $menu_options = [];
@@ -80,6 +87,7 @@ class CardFooter extends Component
      * the page module model that is passed throughout
      * the application to identify modals and page
      * information
+     *
      * @var
      */
     public $page_module;
@@ -87,6 +95,7 @@ class CardFooter extends Component
     /**
      * the duration that will be passed along to the footer
      * metadata component to display the human-readable difference.
+     *
      * @var
      */
     public $duration;
@@ -95,6 +104,7 @@ class CardFooter extends Component
      * determines if the dropdown is shown or not shown at any
      * given point, generally is only for internal use by this
      * component.
+     *
      * @var bool
      */
     public $show = false;
@@ -102,6 +112,7 @@ class CardFooter extends Component
     /**
      * the modal component that should be called when clicking
      * the button that uses $button_text to display.
+     *
      * @var
      */
     public $modal;
@@ -109,6 +120,7 @@ class CardFooter extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -118,6 +130,7 @@ class CardFooter extends Component
 
     /**
      * method that will hide the dropdown menu when called.
+     *
      * @return void
      */
     public function hidePopup()
@@ -127,6 +140,7 @@ class CardFooter extends Component
 
     /**
      * method that will show the dropdown menu when called.
+     *
      * @return void
      */
     public function showPopup()
@@ -137,7 +151,9 @@ class CardFooter extends Component
     /**
      * method that is called to enable the module on a
      * specific page.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function enable()
@@ -157,7 +173,9 @@ class CardFooter extends Component
     /**
      * method that is called to disable the module on a
      * specific page.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function disable()
@@ -178,7 +196,9 @@ class CardFooter extends Component
      * method that is called to delete a module from
      * a specific page, this will permanently remove
      * the module from the page_modules table.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function delete()
@@ -186,8 +206,7 @@ class CardFooter extends Component
         $this->authorize($this->page_module->module->permissions['delete']);
 
         // check if the module is dynamic
-        if ($this->page_module->module->dynamic)
-        {
+        if ($this->page_module->module->dynamic) {
             // delete dynamic parameters
             ModuleParameter::where('module_id', '=', $this->page_module->module_id)->where('hash', '=', $this->page_module->hash)->delete();
         }
@@ -204,6 +223,7 @@ class CardFooter extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

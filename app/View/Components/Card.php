@@ -13,7 +13,7 @@ class Card extends Component
 {
     /**
      * The value that stores the page module
-     * model for use in the view. Mainly used 
+     * model for use in the view. Mainly used
      * to pass the model to other modules.
      */
     public $page_module;

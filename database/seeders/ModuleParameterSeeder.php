@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Module;
 use App\Models\ModuleParameter;
+use Illuminate\Database\Seeder;
 
 class ModuleParameterSeeder extends Seeder
 {
@@ -38,8 +38,7 @@ class ModuleParameterSeeder extends Seeder
         $com = Module::where('component', '=', 'resume.committee-work-card')->first();
 
         // about card
-        foreach($about->parameters as $key => $value)
-        {
+        foreach ($about->parameters as $key => $value) {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $about->id,
                 'parameter' => $key,
@@ -64,10 +63,8 @@ class ModuleParameterSeeder extends Seeder
         $quute->value = json_encode($quote->examples['quotes']);
         $quute->save();
 
-
         // gallery card
-        foreach($gallery->parameters as $key => $value)
-        {
+        foreach ($gallery->parameters as $key => $value) {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $gallery->id,
                 'parameter' => $key,
@@ -77,8 +74,7 @@ class ModuleParameterSeeder extends Seeder
         }
 
         // goals card
-        foreach($goals->parameters as $key => $value)
-        {
+        foreach ($goals->parameters as $key => $value) {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $goals->id,
                 'parameter' => $key,
@@ -104,8 +100,7 @@ class ModuleParameterSeeder extends Seeder
         $computer_skill->save();
 
         // software card
-        foreach($goals->parameters as $key => $value)
-        {
+        foreach ($goals->parameters as $key => $value) {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $software->id,
                 'parameter' => $key,
@@ -123,8 +118,7 @@ class ModuleParameterSeeder extends Seeder
         $system->save();
 
         // cyber security card
-        foreach($cyber->parameters as $key => $value)
-        {
+        foreach ($cyber->parameters as $key => $value) {
             $param = ModuleParameter::firstOrNew([
                 'module_id' => $cyber->id,
                 'parameter' => $key,

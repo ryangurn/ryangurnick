@@ -31,6 +31,7 @@ class ChangeOrder extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -38,6 +39,7 @@ class ChangeOrder extends ModalComponent
     /**
      * validation rules that will be checked when the
      * change order modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -51,6 +53,7 @@ class ChangeOrder extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
@@ -65,7 +68,9 @@ class ChangeOrder extends ModalComponent
     /**
      * method that is called when the user is ready
      * to have the value changed.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -92,6 +97,7 @@ class ChangeOrder extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

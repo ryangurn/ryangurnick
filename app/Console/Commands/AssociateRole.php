@@ -42,13 +42,12 @@ class AssociateRole extends Command
         $email = $this->argument('email');
         $role = $this->argument('role');
 
-        $confirm = $this->confirm("Are you sure you want to add the role (".$role.") to the user (". $email.")");
+        $confirm = $this->confirm('Are you sure you want to add the role ('.$role.') to the user ('.$email.')');
 
-        if ($confirm)
-        {
+        if ($confirm) {
             $user = User::where('email', $email)->first();
             $user->assignRole(Role::where('name', $role)->first());
-            $this->info("The role has been added.");
+            $this->info('The role has been added.');
         }
 
         return 0;

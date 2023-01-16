@@ -20,6 +20,7 @@ class UserSlideover extends Component
      * the listeners variable is the livewire method
      * for binding events to a function for use within
      * other livewire components.
+     *
      * @var string[]
      */
     protected $listeners = ['show' => 'show', 'hide' => 'hide'];
@@ -28,18 +29,21 @@ class UserSlideover extends Component
      * the variable that when toggled shows and hides the
      * slide over. This variable is entangled with alpine
      * to provide transitions
+     *
      * @var bool
      */
     public $show = false;
 
     /**
      * the array that stores all the users models.
+     *
      * @var
      */
     public $users;
 
     /**
      * this function when called will show the slideover
+     *
      * @return void
      */
     public function show()
@@ -49,6 +53,7 @@ class UserSlideover extends Component
 
     /**
      * this function when called will hide the slideover.
+     *
      * @return void
      */
     public function hide()
@@ -59,6 +64,7 @@ class UserSlideover extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -69,6 +75,7 @@ class UserSlideover extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

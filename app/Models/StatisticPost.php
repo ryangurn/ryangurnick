@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StatisticPost extends Model
@@ -12,7 +11,7 @@ class StatisticPost extends Model
     protected $fillable = [
         'session_id',
         'module_hash',
-        'count'
+        'count',
     ];
 
     public function statistic_session()

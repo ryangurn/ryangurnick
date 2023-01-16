@@ -18,6 +18,7 @@ class Menubar extends Component
     /**
      * the array that stores the various
      * menubar items.
+     *
      * @var
      */
     public $menu;
@@ -25,6 +26,7 @@ class Menubar extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -36,6 +38,7 @@ class Menubar extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

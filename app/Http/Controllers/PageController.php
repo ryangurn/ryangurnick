@@ -13,8 +13,7 @@ class PageController extends Controller
         $this->handle_sessions($request);
 
         // handle the maintenance redirection
-        if ($this->maintenance_check() != null)
-        {
+        if ($this->maintenance_check() != null) {
             // return the redirect response.
             return $this->maintenance_check();
         }

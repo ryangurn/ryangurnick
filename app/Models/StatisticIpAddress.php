@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StatisticIpAddress extends Model
@@ -11,7 +10,7 @@ class StatisticIpAddress extends Model
 
     protected $fillable = [
         'session_id',
-        'ip_address'
+        'ip_address',
     ];
 
     public function statistic_session()

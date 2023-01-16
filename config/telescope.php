@@ -1,6 +1,5 @@
 <?php
 
-use Laravel\Telescope\Http\Middleware\Authorize;
 use Laravel\Telescope\Watchers;
 
 return [
@@ -77,7 +76,7 @@ return [
 
     'middleware' => [
         'web',
-        'can:access telescope'
+        'can:access telescope',
     ],
 
     /*

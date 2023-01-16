@@ -28,6 +28,7 @@ class EditGallery extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -35,12 +36,14 @@ class EditGallery extends ModalComponent
     /**
      * the variable that stores modifications to the
      * body parameter.
+     *
      * @var
      */
     public $body;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -48,6 +51,7 @@ class EditGallery extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditGallery extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit gallery modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,7 +73,9 @@ class EditGallery extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the gallery component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -98,6 +105,7 @@ class EditGallery extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

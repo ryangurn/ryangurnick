@@ -1718,13 +1718,11 @@ class BadwordSeeder extends Seeder
             'zoophilia',
             'zubb'];
 
-        if (count($words) == Badword::all()->count())
-        {
+        if (count($words) == Badword::all()->count()) {
             return;
         }
 
-        foreach ($words as $word)
-        {
+        foreach ($words as $word) {
             $bad = Badword::firstOrNew(['language' => 'en', 'words' => $word]);
             $bad->save();
         }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Badword extends Model
@@ -11,6 +10,6 @@ class Badword extends Model
 
     protected $fillable = [
         'language',
-        'words'
+        'words',
     ];
 }

@@ -15,11 +15,11 @@ class GalleryImage extends Model
         'date',
         'location',
         'people',
-        'visible'
+        'visible',
     ];
 
     protected $casts = [
-        'date' => 'datetime'
+        'date' => 'datetime',
     ];
 
     public function gallery()

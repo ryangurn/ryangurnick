@@ -31,7 +31,7 @@ return [
             // These options are passed to GuzzleClient config constructor
             'client_options' => [
                 //
-            ]
+            ],
         ],
     ],
 

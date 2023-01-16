@@ -2,11 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\GalleryImage;
-use App\Models\Reaction;
-use App\Models\User;
 
 class GalleryReaction extends Model
 {
@@ -16,7 +12,7 @@ class GalleryReaction extends Model
         'gallery_image_id',
         'user_id',
         'reaction_id',
-        'active'
+        'active',
     ];
 
     public function gallery_image()

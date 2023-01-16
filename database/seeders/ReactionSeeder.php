@@ -127,15 +127,18 @@ class ReactionSeeder extends Seeder
 
         ];
 
-        if (Reaction::all()->count() == count($reactions)) return;
+        if (Reaction::all()->count() == count($reactions)) {
+            return;
+        }
 
-        foreach($reactions as $key => $value)
-        {
+        foreach ($reactions as $key => $value) {
             $react = Reaction::firstOrNew([
-                'reaction' => Str::studly(strtolower(str_replace("CHARACTER_", "", $key)))
+                'reaction' => Str::studly(strtolower(str_replace('CHARACTER_', '', $key))),
             ]);
             $react->icon = $key;
-            if (in_array($key, $not_supported)) $react->supported = false;
+            if (in_array($key, $not_supported)) {
+                $react->supported = false;
+            }
             $react->save();
         }
     }

@@ -17,13 +17,13 @@ class RoleSeeder extends Seeder
     {
         // administrator
         $administrator = Role::firstOrCreate([
-            'name' => 'Administrator'
+            'name' => 'Administrator',
         ]);
         $administrator->givePermissionTo(Permission::all());
 
         // editor
         $editor = Role::firstOrCreate([
-            'name' => 'Editor'
+            'name' => 'Editor',
         ]);
         $editor->givePermissionTo(Permission::where('name', 'NOT LIKE', '%settings')
             ->where('name', 'NOT LIKE', '%information')
@@ -37,7 +37,7 @@ class RoleSeeder extends Seeder
 
         // moderator
         $moderator = Role::firstOrCreate([
-            'name' => 'Moderator'
+            'name' => 'Moderator',
         ]);
         $moderator->givePermissionTo(Permission::where('name', 'LIKE', '%comment')
             ->get());
@@ -46,7 +46,7 @@ class RoleSeeder extends Seeder
 
         // photographer
         $photographer = Role::firstOrCreate([
-            'name' => 'Photographer'
+            'name' => 'Photographer',
         ]);
         $photographer->givePermissionTo(Permission::where('name', 'LIKE', '%photo%')
             ->orWhere('name', 'LIKE', '%gallery%')
@@ -54,14 +54,14 @@ class RoleSeeder extends Seeder
 
         // blogger
         $blogger = Role::firstOrCreate([
-            'name' => 'Blogger'
+            'name' => 'Blogger',
         ]);
         $blogger->givePermissionTo(Permission::where('name', 'react to photo')->get());
         $blogger->givePermissionTo(Permission::where('name', 'comment on photo')->get());
 
         // standard user
         $user = Role::firstOrCreate([
-            'name' => 'User'
+            'name' => 'User',
         ]);
         $user->givePermissionTo(Permission::where('name', 'react to photo')->get());
         $user->givePermissionTo(Permission::where('name', 'comment on photo')->get());

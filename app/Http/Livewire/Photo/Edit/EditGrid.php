@@ -35,6 +35,7 @@ class EditGrid extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -42,30 +43,35 @@ class EditGrid extends ModalComponent
     /**
      * the array that stores parameters for the specific
      * image on the grid that is being updated.
+     *
      * @var
      */
     public $photo;
 
     /**
      * the value that stores the photo model.
+     *
      * @var
      */
     public $photo_model;
 
     /**
      * the value that stores the photo identifier.
+     *
      * @var
      */
     public $photo_id;
 
     /**
      * the value that stores the newly uploaded image.
+     *
      * @var
      */
     public $image;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -73,6 +79,7 @@ class EditGrid extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -82,7 +89,7 @@ class EditGrid extends ModalComponent
         $this->photo = [
             'date' => $this->photo_model->date,
             'description' => $this->photo_model->caption,
-            'location' => $this->photo_model->location
+            'location' => $this->photo_model->location,
         ];
 
         // set date formatting
@@ -95,6 +102,7 @@ class EditGrid extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit grid modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -111,7 +119,9 @@ class EditGrid extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the about component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -124,11 +134,10 @@ class EditGrid extends ModalComponent
 
         // ensure there is an uploaded image.
         // todo: add support for storing images in the database
-        if ($this->image != null)
-        {
+        if ($this->image != null) {
             // get original filename and extract extension
-            $filename = explode(".", $this->image->getFilename());
-            $ext = $filename[count($filename)-1];
+            $filename = explode('.', $this->image->getFilename());
+            $ext = $filename[count($filename) - 1];
 
             // save the file
             $output = $this->image->storePubliclyAs('img', md5(time()).'.'.$ext, 'public');
@@ -156,6 +165,7 @@ class EditGrid extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

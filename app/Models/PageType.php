@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Page;
 
 class PageType extends Model
 {
@@ -12,7 +10,7 @@ class PageType extends Model
 
     protected $fillable = [
         'name',
-        'view'
+        'view',
     ];
 
     public function pages()

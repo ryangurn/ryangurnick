@@ -28,18 +28,21 @@ class EditCommitteeWork extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the array that stores modified values for institutions.
+     *
      * @var
      */
     public $institutions;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -47,6 +50,7 @@ class EditCommitteeWork extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditCommitteeWork extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit committee work modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,20 +73,20 @@ class EditCommitteeWork extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->institutions); $i++)
-        {
-            $arr['institutions.'.$i.'.organization.required'] = 'Organization #'.($i+1).' cannot be blank.';
-            $arr['institutions.'.$i.'.organization.string'] = 'Organization #'.($i+1).' must be a string.';
-            $arr['institutions.'.$i.'.position.required'] = 'Position #'.($i+1).' cannot be blank.';
-            $arr['institutions.'.$i.'.position.string'] = 'Position #'.($i+1).' must be a string.';
-            $arr['institutions.'.$i.'.duration.required'] = 'Duration #'.($i+1).' cannot be blank.';
-            $arr['institutions.'.$i.'.duration.string'] = 'Duration #'.($i+1).' must be a string.';
-            $arr['institutions.'.$i.'.location.string'] = 'Location #'.($i+1).' must be a string.';
+        for ($i = 0; $i < count($this->institutions); $i++) {
+            $arr['institutions.'.$i.'.organization.required'] = 'Organization #'.($i + 1).' cannot be blank.';
+            $arr['institutions.'.$i.'.organization.string'] = 'Organization #'.($i + 1).' must be a string.';
+            $arr['institutions.'.$i.'.position.required'] = 'Position #'.($i + 1).' cannot be blank.';
+            $arr['institutions.'.$i.'.position.string'] = 'Position #'.($i + 1).' must be a string.';
+            $arr['institutions.'.$i.'.duration.required'] = 'Duration #'.($i + 1).' cannot be blank.';
+            $arr['institutions.'.$i.'.duration.string'] = 'Duration #'.($i + 1).' must be a string.';
+            $arr['institutions.'.$i.'.location.string'] = 'Location #'.($i + 1).' must be a string.';
         }
 
         return $arr;
@@ -91,13 +96,13 @@ class EditCommitteeWork extends ModalComponent
      * the function that when called will recalculate
      * the validation messages. it will also ensure
      * that there is at least one value.
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->institutions) == 0)
-        {
+        if (count($this->institutions) == 0) {
             $this->add();
         }
     }
@@ -106,6 +111,7 @@ class EditCommitteeWork extends ModalComponent
      * the function that when called will recalculate
      * validation messages and add a new sub array to
      * institutions with default values.
+     *
      * @return void
      */
     public function add()
@@ -115,19 +121,21 @@ class EditCommitteeWork extends ModalComponent
 
         $this->messages();
         $this->institutions[] = [
-                'organization' => '',
-                'position' => '',
-                'duration' => '',
-                'location' => '',
-            ];
+            'organization' => '',
+            'position' => '',
+            'duration' => '',
+            'location' => '',
+        ];
     }
 
     /**
      * given an index, $i, this function will remove
      * a specific institution sub array and verify that
      * at least one institution exists.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -142,7 +150,9 @@ class EditCommitteeWork extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the committee work component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -172,12 +182,14 @@ class EditCommitteeWork extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->institutions = collect($this->institutions);
+
         return view('livewire.resume.edit.edit-committee-work');
     }
 }

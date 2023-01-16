@@ -37,6 +37,7 @@ class EditAbout extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -44,6 +45,7 @@ class EditAbout extends ModalComponent
     /**
      * the value that stores changes to the name
      * parameter.
+     *
      * @var
      */
     public $name;
@@ -51,6 +53,7 @@ class EditAbout extends ModalComponent
     /**
      * the value that stores changes to the body
      * parameter.
+     *
      * @var
      */
     public $body;
@@ -59,6 +62,7 @@ class EditAbout extends ModalComponent
      * the value that stores changes to the link
      * parameter. this is the URL that the button
      * will point to not the text on the button.
+     *
      * @var
      */
     public $link;
@@ -66,6 +70,7 @@ class EditAbout extends ModalComponent
     /**
      * the value that stores changes to the link
      * text parameter. this is the button text.
+     *
      * @var
      */
     public $link_text;
@@ -73,12 +78,14 @@ class EditAbout extends ModalComponent
     /**
      * the value that stores the file uploaded
      * class to allow for uploading files.
+     *
      * @var
      */
     public $image;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -86,6 +93,7 @@ class EditAbout extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -96,6 +104,7 @@ class EditAbout extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit about modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -106,7 +115,9 @@ class EditAbout extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the about component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -125,11 +136,10 @@ class EditAbout extends ModalComponent
 
         // ensure the image is not null, (ie: an image has been uploaded)
         // todo: add support for storing images in the database
-        if ($this->image != null)
-        {
+        if ($this->image != null) {
             // get original filename and extract extension
-            $filename = explode(".", $this->image->getFilename());
-            $ext = $filename[count($filename)-1];
+            $filename = explode('.', $this->image->getFilename());
+            $ext = $filename[count($filename) - 1];
 
             // save the file
             $output = $this->image->storePubliclyAs('avatar', md5(time()).'.'.$ext, 'public');
@@ -155,32 +165,26 @@ class EditAbout extends ModalComponent
         $body->save();
 
         // create a new module parameter if the link is null
-        if ($link == null)
-        {
+        if ($link == null) {
             $linkParam = new ModuleParameter();
             $linkParam->module_id = $this->module->id;
             $linkParam->parameter = 'link';
             $linkParam->value = $this->link;
             $linkParam->save();
-        }
-        else
-        {
+        } else {
             // update the module parameter
             $link->value = $this->link;
             $link->save();
         }
 
         // create a new module parameter if the link_text is null
-        if ($linkText == null)
-        {
+        if ($linkText == null) {
             $linkTextParam = new ModuleParameter();
             $linkTextParam->module_id = $this->module->id;
             $linkTextParam->parameter = 'link_text';
             $linkTextParam->value = $this->link_text;
             $linkTextParam->save();
-        }
-        else
-        {
+        } else {
             // update the module parameter
             $linkText->value = $this->link_text;
             $linkText->save();
@@ -198,6 +202,7 @@ class EditAbout extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

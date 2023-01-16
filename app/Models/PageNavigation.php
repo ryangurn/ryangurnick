@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PageNavigation extends Model
@@ -12,7 +11,7 @@ class PageNavigation extends Model
     protected $fillable = [
         'page_id',
         'name',
-        'enabled'
+        'enabled',
     ];
 
     public function page()

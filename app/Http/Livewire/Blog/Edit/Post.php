@@ -24,18 +24,21 @@ class Post extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value to display on the body of the module.
+     *
      * @var
      */
     public $body;
 
     /**
      * the value to display on the title of the module.
+     *
      * @var
      */
     public $title;
@@ -43,6 +46,7 @@ class Post extends ModalComponent
     /**
      * the location in which the page module is stored to
      * for local use within the component.
+     *
      * @var
      */
     public $module;
@@ -50,6 +54,7 @@ class Post extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit text modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -60,6 +65,7 @@ class Post extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -70,7 +76,9 @@ class Post extends ModalComponent
     /**
      * the function when called that will save the new
      * values for the post.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -104,6 +112,7 @@ class Post extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

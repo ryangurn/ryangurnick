@@ -2,10 +2,10 @@
 
 use App\Models\Email;
 use App\Models\Module;
+use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
-use App\Models\Page;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,21 +22,17 @@ use App\Models\Page;
  * add the maintenance route if the application is in
  * maintenance mode.
  */
-if (config('app.routes_enabled'))
-{
+if (config('app.routes_enabled')) {
     try {
         $maintenance = Setting::where('key', '=', 'application.maintenance')->first();
-    } catch (QueryException $q)
-    {
+    } catch (QueryException $q) {
         abort(404);
     }
 
-    Route::get('/maintenance', function() use ($maintenance) {
+    Route::get('/maintenance', function () use ($maintenance) {
         if ($maintenance != null && $maintenance->value) {
             return abort(503);
-        }
-        else
-        {
+        } else {
             return redirect()->route('home');
         }
     })->name('maintenance');
@@ -60,12 +56,10 @@ if (config('app.routes_enabled'))
      */
     try {
         $pages = Page::all();
-    } catch (QueryException $q)
-    {
+    } catch (QueryException $q) {
         abort(404);
     }
-    if (!$pages->isEmpty())
-    {
+    if (! $pages->isEmpty()) {
         foreach ($pages as $page) {
             Route::get($page->slug, [$page->controller, $page->method])->name($page->name);
         }

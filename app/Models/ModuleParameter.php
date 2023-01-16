@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Module;
 
 class ModuleParameter extends Model
 {
@@ -13,7 +11,7 @@ class ModuleParameter extends Model
     protected $fillable = [
         'module_id',
         'parameter',
-        'value'
+        'value',
     ];
 
     public function module()

@@ -17,154 +17,151 @@ class PermissionSeeder extends Seeder
     {
         // grid
         Permission::firstOrCreate([
-            'name' => 'add photo'
+            'name' => 'add photo',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'edit photo'
+            'name' => 'edit photo',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'delete photo'
+            'name' => 'delete photo',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'react to photo'
+            'name' => 'react to photo',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'comment on photo'
+            'name' => 'comment on photo',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'view photo analytics'
+            'name' => 'view photo analytics',
         ]);
 
         // modules
         $modules = Module::all();
 
-        foreach($modules as $module)
-        {
+        foreach ($modules as $module) {
             Permission::firstOrCreate([
-                'name' => 'edit '. strtolower($module->name)
+                'name' => 'edit '.strtolower($module->name),
             ]);
 
             Permission::firstOrCreate([
-                'name' => 'delete '. strtolower($module->name)
+                'name' => 'delete '.strtolower($module->name),
             ]);
 
             Permission::firstOrCreate([
-                'name' => 'view '. strtolower($module->name)
+                'name' => 'view '.strtolower($module->name),
             ]);
 
             Permission::firstOrCreate([
-                'name' => 'reorder '. strtolower($module->name)
+                'name' => 'reorder '.strtolower($module->name),
             ]);
         }
 
         // framework
         // analytics
         Permission::firstOrCreate([
-            'name' => 'view site analytics'
+            'name' => 'view site analytics',
         ]);
 
         // slideovers
         // configuration
         $configuration_sections = ['application', 'logging', 'database', 'driver', 'memcached', 'redis', 'mail', 'misc', 'file system'];
 
-        foreach($configuration_sections as $section)
-        {
+        foreach ($configuration_sections as $section) {
             Permission::firstOrCreate([
-                'name' => 'view '. $section . ' information'
+                'name' => 'view '.$section.' information',
             ]);
         }
 
         // email
         Permission::firstOrCreate([
-            'name' => 'view emails'
+            'name' => 'view emails',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'read emails'
+            'name' => 'read emails',
         ]);
 
         // settings
         $configuration_sections = ['maintenance', 'logo', 'name', 'contact', 'gallery', 'footer', 'indexing'];
 
-        foreach($configuration_sections as $section)
-        {
+        foreach ($configuration_sections as $section) {
             Permission::firstOrCreate([
-                'name' => 'view '. $section . ' settings'
+                'name' => 'view '.$section.' settings',
             ]);
 
             Permission::firstOrCreate([
-                'name' => 'update '. $section . ' settings'
+                'name' => 'update '.$section.' settings',
             ]);
         }
 
         // moderation
         // comments
         Permission::firstOrCreate([
-            'name' => 'remove comment'
+            'name' => 'remove comment',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'update comment'
+            'name' => 'update comment',
         ]);
 
         // telescope
         Permission::firstOrCreate([
-            'name' => 'access telescope'
+            'name' => 'access telescope',
         ]);
 
         // access controls
         Permission::firstOrCreate([
-            'name' => 'view access controls'
+            'name' => 'view access controls',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'add roles'
+            'name' => 'add roles',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'delete roles'
+            'name' => 'delete roles',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'update roles'
+            'name' => 'update roles',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'associate permissions'
+            'name' => 'associate permissions',
         ]);
 
         // banner
         // page
         Permission::firstOrCreate([
-            'name' => 'add page'
+            'name' => 'add page',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'delete page'
+            'name' => 'delete page',
         ]);
 
         // menu
         Permission::firstOrCreate([
-            'name' => 'edit menu'
+            'name' => 'edit menu',
         ]);
 
         Permission::firstOrCreate([
-            'name' => 'delete menu'
+            'name' => 'delete menu',
         ]);
 
         // module
         Permission::firstOrCreate([
-            'name' => 'add module'
+            'name' => 'add module',
         ]);
 
         // gallery
         Permission::firstOrCreate([
-            'name' => 'add gallery'
+            'name' => 'add gallery',
         ]);
     }
 }

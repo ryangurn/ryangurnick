@@ -28,18 +28,21 @@ class EditCyberSecurity extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
 
     /**
      * the value that stores the body data.
+     *
      * @var
      */
     public $body;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -47,6 +50,7 @@ class EditCyberSecurity extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -57,6 +61,7 @@ class EditCyberSecurity extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edit cyber security modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -67,7 +72,9 @@ class EditCyberSecurity extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the cyber security component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -97,6 +104,7 @@ class EditCyberSecurity extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

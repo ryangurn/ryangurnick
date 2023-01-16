@@ -22,7 +22,6 @@ class PageModuleSeeder extends Seeder
         $photo = Page::where('name', '=', 'photos')->first();
         $resume = Page::where('name', '=', 'resume')->first();
 
-
         // home page modules
         $about_card = Module::where('component', '=', 'home.about-card')->first();
         $project_card = Module::where('component', '=', 'home.project-card')->first();

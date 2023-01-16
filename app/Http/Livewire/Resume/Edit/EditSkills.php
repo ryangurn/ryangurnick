@@ -28,6 +28,7 @@ class EditSkills extends ModalComponent
      * the page_module model reference that will be
      * used as a reference to update the page_modules
      * table.
+     *
      * @var
      */
     public $page_module;
@@ -35,12 +36,14 @@ class EditSkills extends ModalComponent
     /**
      * the array that stores the skill
      * data and associated parameters.
+     *
      * @var
      */
     public $skills;
 
     /**
      * the value that stores the module model.
+     *
      * @var
      */
     public $module;
@@ -48,6 +51,7 @@ class EditSkills extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -58,6 +62,7 @@ class EditSkills extends ModalComponent
     /**
      * validation rules that will be checked when the
      * edited data is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -68,18 +73,18 @@ class EditSkills extends ModalComponent
     /**
      * messages to display when validation errors
      * occur.
+     *
      * @return string[]
      */
     public function messages()
     {
         $arr = [];
-        for ($i = 0; $i < count($this->skills); $i++)
-        {
-            $arr['skills.'.$i.'.skill.required'] = 'Skill #'.($i+1).' cannot be blank.';
-            $arr['skills.'.$i.'.skill.string'] = 'Skill #'.($i+1).' must be a string.';
-            $arr['skills.'.$i.'.level.required'] = 'Level #'.($i+1).' cannot be blank.';
-            $arr['skills.'.$i.'.level.string'] = 'Level #'.($i+1).' must be a string.';
-            $arr['skills.'.$i.'.level.in'] = 'Level #'.($i+1).' must be one of the values in the select.';
+        for ($i = 0; $i < count($this->skills); $i++) {
+            $arr['skills.'.$i.'.skill.required'] = 'Skill #'.($i + 1).' cannot be blank.';
+            $arr['skills.'.$i.'.skill.string'] = 'Skill #'.($i + 1).' must be a string.';
+            $arr['skills.'.$i.'.level.required'] = 'Level #'.($i + 1).' cannot be blank.';
+            $arr['skills.'.$i.'.level.string'] = 'Level #'.($i + 1).' must be a string.';
+            $arr['skills.'.$i.'.level.in'] = 'Level #'.($i + 1).' must be one of the values in the select.';
         }
 
         return $arr;
@@ -89,13 +94,13 @@ class EditSkills extends ModalComponent
      * the function that when called will recalculate
      * the validation messages. it will also ensure
      * that there is at least one value.
+     *
      * @return void
      */
     public function check()
     {
         $this->messages();
-        if (count($this->skills) == 0)
-        {
+        if (count($this->skills) == 0) {
             $this->add();
         }
     }
@@ -104,7 +109,9 @@ class EditSkills extends ModalComponent
      * the function that when called will recalculate
      * validation messages and add a new sub array
      * with default values.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function add()
@@ -120,8 +127,10 @@ class EditSkills extends ModalComponent
      * given an index, $i, this function will remove
      * a specific sub array and verify that
      * at least one row exists.
+     *
      * @param $i
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function remove($i)
@@ -136,7 +145,9 @@ class EditSkills extends ModalComponent
     /**
      * the function that when called will save the new
      * values in the component.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -166,12 +177,14 @@ class EditSkills extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
     {
         $this->check();
         $this->skills = collect($this->skills);
+
         return view('livewire.resume.edit.edit-skills');
     }
 }

@@ -27,6 +27,7 @@ class AddRole extends ModalComponent
     /**
      * the value that stores the role name that will be
      * saved to the database.
+     *
      * @var
      */
     public $role;
@@ -34,6 +35,7 @@ class AddRole extends ModalComponent
     /**
      * validation rules that will be checked when the
      * add role modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -44,7 +46,9 @@ class AddRole extends ModalComponent
     /**
      * the function that when called will associate a
      * permission to a role.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -68,6 +72,7 @@ class AddRole extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

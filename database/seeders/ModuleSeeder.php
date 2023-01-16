@@ -5,9 +5,8 @@ namespace Database\Seeders;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
 use App\Models\Image;
-use Illuminate\Database\Seeder;
 use App\Models\Module;
-use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class ModuleSeeder extends Seeder
 {
@@ -29,27 +28,27 @@ class ModuleSeeder extends Seeder
         $about = Module::firstOrNew([
             'name' => 'About Card',
             'component' => 'home.about-card',
-            'edit_component' => 'home.edit.edit-about'
+            'edit_component' => 'home.edit.edit-about',
         ]);
         $about->parameters = [
             'name' => 'required|string',
             'body' => 'required|string',
             'image' => 'nullable|image|max:1024',
             'link' => 'nullable|url',
-            'link_text' => 'nullable|string|min:3'
+            'link_text' => 'nullable|string|min:3',
         ];
         $about->examples = [
             'name' => 'ryan gurnick',
             'body' => 'I am a technologist who sees the dreams of the world as an opportunity for innovation through machines. Over many years I have worked in various areas to improve my understanding of how technology functions and impacts the world in a meaningful way. I have received a bachelor’s degree in computer information science and computer information technologies while also following my passion for cybersecurity, theatrical productions, and much more. I hope you enjoy my website and learn something new in the process that will spark joy and intrigue in your life.',
             'image' => $img->id,
             'link' => '',
-            'link_text' => ''
+            'link_text' => '',
         ];
         $about->permissions = [
-              'edit' => 'edit about card',
-              'delete' => 'delete about card',
-              'view' => 'view about card',
-              'reorder' => 'reorder about card',
+            'edit' => 'edit about card',
+            'delete' => 'delete about card',
+            'view' => 'view about card',
+            'reorder' => 'reorder about card',
         ];
         $about->save();
 
@@ -57,7 +56,7 @@ class ModuleSeeder extends Seeder
         $project = Module::firstOrNew([
             'name' => 'Projects Card',
             'component' => 'home.project-card',
-            'edit_component' => 'home.edit.edit-project'
+            'edit_component' => 'home.edit.edit-project',
         ]);
         $project->parameters = [
             'projects' => 'required|array',
@@ -73,7 +72,7 @@ class ModuleSeeder extends Seeder
                 ['project' => 'regtools', 'status' => 'archived', 'link' => 'https://github.com/ryangurn/regtools'],
                 ['project' => 'minicasty', 'status' => 'archived', 'link' => 'https://github.com/ryangurn/minicasty'],
                 ['project' => 'emu visitor estimate', 'status' => 'archived'],
-            ]
+            ],
         ];
         $project->permissions = [
             'edit' => 'edit projects card',
@@ -87,18 +86,18 @@ class ModuleSeeder extends Seeder
         $quotes = Module::firstOrNew([
             'name' => 'Quotes Card',
             'component' => 'home.quote-card',
-            'edit_component' => 'home.edit.edit-quote'
+            'edit_component' => 'home.edit.edit-quote',
         ]);
         $quotes->parameters = [
             'quotes' => 'required|array',
             'quotes.*.author' => 'nullable|string',
-            'quotes.*.quote' => 'required|string'
+            'quotes.*.quote' => 'required|string',
         ];
         $quotes->examples = [
             'quotes' => [
                 ['quote' => 'Stay hungry, stay foolish', 'author' => 'steve jobs'],
                 ['quote' => 'Just Watch', 'author' => 'ryan gurnick'],
-            ]
+            ],
         ];
         $quotes->permissions = [
             'edit' => 'edit quotes card',
@@ -116,7 +115,7 @@ class ModuleSeeder extends Seeder
             'edit_component' => 'photo.edit.edit-gallery',
         ]);
         $gallery->parameters = [
-            'body' => 'required|string'
+            'body' => 'required|string',
         ];
         $gallery->examples = [
             'body' => '<p class="pb-2">This has been a long time coming. Sharing photos is quite important to me, and in a world in which social networks treat their users as the product not the customer it is time to take that control back.</p>
@@ -125,7 +124,7 @@ class ModuleSeeder extends Seeder
 
                 <p class="pb-2">This page is a continual work in progress. Please bare with me as I shake out the method to this madness. Once this page is complete, so is my time with instagram.</p>
 
-                <p class="pb-2">I hope you enjoy!</p>'
+                <p class="pb-2">I hope you enjoy!</p>',
         ];
         $gallery->permissions = [
             'edit' => 'edit gallery card',
@@ -153,10 +152,10 @@ class ModuleSeeder extends Seeder
             'gallery_id' => $gall->id,
         ]);
         $gall_image->image_id = $image->id;
-        $gall_image->caption = "What a great example photo";
+        $gall_image->caption = 'What a great example photo';
         $gall_image->visible = true;
-        $gall_image->location = "woodland hills, ca";
-        $gall_image->people = "none";
+        $gall_image->location = 'woodland hills, ca';
+        $gall_image->people = 'none';
         $gall_image->save();
 
         $grid = Module::firstOrNew([
@@ -166,10 +165,10 @@ class ModuleSeeder extends Seeder
         ]);
         $grid->dynamic = true;
         $grid->parameters = [
-            'gallery_id' => 'required|numeric|exists:galleries,id'
+            'gallery_id' => 'required|numeric|exists:galleries,id',
         ];
         $grid->examples = [
-            'gallery_id' => $gall->id
+            'gallery_id' => $gall->id,
         ];
         $grid->permissions = [
             'edit' => 'edit photo grid',
@@ -187,10 +186,10 @@ class ModuleSeeder extends Seeder
             'edit_component' => 'resume.edit.edit-goals',
         ]);
         $goals->parameters = [
-            'body' => 'required|string'
+            'body' => 'required|string',
         ];
         $goals->examples = [
-            'body' => 'i am working to further my knowledge in computer science and other computer-related areas in preparation for a career in software development, computer information systems, cybersecurity. over the past couple of years, i have strived to learn the more formal side to computer science, and i wish to continue developing new technologies that find truth in the fundamentals.'
+            'body' => 'i am working to further my knowledge in computer science and other computer-related areas in preparation for a career in software development, computer information systems, cybersecurity. over the past couple of years, i have strived to learn the more formal side to computer science, and i wish to continue developing new technologies that find truth in the fundamentals.',
         ];
         $goals->permissions = [
             'edit' => 'edit goals card',
@@ -215,57 +214,57 @@ class ModuleSeeder extends Seeder
             'skills' => [
                 [
                     'skill' => 'html, css, javascript',
-                    'level' => 'advanced'
+                    'level' => 'advanced',
                 ],
                 [
                     'skill' => 'php',
-                    'level' => 'advanced'
+                    'level' => 'advanced',
                 ],
                 [
                     'skill' => 'sql based languages',
-                    'level' => 'proficient'
+                    'level' => 'proficient',
                 ],
                 [
                     'skill' => 'golang',
-                    'level' => 'advanced'
+                    'level' => 'advanced',
                 ],
                 [
                     'skill' => 'python',
-                    'level' => 'advanced'
+                    'level' => 'advanced',
                 ],
                 [
                     'skill' => 'c',
-                    'level' => 'moderate'
+                    'level' => 'moderate',
                 ],
                 [
                     'skill' => 'c#',
-                    'level' => 'moderate'
+                    'level' => 'moderate',
                 ],
                 [
                     'skill' => 'c++',
-                    'level' => 'proficient'
+                    'level' => 'proficient',
                 ],
                 [
                     'skill' => 'java',
-                    'level' => 'basic'
+                    'level' => 'basic',
                 ],
                 [
                     'skill' => 'ruby',
-                    'level' => 'basic'
+                    'level' => 'basic',
                 ],
                 [
                     'skill' => 'powershell & shell scripting',
-                    'level' => 'moderate'
+                    'level' => 'moderate',
                 ],
                 [
                     'skill' => 'cyber security consulting',
-                    'level' => 'advanced'
+                    'level' => 'advanced',
                 ],
                 [
                     'skill' => 'wordpress',
-                    'level' => 'moderate'
+                    'level' => 'moderate',
                 ],
-            ]
+            ],
         ];
         $skills->permissions = [
             'edit' => 'edit skills card',
@@ -283,7 +282,7 @@ class ModuleSeeder extends Seeder
         ]);
         $computer_skills->parameters = [
             'skills' => 'required|array',
-            'skills.*' => 'required|string'
+            'skills.*' => 'required|string',
         ];
         $computer_skills->examples = [
             'skills' => [
@@ -293,7 +292,7 @@ class ModuleSeeder extends Seeder
                 'penetration testing',
                 'continuous integration & implementation automation',
                 'setting up and operating sound systems',
-            ]
+            ],
         ];
         $computer_skills->permissions = [
             'edit' => 'edit computer skills card',
@@ -310,10 +309,10 @@ class ModuleSeeder extends Seeder
             'edit_component' => 'resume.edit.edit-software',
         ]);
         $software->parameters = [
-            'body' => 'required|string'
+            'body' => 'required|string',
         ];
         $software->examples = [
-            'body' => 'most development tools for programming, and devops tools.'
+            'body' => 'most development tools for programming, and devops tools.',
         ];
         $software->permissions = [
             'edit' => 'edit software card',
@@ -331,7 +330,7 @@ class ModuleSeeder extends Seeder
         ]);
         $operating->parameters = [
             'systems' => 'required|array',
-            'systems.*' => 'required|string'
+            'systems.*' => 'required|string',
         ];
         $operating->examples = [
             'systems' => [
@@ -339,7 +338,7 @@ class ModuleSeeder extends Seeder
                 'ubuntu',
                 'windows',
                 'windows server',
-                'macos'
+                'macos',
             ],
         ];
         $operating->permissions = [
@@ -357,10 +356,10 @@ class ModuleSeeder extends Seeder
             'edit_component' => 'resume.edit.edit-cyber-security',
         ]);
         $cyber->parameters = [
-            'body' => 'required|string'
+            'body' => 'required|string',
         ];
         $cyber->examples = [
-            'body' => 'advanced penetration testing for computer systems, api’s, infrastructure and operating system level security expert.'
+            'body' => 'advanced penetration testing for computer systems, api’s, infrastructure and operating system level security expert.',
         ];
         $cyber->permissions = [
             'edit' => 'edit cyber security card',
@@ -382,7 +381,7 @@ class ModuleSeeder extends Seeder
             'roles.*.location' => 'required|string',
             'roles.*.role' => 'required|string',
             'roles.*.company' => 'required|string',
-            'roles.*.body' => 'nullable|string'
+            'roles.*.body' => 'nullable|string',
         ];
         $cs_experience->examples = [
             'roles' => [
@@ -456,7 +455,7 @@ class ModuleSeeder extends Seeder
                     'company' => 'malibu tech support',
                     'body' => 'Responsible for setting up machines, building computers, networks, and maintaining a business server; customer service in store and on the phone',
                 ],
-            ]
+            ],
         ];
         $cs_experience->permissions = [
             'edit' => 'edit computer science experience card',
@@ -478,7 +477,7 @@ class ModuleSeeder extends Seeder
             'roles.*.location' => 'required|string',
             'roles.*.role' => 'required|string',
             'roles.*.company' => 'required|string',
-            'roles.*.body' => 'nullable|string'
+            'roles.*.body' => 'nullable|string',
         ];
         $es_experience->examples = [
             'roles' => [
@@ -504,7 +503,7 @@ class ModuleSeeder extends Seeder
                     'company' => 'rainbow sound',
                     'body' => 'Responsible for helping to setup and operate 4 clusters of wideline speaker arrays, along with Allen & Heath sound-boards',
                 ],
-            ]
+            ],
         ];
         $es_experience->permissions = [
             'edit' => 'edit event services experience card',
@@ -524,7 +523,7 @@ class ModuleSeeder extends Seeder
             'institutions' => 'required|array',
             'institutions.*.organization' => 'required|string',
             'institutions.*.duration' => 'required|string',
-            'institutions.*.body' => 'nullable|string'
+            'institutions.*.body' => 'nullable|string',
         ];
         $education->examples = [
             'institutions' => [
@@ -553,7 +552,7 @@ class ModuleSeeder extends Seeder
                     'duration' => '2012-2016',
                     'body' => 'Participant in a program for high school students to learn how to secure networks and computers to prevent hacking and malicious attacks based on national and international standards. The program teaches students cyber security through the use of virtualized systems such as VMWare and other testing software. The goal is to provide a realistic environment where cyber security standards are ignored and learn to secure a vulnerable environment. Semi-finalist in 2013 competition',
                 ],
-            ]
+            ],
         ];
         $education->permissions = [
             'edit' => 'edit education card',
@@ -562,7 +561,6 @@ class ModuleSeeder extends Seeder
             'reorder' => 'reorder education card',
         ];
         $education->save();
-
 
         // committee work card
         $committee = Module::firstOrNew([
@@ -575,7 +573,7 @@ class ModuleSeeder extends Seeder
             'institutions.*.organization' => 'required|string',
             'institutions.*.position' => 'required|string',
             'institutions.*.duration' => 'required|string',
-            'institutions.*.location' => 'nullable|string'
+            'institutions.*.location' => 'nullable|string',
         ];
         $committee->examples = [
             'institutions' => [
@@ -603,7 +601,7 @@ class ModuleSeeder extends Seeder
                     'duration' => '2013-2016',
                     'location' => 'woodland hills, california',
                 ],
-            ]
+            ],
         ];
         $committee->permissions = [
             'edit' => 'edit committee work card',
@@ -621,11 +619,11 @@ class ModuleSeeder extends Seeder
         $text->dynamic = true;
         $text->parameters = [
             'body' => 'required|string',
-            'header' => 'required|string'
+            'header' => 'required|string',
         ];
         $text->examples = [
             'header' => 'text card',
-            'body' => 'This is a text card, you can put these anywhere and the content on one is not tied to the content on another!'
+            'body' => 'This is a text card, you can put these anywhere and the content on one is not tied to the content on another!',
         ];
         $text->permissions = [
             'edit' => 'edit text card',
@@ -642,7 +640,7 @@ class ModuleSeeder extends Seeder
         ]);
         $contact->dynamic = true;
         $contact->parameters = [
-            'header' => 'required|string'
+            'header' => 'required|string',
         ];
         $contact->examples = [
             'header' => 'contact',
@@ -658,18 +656,18 @@ class ModuleSeeder extends Seeder
         $header = Module::firstOrNew([
             'name' => 'Header',
             'component' => 'core.header',
-            'edit_component' => 'core.edit.edit-header'
+            'edit_component' => 'core.edit.edit-header',
         ]);
         $header->dynamic = true;
         $header->parameters = [
             'header' => 'required|string',
             'description' => 'nullable|string',
-            'color' => 'required|in:light,dark'
+            'color' => 'required|in:light,dark',
         ];
         $header->examples = [
             'header' => 'welcome!',
             'description' => 'this is a header, what fun!',
-            'color' => 'light'
+            'color' => 'light',
         ];
         $header->permissions = [
             'edit' => 'edit header',
@@ -682,12 +680,12 @@ class ModuleSeeder extends Seeder
         $stats = Module::firstOrNew([
             'name' => 'Stats',
             'component' => 'core.stats',
-            'edit_component' => 'core.edit.edit-stats'
+            'edit_component' => 'core.edit.edit-stats',
         ]);
         $stats->dynamic = true;
         $stats->parameters = [
             'cards' => 'required|array',
-            'header' => 'required|string'
+            'header' => 'required|string',
         ];
         $stats->examples = [
             'cards' => [
@@ -695,7 +693,7 @@ class ModuleSeeder extends Seeder
                 ['item' => 'Avg. Open Rate', 'number' => 58.16, 'percentage' => true],
                 ['item' => 'Avg. Click Rate', 'number' => 24.57, 'percentage' => true],
             ],
-            'header' => 'demo stats'
+            'header' => 'demo stats',
         ];
         $stats->permissions = [
             'edit' => 'edit stats',
@@ -708,20 +706,20 @@ class ModuleSeeder extends Seeder
         $hero = Module::firstOrNew([
             'name' => 'Hero',
             'component' => 'core.hero',
-            'edit_component' => 'core.edit.edit-hero'
+            'edit_component' => 'core.edit.edit-hero',
         ]);
         $hero->dynamic = true;
         $hero->parameters = [
             'header' => 'required|string',
             'body' => 'nullable|string',
             'image' => 'nullable|image',
-            'links' => 'nullable'
+            'links' => 'nullable',
         ];
         $hero->examples = [
             'header' => 'Hero Section!',
             'body' => 'What a great hero he is!?',
             'image' => 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100',
-            'links' => [['value' => 'click me!', 'link' => 'https://ryangurnick.test/']]
+            'links' => [['value' => 'click me!', 'link' => 'https://ryangurnick.test/']],
         ];
         $hero->permissions = [
             'edit' => 'edit hero',
@@ -734,22 +732,22 @@ class ModuleSeeder extends Seeder
         $post = Module::firstOrNew([
             'name' => 'Post',
             'component' => 'blog.post',
-            'edit_component' => 'blog.edit.post'
+            'edit_component' => 'blog.edit.post',
         ]);
         $post->dynamic = true;
         $post->parameters = [
             'title' => 'required|string',
-            'body' => 'required|string'
+            'body' => 'required|string',
         ];
         $post->examples = [
             'title' => 'My First Post',
-            'body' => 'This is my first post and it is wonderful!'
+            'body' => 'This is my first post and it is wonderful!',
         ];
         $post->permissions = [
             'edit' => 'edit post',
             'delete' => 'delete post',
             'view' => 'view post',
-            'reorder' => 'reorder post'
+            'reorder' => 'reorder post',
         ];
         $post->save();
     }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
@@ -14,11 +13,11 @@ class Email extends Model
         'to',
         'message',
         'parameters',
-        'read'
+        'read',
     ];
 
     protected $casts = [
         'parameters' => 'collection',
-        'read' => 'boolean'
+        'read' => 'boolean',
     ];
 }

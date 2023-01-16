@@ -5,10 +5,10 @@ namespace App\Http\Livewire\Framework;
 use App\Models\ModuleParameter;
 use App\Models\Page;
 use App\Models\Setting;
-use Livewire\Component;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
 /**
  * SiteTitle is the livewire component that
@@ -27,7 +27,7 @@ class SiteTitle extends Component
     public $post;
 
     /**
-     * The value that stores the application's site 
+     * The value that stores the application's site
      * name.
      */
     public $sitename;
@@ -35,6 +35,7 @@ class SiteTitle extends Component
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount(Page $page, $post = null)
@@ -47,6 +48,7 @@ class SiteTitle extends Component
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()

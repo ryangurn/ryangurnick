@@ -28,6 +28,7 @@ class AddPermission extends ModalComponent
     /**
      * the value that allows for the role to be pulled
      * from the database based on the identifier
+     *
      * @var
      */
     public $role_id;
@@ -35,12 +36,14 @@ class AddPermission extends ModalComponent
     /**
      * the value that stores the role modal that is being
      * updated.
+     *
      * @var
      */
     public $role;
 
     /**
      * the array that stores all the permissions models.
+     *
      * @var
      */
     public $permissions;
@@ -48,6 +51,7 @@ class AddPermission extends ModalComponent
     /**
      * the value that stores the permission to associate
      * to the role.
+     *
      * @var
      */
     public $permission;
@@ -55,6 +59,7 @@ class AddPermission extends ModalComponent
     /**
      * function that is called when the livewire component is
      * initialized.
+     *
      * @return void
      */
     public function mount()
@@ -66,6 +71,7 @@ class AddPermission extends ModalComponent
     /**
      * validation rules that will be checked when the
      * update role modal is saved.
+     *
      * @return string[]
      */
     public function rules()
@@ -76,7 +82,9 @@ class AddPermission extends ModalComponent
     /**
      * the function that when called will associate a
      * permission to a role.
+     *
      * @return void
+     *
      * @throws AuthorizationException
      */
     public function save()
@@ -98,6 +106,7 @@ class AddPermission extends ModalComponent
     /**
      * the method that is automatically called to render
      * the view for the livewire component.
+     *
      * @return Application|Factory|View
      */
     public function render()
