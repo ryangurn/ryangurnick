@@ -21,6 +21,11 @@ class Image extends Model
         return $this->hasOne(Module::class);
     }
 
+    public function file()
+    {
+        return $this->morphOne(File::class, 'item');
+    }
+
     public function getFileAttribute($value)
     {
         return asset('storage/'.$value);
